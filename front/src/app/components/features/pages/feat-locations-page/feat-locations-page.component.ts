@@ -26,4 +26,4 @@ export class FeatLocationsPageComponent implements AfterViewInit {
       .bindPopup('Point of view!')
       .openPopup();
   }
-}
+} 
