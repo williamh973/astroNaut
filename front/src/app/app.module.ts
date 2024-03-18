@@ -17,6 +17,8 @@ import { FeatErrorPageComponent } from './components/features/pages/feat-error-p
 import { FeatContactPageComponent } from './components/features/pages/feat-contact-page/feat-contact-page.component';
 import { AboutPageComponent } from './components/others-components/about-page/about-page.component';
 import { FeatToContributePageComponent } from './components/features/pages/feat-to-contribute-page/feat-to-contribute-page.component';
+import { FeatNewsCardListComponent } from './components/others-components/feat-news-card-list/feat-news-card-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -34,11 +36,13 @@ import { FeatToContributePageComponent } from './components/features/pages/feat-
     FeatErrorPageComponent,
     FeatContactPageComponent,
     AboutPageComponent,
-    FeatToContributePageComponent
+    FeatToContributePageComponent,
+    FeatNewsCardListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

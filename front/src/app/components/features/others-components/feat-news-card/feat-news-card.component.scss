@@ -1,0 +1,25 @@
+#main-container {
+    min-width: 300px;
+    max-width: 300px;
+    min-height: 240px;
+    max-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // border: 1px solid red;
+}
+
+#image-container {
+    min-height: 160px;
+    aspect-ratio: 16 / 9;
+    border: 1px solid grey;
+    border-radius: 20px;
+}
+
+p {
+    width: 95%;
+    margin: 5px 0;
+    color: rgb(209, 209, 209);
+    font-size: 19px;
+}

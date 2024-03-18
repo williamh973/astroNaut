@@ -1,11 +1,14 @@
+
 <nav>
     <ul id="ul-left">
+        <img src="../../../../assets/images/globe_FILL0_wght400_GRAD0_opsz24.png" alt="globe icon">
         <li *ngFor="let menuItem of leftMenuItemList">
-            <a (click)="onMenuItemClick(menuItem)">{{ menuItem.label }}</a>
-          </li>
+          <a (click)="onMenuItemClick(menuItem)">{{ menuItem.label }}</a>
+        </li>
     </ul>
 
     <ul id="ul-right">
+        <img src="../../../../assets/images/account_circle_FILL0_wght400_GRAD0_opsz24.png" alt="account icon">
         <li *ngFor="let menuItem of rightMenuItemList">
             <a (click)="onMenuItemClick(menuItem)">{{ menuItem.label }}</a>
           </li>
