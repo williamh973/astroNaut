@@ -19,6 +19,12 @@ import { AboutPageComponent } from './components/others-components/about-page/ab
 import { FeatToContributePageComponent } from './components/features/pages/feat-to-contribute-page/feat-to-contribute-page.component';
 import { FeatNewsCardListComponent } from './components/others-components/feat-news-card-list/feat-news-card-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UiSearchBarHomeComponent } from './components/ui/ui-search-bar-home/ui-search-bar-home.component';
+import { UiSearchBarLocationsComponent } from './components/ui/ui-search-bar-locations/ui-search-bar-locations.component';
+import { FeatLoginOrRegisterFormPopupComponent } from './components/features/popups/feat-login-or-register-form-popup/feat-login-or-register-form-popup.component';
+import { FeatGaleryPageComponent } from './components/features/pages/feat-galery-page/feat-galery-page.component';
+import { FeatRegisterFormPopupComponent } from './components/features/popups/feat-register-form-popup/feat-register-form-popup.component';
+import { FeatLoginFormPopupComponent } from './components/features/popups/feat-login-form-popup/feat-login-form-popup.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +43,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FeatContactPageComponent,
     AboutPageComponent,
     FeatToContributePageComponent,
-    FeatNewsCardListComponent
+    FeatNewsCardListComponent,
+    UiSearchBarHomeComponent,
+    UiSearchBarLocationsComponent,
+    FeatLoginOrRegisterFormPopupComponent,
+    FeatGaleryPageComponent,
+    FeatRegisterFormPopupComponent,
+    FeatLoginFormPopupComponent
   ],
   imports: [
     BrowserModule,

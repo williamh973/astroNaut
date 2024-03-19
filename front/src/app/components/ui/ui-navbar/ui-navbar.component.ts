@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Menu } from 'src/app/models/menu-model';
+import { LoginOrRegisterPopupServiceService } from 'src/app/shared/services/login-or-register-popup-service.service';
 
 @Component({
   selector: 'app-ui-navbar',
@@ -22,32 +23,28 @@ export class UiNavbarComponent {
     new Menu('Mon espace', '/user-space')
   ];
 
+  isLoginOrRegisterPopupOpen: boolean = false;
+
 
   constructor(
     // private tokenService: TokenService,
-    // public accountPopupService: AccountPopupService,
+    public loginOrRegisterPopupService: LoginOrRegisterPopupServiceService,
     private router: Router
     ) {}
- 
-
-    isMenuOpen: boolean = false;
-
-    onOpenMenuToggle() {
-      this.isMenuOpen = !this.isMenuOpen
-    };
 
     onOpenContributePage() {
-      // if (this.tokenService.isCheckTokenInLocalStorage()) {
-    //     this.isEditCardFormOpen = !this.isEditCardFormOpen;
-    //     this.accountPopupService.closePopup();
-    //   } else {
-    //     this.accountPopupService.openPopup();
-    //   }
+      // const checkToken = this.tokenService.isCheckTokenInLocalStorage();
+      // if (checkToken) {
+        this.router.navigate(['/to-contribute']);
+        // } else {
+          this.isLoginOrRegisterPopupOpen = true;
+        // this.loginOrRegisterPopupService.openPopup();
+      // }
     };
 
     onContactPopupFormOpen() {
       // if (this.tokenService.isCheckTokenInLocalStorage()) {
-      // this.isContactPopupFormOpen = !this.isContactPopupFormOpen;
+        this.router.navigate(['/contact']);
       // } else {
       //   this.accountPopupService.openPopup();
       // }

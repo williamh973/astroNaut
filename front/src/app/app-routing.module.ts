@@ -7,11 +7,13 @@ import { FeatNewsCardDetailPageComponent } from './components/features/pages/fea
 import { FeatErrorPageComponent } from './components/features/pages/feat-error-page/feat-error-page.component';
 import { FeatToContributePageComponent } from './components/features/pages/feat-to-contribute-page/feat-to-contribute-page.component';
 import { AboutPageComponent } from './components/others-components/about-page/about-page.component';
+import { FeatContactPageComponent } from './components/features/pages/feat-contact-page/feat-contact-page.component';
+import { FeatGaleryPageComponent } from './components/features/pages/feat-galery-page/feat-galery-page.component';
 
 const routes: Routes = [
   { 
     path: '', 
-    redirectTo:'/home', 
+    redirectTo:'/news', 
     pathMatch: 'full'
     
   },
@@ -34,6 +36,14 @@ const routes: Routes = [
   { 
     path: 'news-card-detail/:id', 
     component: FeatNewsCardDetailPageComponent 
+  },
+  { 
+    path: 'galery', 
+    component: FeatGaleryPageComponent
+  },
+  { 
+    path: 'contact', 
+    component: FeatContactPageComponent 
   },
   { 
     path: 'user-space', 

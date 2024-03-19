@@ -1,0 +1,45 @@
+#full-page-container {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+   }
+   
+   #child-container, form {
+       width: 600px;
+       height: 300px;
+       border-radius: 5px;
+       background-color: grey;
+       backdrop-filter: blur(5px);
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       padding: 10px;
+   }
+
+   form {
+    width: 500px;
+    height: 250px;
+    background-color: transparent;
+    backdrop-filter: none;
+   }
+   
+   svg {
+       margin-left: auto;
+   }
+   
+   p {
+      text-align: center;
+   }
+   
+   button, form {
+       padding: 5px;
+   }
+   button:hover, svg:hover {
+       cursor: pointer;
+   }
