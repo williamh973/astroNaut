@@ -1,1 +1,25 @@
-<p>feat-to-contribute-page works!</p>
+<div id="main-container">
+   <p id="introduction-text">
+    Lorem ipsum, dolor sit amet consectetur adipisicing 
+    elit. Distinctio similique velit reprehenderit quas perferendis
+    neque iure veritatis dicta totam autem!
+    </p>
+
+    <div id="add-container">
+        <p id="">Que souhaitez-vous ajouter à la communautée?</p>
+        <div id="buttons-container">
+            <button (click)="onOpenAddImageForm()">Ajouter une image</button>
+            <button (click)="onOpenAddLocationForm()">Ajouter un point d'observation</button>    
+        </div>
+    </div>
+
+    <ng-container *ngIf="isAddImageFormOpen">
+        <app-feat-add-image-form
+        ></app-feat-add-image-form>
+    </ng-container>
+
+    <ng-container *ngIf="isAddLocationFormOpen">
+        <app-feat-add-locations-form
+        ></app-feat-add-locations-form> 
+    </ng-container>
+</div>

@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class FeatToContributePageComponent {
 
+  isAddImageFormOpen: boolean = false;
+  isAddLocationFormOpen: boolean = false;
+  
+  
+  onOpenAddImageForm() {
+    this.isAddImageFormOpen = true;
+  }
+  
+  onOpenAddLocationForm() {
+    this.isAddLocationFormOpen = true;
+  }
 }

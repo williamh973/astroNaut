@@ -25,6 +25,9 @@ import { FeatLoginOrRegisterFormPopupComponent } from './components/features/pop
 import { FeatGaleryPageComponent } from './components/features/pages/feat-galery-page/feat-galery-page.component';
 import { FeatRegisterFormPopupComponent } from './components/features/popups/feat-register-form-popup/feat-register-form-popup.component';
 import { FeatLoginFormPopupComponent } from './components/features/popups/feat-login-form-popup/feat-login-form-popup.component';
+import { FeatAddLocationsFormComponent } from './components/features/others-components/feat-add-locations-form/feat-add-locations-form.component';
+import { FeatAddImageFormComponent } from "./components/features/others-components/feat-add-image-form/feat-add-image-form.component";
+
 
 @NgModule({
   declarations: [
@@ -49,7 +52,9 @@ import { FeatLoginFormPopupComponent } from './components/features/popups/feat-l
     FeatLoginOrRegisterFormPopupComponent,
     FeatGaleryPageComponent,
     FeatRegisterFormPopupComponent,
-    FeatLoginFormPopupComponent
+    FeatLoginFormPopupComponent,
+    FeatAddImageFormComponent,
+    FeatAddLocationsFormComponent
   ],
   imports: [
     BrowserModule,
