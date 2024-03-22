@@ -33,12 +33,10 @@ $front-theme: mat.define-light-theme((
 // that you are using.
 @include mat.all-component-themes($front-theme);
 
-* {
-    margin: 0;
-    padding: 0;
-}
 
 html, body {
+    margin: 0;
+    padding: 0;
     width: 100vw;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     background: rgb(208, 207, 207);

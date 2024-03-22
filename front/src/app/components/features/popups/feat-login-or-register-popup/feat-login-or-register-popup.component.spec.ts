@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FeatLoginOrRegisterFormPopupComponent } from './feat-login-or-register-form-popup.component';
+import { FeatLoginOrRegisterFormPopupComponent } from './feat-login-or-register-popup.component';
 
 describe('FeatLoginOrRegisterFormPopupComponent', () => {
   let component: FeatLoginOrRegisterFormPopupComponent;

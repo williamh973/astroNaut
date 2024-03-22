@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 
 
 @Component({
-  selector: 'app-feat-login-or-register-form-popup',
-  templateUrl: './feat-login-or-register-form-popup.component.html',
-  styleUrls: ['./feat-login-or-register-form-popup.component.scss']
+  selector: 'app-feat-login-or-register-popup',
+  templateUrl: './feat-login-or-register-popup.component.html',
+  styleUrls: ['./feat-login-or-register-popup.component.scss']
 })
-export class FeatLoginOrRegisterFormPopupComponent {
+export class FeatLoginOrRegisterPopupComponent {
 
   // isLoginOrRegisterPopupOpen: boolean = false;
   // constructor(public loginOrRegisterPopupService: LoginOrRegisterPopupServiceService ) {}
@@ -22,5 +22,5 @@ export class FeatLoginOrRegisterFormPopupComponent {
   onOpenRegisterForm() {
     this.isRegisterFormOpen = true;
   };
-
+ 
 }

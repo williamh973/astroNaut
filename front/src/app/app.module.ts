@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { firebaseEnvironment } from '../environments/firebase-environment';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,14 +21,14 @@ import { FeatErrorPageComponent } from './components/features/pages/feat-error-p
 import { FeatContactPageComponent } from './components/features/pages/feat-contact-page/feat-contact-page.component';
 import { AboutPageComponent } from './components/others-components/about-page/about-page.component';
 import { FeatToContributePageComponent } from './components/features/pages/feat-to-contribute-page/feat-to-contribute-page.component';
-import { FeatNewsCardListComponent } from './components/others-components/feat-news-card-list/feat-news-card-list.component';
+import { FeatNewsCardListComponent } from './components/features/others-components/feat-news-card-list/feat-news-card-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UiSearchBarHomeComponent } from './components/ui/ui-search-bar-home/ui-search-bar-home.component';
 import { UiSearchBarLocationsComponent } from './components/ui/ui-search-bar-locations/ui-search-bar-locations.component';
-import { FeatLoginOrRegisterFormPopupComponent } from './components/features/popups/feat-login-or-register-form-popup/feat-login-or-register-form-popup.component';
+import { FeatLoginOrRegisterPopupComponent } from './components/features/popups/feat-login-or-register-popup/feat-login-or-register-popup.component';
 import { FeatGaleryPageComponent } from './components/features/pages/feat-galery-page/feat-galery-page.component';
-import { FeatRegisterFormPopupComponent } from './components/features/popups/feat-register-form-popup/feat-register-form-popup.component';
-import { FeatLoginFormPopupComponent } from './components/features/popups/feat-login-form-popup/feat-login-form-popup.component';
+import { FeatRegisterFormPopupComponent } from './components/features/popups/forms/feat-register-form-popup/feat-register-form-popup.component';
+import { FeatLoginFormPopupComponent } from './components/features/popups/forms/feat-login-form-popup/feat-login-form-popup.component';
 import { FeatAddLocationsFormComponent } from './components/features/others-components/feat-add-locations-form/feat-add-locations-form.component';
 import { FeatAddImageFormComponent } from "./components/features/others-components/feat-add-image-form/feat-add-image-form.component";
 
@@ -49,7 +53,7 @@ import { FeatAddImageFormComponent } from "./components/features/others-componen
     FeatNewsCardListComponent,
     UiSearchBarHomeComponent,
     UiSearchBarLocationsComponent,
-    FeatLoginOrRegisterFormPopupComponent,
+    FeatLoginOrRegisterPopupComponent,
     FeatGaleryPageComponent,
     FeatRegisterFormPopupComponent,
     FeatLoginFormPopupComponent,
@@ -59,7 +63,10 @@ import { FeatAddImageFormComponent } from "./components/features/others-componen
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(firebaseEnvironment.firebaseConfig),
+    AngularFireStorageModule,
+    NgxDropzoneModule
   ],
   providers: [],
   bootstrap: [AppComponent]

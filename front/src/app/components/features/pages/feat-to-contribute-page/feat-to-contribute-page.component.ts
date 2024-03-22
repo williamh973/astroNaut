@@ -12,10 +12,12 @@ export class FeatToContributePageComponent {
   
   
   onOpenAddImageForm() {
-    this.isAddImageFormOpen = true;
+    this.isAddImageFormOpen = !this.isAddImageFormOpen; 
+    this.isAddLocationFormOpen = false;
   }
   
   onOpenAddLocationForm() {
-    this.isAddLocationFormOpen = true;
+    this.isAddLocationFormOpen = !this.isAddLocationFormOpen;
+    this.isAddImageFormOpen = false;
   }
 }

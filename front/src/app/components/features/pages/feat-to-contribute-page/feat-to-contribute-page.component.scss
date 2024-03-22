@@ -1,9 +1,14 @@
 #main-container {
     width: 100%;
+    min-height: 250px;
     display: flex;
     flex-direction: column;
-    // justify-content: space-around;
+    justify-content: space-around;
     align-items: center;
+}
+
+#introduction-text {
+    
 }
 
 #add-container {
