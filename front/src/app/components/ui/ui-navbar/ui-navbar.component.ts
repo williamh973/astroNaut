@@ -37,7 +37,7 @@ export class UiNavbarComponent {
       // if (checkToken) {
         this.router.navigate(['/to-contribute']);
         // } else {
-          this.isLoginOrRegisterPopupOpen = true;
+          // this.isLoginOrRegisterPopupOpen = true;
         // this.loginOrRegisterPopupService.openPopup();
       // }
     };

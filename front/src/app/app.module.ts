@@ -4,8 +4,10 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { firebaseEnvironment } from '../environments/firebase-environment';
 import { NgxDropzoneModule } from 'ngx-dropzone';
-
+import { MatButtonModule } from '@angular/material/button';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { FeatLocationsPageComponent } from './components/features/pages/feat-locations-page/feat-locations-page.component';
 import { UiHeaderComponent } from './components/ui/ui-header/ui-header.component';
@@ -31,6 +33,7 @@ import { FeatRegisterFormPopupComponent } from './components/features/popups/for
 import { FeatLoginFormPopupComponent } from './components/features/popups/forms/feat-login-form-popup/feat-login-form-popup.component';
 import { FeatAddLocationsFormComponent } from './components/features/others-components/feat-add-locations-form/feat-add-locations-form.component';
 import { FeatAddImageFormComponent } from "./components/features/others-components/feat-add-image-form/feat-add-image-form.component";
+import { FeatMapComponent } from './components/features/others-components/feat-map/feat-map.component';
 
 
 @NgModule({
@@ -58,7 +61,8 @@ import { FeatAddImageFormComponent } from "./components/features/others-componen
     FeatRegisterFormPopupComponent,
     FeatLoginFormPopupComponent,
     FeatAddImageFormComponent,
-    FeatAddLocationsFormComponent
+    FeatAddLocationsFormComponent,
+    FeatMapComponent
   ],
   imports: [
     BrowserModule,
@@ -66,9 +70,18 @@ import { FeatAddImageFormComponent } from "./components/features/others-componen
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseEnvironment.firebaseConfig),
     AngularFireStorageModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    MatButtonModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: TokenInterceptorInterceptor,
+    //   multi: true,
+    // },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

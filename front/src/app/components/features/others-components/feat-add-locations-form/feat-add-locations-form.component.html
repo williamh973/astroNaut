@@ -3,16 +3,16 @@
         <h1>Ajouter un point de vu</h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi non perspiciatis, neque voluptatum iure unde, vel placeat rem corporis esse sint quidem accusantium minima optio eveniet soluta dolores deleniti. Voluptates!</p>
     </div>
-    <form>
-        <label for="long-label">Nom du lieu*</label>
-        <input type="number" id="long-input" name="long-input">
+    <form (ngSubmit)="onSubmit()">
+        <label for="name">Nom du lieu *</label>
+        <input type="text" id="name" name="name" [(ngModel)]="markerData.name" required>
 
-        <label for="long-label">Longitude*</label>
-        <input type="number" id="long-input" name="long-input">
+        <label for="longitude">Longitude *</label>
+        <input type="number" id="longitude" name="longitude" [(ngModel)]="markerData.longitude" required>
 
-        <label for="lat-label">Longitude*</label>
-        <input type="number" id="lat-input" name="lat-input">
+        <label for="latitude">Latitude *</label>
+        <input type="number" id="latitude" name="latitude" [(ngModel)]="markerData.latitude" required>
         
-        <button type="submit">Envoyer</button>
+        <button mat-button type="submit">Créer le MarkerData</button>
     </form>
 </div>
