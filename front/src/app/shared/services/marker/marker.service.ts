@@ -31,6 +31,4 @@ export class MarkerService {
     return this.http.delete<void>(`${this._BASE_URL_MARKER_DATA}/delete/${id}`);
   }
 
-  
-
 }
