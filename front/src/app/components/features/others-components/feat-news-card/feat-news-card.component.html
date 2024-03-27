@@ -1,10 +1,12 @@
 <div id="main-container">
-  <div 
-  id="image-container" 
-  *ngIf="newsCard.picturesList.length > 0"
-  >
-    <img id="picture" [src]="newsCardPictureSrc" alt="image">
-</div>
-  <p>{{ newsCard.title }}</p>
-  <p class="timestamp">Publié le {{ newsCard.timestamp | date:'dd/MM/yyyy' }}</p>
+    <div 
+    id="image-container" 
+    *ngIf="newsCard.picturesList.length > 0"
+    >
+      <img id="picture" [src]="newsCardPictureSrc" alt="image">
+    </div>
+    <div id="font-container">
+      <p class="title">{{ newsCard.title }}</p>
+      <p class="timestamp">Publié le {{ newsCard.timestamp | date:'dd/MM/yyyy' }}</p>
+    </div>
 </div>

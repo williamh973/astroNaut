@@ -16,7 +16,6 @@ export class FeatAddNewsCardFormComponent {
 
   newsCard: NewsCard = new NewsCard([], '', new Date());
   photosList: File[] = [];
-  isSubmitButtonDisabled: boolean = true;
   isPhotoInTheBox: boolean = false;
   isLoadingComposantActive: boolean = false;
   isNewsCardCreatedSuccess: boolean = false;

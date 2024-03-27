@@ -37,6 +37,7 @@ import { FeatMapComponent } from './components/features/others-components/feat-m
 import { FeatAdminLandingPageComponent } from './components/features/pages/feat-admin-landing-page/feat-admin-landing-page.component';
 import { FeatAddNewsCardFormComponent } from './components/features/others-components/admin/feat-add-news-card-form/feat-add-news-card-form.component';
 import { FeatLoaderComponent } from './components/features/feat-loader/feat-loader.component';
+import { FeatFeedbackMessagesPopupComponent } from './components/features/popups/toasters/feedbacks/feat-feedback-messages-popup/feat-feedback-messages-popup.component';
 
 
 @NgModule({
@@ -69,6 +70,7 @@ import { FeatLoaderComponent } from './components/features/feat-loader/feat-load
     FeatAdminLandingPageComponent,
     FeatAddNewsCardFormComponent,
     FeatLoaderComponent,
+    FeatFeedbackMessagesPopupComponent,
   ],
   imports: [
     BrowserModule,
