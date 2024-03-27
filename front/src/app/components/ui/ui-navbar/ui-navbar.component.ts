@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Menu } from 'src/app/models/menu-model';
-import { LoginOrRegisterPopupServiceService } from 'src/app/shared/services/login-or-register-popup-service.service';
 
 @Component({
   selector: 'app-ui-navbar',
@@ -28,7 +27,6 @@ export class UiNavbarComponent {
 
   constructor(
     // private tokenService: TokenService,
-    public loginOrRegisterPopupService: LoginOrRegisterPopupServiceService,
     private router: Router
     ) {}
 

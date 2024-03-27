@@ -31,9 +31,12 @@ import { FeatLoginOrRegisterPopupComponent } from './components/features/popups/
 import { FeatGaleryPageComponent } from './components/features/pages/feat-galery-page/feat-galery-page.component';
 import { FeatRegisterFormPopupComponent } from './components/features/popups/forms/feat-register-form-popup/feat-register-form-popup.component';
 import { FeatLoginFormPopupComponent } from './components/features/popups/forms/feat-login-form-popup/feat-login-form-popup.component';
-import { FeatAddLocationsFormComponent } from './components/features/others-components/feat-add-locations-form/feat-add-locations-form.component';
-import { FeatAddImageFormComponent } from "./components/features/others-components/feat-add-image-form/feat-add-image-form.component";
+import { FeatAddLocationsFormComponent } from './components/features/others-components/user/feat-add-locations-form/feat-add-locations-form.component';
+import { FeatAddImageFormComponent } from "./components/features/others-components/user/feat-add-image-form/feat-add-image-form.component";
 import { FeatMapComponent } from './components/features/others-components/feat-map/feat-map.component';
+import { FeatAdminLandingPageComponent } from './components/features/pages/feat-admin-landing-page/feat-admin-landing-page.component';
+import { FeatAddNewsCardFormComponent } from './components/features/others-components/admin/feat-add-news-card-form/feat-add-news-card-form.component';
+import { FeatLoaderComponent } from './components/features/feat-loader/feat-loader.component';
 
 
 @NgModule({
@@ -62,7 +65,10 @@ import { FeatMapComponent } from './components/features/others-components/feat-m
     FeatLoginFormPopupComponent,
     FeatAddImageFormComponent,
     FeatAddLocationsFormComponent,
-    FeatMapComponent
+    FeatMapComponent,
+    FeatAdminLandingPageComponent,
+    FeatAddNewsCardFormComponent,
+    FeatLoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -77,9 +83,9 @@ import { FeatMapComponent } from './components/features/others-components/feat-m
   ],
   providers: [
     // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: TokenInterceptorInterceptor,
-    //   multi: true,
+    //   // provide: HTTP_INTERCEPTORS,
+    //   // useClass: TokenInterceptorInterceptor,
+    //   // multi: true,
     // },
   ],
   bootstrap: [AppComponent]

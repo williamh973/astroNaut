@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LoginOrRegisterPopupServiceService } from 'src/app/shared/services/login-or-register-popup-service.service';
 
 @Component({
   selector: 'app-feat-home-page',
@@ -10,7 +9,7 @@ export class FeatHomePageComponent {
   
   // isLoginOrRegisterPopupOpen: boolean = false;
 
-  constructor(public loginOrRegisterPopupService: LoginOrRegisterPopupServiceService ) {}
+  constructor() {}
 
 
 }

@@ -1,25 +1,29 @@
 #main-container {
-    min-width: 300px;
-    max-width: 300px;
-    min-height: 240px;
-    max-height: 240px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // border: 1px solid red;
+    background-color: black;
+    border-radius: 25px;
+    // border: 1px solid green;
 }
 
 #image-container {
-    min-height: 160px;
+    width: 100%;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    overflow: hidden;
+}
+
+#picture {
+    width: 100%;
     aspect-ratio: 16 / 9;
-    border: 1px solid grey;
-    border-radius: 20px;
 }
 
 p {
     width: 95%;
-    margin: 5px 0;
+    // margin: 5px 0;
     color: rgb(209, 209, 209);
     font-size: 19px;
 }

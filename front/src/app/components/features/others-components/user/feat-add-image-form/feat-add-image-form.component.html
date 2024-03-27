@@ -1,13 +1,18 @@
 <div id="main-container">
     <h1>Ajouter une image</h1>
 
-    <form>
+    <form (ngSubmit)="submit()">
         <div id="image-details-container">
            <div id="image-container"></div>
-           <textarea 
-           id="resume-image"
-           placeholder="Ajouter une description de l'image"
-           ></textarea>
+            <input 
+               type="text" 
+               name="title" 
+               id="title" 
+               maxlength="33"
+               minlength="5"
+               placeholder="Description courte de l'image*"
+               required
+            >
         </div>
         <div id="terms-checkbox">
             <p>J'ai bien lu et accepté les conditions d'utilisations</p>
@@ -15,4 +20,5 @@
         </div>
         <button type="submit">Je valide</button>
     </form>
+
 </div>

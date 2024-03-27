@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import * as L from 'leaflet';
 import { MarkerData } from 'src/app/models/marker-data.model';
 import { MarkerService } from 'src/app/shared/services/marker/marker.service';
