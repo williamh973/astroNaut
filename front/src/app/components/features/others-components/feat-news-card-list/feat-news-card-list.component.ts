@@ -9,17 +9,34 @@ import { newsCardService } from 'src/app/shared/services/news-card/news-card.ser
 })
 export class FeatNewsCardListComponent {
 
-  cardList: NewsCard[] = [];
+  newsCardList: NewsCard[] = [];
   filteredCardList: NewsCard[] = [];
 
   constructor(private newsCardService: newsCardService) {}
 
   ngOnInit() {
+    this.onGetNewsCardList();
+    this.onGetNewsCardListFiltered();
+  }
+
+
+  onGetNewsCardList() {
     this.newsCardService.getCardList().subscribe(
       (cardListFromDatabase: NewsCard[]) => {
-        this.cardList = cardListFromDatabase;
-        console.log(this.cardList);
+        this.newsCardList = cardListFromDatabase;
         }
     );
   }
+
+  onGetNewsCardListFiltered() {
+    this.newsCardService.getFilteredCardList$().subscribe(
+      (newsCardListFiltered: NewsCard[]) => {
+        this.filteredCardList = newsCardListFiltered;
+        }
+    );
+  }
+
 }
+
+
+ 

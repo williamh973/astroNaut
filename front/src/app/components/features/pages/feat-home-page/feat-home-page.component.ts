@@ -7,9 +7,26 @@ import { Component } from '@angular/core';
 })
 export class FeatHomePageComponent {
   
+  isSearchResultNotFound: boolean = false;
+  displayNotFoundMessage!: string;
   // isLoginOrRegisterPopupOpen: boolean = false;
 
   constructor() {}
+
+
+  ngOnInit() {
+   
+   }
+
+  onSearchResultChange(isSearchResultNotFound: boolean): void {
+    this.isSearchResultNotFound = isSearchResultNotFound;
+  }
+
+  onNotFoundMessageResultChange(displayNotFoundMessage: string): void {
+    this.displayNotFoundMessage = displayNotFoundMessage;
+    console.log(this.displayNotFoundMessage);
+  }
+ 
 
 
 }

@@ -11,8 +11,7 @@ import { NewsCard } from 'src/app/models/news-card.model';
 })
 export class newsCardService {
 
-  
-  cardList: NewsCard[] = [];
+
   filteredCardListSubject$: BehaviorSubject<NewsCard[]> = new BehaviorSubject<NewsCard[]>([]);
 
   
@@ -44,9 +43,10 @@ export class newsCardService {
 
  
 
-  postFilterCardList(filteredCardList: NewsCard[],) {
+  postFilterCardList(filteredCardList: NewsCard[]) {
     this.filteredCardListSubject$.next([...filteredCardList]);
   }
+  
   getFilteredCardList$(): Observable<NewsCard[]> {
     return this.filteredCardListSubject$.asObservable();
   }

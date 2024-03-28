@@ -36,8 +36,9 @@ import { FeatAddImageFormComponent } from "./components/features/others-componen
 import { FeatMapComponent } from './components/features/others-components/feat-map/feat-map.component';
 import { FeatAdminLandingPageComponent } from './components/features/pages/feat-admin-landing-page/feat-admin-landing-page.component';
 import { FeatAddNewsCardFormComponent } from './components/features/others-components/admin/feat-add-news-card-form/feat-add-news-card-form.component';
-import { FeatLoaderComponent } from './components/features/feat-loader/feat-loader.component';
 import { FeatFeedbackMessagesPopupComponent } from './components/features/popups/toasters/feedbacks/feat-feedback-messages-popup/feat-feedback-messages-popup.component';
+import { FeatLoaderPopupComponent } from './components/features/popups/feat-loader-popup/feat-loader-popup.component';
+import { FeatSearchResultNotFoundComponent } from './components/features/others-components/feat-search-result-not-found/feat-search-result-not-found.component';
 
 
 @NgModule({
@@ -69,8 +70,9 @@ import { FeatFeedbackMessagesPopupComponent } from './components/features/popups
     FeatMapComponent,
     FeatAdminLandingPageComponent,
     FeatAddNewsCardFormComponent,
-    FeatLoaderComponent,
     FeatFeedbackMessagesPopupComponent,
+    FeatLoaderPopupComponent,
+    FeatSearchResultNotFoundComponent,
   ],
   imports: [
     BrowserModule,

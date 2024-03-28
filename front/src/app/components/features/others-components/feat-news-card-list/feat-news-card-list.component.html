@@ -1,5 +1,5 @@
 <div class="card-list">
-    <div *ngFor="let newsCard of (filteredCardList.length > 0 ? filteredCardList : cardList); let i = index">
+    <div *ngFor="let newsCard of (filteredCardList.length > 0 ? filteredCardList : newsCardList); let i = index">
         <app-feat-news-card
         [newsCard]="newsCard"
         ></app-feat-news-card>
