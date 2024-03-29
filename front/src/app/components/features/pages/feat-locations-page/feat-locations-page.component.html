@@ -1,7 +1,15 @@
 <div id="main-container">
     <h1 id="title">Lieux d'observations</h1>
-    <app-ui-search-bar-locations></app-ui-search-bar-locations>
+    
+    <app-ui-search-bar-locations
+    (isSearchResultNotFoundChange)="onSearchResultChange($event)"
+    ></app-ui-search-bar-locations>
     <p id="subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere natus distinctio neque omnis voluptatibus recusandae enim accusantium dolores quas impedit!</p>
     
-    <app-feat-map></app-feat-map>
+    <app-feat-search-result-not-found
+    *ngIf="isSearchResultNotFound"
+    ></app-feat-search-result-not-found>
+
+    <app-feat-map
+    ></app-feat-map>
 </div>

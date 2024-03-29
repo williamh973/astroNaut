@@ -7,7 +7,13 @@ import { Component } from '@angular/core';
 })
 export class FeatLocationsPageComponent {
 
+  isSearchResultNotFound: boolean = false;
+  
   constructor() { } 
+  
 
+  onSearchResultChange(isSearchResultNotFound: boolean): void {
+    this.isSearchResultNotFound = isSearchResultNotFound;
+  }
   
 } 

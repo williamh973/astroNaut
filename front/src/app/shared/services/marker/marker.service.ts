@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MarkerData } from "src/app/models/marker-data.model";
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import * as L from 'leaflet';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarkerService {
 
-  markerDataList: MarkerData[] = [];
+
+  filteredMarkerListSubject$: BehaviorSubject<MarkerData[]> = new BehaviorSubject<MarkerData[]>([]);
+
 
   constructor(private http: HttpClient) { }
 
@@ -30,5 +33,15 @@ export class MarkerService {
   deleteMarkerData(id: number): Observable<void> {
     return this.http.delete<void>(`${this._BASE_URL_MARKER_DATA}/delete/${id}`);
   }
+
+
+  postFilterMarkerList(filteredMarkerList: MarkerData[]) {
+    this.filteredMarkerListSubject$.next([...filteredMarkerList]);
+  }
+  
+  getFilteredrMarkerList$(): Observable<MarkerData[]> {
+    return this.filteredMarkerListSubject$.asObservable();
+  }
+
 
 }
