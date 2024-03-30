@@ -21,7 +21,7 @@ export class FeatMapComponent  {
   }
   
   onInitMap() {
-    this.mapService.getLeafletMap();
+    this.mapService.onInitLeafletMap();
   };
   
   onGetMarkerData() {

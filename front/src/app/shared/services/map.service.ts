@@ -15,25 +15,37 @@ export class MapService {
   markerList: MarkerData[] = [];
   filteredMarkerList: MarkerData[] = [];
 
-
+  
   constructor(private markerService: MarkerService) { }
-
-
-  getLeafletMap() {
+  
+  
+  onInitLeafletMap() {
     this.map = L.map('map').setView([this.initialLatitude, this.initialLongitude], this.zoom);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors'
     }).addTo(this.map); 
   }
 
-  removeAllMarkersInMap() {
+  
+  private removeAllMarkersInMap() {
     this.map.eachLayer((layer: any) => {
       if (layer instanceof L.Marker) {
         this.map.removeLayer(layer);
       }
     });
   };
+  
 
+  onResetAllMarkersInMap() {
+    this.removeAllMarkersInMap();
+  
+    this.markerList.forEach(marker => {
+      L.marker([marker.latitude, marker.longitude]).addTo(this.map)
+      .bindPopup(marker.name)
+      .openPopup();
+    });
+  };
+  
 
   onGetMarkerDataForMarkerList() {
     this.markerService.getMarkerDataList().subscribe(markers => {
@@ -55,19 +67,7 @@ export class MapService {
         L.marker([marker.latitude, marker.longitude]).addTo(this.map)
         .bindPopup(marker.name)
         .openPopup();
-      });
-      
+      });    
     };
-
-
-  resetAllMarkersInMap() {
-    this.removeAllMarkersInMap();
-  
-    this.markerList.forEach(marker => {
-      L.marker([marker.latitude, marker.longitude]).addTo(this.map)
-      .bindPopup(marker.name)
-      .openPopup();
-    });
-  }
 
 }

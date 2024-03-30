@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Observable, catchError, forkJoin, of } from 'rxjs';
 import { MarkerData } from 'src/app/models/marker-data.model';
 import { MarkerService } from 'src/app/shared/services/marker/marker.service';
-import * as L from 'leaflet';
+
 
 @Component({
   selector: 'app-feat-add-locations-form',
@@ -11,13 +12,35 @@ import * as L from 'leaflet';
 export class FeatAddLocationsFormComponent {
 
 markerData: MarkerData = new MarkerData('', 0, 0);
+isLoadingComposantActive: boolean = false;
+isLocationCreatedSuccess: boolean = false; 
+isLocationCreatedError: boolean = false; 
 
 
 constructor(private markerService: MarkerService) {} 
 
-  onSubmit() {
-    this.markerService.createMarkerData(this.markerData).subscribe(
-     );
-  }
 
+  onSubmit() {
+    this.isLoadingComposantActive = true;
+    this.markerService.createMarkerData(this.markerData)
+      .pipe(
+        catchError(
+          () => {
+          this.isLoadingComposantActive = false;
+          this.isLocationCreatedError = true;
+          setTimeout(() => {
+            this.isLocationCreatedError = false;
+          }, 3000);
+          return of(null);
+        })
+      ).subscribe(createdLocation => {
+        if (createdLocation !== null) {
+          this.isLoadingComposantActive = false;
+          this.isLocationCreatedSuccess = true;
+          setTimeout(() => {
+            this.isLocationCreatedSuccess = false;
+          }, 3000);
+        }
+      });
+  }
 }

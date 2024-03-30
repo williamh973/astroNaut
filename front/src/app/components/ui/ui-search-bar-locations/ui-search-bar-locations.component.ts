@@ -79,12 +79,8 @@ export class UiSearchBarLocationsComponent {
     if (/^[a-z]$/.test(key)) {
       this.onSearchMarker();
     } else {
-      this.mapService.resetAllMarkersInMap();
+      this.mapService.onResetAllMarkersInMap();
     }
   };
-
-
-
-
 
 }

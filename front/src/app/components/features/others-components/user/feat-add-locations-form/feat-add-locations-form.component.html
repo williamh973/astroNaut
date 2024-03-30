@@ -16,3 +16,14 @@
         <button mat-button type="submit">Créer le MarkerData</button>
     </form>
 </div> 
+
+<app-feat-loader-popup
+class="loader" 
+*ngIf="isLoadingComposantActive"
+></app-feat-loader-popup>
+
+<app-feat-feedback-messages-popup
+*ngIf="isLocationCreatedSuccess || isLocationCreatedError"
+[isLocationCreatedSuccess]="isLocationCreatedSuccess"
+[isLocationCreatedError]="isLocationCreatedError"
+></app-feat-feedback-messages-popup>

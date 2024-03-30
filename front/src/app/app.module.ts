@@ -39,6 +39,7 @@ import { FeatAddNewsCardFormComponent } from './components/features/others-compo
 import { FeatFeedbackMessagesPopupComponent } from './components/features/popups/toasters/feedbacks/feat-feedback-messages-popup/feat-feedback-messages-popup.component';
 import { FeatLoaderPopupComponent } from './components/features/popups/feat-loader-popup/feat-loader-popup.component';
 import { FeatSearchResultNotFoundComponent } from './components/features/others-components/feat-search-result-not-found/feat-search-result-not-found.component';
+import { FeatVisitsCounterComponent } from './components/features/others-components/feat-visits-counter/feat-visits-counter.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { FeatSearchResultNotFoundComponent } from './components/features/others-
     FeatFeedbackMessagesPopupComponent,
     FeatLoaderPopupComponent,
     FeatSearchResultNotFoundComponent,
+    FeatVisitsCounterComponent,
   ],
   imports: [
     BrowserModule,

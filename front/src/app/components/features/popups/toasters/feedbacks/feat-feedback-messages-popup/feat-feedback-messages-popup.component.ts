@@ -10,12 +10,15 @@ export class FeatFeedbackMessagesPopupComponent {
 
   @Input() isNewsCardCreatedSuccess!: boolean;
   @Input() isNewsCardCreatedError!: boolean;
+  @Input() isLocationCreatedSuccess!: boolean; 
+  @Input() isLocationCreatedError!: boolean; 
   
   feedback: Feedback = new Feedback("");
 
 
   ngOnInit() {
     this.onShowNewsCardFeedback();
+    this.onShowLocationFeedback();
   }
   
   
@@ -27,6 +30,16 @@ export class FeatFeedbackMessagesPopupComponent {
     } else {
       this.feedback = new Feedback("");
     };
+};
+
+onShowLocationFeedback() {
+  if (this.isLocationCreatedSuccess) {
+    this.feedback = new Feedback("Votre point d'observation a créé avec succès !");
+  } else if (this.isLocationCreatedError) {
+    this.feedback = new Feedback("Une erreur s'est produite, veuillez recommencer ulterieurement.");
+  } else {
+    this.feedback = new Feedback("");
+  };
 }
 
 }
