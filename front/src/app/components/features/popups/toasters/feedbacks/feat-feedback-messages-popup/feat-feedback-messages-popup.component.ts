@@ -12,6 +12,8 @@ export class FeatFeedbackMessagesPopupComponent {
   @Input() isNewsCardCreatedError!: boolean;
   @Input() isLocationCreatedSuccess!: boolean; 
   @Input() isLocationCreatedError!: boolean; 
+  @Input() isContactTextCreatedSuccess!: boolean; 
+  @Input() isContactTextCreatedError!: boolean; 
   
   feedback: Feedback = new Feedback("");
 
@@ -34,12 +36,21 @@ export class FeatFeedbackMessagesPopupComponent {
 
 onShowLocationFeedback() {
   if (this.isLocationCreatedSuccess) {
-    this.feedback = new Feedback("Votre point d'observation a créé avec succès !");
+    this.feedback = new Feedback("Votre point d'observation a été créé avec succès !");
   } else if (this.isLocationCreatedError) {
     this.feedback = new Feedback("Une erreur s'est produite, veuillez recommencer ulterieurement.");
   } else {
     this.feedback = new Feedback("");
   };
-}
+};
 
+onShowContactTextFeedback() {
+  if (this.isContactTextCreatedSuccess) {
+    this.feedback = new Feedback("Votre message a été envoyé avec succès !");
+  } else if (this.isContactTextCreatedError) {
+    this.feedback = new Feedback("Une erreur s'est produite, veuillez recommencer ulterieurement.");
+  } else {
+    this.feedback = new Feedback("");
+  };
+}
 }

@@ -10,7 +10,7 @@
 
 
 #title-container {
-    width: 60%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -19,12 +19,13 @@
     gap: 10px;
 }
 
-#subtitle-container {
+hgroup {
+    height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-end;
-    font-size: 25px;
+    gap: 5px;
 }
 
 h1 {
@@ -36,12 +37,11 @@ h2 {
     font-style: italic;
 }
 
-p {
-    color: rgba(128, 128, 128, 0.796);
-    font-size: 30px;
-    font-style: italic;
-}
-
 #social-medias-container {
     width: 250px;
+}
+
+.visit-container {
+    width: 150px;
+    font-size: 17px;
 }

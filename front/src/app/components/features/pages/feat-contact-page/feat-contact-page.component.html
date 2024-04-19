@@ -1,1 +1,38 @@
-<p>feat-contact-page works!</p>
+<h1>Contact</h1>
+
+<form (ngSubmit)="createContactText()">
+    <textarea 
+    name="text-area" 
+    id="text-area" 
+    placeholder="Ecrivez votre message ici."
+    minlength="5"
+    maxlength="1000"
+    [(ngModel)]="contactText.textarea"
+    #textareaInput="ngModel"
+    >
+    </textarea>
+    <div *ngIf="textareaInput.invalid && (textareaInput.touched)" class="error">
+        <div *ngIf="textareaInput.errors?.['required']">Votre message est requis.</div>
+        <div *ngIf="textareaInput.errors?.['minlength']">Votre message doit comporter au moins 5 caractère.</div>
+        <div *ngIf="textareaInput.errors?.['maxlength']">Votre message ne peut pas dépasser 1000 caractères.</div>
+    </div>    
+    
+    <button 
+    type="submit" 
+    [disabled]="!onSubmitActived()"
+    >
+    Envoyer le message
+    </button>
+</form>
+
+
+<app-feat-loader-popup
+class="loader" 
+*ngIf="isLoadingComposantActive"
+></app-feat-loader-popup>
+
+<app-feat-feedback-messages-popup
+*ngIf="isContactTextCreatedSuccess || isContactTextCreatedError"
+[isContactTextCreatedSuccess]="isContactTextCreatedSuccess"
+[isContactTextCreatedError]="isContactTextCreatedError"
+></app-feat-feedback-messages-popup>

@@ -34,7 +34,7 @@ const routes: Routes = [
     component: AboutPageComponent 
   },
   { 
-    path: 'news-card-detail/:id', 
+    path: 'news-card-details/:id', 
     component: FeatNewsCardDetailPageComponent 
   },
   { 

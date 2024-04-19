@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { NewsCard } from 'src/app/models/news-card.model';
 
 @Component({
@@ -10,11 +11,19 @@ export class FeatNewsCardComponent {
 
   @Input() newsCard!: NewsCard;
 
+  isNewsCardDetailPageOpen: boolean = false;
   newsCardPictureSrc: string = '';
 
-ngOnInit() {
-  if (this.newsCard.picturesList.length > 0) {
-    this.newsCardPictureSrc = this.newsCard.picturesList[0].src;
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    if (this.newsCard.picturesList.length > 0) {
+      this.newsCardPictureSrc = this.newsCard.picturesList[0].src;
+    }
   }
-}
+  
+  onOpenCardDetails() {
+    this.router.navigate(['/news-card-details/', this.newsCard.id]);
+  }
+
 }

@@ -28,6 +28,20 @@ public class NewsCard {
 
     private String title;
 
+    @Column(length = 1000)
+    private String mainArticle;
+
+    @Column(length = 1000)
+    private String optionalArticleOne;
+
+    @Column(length = 1000)
+    private String optionalArticleTwo;
+
+    @Column(length = 1000)
+    private String optionalArticleThree;
+
+    private Integer readingTime;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 }

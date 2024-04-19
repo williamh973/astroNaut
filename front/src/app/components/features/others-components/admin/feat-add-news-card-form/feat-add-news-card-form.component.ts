@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, finalize, forkJoin } from 'rxjs';
 import { NewsCard } from 'src/app/models/news-card.model';
-import { newsCardService } from 'src/app/shared/services/news-card/news-card.service';
+import { NewsCardService } from 'src/app/shared/services/news-card/news-card.service';
 import { PhotoService } from 'src/app/shared/services/photo-service/photo.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Picture } from 'src/app/models/picture.model';
@@ -14,7 +14,7 @@ import { PictureService } from 'src/app/shared/services/picture/picture.service'
 })
 export class FeatAddNewsCardFormComponent {
 
-  newsCard: NewsCard = new NewsCard([], '', new Date());
+  newsCard: NewsCard = new NewsCard([], '', '', '', '', '', 0, new Date());
   photosList: File[] = [];
   isPhotoInTheBox: boolean = false;
   isLoadingComposantActive: boolean = false;
@@ -23,7 +23,7 @@ export class FeatAddNewsCardFormComponent {
 
 
   constructor(
-    private newsCardService: newsCardService,
+    private newsCardService: NewsCardService,
     private photoService: PhotoService,
     private storage: AngularFireStorage,
     private pictureService: PictureService
@@ -52,7 +52,13 @@ export class FeatAddNewsCardFormComponent {
   }
   
   onInputTitleCompleted() {
-    return this.newsCard.title.length >= 5 && this.newsCard.title.length <= 150;
+    return (
+      this.newsCard.title.length >= 5 && 
+      this.newsCard.title.length <= 150,
+      this.newsCard.mainArticle.length >= 5 && 
+      this.newsCard.mainArticle.length <= 1000,
+      this.newsCard.readingTime
+      )
   }
 
   onSubmit() {

@@ -1,19 +1,23 @@
-
-<app-ui-navbar></app-ui-navbar>
-<!-- <app-ui-search-bar></app-ui-search-bar> -->
-
-<div id="main-container">
-    <div id="title-container">
-        <h1>AstroNaut</h1>
-        <div id="subtitle-container">
-           <h2>&</h2>
-           <h5>xpérience à ciel ouvert</h5>
-           <app-feat-visits-counter
-           ></app-feat-visits-counter>
+<header>
+    <app-ui-navbar></app-ui-navbar>
+    
+    <div id="main-container">
+        <div id="title-container">
+       
+                <hgroup>
+                    <h1>AstroNaut</h1>
+                    <h2>C</h2>
+                    <h5>ommunauté à ciel ouvert</h5>
+                </hgroup>
+                
+            </div>
+            <div class="visit-container">
+                <app-feat-visits-counter
+                ></app-feat-visits-counter>
+            </div>
+        <div id="social-medias-container">
+            <app-ui-social-medias></app-ui-social-medias>
         </div>
     </div>
-    <div id="social-medias-container">
-        <app-ui-social-medias></app-ui-social-medias>
-    </div>
-</div>
+</header>
 

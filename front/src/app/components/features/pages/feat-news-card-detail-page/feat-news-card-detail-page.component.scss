@@ -1,0 +1,66 @@
+#full-page {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   backdrop-filter: blur(3px) brightness(30%);
+} 
+
+#main-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: wheat;
+    background-color: rgba(0, 0, 0, 0.878);
+    overflow: auto;
+    gap: 30px;
+}
+#main-container::-webkit-scrollbar {
+    display: none;
+}
+
+button {
+    width: 200px;
+    color: white;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    background-color: transparent;
+    border: none;
+}
+
+#image-container {
+    margin: auto;
+}
+
+.title {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+#reading-time {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.article {
+    margin: auto;
+    text-align: start;
+    width: 60%;
+}
+
+#timestamp {
+    width: 60%;
+    margin: auto;
+    text-align: end;
+}

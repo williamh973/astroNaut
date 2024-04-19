@@ -1,1 +1,30 @@
-<p>feat-news-card-detail-page works!</p>
+<div 
+id="full-page" 
+*ngIf="newsCard"
+>
+
+    <div id="main-container">
+        <button (click)="onCloseDetailPage()">Quitter la page</button>
+        
+        <div 
+        id="image-container" 
+        *ngIf="newsCard.picturesList.length > 0"
+        >
+          <img id="picture" [src]="newsCardPictureSrc" alt="image">
+        </div>
+
+        <h2 class="title">{{ newsCardTitle }}</h2>
+        
+        <p id="reading-time">Temps de lecture : {{ newsCardReadingTime }} mn</p>
+
+        <p class="article">{{ newsCardMainArticle }}</p>
+        <p class="article">{{ newsCardOptionnalOneArticle }}</p>
+        <p class="article">{{ newsCardOptionnalTwoArticle }}</p>
+        <p class="article">{{ newsCardOptionnalThreeArticle }}</p>
+
+        <p id="timestamp">Publié le {{ newsCardTimestamp | date:'dd/MM/yyyy' }}</p>
+     
+
+    </div>
+
+</div>

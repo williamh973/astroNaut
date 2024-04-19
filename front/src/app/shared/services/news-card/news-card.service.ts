@@ -9,7 +9,7 @@ import { NewsCard } from 'src/app/models/news-card.model';
 @Injectable({
   providedIn: 'root'
 })
-export class newsCardService {
+export class NewsCardService {
 
 
   filteredCardListSubject$: BehaviorSubject<NewsCard[]> = new BehaviorSubject<NewsCard[]>([]);
