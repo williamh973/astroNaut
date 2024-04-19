@@ -21,6 +21,7 @@ export class FeatFeedbackMessagesPopupComponent {
   ngOnInit() {
     this.onShowNewsCardFeedback();
     this.onShowLocationFeedback();
+    this.onShowContactTextFeedback();
   }
   
   
