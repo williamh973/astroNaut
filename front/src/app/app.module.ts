@@ -40,6 +40,8 @@ import { FeatFeedbackMessagesPopupComponent } from './components/features/popups
 import { FeatLoaderPopupComponent } from './components/features/popups/feat-loader-popup/feat-loader-popup.component';
 import { FeatSearchResultNotFoundComponent } from './components/features/others-components/feat-search-result-not-found/feat-search-result-not-found.component';
 import { FeatVisitsCounterComponent } from './components/features/others-components/feat-visits-counter/feat-visits-counter.component';
+import { UiTitleSubtitleComponent } from './components/ui/ui-title-subtitle/ui-title-subtitle.component';
+import { UiTitleComponent } from './components/ui/ui-title/ui-title.component';
 
 
 @NgModule({
@@ -75,6 +77,8 @@ import { FeatVisitsCounterComponent } from './components/features/others-compone
     FeatLoaderPopupComponent,
     FeatSearchResultNotFoundComponent,
     FeatVisitsCounterComponent,
+    UiTitleSubtitleComponent,
+    UiTitleComponent,
   ],
   imports: [
     BrowserModule,

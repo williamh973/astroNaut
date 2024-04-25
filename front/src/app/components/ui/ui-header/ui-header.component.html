@@ -1,23 +1,47 @@
-<header>
-    <app-ui-navbar></app-ui-navbar>
-    
-    <div id="main-container">
-        <div id="title-container">
-       
-                <hgroup>
-                    <h1>AstroNaut</h1>
-                    <h2>C</h2>
-                    <h5>ommunauté à ciel ouvert</h5>
-                </hgroup>
-                
+<header id="headerTop">    
+    <div id="headerTop-mainContainer">
+        
+        <div id="left-container">
+            <div 
+            (click)="onOpenLeftMenu()" 
+            id="headerTop-burgerMenu"
+            >
+            <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+                height="24" 
+                viewBox="0 -960 960 960" 
+                width="24"
+                >
+                <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
+            </svg>
+                <span>MENU</span>
             </div>
-            <div class="visit-container">
+        </div>
+        
+        <div id="middle-container">
+            <app-ui-title-subtitle
+            ></app-ui-title-subtitle>
+        </div>
+        
+        <div id="right-container">
+            <div id="visit-container">
                 <app-feat-visits-counter
                 ></app-feat-visits-counter>
             </div>
-        <div id="social-medias-container">
-            <app-ui-social-medias></app-ui-social-medias>
+            
+            <div id="social-medias-container">
+                <app-ui-social-medias
+                ></app-ui-social-medias>
+            </div>
         </div>
+        
     </div>
 </header>
 
+
+<app-ui-navbar
+*ngIf="isLeftMenuOpen"
+[isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
+[isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
+(isLeftMenuOpen)="forCloseLeftMenu($event)"
+></app-ui-navbar>

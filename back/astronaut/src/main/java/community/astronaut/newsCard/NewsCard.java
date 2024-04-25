@@ -44,4 +44,8 @@ public class NewsCard {
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
+
+    private Integer likeCount;
+
+    private Integer dislikeCount;
 }

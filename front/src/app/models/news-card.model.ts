@@ -10,6 +10,8 @@ export class NewsCard {
         public optionalArticleThree: string,
         public readingTime: number,
         public timestamp: Date,
+        public likeCount: number,
+        public dislikeCount: number,
         public id?: number
     ) { }
 }

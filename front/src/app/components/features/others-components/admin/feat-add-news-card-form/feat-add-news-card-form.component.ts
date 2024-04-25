@@ -14,7 +14,7 @@ import { PictureService } from 'src/app/shared/services/picture/picture.service'
 })
 export class FeatAddNewsCardFormComponent {
 
-  newsCard: NewsCard = new NewsCard([], '', '', '', '', '', 0, new Date());
+  newsCard: NewsCard = new NewsCard([], '', '', '', '', '', 0, new Date(), 0, 0);
   photosList: File[] = [];
   isPhotoInTheBox: boolean = false;
   isLoadingComposantActive: boolean = false;

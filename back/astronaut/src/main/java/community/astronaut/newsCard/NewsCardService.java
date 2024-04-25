@@ -26,4 +26,19 @@ public class NewsCardService {
                 .orElseThrow(() -> new RuntimeException(id + "not found"));
     }
 
+
+    //        foundNewsCard.setPicturesList(newsCard.getPicturesList());
+//        foundNewsCard.setTitle(newsCard.getTitle());
+//        foundNewsCard.setMainArticle(newsCard.getMainArticle());
+//        foundNewsCard.setOptionalArticleOne(newsCard.getOptionalArticleOne());
+//        foundNewsCard.setOptionalArticleTwo(newsCard.getOptionalArticleTwo());
+//        foundNewsCard.setOptionalArticleThree(newsCard.getOptionalArticleThree());
+//        foundNewsCard.setReadingTime(newsCard.getReadingTime());
+    public NewsCard updateNewsCard(NewsCard newsCard, Long id) {
+        NewsCard foundNewsCard = getNewsCardById(id);
+        foundNewsCard.setLikeCount(newsCard.getLikeCount());
+        foundNewsCard.setDislikeCount(newsCard.getDislikeCount());
+        return newsCardRepository.save(foundNewsCard);
+    }
+
 }

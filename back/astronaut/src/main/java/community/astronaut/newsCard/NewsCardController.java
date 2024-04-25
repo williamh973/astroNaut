@@ -1,7 +1,5 @@
 package community.astronaut.newsCard;
 
-import community.astronaut.newsCard.NewsCard;
-import community.astronaut.newsCard.NewsCardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,5 +29,10 @@ public class NewsCardController {
     public NewsCard addNewsCard(@RequestBody NewsCard newsCard) {
         newsCard.setTimestamp(new Date());
         return newsCardService.addNewsCard(newsCard);
+    }
+
+    @PutMapping("/update/{id}")
+    public NewsCard updateNewsCard(@RequestBody NewsCard newsCard, @PathVariable("id") Long id) {
+        return newsCardService.updateNewsCard(newsCard, id);
     }
 }
