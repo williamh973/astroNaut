@@ -14,6 +14,11 @@ html, body {
 
 .header {
     border-bottom: 1px solid grey;
+    z-index: 1;
+}
+
+.router-outlet {
+    z-index: 0;
 }
 
 .app-ui-footer {

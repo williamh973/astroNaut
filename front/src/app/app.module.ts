@@ -42,6 +42,12 @@ import { FeatSearchResultNotFoundComponent } from './components/features/others-
 import { FeatVisitsCounterComponent } from './components/features/others-components/feat-visits-counter/feat-visits-counter.component';
 import { UiTitleSubtitleComponent } from './components/ui/ui-title-subtitle/ui-title-subtitle.component';
 import { UiTitleComponent } from './components/ui/ui-title/ui-title.component';
+import { UiGalleryNavbarComponent } from './components/ui/ui-gallery-navbar/ui-gallery-navbar.component';
+import { FeatPicturesOfWeekPageComponent } from './components/features/pages/feat-pictures-of-week-page/feat-pictures-of-week-page.component';
+import { FeatPicturesSpecialEventsPageComponent } from './components/features/pages/feat-pictures-special-events-page/feat-pictures-special-events-page.component';
+import { FeatPicturesAuthorsPageComponent } from './components/features/pages/feat-pictures-authors-page/feat-pictures-authors-page.component';
+import { FeatPicturesCompetitionPageComponent } from './components/features/pages/feat-pictures-competition-page/feat-pictures-competition-page.component';
+import { FeatPicturesSpacecraftsPageComponent } from './components/features/pages/feat-pictures-spacecrafts-page/feat-pictures-spacecrafts-page.component';
 
 
 @NgModule({
@@ -79,6 +85,12 @@ import { UiTitleComponent } from './components/ui/ui-title/ui-title.component';
     FeatVisitsCounterComponent,
     UiTitleSubtitleComponent,
     UiTitleComponent,
+    UiGalleryNavbarComponent,
+    FeatPicturesOfWeekPageComponent,
+    FeatPicturesSpecialEventsPageComponent,
+    FeatPicturesAuthorsPageComponent,
+    FeatPicturesCompetitionPageComponent,
+    FeatPicturesSpacecraftsPageComponent,
   ],
   imports: [
     BrowserModule,

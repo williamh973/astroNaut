@@ -5,7 +5,7 @@
 }
 
 #headerTop-mainContainer {
-    position: static;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -16,7 +16,6 @@
     justify-content: space-around;
     align-items: center;
     background-color: rgb(198, 198, 198);
-    
 }
 
 #left-container, #right-container {

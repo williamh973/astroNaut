@@ -36,12 +36,14 @@
         </div>
         
     </div>
+
+    <app-ui-navbar
+    *ngIf="isLeftMenuOpen"
+    [isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
+    [isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
+    (isLeftMenuOpen)="forCloseLeftMenu($event)"
+    ></app-ui-navbar>
+    
 </header>
 
 
-<app-ui-navbar
-*ngIf="isLeftMenuOpen"
-[isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
-[isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
-(isLeftMenuOpen)="forCloseLeftMenu($event)"
-></app-ui-navbar>

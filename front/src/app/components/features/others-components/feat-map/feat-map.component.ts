@@ -1,8 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import * as L from 'leaflet';
-import { MarkerData } from 'src/app/models/marker-data.model';
+import { Component } from '@angular/core';
 import { MapService } from 'src/app/shared/services/map.service';
-import { MarkerService } from 'src/app/shared/services/marker/marker.service';
 
 @Component({
 
@@ -11,7 +8,7 @@ import { MarkerService } from 'src/app/shared/services/marker/marker.service';
   styleUrls: ['./feat-map.component.scss']
 })
 export class FeatMapComponent  {
-
+  
 
   constructor(private mapService: MapService) {}
 

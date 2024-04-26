@@ -24,20 +24,7 @@
       <li *ngFor="let menuItem of leftMenuItemList">
         <a (click)="onLeftMenuItemClick(menuItem)">{{ menuItem.label }}</a>
       </li>
-      <div
-      *ngIf="isGaleryDropdownMenuOpen" 
-      class="dropdown-menu" 
-      id="galerie-dropdown-menu"
-      >
-      <ul>
-        <li *ngFor="let menuItem of galeryDropdownMenuItemList">
-          <a (click)="onDropdownMenuItemClick(menuItem)">{{ menuItem.label }}</a>
-        </li>
-      </ul>
-    </div>
-  </ul>
-  
-  
+    </ul>
   </nav>
 
 </div>

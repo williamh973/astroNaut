@@ -20,14 +20,6 @@ export class UiNavbarComponent {
     new Menu('Mon espace', '/user-space')
   ];
 
-  galeryDropdownMenuItemList: Menu[] = [
-    new Menu('Photos de la semaine', '/news'),
-    new Menu(`Astres`, '/location'),
-    new Menu('Nébuleuses', ''),
-    new Menu('Galaxies', '/about'),
-    new Menu('Aurores', '/galery'),
-    new Menu('Événements spéciaux', '')
-  ];
 
   @Input() isLeftMenuAnimationWhenOpen!: boolean;
   @Input() isLeftMenuItemsClickEnable!: boolean;
@@ -85,7 +77,7 @@ export class UiNavbarComponent {
           break;
           case 'Galerie':
             this.isLeftMenuOpen.emit(false);
-            this.isGaleryDropdownMenuOpen = !this.isGaleryDropdownMenuOpen;
+            this.router.navigate(['/galery']);
           break;
           case 'Contact':
             this.isLeftMenuOpen.emit(false);
@@ -98,27 +90,4 @@ export class UiNavbarComponent {
       }  
     };
 
-    onDropdownMenuItemClick(menuItem: Menu) {
-      switch (menuItem.label) {
-        case 'Photos de la semaine':
-          this.router.navigate(['/pictures-of-the-week']);
-          this.isGaleryDropdownMenuOpen = !this.isGaleryDropdownMenuOpen;
-        break;
-        case 'Astres':
-          this.router.navigate(['/pictures-of-the-week']);
-        break;
-        case 'Nébuleuses':
-          this.router.navigate(['/pictures-of-nebulae']);
-        break;
-        case 'Galaxies':
-          this.router.navigate(['/pictures-of-galaxy']);
-        break;
-        case 'Aurores':
-          this.router.navigate(['/pictures-of-auroras']);
-        break;
-        case 'Événements spéciaux':
-          this.router.navigate(['/pictures-of-special-events']);
-        break;
-      }
-    }
 }
