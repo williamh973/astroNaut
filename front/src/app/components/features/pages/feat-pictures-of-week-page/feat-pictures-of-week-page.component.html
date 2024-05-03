@@ -1,1 +1,26 @@
-<p>feat-pictures-of-week-page works!</p>
+<div id="full-page">
+    <header id="headerTop">            
+        <app-ui-burger-menu-button
+        id="headerTop-burgerMenu"
+        (isLeftMenuOpen)="onOpenLeftMenu($event)"
+        (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
+        (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
+        ></app-ui-burger-menu-button>
+
+        <app-ui-gallery-navbar
+        id="headerTop-galleryNavbar"
+        ></app-ui-gallery-navbar>
+    </header>
+    
+    <div id="cardList-container">
+        <app-feat-picture-of-week-list
+        ></app-feat-picture-of-week-list>
+    </div>
+</div>
+    
+<app-ui-navbar
+*ngIf="isLeftMenuOpen"
+[isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
+[isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
+(isLeftMenuOpen)="onCloseLeftMenu($event)"
+></app-ui-navbar>

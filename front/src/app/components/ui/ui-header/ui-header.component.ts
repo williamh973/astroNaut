@@ -7,21 +7,24 @@ import { Component } from '@angular/core';
 })
 export class UiHeaderComponent {
 
-  private readonly _DELAY_BEFORE_MENU_ITEMS_CLICK_ENABLE: number = 1000;
-
   isLeftMenuOpen: boolean = false;
   isLeftMenuAnimationWhenOpen: boolean = false;
   isLeftMenuItemsClickEnable:  boolean = false;
 
-  onOpenLeftMenu() {
-    this.isLeftMenuOpen = true;
-    this.isLeftMenuAnimationWhenOpen = true;
-       setTimeout(() => {
-         this.isLeftMenuItemsClickEnable = true;
-       }, this._DELAY_BEFORE_MENU_ITEMS_CLICK_ENABLE);
+
+  onOpenLeftMenu(isLeftMenuOpen: boolean) {
+    this.isLeftMenuOpen = isLeftMenuOpen;
   }
 
-  forCloseLeftMenu(isLeftMenuOpen: boolean) {
+  startMenuAnimation(isLeftMenuAnimationWhenOpen: boolean) {
+    this.isLeftMenuAnimationWhenOpen = isLeftMenuAnimationWhenOpen;
+  }
+  
+  leftMenuItemsClickEnable(isLeftMenuItemsClickEnable: boolean) {
+    this.isLeftMenuItemsClickEnable = isLeftMenuItemsClickEnable;
+  }
+
+  onCloseLeftMenu(isLeftMenuOpen: boolean) {
     this.isLeftMenuOpen = isLeftMenuOpen;
   }
 }

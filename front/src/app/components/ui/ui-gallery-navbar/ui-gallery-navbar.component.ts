@@ -19,6 +19,8 @@ export class UiGalleryNavbarComponent {
     new Menu('Engins spatiaux', '/astronaut/gallery/spacecrafts'),
   ];
 
+  isGalleryMenuAnimationWhenOpen: boolean = false;
+  isActivatedAttribute: boolean = false;
 
   constructor(private router: Router) {}
 

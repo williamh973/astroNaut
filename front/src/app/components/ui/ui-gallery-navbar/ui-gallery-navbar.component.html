@@ -1,10 +1,14 @@
 <nav
+[ngClass]="{'galleryMenuVisible': isGalleryMenuAnimationWhenOpen}"
 class="menu" 
 id="galerie-menu"
+
 >
   <ul>
     <li *ngFor="let menuItem of galleryMenuItemList">
-      <a (click)="onGalleryMenuItemClick(menuItem)">{{ menuItem.label }}</a>
+      <a (click)="onGalleryMenuItemClick(menuItem)">
+          {{ menuItem.label }}
+        </a>
     </li>
   </ul>
 </nav>

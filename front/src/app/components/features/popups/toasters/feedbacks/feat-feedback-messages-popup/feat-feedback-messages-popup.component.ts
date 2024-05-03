@@ -14,6 +14,8 @@ export class FeatFeedbackMessagesPopupComponent {
   @Input() isLocationCreatedError!: boolean; 
   @Input() isContactTextCreatedSuccess!: boolean; 
   @Input() isContactTextCreatedError!: boolean; 
+  @Input() isPictureOfWeekCardCreatedSuccess!: boolean; 
+  @Input() isPictureOfWeekCardCreatedError!: boolean; 
   
   feedback: Feedback = new Feedback("");
 
@@ -22,6 +24,7 @@ export class FeatFeedbackMessagesPopupComponent {
     this.onShowNewsCardFeedback();
     this.onShowLocationFeedback();
     this.onShowContactTextFeedback();
+    this.onShowPictureOfWeekCardFeedback();
   }
   
   
@@ -49,6 +52,16 @@ onShowContactTextFeedback() {
   if (this.isContactTextCreatedSuccess) {
     this.feedback = new Feedback("Votre message a été envoyé avec succès !");
   } else if (this.isContactTextCreatedError) {
+    this.feedback = new Feedback("Une erreur s'est produite, veuillez recommencer ulterieurement.");
+  } else {
+    this.feedback = new Feedback("");
+  };
+}
+
+onShowPictureOfWeekCardFeedback() {
+  if (this.isPictureOfWeekCardCreatedSuccess) {
+    this.feedback = new Feedback("Votre photo a été envoyé avec succès et est en attente de validation.");
+  } else if (this.isPictureOfWeekCardCreatedError) {
     this.feedback = new Feedback("Une erreur s'est produite, veuillez recommencer ulterieurement.");
   } else {
     this.feedback = new Feedback("");

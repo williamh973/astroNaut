@@ -2,20 +2,11 @@
     <div id="headerTop-mainContainer">
         
         <div id="left-container">
-            <div 
-            (click)="onOpenLeftMenu()" 
-            id="headerTop-burgerMenu"
-            >
-            <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-                height="24" 
-                viewBox="0 -960 960 960" 
-                width="24"
-                >
-                <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/>
-            </svg>
-                <span>MENU</span>
-            </div>
+            <app-ui-burger-menu-button
+            (isLeftMenuOpen)="onOpenLeftMenu($event)"
+            (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
+            (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
+            ></app-ui-burger-menu-button>
         </div>
         
         <div id="middle-container">
@@ -41,7 +32,7 @@
     *ngIf="isLeftMenuOpen"
     [isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
     [isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
-    (isLeftMenuOpen)="forCloseLeftMenu($event)"
+    (isLeftMenuOpen)="onCloseLeftMenu($event)"
     ></app-ui-navbar>
     
 </header>

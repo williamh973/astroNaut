@@ -48,6 +48,11 @@ import { FeatPicturesSpecialEventsPageComponent } from './components/features/pa
 import { FeatPicturesAuthorsPageComponent } from './components/features/pages/feat-pictures-authors-page/feat-pictures-authors-page.component';
 import { FeatPicturesCompetitionPageComponent } from './components/features/pages/feat-pictures-competition-page/feat-pictures-competition-page.component';
 import { FeatPicturesSpacecraftsPageComponent } from './components/features/pages/feat-pictures-spacecrafts-page/feat-pictures-spacecrafts-page.component';
+import { FeatPictureOfWeekListComponent } from './components/features/others-components/feat-picture-of-week-list/feat-picture-of-week-list.component';
+import { FeatPictureOfWeekCardComponent } from './components/features/others-components/feat-picture-of-week-card/feat-picture-of-week-card.component';
+import { FeatPictureOfWeekListThumbnailComponent } from './components/features/others-components/feat-picture-of-week-list-thumbnail/feat-picture-of-week-list-thumbnail.component';
+import { UiCarouselNavComponent } from './components/ui/ui-carousel-nav/ui-carousel-nav.component';
+import { UiBurgerMenuButtonComponent } from './components/ui/ui-burger-menu-button/ui-burger-menu-button.component';
 
 
 @NgModule({
@@ -91,6 +96,11 @@ import { FeatPicturesSpacecraftsPageComponent } from './components/features/page
     FeatPicturesAuthorsPageComponent,
     FeatPicturesCompetitionPageComponent,
     FeatPicturesSpacecraftsPageComponent,
+    FeatPictureOfWeekListComponent,
+    FeatPictureOfWeekCardComponent,
+    FeatPictureOfWeekListThumbnailComponent,
+    UiCarouselNavComponent,
+    UiBurgerMenuButtonComponent,
   ],
   imports: [
     BrowserModule,

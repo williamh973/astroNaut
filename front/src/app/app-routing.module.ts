@@ -39,8 +39,8 @@ const routes: Routes = [
     component: FeatNewsCardDetailPageComponent 
   },
   { 
-    path: 'galery', 
-    component: FeatGaleryPageComponent
+    path: 'astronaut/gallery/pictures-of-the-week', 
+    component: FeatPicturesOfWeekPageComponent
   },
   { 
     path: 'contact', 
@@ -51,30 +51,26 @@ const routes: Routes = [
     component: FeatUserLandingPageComponent, 
     // canActivate: [AuthGuard]
   },
-  { 
-    path: 'astronaut/gallery/pictures-of-the-week', 
-    component: FeatPicturesOfWeekPageComponent, 
-  },
-  { 
-    path: 'astronaut/gallery/thematic', 
-    component: FeatPicturesOfWeekPageComponent, 
-  },
-  { 
-    path: 'astronaut/gallery/pictures-of-special-events', 
-    component: FeatPicturesOfWeekPageComponent, 
-  },
-  { 
-    path: 'astronaut/gallery/authors', 
-    component: FeatPicturesOfWeekPageComponent, 
-  },
-  { 
-    path: 'astronaut/gallery/competition', 
-    component: FeatPicturesOfWeekPageComponent, 
-  },
-  { 
-    path: 'astronaut/gallery/spacecrafts', 
-    component: FeatPicturesOfWeekPageComponent, 
-  },
+  // { 
+  //   path: 'astronaut/gallery/thematic', 
+  //   component: FeatPicturesOfWeekPageComponent, 
+  // },
+  // { 
+  //   path: 'astronaut/gallery/pictures-of-special-events', 
+  //   component: FeatPicturesOfWeekPageComponent, 
+  // },
+  // { 
+  //   path: 'astronaut/gallery/pictures-of-authors', 
+  //   component: FeatPicturesOfWeekPageComponent, 
+  // },
+  // { 
+  //   path: 'astronaut/gallery/competition', 
+  //   component: FeatPicturesOfWeekPageComponent, 
+  // },
+  // { 
+  //   path: 'astronaut/gallery/spacecrafts', 
+  //   component: FeatPicturesOfWeekPageComponent, 
+  // },
   { 
     path: '**', 
     component: FeatErrorPageComponent 

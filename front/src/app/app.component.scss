@@ -4,17 +4,12 @@ html, body {
 }
 
 .app-container {
-    width: 98vw;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     margin: auto;
     overflow-x: none;
-}
-
-.header {
-    border-bottom: 1px solid grey;
-    z-index: 1;
 }
 
 .router-outlet {

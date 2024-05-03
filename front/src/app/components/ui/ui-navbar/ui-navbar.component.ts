@@ -15,7 +15,7 @@ export class UiNavbarComponent {
     new Menu(`Lieux d'observation`, '/location'),
     new Menu('Contribuer', ''),
     new Menu('A propos', '/about'),
-    new Menu('Galerie', '/galery'),
+    new Menu('Galerie', '/astronaut/gallery/pictures-of-the-week'),
     new Menu('Contact', ''),
     new Menu('Mon espace', '/user-space')
   ];
@@ -23,7 +23,9 @@ export class UiNavbarComponent {
 
   @Input() isLeftMenuAnimationWhenOpen!: boolean;
   @Input() isLeftMenuItemsClickEnable!: boolean;
-  @Output() isLeftMenuOpen = new EventEmitter<boolean>()
+  @Output() isLeftMenuOpen = new EventEmitter<boolean>();
+  // @Output() isPictureWeekPageOpen = new EventEmitter<boolean>();
+  
   
   isLoginOrRegisterPopupOpen: boolean = false;
   isGaleryDropdownMenuOpen: boolean = false;
@@ -77,7 +79,8 @@ export class UiNavbarComponent {
           break;
           case 'Galerie':
             this.isLeftMenuOpen.emit(false);
-            this.router.navigate(['/galery']);
+            // this.isPictureWeekPageOpen.emit(true);
+            this.router.navigate(['/astronaut/gallery/pictures-of-the-week']);
           break;
           case 'Contact':
             this.isLeftMenuOpen.emit(false);

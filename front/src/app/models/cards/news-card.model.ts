@@ -1,4 +1,4 @@
-import { Picture } from "./picture.model";
+import { Picture } from "../images-for-cards/image-for-news-card.model";
 
 export class NewsCard {
     constructor(

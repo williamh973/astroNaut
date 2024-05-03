@@ -1,24 +1,96 @@
 <div id="main-container">
     <h1>Ajouter une image</h1>
 
-    <form (ngSubmit)="submit()">
+    <form (ngSubmit)="onSubmit()">
         <div id="image-details-container">
-           <div id="image-container"></div>
-            <input 
-               type="text" 
-               name="title" 
-               id="title" 
-               maxlength="33"
-               minlength="5"
-               placeholder="Description courte de l'image*"
-               required
-            >
+            <div class="container-ngx-dropzone">
+                <label for="image">Image à téléverser</label>
+                    <ngx-dropzone 
+                    class="ngx-dropzone"
+                    [accept]="'image/*'" 
+                    (change)="onHandlePhotoUpload($event)"
+                    >
+                    
+                        <ngx-dropzone-label class="ngx-dropzone-label">
+                            <div title="Cliquer ici">
+                                <div 
+                                title="Téléverser la photo désirée en cliquant ici."
+                                id="dropzone-title"
+                                >
+                                    <p>Téléverser la photo désirée en cliquant ici.</p>
+                                </div>    
+                            </div>    
+                        </ngx-dropzone-label>    
+                    
+                        <ngx-dropzone-image-preview 
+                        class="img-preview"
+                        ngProjectAs="ngx-dropzone-preview" 
+                        *ngFor="let photo of photosList" 
+                        [file]="photo" 
+                        [removable]="true" 
+                        (removed)="onRemovePhotoOfPhotoList(photo)"
+                        >
+                        </ngx-dropzone-image-preview>
+                    
+                    </ngx-dropzone>    
+            </div>        
         </div>
-        <div id="terms-checkbox">
-            <p>J'ai bien lu et accepté les conditions d'utilisations</p>
-            <input type="checkbox" name="input-checkbox" id="input-checkbox">
-        </div>
-        <button type="submit">Je valide</button>
-    </form>
+        <div id="inputs-zone">
 
-</div>
+            <div class="label-input-container">
+                <label for="title">Titre de l'image'</label>
+                <input 
+                type="text" 
+                name="title" 
+                id="title" 
+                maxlength="150"
+                minlength="5"
+                placeholder="Description courte de l'image*"
+                required
+                [(ngModel)]="pictureOfWeekCard.title"
+                #titleInput="ngModel"
+                >
+                <div *ngIf="titleInput.invalid && (titleInput.touched)" class="error">
+                    <div *ngIf="titleInput.errors?.['required']">La description est requise.</div>
+                    <div *ngIf="titleInput.errors?.['minlength']">La description doit comporter au moins 5 caractères.</div>
+                    <div *ngIf="titleInput.errors?.['maxlength']">La description ne peut pas dépasser 150 caractères.</div>
+                </div>    
+            </div>
+
+            <div class="label-input-container">
+                <label for="resume">Description de l'image</label>
+                <textarea 
+                type="text" 
+                name="resume" 
+                id="resume" 
+                maxlength="1000"
+                minlength="5"
+                placeholder="Ecrire une description de l'image ici"
+                required
+                [(ngModel)]="pictureOfWeekCard.resume"
+                #resumeInput="ngModel"
+                ></textarea>
+                <div *ngIf="resumeInput.invalid && (resumeInput.touched)" class="error">
+                    <div *ngIf="resumeInput.errors?.['required']">La description de l'image est requise.</div>
+                    <div *ngIf="resumeInput.errors?.['minlength']">La description de l'image doit comporter au moins 5 caractères.</div>
+                    <div *ngIf="resumeInput.errors?.['maxlength']">La description de l'image ne peut pas dépasser 1000 caractères.</div>
+                </div>    
+            </div>
+    
+            <button type="submit" [disabled]="!isPhotoInTheBox || !onInputTitleCompleted()">Publier l'image</button>    
+        </div>
+    </form>    
+    
+</div>    
+
+<app-feat-loader-popup
+class="loader" 
+*ngIf="isLoadingComposantActive"
+></app-feat-loader-popup>
+
+<app-feat-feedback-messages-popup
+*ngIf="isPictureOfWeekCardCreatedSuccess || isPictureOfWeekCardCreatedError"
+[isPictureOfWeekCardCreatedSuccess]="isPictureOfWeekCardCreatedSuccess"
+[isPictureOfWeekCardCreatedError]="isPictureOfWeekCardCreatedError"
+></app-feat-feedback-messages-popup>
+

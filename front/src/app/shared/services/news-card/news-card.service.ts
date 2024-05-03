@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
-import { NewsCard } from 'src/app/models/news-card.model';
+import { NewsCard } from 'src/app/models/cards/news-card.model';
 
 
 

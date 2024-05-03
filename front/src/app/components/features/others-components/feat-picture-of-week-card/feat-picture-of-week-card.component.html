@@ -1,0 +1,34 @@
+<div id="full-page">
+
+    <div id="pictureWeek-fullCard">
+        <ng-container 
+        id="pictureWeek-imageContainer"
+        *ngIf="pictureOfWeekCard.imageListForPictureOfWeek.length > 0"
+        >
+            <img 
+            id="pictureWeek-image" 
+            [src]="pictureOfWeekCardImageSrc" 
+            alt="image"
+            >
+            
+            <div id="pictureWeek-fontContainer">    
+                <p id="title">{{ pictureOfWeekCard.title }}</p>
+                <p id="resume">{{ pictureOfWeekCard.resume }}</p>
+                <p id="timestamp">Publié il y a {{ elapsedTime }} par 
+                    <!-- {{ user.pseudo }} -->
+                </p>
+            </div>   
+        </ng-container >
+    
+        <app-ui-carousel-nav
+        [pictureOfWeekCard]="pictureOfWeekCard"
+        ></app-ui-carousel-nav>
+    </div>
+    
+    <ng-container id="pictureWeek-thumbnailList">
+        <app-feat-picture-of-week-list-thumbnail
+        [pictureOfWeekCard]="pictureOfWeekCard"
+        ></app-feat-picture-of-week-list-thumbnail>
+    </ng-container>
+    
+</div>
