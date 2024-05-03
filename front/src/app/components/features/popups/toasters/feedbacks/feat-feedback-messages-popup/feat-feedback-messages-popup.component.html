@@ -1,7 +1,7 @@
 <div class="full-container">
     <div class="popup">
 
-        <div *ngIf="isNewsCardCreatedSuccess || isLocationCreatedSuccess || isContactTextCreatedSuccess" class="succes">
+        <div *ngIf="isNewsCardCreatedSuccess || isLocationCreatedSuccess || isContactTextCreatedSuccess || isPictureOfWeekCardCreatedSuccess" class="succes">
             <ng-container>
                 <svg 
                 xmlns="http://www.w3.org/2000/svg" 
@@ -17,7 +17,7 @@
             </ng-container>
         </div>
         
-        <div *ngIf="isNewsCardCreatedError || isLocationCreatedError || isContactTextCreatedError" class="error">
+        <div *ngIf="isNewsCardCreatedError || isLocationCreatedError || isContactTextCreatedError || isPictureOfWeekCardCreatedError" class="error">
             <ng-container >
                 <svg 
                 xmlns="http://www.w3.org/2000/svg" 

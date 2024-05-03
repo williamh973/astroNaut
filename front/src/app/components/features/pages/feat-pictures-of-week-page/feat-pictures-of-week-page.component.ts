@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PictureOfWeekCard } from 'src/app/models/cards/picture-of-week-card.model';
+import { PictureOfWeekCardService } from 'src/app/shared/services/picture-of-week-card.service';
 
 @Component({
   selector: 'app-feat-pictures-of-week-page',
@@ -8,10 +10,29 @@ import { Component } from '@angular/core';
 export class FeatPicturesOfWeekPageComponent {
   
   // isPictureWeekPageOpen!: boolean;
+  pictureOfWeekCardList: PictureOfWeekCard[] = [];
   isLeftMenuOpen: boolean = false;
   isLeftMenuAnimationWhenOpen: boolean = false;
   isLeftMenuItemsClickEnable:  boolean = false;
+  
 
+  constructor(private pictureOfWeekCardService: PictureOfWeekCardService) {}
+
+
+  ngOnInit() {
+    this.onGetPictureOfWeekCardList();
+  }
+
+
+  onGetPictureOfWeekCardList() {
+    this.pictureOfWeekCardService.getCardList().subscribe(
+      (cardListFromDatabase: PictureOfWeekCard[]) => {
+        this.pictureOfWeekCardList = cardListFromDatabase;
+        console.log(this.pictureOfWeekCardList);
+        
+        }
+    );
+  }
 
   onOpenLeftMenu(isLeftMenuOpen: boolean) {
     this.isLeftMenuOpen = isLeftMenuOpen;

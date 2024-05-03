@@ -1,23 +1,13 @@
-#full-page {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-}
-
 #pictureWeek-fullCard {
-    width: 100%;
-    height: 100%;
+    aspect-ratio: 16 / 9;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: auto;
     position: relative;
-    z-index: 1;
+    z-index: 0;
 }
 
 #pictureWeek-imageContainer {
@@ -31,8 +21,8 @@
 }
 
 #pictureWeek-image {
-    aspect-ratio: 16 / 9;
-    height: 500px;
+    // aspect-ratio: 16 / 9;
+    width: 100%;
 }
 
 #pictureWeek-fontContainer {

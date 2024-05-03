@@ -9,21 +9,23 @@ import { PictureOfWeekCardService } from 'src/app/shared/services/picture-of-wee
 })
 export class FeatPictureOfWeekListComponent {
 
-  pictureOfWeekCardList: PictureOfWeekCard[] = [];
+  // pictureOfWeekCardList: PictureOfWeekCard[] = [];
 
-  constructor(private pictureOfWeekCardService: PictureOfWeekCardService) {}
+  // constructor(private pictureOfWeekCardService: PictureOfWeekCardService) {}
 
-  ngOnInit() {
-    this.onGetPictureOfWeekCardList();
-  }
+  // ngOnInit() {
+  //   this.onGetPictureOfWeekCardList();
+  // }
 
 
-  onGetPictureOfWeekCardList() {
-    this.pictureOfWeekCardService.getCardList().subscribe(
-      (cardListFromDatabase: PictureOfWeekCard[]) => {
-        this.pictureOfWeekCardList = cardListFromDatabase;
-        }
-    );
-  }
+  // onGetPictureOfWeekCardList() {
+  //   this.pictureOfWeekCardService.getCardList().subscribe(
+  //     (cardListFromDatabase: PictureOfWeekCard[]) => {
+  //       this.pictureOfWeekCardList = cardListFromDatabase;
+  //       // console.log(this.pictureOfWeekCardList);
+        
+  //       }
+  //   );
+  // }
 
 }

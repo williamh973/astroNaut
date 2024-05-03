@@ -8,17 +8,19 @@ import { PictureOfWeekCard } from 'src/app/models/cards/picture-of-week-card.mod
 })
 export class UiCarouselNavComponent {
 
-  @Input() pictureOfWeekCard!: PictureOfWeekCard;
+  @Input() pictureOfWeekCardList!: PictureOfWeekCard[];
 
-  pictureOfWeekCardImageSrc: string = '';
   currentIndex: number = 0;
   isLeftArrowVisible: boolean = false;
   isRightArrowVisible: boolean = false;
 
   ngOnInit() {
-    this.nextImage();
-    this.prevImage();
+    this.nextCard();
+    this.prevCard();
+    console.log(this.pictureOfWeekCardList);
+    
   }
+  
 
   showLeftArrow() {
     this.isLeftArrowVisible = true;
@@ -36,15 +38,17 @@ export class UiCarouselNavComponent {
     this.isRightArrowVisible = false;
   }
 
-  nextImage() {
-    this.currentIndex = (this.currentIndex + 1) % 
-    this.pictureOfWeekCard.imageListForPictureOfWeek.length;
-    this.pictureOfWeekCardImageSrc = this.pictureOfWeekCard.imageListForPictureOfWeek[this.currentIndex].src;
+  nextCard() {
+    this.currentIndex = (this.currentIndex + 1) % this.pictureOfWeekCardList.length;
   }
 
-  prevImage() {
-    this.currentIndex = (this.currentIndex - 1 + this.pictureOfWeekCard.imageListForPictureOfWeek.length) % 
-    this.pictureOfWeekCard.imageListForPictureOfWeek.length;
-    this.pictureOfWeekCardImageSrc = this.pictureOfWeekCard.imageListForPictureOfWeek[this.currentIndex].src;
+  prevCard() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+    } else {
+      this.currentIndex = 0;
+    }
   }
+
+
 }

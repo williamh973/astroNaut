@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
-import { Observable, finalize, forkJoin, of } from 'rxjs';
+import { finalize, of } from 'rxjs';
 import { PictureOfWeekCard } from 'src/app/models/cards/picture-of-week-card.model';
 import { ImageForPictureOfWeekCard } from 'src/app/models/images-for-cards/image-for-picture-of-week-card.model';
 import { ImageForPictureOfWeekCardService } from 'src/app/shared/services/image-for-picture-of-week-card.service';

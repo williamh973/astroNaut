@@ -10,16 +10,11 @@ export class FeatPictureOfWeekCardComponent {
 
   @Input() pictureOfWeekCard!: PictureOfWeekCard;
 
-  pictureOfWeekCardImageSrc: string = '';
   elapsedTime: string = '';
-  currentIndex: number = 0;
 
 
   ngOnInit() {
     this.calculateElapsedTime();
-    this.nextImage();
-    this.prevImage();
-    return this.pictureOfWeekCardImageSrc = this.pictureOfWeekCard.imageListForPictureOfWeek[0].src;
   }
 
   private calculateElapsedTime() {
@@ -51,15 +46,4 @@ export class FeatPictureOfWeekCardComponent {
     }
   }
 
-  nextImage() {
-    this.currentIndex = (this.currentIndex + 1) % 
-    this.pictureOfWeekCard.imageListForPictureOfWeek.length;
-    this.pictureOfWeekCardImageSrc = this.pictureOfWeekCard.imageListForPictureOfWeek[this.currentIndex].src;
-  }
-
-  prevImage() {
-    this.currentIndex = (this.currentIndex - 1 + this.pictureOfWeekCard.imageListForPictureOfWeek.length) % 
-    this.pictureOfWeekCard.imageListForPictureOfWeek.length;
-    this.pictureOfWeekCardImageSrc = this.pictureOfWeekCard.imageListForPictureOfWeek[this.currentIndex].src;
-  }
 }

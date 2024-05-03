@@ -12,13 +12,21 @@
       id="arrow-left"
       class="arrow"
       [ngClass]="{'leftArrowVisible': isLeftArrowVisible}"
-      (click)="prevImage()"
+      (click)="prevCard()"
       (mouseenter)="showLeftArrow()"
       (mouseleave)="hiddeLeftArrow()"
     >
       <polyline points="15 18 9 12 15 6"></polyline>
     </svg>
 
+
+    
+    <ng-container  *ngIf="pictureOfWeekCardList.length > 0">
+        <app-feat-picture-of-week-card
+          [pictureOfWeekCard]="pictureOfWeekCardList[currentIndex]"
+    
+        ></app-feat-picture-of-week-card>
+    </ng-container>
 
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +41,7 @@
       id="arrow-right"
       class="arrow"
       [ngClass]="{'rightArrowVisible': isRightArrowVisible}"
-      (click)="nextImage()"
+      (click)="nextCard()"
       (mouseenter)="showRightArrow()"
       (mouseleave)="hiddeRightArrow()"
     >
