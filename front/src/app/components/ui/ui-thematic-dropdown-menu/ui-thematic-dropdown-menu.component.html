@@ -1,0 +1,15 @@
+ <nav
+    class="thematic-dropdownMenu" 
+    id="galerie-menu"
+    >
+      <ul>
+        <li 
+        *ngFor="let menuItem of thematicMenuItemList; let i = index"
+        [ngClass]="{'selected': selectedIndex === i}"
+        >
+          <a [ngClass]="{'selected': selectedIndex === i}" (click)="onThematicMenuItemClick(menuItem, i)">
+            {{ menuItem.label }}
+          </a>
+        </li>
+      </ul>
+    </nav>

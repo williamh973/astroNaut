@@ -11,7 +11,7 @@ export class UiNavbarComponent {
   
   
   leftMenuItemList: Menu[] = [
-    new Menu('Actualités', '/news'),
+    new Menu('Actualités', '/astronaut/news'),
     new Menu(`Lieux d'observation`, '/location'),
     new Menu('Contribuer', ''),
     new Menu('A propos', '/about'),
@@ -24,7 +24,6 @@ export class UiNavbarComponent {
   @Input() isLeftMenuAnimationWhenOpen!: boolean;
   @Input() isLeftMenuItemsClickEnable!: boolean;
   @Output() isLeftMenuOpen = new EventEmitter<boolean>();
-  // @Output() isPictureWeekPageOpen = new EventEmitter<boolean>();
   
   
   isLoginOrRegisterPopupOpen: boolean = false;
@@ -63,7 +62,7 @@ export class UiNavbarComponent {
       switch (menuItem.label) {
         case 'Actualités':
           this.isLeftMenuOpen.emit(false);
-          this.router.navigate(['/news']);
+          this.router.navigate(['/astronaut/news']);
           break;
           case `Lieux d'observation`:
             this.isLeftMenuOpen.emit(false);

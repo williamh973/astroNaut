@@ -9,6 +9,8 @@ import { PictureOfWeekCard } from 'src/app/models/cards/picture-of-week-card.mod
 export class FeatPictureOfWeekListThumbnailComponent {
 
   @Input() pictureOfWeekCard!: PictureOfWeekCard;
+  
+  isFocused: boolean = false;
 
   pictureOfWeekCardImageSrc: string = '';
 

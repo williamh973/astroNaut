@@ -8,8 +8,9 @@ import { FeatErrorPageComponent } from './components/features/pages/feat-error-p
 import { FeatToContributePageComponent } from './components/features/pages/feat-to-contribute-page/feat-to-contribute-page.component';
 import { AboutPageComponent } from './components/others-components/about-page/about-page.component';
 import { FeatContactPageComponent } from './components/features/pages/feat-contact-page/feat-contact-page.component';
-import { FeatGaleryPageComponent } from './components/features/pages/feat-galery-page/feat-galery-page.component';
 import { FeatPicturesOfWeekPageComponent } from './components/features/pages/feat-pictures-of-week-page/feat-pictures-of-week-page.component';
+import { FeatPicturesSpecialEventsPageComponent } from './components/features/pages/feat-pictures-special-events-page/feat-pictures-special-events-page.component';
+import { FeatPicturesAuthorsPageComponent } from './components/features/pages/feat-pictures-authors-page/feat-pictures-authors-page.component';
 
 const routes: Routes = [
   { 
@@ -19,7 +20,7 @@ const routes: Routes = [
     
   },
   { 
-    path: 'news', 
+    path: 'astronaut/news', 
     component: FeatHomePageComponent
   },
   { 
@@ -55,14 +56,14 @@ const routes: Routes = [
   //   path: 'astronaut/gallery/thematic', 
   //   component: FeatPicturesOfWeekPageComponent, 
   // },
-  // { 
-  //   path: 'astronaut/gallery/pictures-of-special-events', 
-  //   component: FeatPicturesOfWeekPageComponent, 
-  // },
-  // { 
-  //   path: 'astronaut/gallery/pictures-of-authors', 
-  //   component: FeatPicturesOfWeekPageComponent, 
-  // },
+  { 
+    path: 'astronaut/gallery/pictures-of-special-events', 
+    component: FeatPicturesSpecialEventsPageComponent, 
+  },
+  { 
+    path: 'astronaut/gallery/pictures-of-authors', 
+    component: FeatPicturesAuthorsPageComponent, 
+  },
   // { 
   //   path: 'astronaut/gallery/competition', 
   //   component: FeatPicturesOfWeekPageComponent, 

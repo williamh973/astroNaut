@@ -8,19 +8,22 @@ import { PictureOfWeekCardService } from 'src/app/shared/services/picture-of-wee
   styleUrls: ['./feat-pictures-of-week-page.component.scss']
 })
 export class FeatPicturesOfWeekPageComponent {
+
   
-  // isPictureWeekPageOpen!: boolean;
   pictureOfWeekCardList: PictureOfWeekCard[] = [];
   isLeftMenuOpen: boolean = false;
   isLeftMenuAnimationWhenOpen: boolean = false;
   isLeftMenuItemsClickEnable:  boolean = false;
-  
+  // isPictureWeekPageOpen: boolean = false;
 
+  
   constructor(private pictureOfWeekCardService: PictureOfWeekCardService) {}
 
 
   ngOnInit() {
     this.onGetPictureOfWeekCardList();
+    // console.log(this.isPictureWeekPageOpen);
+    
   }
 
 
@@ -28,8 +31,6 @@ export class FeatPicturesOfWeekPageComponent {
     this.pictureOfWeekCardService.getCardList().subscribe(
       (cardListFromDatabase: PictureOfWeekCard[]) => {
         this.pictureOfWeekCardList = cardListFromDatabase;
-        console.log(this.pictureOfWeekCardList);
-        
         }
     );
   }
@@ -53,4 +54,9 @@ export class FeatPicturesOfWeekPageComponent {
   onToggleColorSvgBurgerButton(isPictureWeekPageOpen: boolean) {
     // this.isPictureWeekPageOpen = isPictureWeekPageOpen;
   }
+
+  onRecevedSelectedIndex() {
+
+  }
+
 }

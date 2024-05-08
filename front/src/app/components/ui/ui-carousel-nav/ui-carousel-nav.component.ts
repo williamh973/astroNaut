@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { PictureOfWeekCard } from 'src/app/models/cards/picture-of-week-card.model';
+import { PictureSpecialEventCard } from 'src/app/models/cards/picture-special-event-card.model';
 
 @Component({
   selector: 'app-ui-carousel-nav',
@@ -9,16 +10,17 @@ import { PictureOfWeekCard } from 'src/app/models/cards/picture-of-week-card.mod
 export class UiCarouselNavComponent {
 
   @Input() pictureOfWeekCardList!: PictureOfWeekCard[];
+  @Input() pictureSpecialEventCardList!: PictureSpecialEventCard[];
+  @Input() isPictureWeekPageOpen!: boolean;
 
   currentIndex: number = 0;
+
   isLeftArrowVisible: boolean = false;
   isRightArrowVisible: boolean = false;
 
   ngOnInit() {
     this.nextCard();
     this.prevCard();
-    console.log(this.pictureOfWeekCardList);
-    
   }
   
 
@@ -40,6 +42,7 @@ export class UiCarouselNavComponent {
 
   nextCard() {
     this.currentIndex = (this.currentIndex + 1) % this.pictureOfWeekCardList.length;
+  
   }
 
   prevCard() {

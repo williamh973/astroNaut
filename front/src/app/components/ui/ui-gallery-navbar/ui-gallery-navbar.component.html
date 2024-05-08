@@ -1,14 +1,28 @@
-<nav
-[ngClass]="{'galleryMenuVisible': isGalleryMenuAnimationWhenOpen}"
-class="menu" 
-id="galerie-menu"
+<div>
+      <nav
+        [ngClass]="{'galleryMenuVisible': isGalleryMenuAnimationWhenOpen}"
+        class="menu" 
+        id="galerie-menu"
+        >
+            <ul>
+              <li 
+              *ngFor="let menuItem of galleryMenuItemList; let i = index"
+              >
+              <a 
+              [ngClass]="{'selected': selectedIndex === i}" 
+              (click)="onGalleryMenuItemClick(menuItem, i)"
+              (mouseenter)="onShowThematicDropdownMenu()"
+                  >
+                    {{ menuItem.label }}
 
->
-  <ul>
-    <li *ngFor="let menuItem of galleryMenuItemList">
-      <a (click)="onGalleryMenuItemClick(menuItem)">
-          {{ menuItem.label }}
-        </a>
-    </li>
-  </ul>
-</nav>
+                  </a>
+                </li>
+                <app-ui-thematic-dropdown-menu
+                  *ngIf="isThematicDropdownMenuOpen"
+                  id="thematic-DropdownMenu"
+                  >
+                </app-ui-thematic-dropdown-menu>
+              </ul>
+            </nav>
+            
+          </div>

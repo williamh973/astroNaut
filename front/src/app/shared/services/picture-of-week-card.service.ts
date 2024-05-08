@@ -23,12 +23,12 @@ export class PictureOfWeekCardService {
     return this.http.get<PictureOfWeekCard>(`${this._BASE_URL_PICTURE_OF_WEEK_CARD}/${id}`);
   }
 
-  createCard(newsCard: PictureOfWeekCard): Observable<PictureOfWeekCard> {
-    return this.http.post<PictureOfWeekCard>(`${this._BASE_URL_PICTURE_OF_WEEK_CARD}/add`, newsCard);
+  createCard(pictureOfWeekCard: PictureOfWeekCard): Observable<PictureOfWeekCard> {
+    return this.http.post<PictureOfWeekCard>(`${this._BASE_URL_PICTURE_OF_WEEK_CARD}/add`, pictureOfWeekCard);
   }
 
-  updateCard(newsCard: PictureOfWeekCard): Observable<PictureOfWeekCard> {
-    return this.http.put<PictureOfWeekCard>(`${this._BASE_URL_PICTURE_OF_WEEK_CARD}/update/${newsCard.id}`, newsCard);
+  updateCard(pictureOfWeekCard: PictureOfWeekCard): Observable<PictureOfWeekCard> {
+    return this.http.put<PictureOfWeekCard>(`${this._BASE_URL_PICTURE_OF_WEEK_CARD}/update/${pictureOfWeekCard.id}`, pictureOfWeekCard);
   } 
 
   deleteCard(id: number): Observable<void> {

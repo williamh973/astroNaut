@@ -1,7 +1,9 @@
-#image-container, 
 #image {
-    height: 150px;
+    height: 125px;
     aspect-ratio: 16 / 9;
-    border: 2px solid rgb(188, 188, 188);
-    border-radius: 15px;
 }
+
+.thumbnail-focused {
+    border: 2px solid whitesmoke;
+    border-radius: 15px;
+ }
