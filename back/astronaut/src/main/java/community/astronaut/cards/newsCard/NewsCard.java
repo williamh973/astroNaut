@@ -1,7 +1,7 @@
-package community.astronaut.newsCard;
+package community.astronaut.cards.newsCard;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import community.astronaut.picture.Picture;
+import community.astronaut.imagesForCards.imageForNews.Picture;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

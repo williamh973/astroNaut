@@ -1,7 +1,6 @@
-package community.astronaut.imageForPictureOfWeek;
-
+package community.astronaut.imagesForCards.imageForNews;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import community.astronaut.pictureOfWeekCard.PictureOfWeekCard;
+import community.astronaut.cards.newsCard.NewsCard;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,7 +12,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImageForPictureOfWeek {
+public class Picture {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +20,9 @@ public class ImageForPictureOfWeek {
 
     private String src;
 
-    @ManyToOne
-    @JoinColumn(name = "picture_of_week_card_id", referencedColumnName = "id")
-    @JsonIgnoreProperties("imageListForPictureOfWeek")
-    private PictureOfWeekCard pictureOfWeekCard;
-}
 
+    @ManyToOne
+    @JoinColumn(name = "news_card_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("picturesList")
+    private NewsCard newsCard;
+}

@@ -1,6 +1,5 @@
-package community.astronaut.newsCard;
+package community.astronaut.cards.newsCard;
 
-import community.astronaut.markerData.MarkerData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

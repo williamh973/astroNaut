@@ -1,4 +1,4 @@
-package community.astronaut.imageForPictureOfWeek;
+package community.astronaut.imagesForCards.imageForPictureOfWeek;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

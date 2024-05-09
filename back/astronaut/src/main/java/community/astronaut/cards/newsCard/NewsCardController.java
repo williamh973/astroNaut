@@ -1,4 +1,4 @@
-package community.astronaut.newsCard;
+package community.astronaut.cards.newsCard;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

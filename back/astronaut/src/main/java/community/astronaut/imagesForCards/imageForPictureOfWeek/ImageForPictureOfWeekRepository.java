@@ -1,4 +1,4 @@
-package community.astronaut.imageForPictureOfWeek;
+package community.astronaut.imagesForCards.imageForPictureOfWeek;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

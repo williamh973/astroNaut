@@ -1,7 +1,7 @@
-package community.astronaut.pictureOfWeekCard;
+package community.astronaut.cards.pictureOfWeekCard;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import community.astronaut.imageForPictureOfWeek.ImageForPictureOfWeek;
+import community.astronaut.imagesForCards.imageForPictureOfWeek.ImageForPictureOfWeek;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

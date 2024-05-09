@@ -14,16 +14,13 @@ export class FeatPicturesOfWeekPageComponent {
   isLeftMenuOpen: boolean = false;
   isLeftMenuAnimationWhenOpen: boolean = false;
   isLeftMenuItemsClickEnable:  boolean = false;
-  // isPictureWeekPageOpen: boolean = false;
-
+  isPictureOfWeekPageOpen: boolean = true;
   
   constructor(private pictureOfWeekCardService: PictureOfWeekCardService) {}
 
 
   ngOnInit() {
     this.onGetPictureOfWeekCardList();
-    // console.log(this.isPictureWeekPageOpen);
-    
   }
 
 

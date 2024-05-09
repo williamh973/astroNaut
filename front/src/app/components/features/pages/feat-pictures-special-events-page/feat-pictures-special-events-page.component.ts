@@ -13,22 +13,23 @@ export class FeatPicturesSpecialEventsPageComponent {
   isLeftMenuOpen: boolean = false;
   isLeftMenuAnimationWhenOpen: boolean = false;
   isLeftMenuItemsClickEnable:  boolean = false;
+  isPictureSpecialEventPageOpen: boolean = true;
   
 
   constructor(private pictureSpecialEventCardService: PictureSpecialEventCardService) {}
 
 
   ngOnInit() {
-    this.onGetPictureOfWeekCardList();
+    this.onGetPictureSpecialEventCardList();
   }
 
 
-  onGetPictureOfWeekCardList() {
-    // this.pictureSpecialEventCardService.getCardList().subscribe(
-    //   (cardListFromDatabase: PictureSpecialEventCard[]) => {
-    //     this.pictureSpecialEventCardList = cardListFromDatabase;
-    //     }
-    // );
+  onGetPictureSpecialEventCardList() {
+    this.pictureSpecialEventCardService.getCardList().subscribe(
+      (cardListFromDatabase: PictureSpecialEventCard[]) => {
+        this.pictureSpecialEventCardList = cardListFromDatabase;
+        }
+    );
   }
 
   onOpenLeftMenu(isLeftMenuOpen: boolean) {

@@ -1,4 +1,4 @@
-package community.astronaut.picture;
+package community.astronaut.imagesForCards.imageForNews;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

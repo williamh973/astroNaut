@@ -55,6 +55,7 @@ import { UiCarouselNavComponent } from './components/ui/ui-carousel-nav/ui-carou
 import { UiBurgerMenuButtonComponent } from './components/ui/ui-burger-menu-button/ui-burger-menu-button.component';
 import { FeatPictureSpecialEventCardComponent } from './components/features/others-components/feat-picture-special-event-card/feat-picture-special-event-card.component';
 import { UiThematicDropdownMenuComponent } from './components/ui/ui-thematic-dropdown-menu/ui-thematic-dropdown-menu.component';
+import { FeatAddSpecialEventImagesFormComponent } from './components/features/others-components/feat-add-special-event-images-form/feat-add-special-event-images-form.component';
 
 
 @NgModule({
@@ -105,6 +106,7 @@ import { UiThematicDropdownMenuComponent } from './components/ui/ui-thematic-dro
     UiBurgerMenuButtonComponent,
     FeatPictureSpecialEventCardComponent,
     UiThematicDropdownMenuComponent,
+    FeatAddSpecialEventImagesFormComponent,
   ],
   imports: [
     BrowserModule,

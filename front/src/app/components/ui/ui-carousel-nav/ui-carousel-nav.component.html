@@ -20,17 +20,17 @@
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
       
-      <ng-container *ngIf="pictureOfWeekCardList.length > 0">
+      <ng-container *ngIf="isPictureOfWeekPageOpen && pictureOfWeekCardList.length > 0">
         <app-feat-picture-of-week-card
           [pictureOfWeekCard]="pictureOfWeekCardList[currentIndex]"
         ></app-feat-picture-of-week-card>
       </ng-container>
         
-      <!-- <ng-container *ngIf="pictureSpecialEventCardList.length > 0">
+      <ng-container *ngIf="isPictureSpecialEventPageOpen && pictureSpecialEventCardList.length > 0">
         <app-feat-picture-special-event-card
           [pictureSpecialEventCard]="pictureSpecialEventCardList[currentIndex]"
         ></app-feat-picture-special-event-card>
-      </ng-container> -->
+      </ng-container>
 
       <svg
         xmlns="http://www.w3.org/2000/svg"

@@ -1,4 +1,4 @@
-package community.astronaut.pictureOfWeekCard;
+package community.astronaut.cards.pictureOfWeekCard;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

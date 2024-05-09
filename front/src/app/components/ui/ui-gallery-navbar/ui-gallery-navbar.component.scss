@@ -41,17 +41,19 @@ li {
 
 li:hover {
     transition: transform 0.3s ease;
-    transform: translateY(7px);
+    color: rgba(54, 54, 54, 0.796);
+    text-shadow: 0 0 10px whitesmoke, 0 0 20px whitesmoke, 0 0 40px whitesmoke, 0 0 50px #ff00e0, 0 0 60px #ff00e0, 0 0 70px #ff00e0, 0 0 80px #ff00e0, 0 0 90px #ff00e0;
+    transform: translateY(5px);
 }
 
 a {
     margin: auto;
-    color: rgb(230, 230, 230);
+    color: whitesmoke;
 }
 
 .selected {
-    transform: translateY(7px);
-    color: red;
+    color: whitesmoke;
+    text-shadow: 0 0 10px whitesmoke, 0 0 20px whitesmoke, 0 0 40px whitesmoke, 0 0 50px #ff00e0, 0 0 60px #ff00e0, 0 0 70px #ff00e0, 0 0 80px #ff00e0, 0 0 90px #ff00e0;
 }
 
 #thematic-DropdownMenu {

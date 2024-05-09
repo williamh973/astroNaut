@@ -8,10 +8,10 @@
               <li 
               *ngFor="let menuItem of galleryMenuItemList; let i = index"
               >
-              <a 
-              [ngClass]="{'selected': selectedIndex === i}" 
-              (click)="onGalleryMenuItemClick(menuItem, i)"
-              (mouseenter)="onShowThematicDropdownMenu()"
+                  <a 
+                  [ngClass]="{'selected': i === selectedIndex}" 
+                  (click)="onGalleryMenuItemClick(menuItem, i)"
+                  (mouseenter)="onShowThematicDropdownMenu(menuItem)"
                   >
                     {{ menuItem.label }}
 
