@@ -1,5 +1,6 @@
 package community.astronaut.cards.newsCard;
 
+import community.astronaut.cards.pictureOfWeekCard.PictureOfWeekCard;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,5 +35,12 @@ public class NewsCardController {
     @PutMapping("/update/{id}")
     public NewsCard updateNewsCard(@RequestBody NewsCard newsCard, @PathVariable("id") Long id) {
         return newsCardService.updateNewsCard(newsCard, id);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public NewsCard deleteNewsCard(
+            @PathVariable("id") Long id
+    ) {
+        return newsCardService.deleteNewsCard(id);
     }
 }

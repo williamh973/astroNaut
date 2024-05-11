@@ -10,7 +10,26 @@ export class FeatToContributePageComponent {
   isAddImageFormOpen: boolean = false;
   isAddLocationFormOpen: boolean = false;
   isAddImageSpecialEventFormOpen: boolean = false;
+  isLeftMenuOpen: boolean = false;
+  isLeftMenuAnimationWhenOpen: boolean = false;
+  isLeftMenuItemsClickEnable:  boolean = false;
 
+
+  onOpenLeftMenu(isLeftMenuOpen: boolean) {
+    this.isLeftMenuOpen = isLeftMenuOpen;
+  }
+
+  startMenuAnimation(isLeftMenuAnimationWhenOpen: boolean) {
+    this.isLeftMenuAnimationWhenOpen = isLeftMenuAnimationWhenOpen;
+  }
+  
+  leftMenuItemsClickEnable(isLeftMenuItemsClickEnable: boolean) {
+    this.isLeftMenuItemsClickEnable = isLeftMenuItemsClickEnable;
+  }
+
+  onCloseLeftMenu(isLeftMenuOpen: boolean) {
+    this.isLeftMenuOpen = isLeftMenuOpen;
+  }
   
   onOpenAddImageForm() {
     this.isAddImageFormOpen = !this.isAddImageFormOpen; 
@@ -22,6 +41,10 @@ export class FeatToContributePageComponent {
     this.isAddLocationFormOpen = !this.isAddLocationFormOpen;
     this.isAddImageFormOpen = false;
     this.isAddImageSpecialEventFormOpen = false;
+  }
+
+  onCloseAddImageFormAfterOperationCompleted(isAddImageFormOpen: boolean) {
+    this.isAddImageFormOpen = isAddImageFormOpen;
   }
 
 }

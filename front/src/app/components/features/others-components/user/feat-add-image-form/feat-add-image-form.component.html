@@ -1,12 +1,21 @@
 <div id="main-container">
-    <h1>Ajouter une image</h1>
 
     <form (ngSubmit)="onSubmit()">
+        <div id="choose-container">
+            <label for="choose">Dans quelle catégorie souhaitez-vous ajouter votre image?</label>
+            <select name="choose" id="choose-select"[(ngModel)]="categoryOfPictureCard" required>
+                <option value="" disabled selected hidden class="select-your-choise">Saisissez votre choix</option>
+                <option value="special-events">Événements spéciaux</option>
+                <option value="competition">Concours</option>
+                <option value="spacecraft">Engins spatiaux</option>
+                <option value="author">Auteur</option>
+            </select>
+        </div>
+
         <div id="image-details-container">
             <div class="container-ngx-dropzone">
-                <label for="image">Image à téléverser</label>
                     <ngx-dropzone 
-                    class="ngx-dropzone"
+                    id="ngx-dropzone"
                     [accept]="'image/*'" 
                     (change)="onHandlePhotoUpload($event)"
                     >
@@ -23,7 +32,7 @@
                         </ngx-dropzone-label>    
                     
                         <ngx-dropzone-image-preview 
-                        class="img-preview"
+                        id="img-preview"
                         ngProjectAs="ngx-dropzone-preview" 
                         *ngFor="let photo of photosList" 
                         [file]="photo" 
@@ -31,10 +40,10 @@
                         (removed)="onRemovePhotoOfPhotoList(photo)"
                         >
                         </ngx-dropzone-image-preview>
-                    
                     </ngx-dropzone>    
             </div>        
         </div>
+
         <div id="inputs-zone">
 
             <div class="label-input-container">
@@ -47,7 +56,7 @@
                 minlength="5"
                 placeholder="Description courte de l'image*"
                 required
-                [(ngModel)]="pictureOfWeekCard.title"
+                [(ngModel)]="cardTitle"
                 #titleInput="ngModel"
                 >
                 <div *ngIf="titleInput.invalid && (titleInput.touched)" class="error">
@@ -67,7 +76,7 @@
                 minlength="5"
                 placeholder="Ecrire une description de l'image ici"
                 required
-                [(ngModel)]="pictureOfWeekCard.resume"
+                [(ngModel)]="cardResume"
                 #resumeInput="ngModel"
                 ></textarea>
                 <div *ngIf="resumeInput.invalid && (resumeInput.touched)" class="error">
@@ -89,8 +98,10 @@ class="loader"
 ></app-feat-loader-popup>
 
 <app-feat-feedback-messages-popup
-*ngIf="isPictureOfWeekCardCreatedSuccess || isPictureOfWeekCardCreatedError"
-[isPictureOfWeekCardCreatedSuccess]="isPictureOfWeekCardCreatedSuccess"
-[isPictureOfWeekCardCreatedError]="isPictureOfWeekCardCreatedError"
+*ngIf="isPictureSpecialEventCardCreatedSuccess || isPictureSpecialEventCardCreatedError || isPictureAuthorCardCreatedSuccess || isPictureAuthorCardCreatedError"
+[isPictureSpecialEventCardCreatedSuccess]="isPictureSpecialEventCardCreatedSuccess"
+[isPictureSpecialEventCardCreatedError]="isPictureSpecialEventCardCreatedError"
+[isPictureAuthorCardCreatedSuccess]="isPictureAuthorCardCreatedSuccess"
+[isPictureAuthorCardCreatedError]="isPictureAuthorCardCreatedError"
 ></app-feat-feedback-messages-popup>
 

@@ -1,0 +1,22 @@
+<div id="pictureAuthor-fullCard">
+    <ng-container 
+    id="pictureAuthor-imageContainer"
+    *ngIf="pictureAuthorCard.imageListForPictureAuthor.length > 0"
+    >
+        <img 
+        id="pictureAuthor-image" 
+        [src]="pictureAuthorCard.imageListForPictureAuthor[0].src" 
+        alt="image"
+        >
+        
+        <div id="pictureAuthor-fontContainer">    
+            <p id="title">{{ pictureAuthorCard.title }}</p>
+            <p id="resume">{{ pictureAuthorCard.resume }}</p>
+            <p id="timestamp">Mise en ligne il y a {{ elapsedTime }} à {{ pictureAuthorCard.timestamp | date: 'HH:mm' }} 
+                <!-- par  -->
+                <!-- {{ user.pseudo }} -->
+            </p>
+        </div>   
+    </ng-container> 
+</div>
+    

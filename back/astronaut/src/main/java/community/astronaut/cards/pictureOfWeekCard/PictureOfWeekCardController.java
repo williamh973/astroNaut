@@ -1,5 +1,7 @@
 package community.astronaut.cards.pictureOfWeekCard;
 
+import community.astronaut.imagesForCards.imageForPictureOfWeek.ImageForPictureOfWeek;
+import community.astronaut.imagesForCards.imageForPictureOfWeek.ImageForPictureOfWeekService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,5 +32,11 @@ public class PictureOfWeekCardController {
         return pictureOfWeekCardService.addPictureOfWeekCard(pictureOfWeekCard);
     }
 
+    @DeleteMapping("delete/{id}")
+    public PictureOfWeekCard deletePictureOfWeekCard(
+            @PathVariable("id") Long id
+            ) {
+        return pictureOfWeekCardService.deletePictureOfWeekCard(id);
+    }
 
 }

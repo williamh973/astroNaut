@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { PictureOfWeekCard } from 'src/app/models/cards/picture-of-week-card.model';
-import { PictureOfWeekCardService } from 'src/app/shared/services/picture-of-week-card.service';
+import { PictureAuthorCard } from 'src/app/models/cards/picture-author-card.model';
+import { PictureAuthorCardService } from 'src/app/shared/services/picture-author-card.service';
 
 @Component({
   selector: 'app-feat-pictures-authors-page',
@@ -10,26 +10,26 @@ import { PictureOfWeekCardService } from 'src/app/shared/services/picture-of-wee
 export class FeatPicturesAuthorsPageComponent {
 
  
-  pictureOfWeekCardList: PictureOfWeekCard[] = [];
+  pictureAuthorCardList: PictureAuthorCard[] = [];
   isLeftMenuOpen: boolean = false;
   isLeftMenuAnimationWhenOpen: boolean = false;
   isLeftMenuItemsClickEnable:  boolean = false;
-  // isPictureWeekPageOpen: boolean = false;
+  isPictureAuthorPageOpen: boolean = true;
 
-  constructor(private pictureOfWeekCardService: PictureOfWeekCardService) {}
+  constructor(private pictureAuthorCardService: PictureAuthorCardService) {}
 
 
   ngOnInit() {
-    this.onGetPictureOfWeekCardList();
-    // console.log(this.isPictureWeekPageOpen);
-    
+    this.onGetPictureAuthorCardList();
   }
 
 
-  onGetPictureOfWeekCardList() {
-    this.pictureOfWeekCardService.getCardList().subscribe(
-      (cardListFromDatabase: PictureOfWeekCard[]) => {
-        this.pictureOfWeekCardList = cardListFromDatabase;
+  onGetPictureAuthorCardList() {
+    this.pictureAuthorCardService.getCardList().subscribe(
+      (cardListFromDatabase: PictureAuthorCard[]) => {
+        this.pictureAuthorCardList = cardListFromDatabase;
+        console.log(this.pictureAuthorCardList );
+        
         }
     );
   }
@@ -48,10 +48,6 @@ export class FeatPicturesAuthorsPageComponent {
 
   onCloseLeftMenu(isLeftMenuOpen: boolean) {
     this.isLeftMenuOpen = isLeftMenuOpen;
-  }
-
-  onToggleColorSvgBurgerButton(isPictureWeekPageOpen: boolean) {
-    // this.isPictureWeekPageOpen = isPictureWeekPageOpen;
   }
 
 }

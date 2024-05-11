@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Feedback } from 'src/app/models/feedback-message.model';
 
 @Component({
@@ -14,8 +14,8 @@ export class FeatFeedbackMessagesPopupComponent {
   @Input() isLocationCreatedError!: boolean; 
   @Input() isContactTextCreatedSuccess!: boolean; 
   @Input() isContactTextCreatedError!: boolean; 
-  @Input() isPictureOfWeekCardCreatedSuccess!: boolean; 
-  @Input() isPictureOfWeekCardCreatedError!: boolean; 
+  @Input() isPictureAuthorCardCreatedSuccess!: boolean; 
+  @Input() isPictureAuthorCardCreatedError!: boolean; 
   @Input() isPictureSpecialEventCardCreatedSuccess!: boolean; 
   @Input() isPictureSpecialEventCardCreatedError!: boolean; 
   
@@ -26,10 +26,10 @@ export class FeatFeedbackMessagesPopupComponent {
     this.onShowNewsCardFeedback();
     this.onShowLocationFeedback();
     this.onShowContactTextFeedback();
-    this.onShowPictureOfWeekCardFeedback();
+    this.onShowPictureAuthorCardFeedback();
     this.onShowPictureSpecialEventCardFeedback();
   }
-  
+
   
   onShowNewsCardFeedback() {
     if (this.isNewsCardCreatedSuccess) {
@@ -61,10 +61,10 @@ export class FeatFeedbackMessagesPopupComponent {
     };
   }
   
-  onShowPictureOfWeekCardFeedback() {
-    if (this.isPictureOfWeekCardCreatedSuccess) {
+  onShowPictureAuthorCardFeedback() {
+    if (this.isPictureAuthorCardCreatedSuccess) {
       this.feedback = new Feedback("Votre photo a été envoyé avec succès et est en attente de validation.");
-    } else if (this.isPictureOfWeekCardCreatedError) {
+    } else if (this.isPictureAuthorCardCreatedError) {
       this.feedback = new Feedback("Une erreur s'est produite, veuillez recommencer ulterieurement.");
     } else {
       this.feedback = new Feedback("");

@@ -32,6 +32,12 @@
         ></app-feat-picture-special-event-card>
       </ng-container>
 
+      <ng-container *ngIf="isPictureAuthorPageOpen && pictureAuthorCardList.length > 0">
+        <app-feat-picture-author-card
+          [pictureAuthorCard]="pictureAuthorCardList[currentIndex]"
+        ></app-feat-picture-author-card>
+      </ng-container>
+
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="50"

@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { PictureAuthorCard } from 'src/app/models/cards/picture-author-card.model';
 import { PictureOfWeekCard } from 'src/app/models/cards/picture-of-week-card.model';
 import { PictureSpecialEventCard } from 'src/app/models/cards/picture-special-event-card.model';
-import { PictureOfWeekCardService } from 'src/app/shared/services/picture-of-week-card.service';
-import { PictureSpecialEventCardService } from 'src/app/shared/services/picture-special-event-card.service';
+
 
 @Component({
   selector: 'app-ui-carousel-nav',
@@ -13,8 +13,11 @@ export class UiCarouselNavComponent {
 
   @Input() pictureOfWeekCardList!: PictureOfWeekCard[];
   @Input() pictureSpecialEventCardList!: PictureSpecialEventCard[];
+  @Input() pictureAuthorCardList!: PictureAuthorCard[];
+
   @Input() isPictureOfWeekPageOpen!: boolean; 
   @Input() isPictureSpecialEventPageOpen!: boolean;
+  @Input() isPictureAuthorPageOpen!: boolean;
 
   currentIndex: number = 0;
 
@@ -23,9 +26,6 @@ export class UiCarouselNavComponent {
 
 
   ngOnInit() {
-    console.log('isPictureOfWeekPageOpen', this.isPictureOfWeekPageOpen);
-    console.log('isPictureSpecialEventPageOpen', this.isPictureSpecialEventPageOpen);
-    
     this.nextCard();
     this.prevCard();
   }
@@ -49,7 +49,6 @@ export class UiCarouselNavComponent {
   }
 
   nextCard() {
-
     switch (this.isPictureOfWeekPageOpen) {
       case true:
         this.currentIndex = (this.currentIndex + 1) % this.pictureOfWeekCardList.length;    
@@ -58,14 +57,22 @@ export class UiCarouselNavComponent {
           break;
     }
 
-    // if (this.isPictureOfWeekPageOpen) {
-    //   this.currentIndex = (this.currentIndex + 1) % this.pictureOfWeekCardList.length;    
-    // } else if (this.isPictureSpecialEventPageOpen) {
-    //   this.currentIndex = (this.currentIndex + 1) % this.pictureSpecialEventCardList.length;
-      
-    // } {
+    switch (this.isPictureSpecialEventPageOpen) {
+      case true:    
+        this.currentIndex = (this.currentIndex + 1) % this.pictureSpecialEventCardList.length;    
+        break;
+        case false:
+          break;
+    }
 
-    // }
+    switch (this.isPictureAuthorPageOpen) {
+      case true:    
+        this.currentIndex = (this.currentIndex + 1) % this.pictureAuthorCardList.length;    
+        break;
+        case false:
+          break;
+    }
+
   }
 
   prevCard() {

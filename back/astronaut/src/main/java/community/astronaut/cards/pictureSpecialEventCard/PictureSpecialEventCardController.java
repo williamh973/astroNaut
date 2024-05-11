@@ -1,5 +1,6 @@
 package community.astronaut.cards.pictureSpecialEventCard;
 
+import community.astronaut.cards.pictureOfWeekCard.PictureOfWeekCard;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,13 @@ public class PictureSpecialEventCardController {
     public PictureSpecialEventCard addPictureSpecialEventCard(@RequestBody PictureSpecialEventCard pictureSpecialEventCard) {
         pictureSpecialEventCard.setTimestamp(new Date());
         return pictureSpecialEventCardService.addPictureSpecialEventCard(pictureSpecialEventCard);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public PictureSpecialEventCard deletePictureSpecialEventCard(
+            @PathVariable("id") Long id
+    ) {
+        return pictureSpecialEventCardService.deletePictureSpecialEventCard(id);
     }
 
 

@@ -12,7 +12,8 @@
         <div id="pictureWeek-fontContainer">    
             <p id="title">{{ pictureOfWeekCard.title }}</p>
             <p id="resume">{{ pictureOfWeekCard.resume }}</p>
-            <p id="timestamp">Publié le {{ pictureOfWeekCard.timestamp | date:'dd/MM/yyyy'  }} par 
+            <p id="timestamp">Mise en ligne il y a {{ elapsedTime }} à {{ pictureOfWeekCard.timestamp | date: 'HH:mm' }} 
+                <!-- par  -->
                 <!-- {{ user.pseudo }} -->
             </p>
         </div>   

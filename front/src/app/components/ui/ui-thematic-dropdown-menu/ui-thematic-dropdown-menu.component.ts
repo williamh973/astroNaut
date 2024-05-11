@@ -17,7 +17,9 @@ export class UiThematicDropdownMenuComponent {
   ];
 
   isThematicDropdownMenuOpen: boolean = false;
+  isOurSolarSystemDropdownMenuOpen: boolean = false;
   selectedIndex: number = 0;
+
 
   constructor(private router: Router) {}
 
@@ -29,7 +31,6 @@ export class UiThematicDropdownMenuComponent {
             this.router.navigate(['/astronaut/gallery/pictures-of-galaxy']);
             break;
             case 'Notre système solaire':
-              this.router.navigate(['/pictures-of-solar-system']);
               break;
               case 'Nébuleuses':
                 this.router.navigate(['/pictures-of-nebulae']);
@@ -38,6 +39,14 @@ export class UiThematicDropdownMenuComponent {
                   this.router.navigate(['/pictures-of-auroras']);
                   break;
         } 
+    }
+
+    onShowOurSolarSystemDropdownMenu(menuItem: Menu) {
+      if (menuItem.label === 'Notre système solaire') {
+        this.isOurSolarSystemDropdownMenuOpen = true;
+      } else {
+        this.isOurSolarSystemDropdownMenuOpen = false;
+      }
     }
     
   }

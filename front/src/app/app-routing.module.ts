@@ -15,7 +15,7 @@ import { FeatPicturesAuthorsPageComponent } from './components/features/pages/fe
 const routes: Routes = [
   { 
     path: '', 
-    redirectTo:'/news', 
+    redirectTo:'astronaut/news', 
     pathMatch: 'full'
     
   },

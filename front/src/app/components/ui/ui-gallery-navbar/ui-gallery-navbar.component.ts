@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Menu } from 'src/app/models/menu-model';
 import { NavbarService } from 'src/app/shared/services/navbar.service';
@@ -34,7 +34,6 @@ export class UiGalleryNavbarComponent {
 
 ngOnInit() {
   this.selectedIndex = this.navbarService.onGetselectedIndex();
-  console.log(this.selectedIndex);
 }
 
   onGalleryMenuItemClick(menuItem: Menu, index: number) {
@@ -50,16 +49,16 @@ ngOnInit() {
           break;
           case 'Événements spéciaux':
             this.router.navigate(['/astronaut/gallery/pictures-of-special-events']); 
-          break;
-          case 'Auteurs':
-            this.router.navigate(['/astronaut/gallery/pictures-of-authors']);  
-        break;
-        case 'Concours':
-          this.router.navigate(['/astronaut/gallery/competition']);
-          break;
-        case 'Engins spatiaux':
-          this.router.navigate(['/astronaut/gallery/spacecrafts']);
-          break;
+            break;
+            case 'Auteurs':
+              this.router.navigate(['/astronaut/gallery/pictures-of-authors']);  
+              break;
+              case 'Concours':
+                this.router.navigate(['/astronaut/gallery/competition']);
+                break;
+                case 'Engins spatiaux':
+                  this.router.navigate(['/astronaut/gallery/spacecrafts']);
+                  break;
         } 
     }
       

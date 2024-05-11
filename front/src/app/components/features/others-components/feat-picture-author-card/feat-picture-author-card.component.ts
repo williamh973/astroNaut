@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
-import { PictureOfWeekCard } from 'src/app/models/cards/picture-of-week-card.model';
+import { PictureAuthorCard } from 'src/app/models/cards/picture-author-card.model';
 
 @Component({
-  selector: 'app-feat-picture-of-week-card',
-  templateUrl: './feat-picture-of-week-card.component.html',
-  styleUrls: ['./feat-picture-of-week-card.component.scss']
+  selector: 'app-feat-picture-author-card',
+  templateUrl: './feat-picture-author-card.component.html',
+  styleUrls: ['./feat-picture-author-card.component.scss']
 })
-export class FeatPictureOfWeekCardComponent {
+export class FeatPictureAuthorCardComponent {
 
-  @Input() pictureOfWeekCard!: PictureOfWeekCard;
+  @Input() pictureAuthorCard!: PictureAuthorCard;
 
   elapsedTime: string = '';
 
@@ -20,7 +20,7 @@ export class FeatPictureOfWeekCardComponent {
 
   private calculateElapsedTime() {
     const currentTime = new Date().getTime();
-    const publishedTime = new Date(this.pictureOfWeekCard.timestamp).getTime();
+    const publishedTime = new Date(this.pictureAuthorCard.timestamp).getTime();
     const elapsedTimeInMilliseconds = currentTime - publishedTime;
     
     const seconds = Math.floor(elapsedTimeInMilliseconds / 1000);

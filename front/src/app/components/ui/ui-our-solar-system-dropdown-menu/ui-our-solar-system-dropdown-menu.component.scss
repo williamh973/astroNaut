@@ -1,16 +1,6 @@
-div {
-    width: 200px;
-    height: 200px;
-    min-height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 nav {
     width: 170px;
-    height: 200px;
-    min-height: 200px;
+    height: 440px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -24,8 +14,7 @@ nav {
 
 ul {
     width: 100%;
-    height: 200px;
-    min-height: 200px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -42,6 +31,7 @@ li {
     justify-content: flex-start;
     align-items: center;
     color: rgba(74, 74, 74, 0.796);
+    
 }
 
 li:hover {
@@ -56,17 +46,10 @@ a {
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
 }
 
 a:hover {
     cursor: pointer;
 }
 
-
-#solarSystem-dropdownMenu {
-    position: relative; 
-    bottom: 145px; 
-    left: 200px;
-    z-index: 1;
-}

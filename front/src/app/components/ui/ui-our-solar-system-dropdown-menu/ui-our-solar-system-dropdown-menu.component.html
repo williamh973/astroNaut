@@ -1,0 +1,15 @@
+<nav
+class="solarSystem-dropdownMenu" 
+id="galerie-menu"
+>
+  <ul>
+    <li 
+    *ngFor="let menuItem of ourSolarSystemMenuItemList; let i = index"
+    [ngClass]="{'selected': selectedIndex === i}"
+    >
+      <a [ngClass]="{'selected': selectedIndex === i}" (click)="onOurSolarSystemMenuItemClick(menuItem, i)">
+        {{ menuItem.label }}
+      </a>
+    </li>
+  </ul>
+</nav>

@@ -1,11 +1,21 @@
-<div id="main-container">
-    <h1>Contribuer</h1>
+<header id="headerTop">
+    <div id="top-container">
+        <app-ui-burger-menu-button
+        (isLeftMenuOpen)="onOpenLeftMenu($event)"
+        (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
+        (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
+        ></app-ui-burger-menu-button>
+        <h1>Contribuer</h1>
+    </div>
     <p id="introduction-text">
      Lorem ipsum, dolor sit amet consectetur adipisicing 
      elit. Distinctio similique velit reprehenderit quas perferendis
      neque iure veritatis dicta totam autem!
     </p>
+</header>
 
+<main id="main-container">
+    
     <div id="add-container">
         <p id="">Que souhaitez-vous ajouter à la communautée?</p>
         <div id="buttons-container">
@@ -14,19 +24,28 @@
         </div>
     </div>
 
-
     <ng-container *ngIf="isAddImageFormOpen">
         <app-feat-add-image-form
+        (isAddImageFormOpen)="onCloseAddImageFormAfterOperationCompleted($event)"
         ></app-feat-add-image-form>
     </ng-container>
 
-    <ng-container *ngIf="isAddImageSpecialEventFormOpen">
+    <!-- <ng-container *ngIf="isAddImageSpecialEventFormOpen">
         <app-feat-add-special-event-images-form
         ></app-feat-add-special-event-images-form>
-    </ng-container>
+    </ng-container> -->
+
+
 
     <ng-container *ngIf="isAddLocationFormOpen">
         <app-feat-add-locations-form
         ></app-feat-add-locations-form> 
     </ng-container>
-</div>
+</main>
+
+<app-ui-navbar
+*ngIf="isLeftMenuOpen"
+[isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
+[isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
+(isLeftMenuOpen)="onCloseLeftMenu($event)"
+></app-ui-navbar>
