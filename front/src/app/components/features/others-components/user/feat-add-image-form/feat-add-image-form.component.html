@@ -47,11 +47,11 @@
         <div id="inputs-zone">
 
             <div class="label-input-container">
-                <label for="title">Titre de l'image'</label>
+                <label for="title">* Titre de l'image</label>
                 <input 
                 type="text" 
                 name="title" 
-                id="title" 
+                id="title-input" 
                 maxlength="150"
                 minlength="5"
                 placeholder="Description courte de l'image*"
@@ -67,27 +67,25 @@
             </div>
 
             <div class="label-input-container">
-                <label for="resume">Description de l'image</label>
+                <label for="resume">Description de l'image (Facultatif)</label>
                 <textarea 
                 type="text" 
                 name="resume" 
-                id="resume" 
+                id="resume-input" 
                 maxlength="1000"
                 minlength="5"
                 placeholder="Ecrire une description de l'image ici"
-                required
                 [(ngModel)]="cardResume"
                 #resumeInput="ngModel"
                 ></textarea>
                 <div *ngIf="resumeInput.invalid && (resumeInput.touched)" class="error">
-                    <div *ngIf="resumeInput.errors?.['required']">La description de l'image est requise.</div>
                     <div *ngIf="resumeInput.errors?.['minlength']">La description de l'image doit comporter au moins 5 caractères.</div>
                     <div *ngIf="resumeInput.errors?.['maxlength']">La description de l'image ne peut pas dépasser 1000 caractères.</div>
                 </div>    
             </div>
-    
-            <button type="submit" [disabled]="!isPhotoInTheBox || !onInputTitleCompleted()">Publier l'image</button>    
         </div>
+        
+        <button type="submit" [disabled]="!isPhotoInTheBox || !onInputTitleCompleted()">Publier l'image</button>    
     </form>    
     
 </div>    

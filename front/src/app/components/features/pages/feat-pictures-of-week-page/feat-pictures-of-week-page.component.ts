@@ -20,7 +20,7 @@ export class FeatPicturesOfWeekPageComponent {
 
   constructor(private pictureOfWeekCardService: PictureOfWeekCardService) {}
 
-
+ 
   ngOnInit() {
     this.onGetPictureOfWeekCardList();
   }
@@ -30,40 +30,15 @@ export class FeatPicturesOfWeekPageComponent {
     this.pictureOfWeekCardService.getCardList().subscribe(
       (cardListFromDatabase: PictureOfWeekCard[]) => {
         this.pictureOfWeekCardList = cardListFromDatabase;
-        
-        if (this.pictureOfWeekCardList.length > 0) {
-          this.calculateElapsedTime();
-        }
+
+            this.calculateElapsedTime(this.pictureOfWeekCardList);
+          }
+        );
       }
-    );
-  }
 
-  onOpenLeftMenu(isLeftMenuOpen: boolean) {
-    this.isLeftMenuOpen = isLeftMenuOpen;
-  }
 
-  startMenuAnimation(isLeftMenuAnimationWhenOpen: boolean) {
-    this.isLeftMenuAnimationWhenOpen = isLeftMenuAnimationWhenOpen;
-  }
-  
-  leftMenuItemsClickEnable(isLeftMenuItemsClickEnable: boolean) {
-    this.isLeftMenuItemsClickEnable = isLeftMenuItemsClickEnable;
-  }
-
-  onCloseLeftMenu(isLeftMenuOpen: boolean) {
-    this.isLeftMenuOpen = isLeftMenuOpen;
-  }
-
-  onToggleColorSvgBurgerButton(isPictureWeekPageOpen: boolean) {
-    // this.isPictureWeekPageOpen = isPictureWeekPageOpen;
-  }
-
- 
-  private calculateElapsedTime() {
-      const currentTime = new Date().getTime();
-      
-      this.pictureOfWeekCardList.forEach((cards) => {
-        const publishedTime = new Date(cards.timestamp).getTime();
+  private getTime(publishedTime: number, pictureOfWeekCardList: PictureOfWeekCard[]) {
+        const currentTime = new Date().getTime();
         const elapsedTimeInMilliseconds = currentTime - publishedTime;
         
         const seconds = Math.floor(elapsedTimeInMilliseconds / 1000);
@@ -73,7 +48,7 @@ export class FeatPicturesOfWeekPageComponent {
         const days = Math.floor(hours / 24);
         const months = Math.floor(days / 30);
         const years = Math.floor(months / 12);
-  
+
         this.showElapsedTime(
           seconds, 
           minutes, 
@@ -82,10 +57,16 @@ export class FeatPicturesOfWeekPageComponent {
           months, 
           years
           )
-      })
-  }
-    
 
+          this.cardListDeletedAfterSevenDays(days, pictureOfWeekCardList);
+  }
+ 
+  private calculateElapsedTime(pictureOfWeekCardList: PictureOfWeekCard[]) {
+    pictureOfWeekCardList.forEach((pictureOfWeekCard) => {
+      const pictureOfWeekCardPublishedTime = new Date(pictureOfWeekCard.timestamp,).getTime();
+      this.getTime(pictureOfWeekCardPublishedTime, pictureOfWeekCardList)
+    })
+  }
 
   private showElapsedTime(
     seconds: number, 
@@ -108,31 +89,45 @@ export class FeatPicturesOfWeekPageComponent {
     } else {
       this.elapsedTime = seconds + ' secondes';
     }
-
-    this.timeBeforeCardDeleted(days);
+  
   } 
 
-  private timeBeforeCardDeleted(days: number) {
-    this.pictureOfWeekCardList.forEach((cards) => {
-      cards.id;
-
-      if (cards.id && days > 7) {
-      console.log(cards);
- 
-      
-        // this.pictureOfWeekCardService.deleteCard(this.pictureOfWeekCard.id).subscribe(
-        //   () => {
-        //     console.log('carte supprimée avec succès');
-        //   },
-        //   (error) => {
-        //     console.log(error);
-        //   }
-        // );  
-      }
-
-    })
+  onOpenLeftMenu(isLeftMenuOpen: boolean) {
+    this.isLeftMenuOpen = isLeftMenuOpen;
   }
 
+  startMenuAnimation(isLeftMenuAnimationWhenOpen: boolean) {
+    this.isLeftMenuAnimationWhenOpen = isLeftMenuAnimationWhenOpen;
+  }
+  
+  leftMenuItemsClickEnable(isLeftMenuItemsClickEnable: boolean) {
+    this.isLeftMenuItemsClickEnable = isLeftMenuItemsClickEnable;
+  }
+
+  onCloseLeftMenu(isLeftMenuOpen: boolean) {
+    this.isLeftMenuOpen = isLeftMenuOpen;
+  }
+
+  onToggleColorSvgBurgerButton(isPictureWeekPageOpen: boolean) {
+    // this.isPictureWeekPageOpen = isPictureWeekPageOpen;
+  }
+
+
+  private cardListDeletedAfterSevenDays(
+    days: number,  
+    pictureOfWeekCardList: PictureOfWeekCard[]
+    ) {
+    if (pictureOfWeekCardList.length > 0) {
+      pictureOfWeekCardList.forEach((cards) => {
+        let cardId = cards.id;
+          if (cardId && days > 7) {
+            this.pictureOfWeekCardService.deleteCard(cardId).subscribe();  
+          }
+        })
+    }
+  }
+ 
 }
+
 
 

@@ -28,8 +28,6 @@ export class FeatPicturesAuthorsPageComponent {
     this.pictureAuthorCardService.getCardList().subscribe(
       (cardListFromDatabase: PictureAuthorCard[]) => {
         this.pictureAuthorCardList = cardListFromDatabase;
-        console.log(this.pictureAuthorCardList );
-        
         }
     );
   }

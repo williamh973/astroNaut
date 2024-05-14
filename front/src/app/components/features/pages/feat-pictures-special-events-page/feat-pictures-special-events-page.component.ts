@@ -10,13 +10,16 @@ import { PictureSpecialEventCardService } from 'src/app/shared/services/picture-
 export class FeatPicturesSpecialEventsPageComponent {
 
   pictureSpecialEventCardList: PictureSpecialEventCard[] = [];
+  transferredPictureCardList : PictureSpecialEventCard[] = [];
   isLeftMenuOpen: boolean = false;
   isLeftMenuAnimationWhenOpen: boolean = false;
   isLeftMenuItemsClickEnable:  boolean = false;
   isPictureSpecialEventPageOpen: boolean = true;
   
 
-  constructor(private pictureSpecialEventCardService: PictureSpecialEventCardService) {}
+  constructor(
+    private pictureSpecialEventCardService: PictureSpecialEventCardService
+    ) {}
 
 
   ngOnInit() {
