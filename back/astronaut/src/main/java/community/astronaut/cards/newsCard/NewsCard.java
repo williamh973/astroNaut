@@ -1,6 +1,7 @@
 package community.astronaut.cards.newsCard;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import community.astronaut.comment.Comment;
 import community.astronaut.imagesForCards.imageForNews.Picture;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -48,4 +49,8 @@ public class NewsCard {
     private Integer likeCount;
 
     private Integer dislikeCount;
+
+    @OneToMany(mappedBy = "newsCard", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("newsCard")
+    private Set<Comment> commentsList = new HashSet<>();
 }

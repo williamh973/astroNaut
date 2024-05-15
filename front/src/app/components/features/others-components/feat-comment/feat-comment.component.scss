@@ -1,0 +1,68 @@
+#thumbsTimestamp-container {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+}
+
+#thumbUp-container, #thumbDown-container {
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#counter-like, #counter-dislike {
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
+}
+
+svg {
+    min-width: 24px;
+    min-height: 24px;
+}
+
+svg:hover {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    transform: translateY(-5px);
+    filter: drop-shadow(0 0 2px whitesmoke) drop-shadow(0 0 4px #ff70ee) drop-shadow(0 0 6px #ff00e0);    
+}
+
+svg:hover path {
+    fill: whitesmoke;
+}
+
+svg:active path {
+    fill: red;  
+}
+
+.timestamp {
+    font-size: 12px;
+}
+
+.commentLiked path {
+    fill: red;
+}
+
+.commentDisliked path {
+    fill: red;
+}
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    z-index: 1;
+ }

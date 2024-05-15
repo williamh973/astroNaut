@@ -35,8 +35,17 @@ id="full-page"
         <p class="article">{{ newsCardOptionnalThreeArticle }}</p>
 
         <p id="timestamp">Publié le {{ newsCardTimestamp | date:'dd/MM/yyyy' }}</p>
-     
+        
+        <button (click)="onCommentFormOpen()">Poster un commentaire</button>
 
+            <app-feat-add-comment-form 
+            *ngIf="isCommentFormOpen"
+            [newsCard]="newsCard"
+            ></app-feat-add-comment-form>
+
+            <app-feat-comment-list
+            [newsCardId]="newsCardId"
+            ></app-feat-comment-list>
     </div>
 
 </div>

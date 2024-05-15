@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Observable, catchError, forkJoin, of } from 'rxjs';
+import { catchError, of } from 'rxjs';
 import { MarkerData } from 'src/app/models/marker-data.model';
 import { MarkerService } from 'src/app/shared/services/marker/marker.service';
 
@@ -28,6 +28,7 @@ constructor(private markerService: MarkerService) {}
           () => {
           this.isLoadingComposantActive = false;
           this.isLocationCreatedError = true;
+          
           setTimeout(() => {
             this.isLocationCreatedError = false;
           }, 3000);
@@ -37,10 +38,12 @@ constructor(private markerService: MarkerService) {}
         if (createdLocation !== null) {
           this.isLoadingComposantActive = false;
           this.isLocationCreatedSuccess = true;
+
           setTimeout(() => {
             this.isLocationCreatedSuccess = false;
           }, 3000);
         }
       });
   }
+  
 }

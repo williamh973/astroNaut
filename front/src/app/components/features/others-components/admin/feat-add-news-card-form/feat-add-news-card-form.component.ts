@@ -14,7 +14,7 @@ import { PictureService } from 'src/app/shared/services/picture/picture.service'
 })
 export class FeatAddNewsCardFormComponent {
 
-  newsCard: NewsCard = new NewsCard([], '', '', '', '', '', 0, new Date(), 0, 0);
+  newsCard: NewsCard = new NewsCard([], '', '', '', '', '', 0, new Date(), 0, 0, []);
   photosList: File[] = [];
   isPhotoInTheBox: boolean = false;
   isLoadingComposantActive: boolean = false;
@@ -70,14 +70,11 @@ export class FeatAddNewsCardFormComponent {
   private createCard() {
     this.newsCardService.createCard(this.newsCard)
     .subscribe((createdCard) => {
-      const uploadObservableList: Observable<Picture | null>[] = [];
   
-      for (let file of this.photoService.photosList) {
-        const filePath = `news-card/${new Date().getTime()}_${file.name}.png`;
-        const fileRef = this.storage.ref(filePath);
+        for (let file of this.photoService.photosList) {
+          const filePath = `news-card/${new Date().getTime()}_${file.name}.png`;
+          const fileRef = this.storage.ref(filePath);
 
-        const uploadObservable = new Observable<Picture | null>(
-          (observer) => {
           const task = this.storage.upload(filePath, file);
           task.snapshotChanges().pipe(
             finalize(() => {
@@ -87,53 +84,31 @@ export class FeatAddNewsCardFormComponent {
                     const newPicture: Picture = new Picture(url, createdCard);
                     this.pictureService.addPicture(newPicture).subscribe(
                       (savedPicture) => {
-                        observer.next(savedPicture);
-                        observer.complete();
+                        this.isLoadingComposantActive = false;
+                        this.isNewsCardCreatedSuccess = true; 
+                  
+                        setTimeout(() => {
+                          this.isNewsCardCreatedSuccess = false;
+                        }, 3000);
                       },
                       (error) => {
-                        observer.next(null);
-                        observer.complete();
+                        this.isLoadingComposantActive = false;
+                        this.isNewsCardCreatedError = true;
+                  
+                        setTimeout(() => {
+                          this.isNewsCardCreatedError = false;
+                        }, 3000);
                       }
                     );
-                  } else {
-                    observer.next(null);
-                    observer.complete();
-                  }
+                  } 
                 }
               );
             })
           ).subscribe();
-        });
-        uploadObservableList.push(uploadObservable);
+        }
       }
+    );
+  }
 
-      this.onUploadResults(uploadObservableList)
-    }
-  );
-
-}
-
-private onUploadResults(uploadObservableList: any) {
-  forkJoin(uploadObservableList).subscribe(
-    (results) => {
-      console.log('Résultats :', results);
-      this.isLoadingComposantActive = false;
-      this.isNewsCardCreatedSuccess = true; 
-
-      setTimeout(() => {
-        this.isNewsCardCreatedSuccess = false;
-      }, 3000);
-    },
-    (error) => {
-      console.error('Résultats :', error);
-      this.isLoadingComposantActive = false;
-      this.isNewsCardCreatedError = true;
-
-      setTimeout(() => {
-        this.isNewsCardCreatedError = false;
-      }, 3000);
-    }
-  );
-}
 
 }

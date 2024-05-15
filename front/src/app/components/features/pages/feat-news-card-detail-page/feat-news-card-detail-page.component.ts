@@ -13,12 +13,14 @@ export class FeatNewsCardDetailPageComponent {
   newsCard!: NewsCard;
   newsCardPictureSrc: string = '';
   newsCardTitle: string = '';
-  newsCardReadingTime!: number;
   newsCardMainArticle: string = '';
   newsCardOptionnalOneArticle: string = '';
   newsCardOptionnalTwoArticle: string = '';
   newsCardOptionnalThreeArticle: string = '';
   newsCardTimestamp: Date = new Date();
+  newsCardReadingTime!: number;
+  newsCardId: number = 0;
+  isCommentFormOpen: boolean = false;
 
   constructor(
     private route: ActivatedRoute, 
@@ -31,10 +33,11 @@ export class FeatNewsCardDetailPageComponent {
   }
 
   onGetNewsCardId() {
-    this.route.paramMap.subscribe((params: Params) => {
-      const cardId = +params['get']('id');
+    this.route.paramMap.subscribe(
+      (params: Params) => {
+      this.newsCardId = +params['get']('id');
 
-      this.newsCardService.getCardById(cardId).subscribe(
+      this.newsCardService.getCardById(this.newsCardId).subscribe(
         (newsCard: NewsCard) => {
           this.newsCard = newsCard;
           this.onGetNewsCardPicture();
@@ -45,36 +48,38 @@ export class FeatNewsCardDetailPageComponent {
       });
 
     });
-
   }
-
   
-  private onGetNewsCardPicture() {
+  onGetNewsCardPicture() {
     if (this.newsCard.picturesList.length > 0) {
         this.newsCardPictureSrc = this.newsCard.picturesList[0].src;
     }
   }
 
-  private onGetNewsCardTitle() {
+  onGetNewsCardTitle() {
       this.newsCardTitle = this.newsCard.title;
   }
 
-  private onGetNewsCardArticles() {
+  onGetNewsCardArticles() {
       this.newsCardMainArticle = this.newsCard.mainArticle;
       this.newsCardOptionnalOneArticle = this.newsCard.optionalArticleOne;
       this.newsCardOptionnalTwoArticle = this.newsCard.optionalArticleTwo;
       this.newsCardOptionnalThreeArticle = this.newsCard.optionalArticleThree;
   }
 
-  private onGetNewsCardReadingTime() {
+  onGetNewsCardReadingTime() {
     this.newsCardReadingTime = this.newsCard.readingTime;
   }
 
-  private onGetNewsCardTimestamp() {
+  onGetNewsCardTimestamp() {
       this.newsCardTimestamp = this.newsCard.timestamp;
   }
 
   onCloseDetailPage() {
-    this.router.navigate(['/news/']);
+    this.router.navigate(['astronaut/news/']);
+  }
+
+  onCommentFormOpen() {
+    this.isCommentFormOpen = !this.isCommentFormOpen
   }
 }

@@ -57,6 +57,9 @@ import { UiThematicDropdownMenuComponent } from './components/ui/ui-thematic-dro
 import { FeatAddSpecialEventImagesFormComponent } from './components/features/others-components/feat-add-special-event-images-form/feat-add-special-event-images-form.component';
 import { UiOurSolarSystemDropdownMenuComponent } from './components/ui/ui-our-solar-system-dropdown-menu/ui-our-solar-system-dropdown-menu.component';
 import { FeatPictureAuthorCardComponent } from './components/features/others-components/feat-picture-author-card/feat-picture-author-card.component';
+import { FeatCommentComponent } from './components/features/others-components/feat-comment/feat-comment.component';
+import { FeatAddCommentFormComponent } from './components/features/others-components/user/feat-add-comment-form/feat-add-comment-form.component';
+import { FeatCommentListComponent } from './components/features/others-components/feat-comment-list/feat-comment-list.component';
 
 
 @NgModule({
@@ -109,6 +112,9 @@ import { FeatPictureAuthorCardComponent } from './components/features/others-com
     FeatAddSpecialEventImagesFormComponent,
     UiOurSolarSystemDropdownMenuComponent,
     FeatPictureAuthorCardComponent,
+    FeatCommentComponent,
+    FeatAddCommentFormComponent,
+    FeatCommentListComponent,
   ],
   imports: [
     BrowserModule,

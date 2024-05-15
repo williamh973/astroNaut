@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Feedback } from 'src/app/models/feedback-message.model';
 
 @Component({
@@ -18,6 +18,8 @@ export class FeatFeedbackMessagesPopupComponent {
   @Input() isPictureAuthorCardCreatedError!: boolean; 
   @Input() isPictureSpecialEventCardCreatedSuccess!: boolean; 
   @Input() isPictureSpecialEventCardCreatedError!: boolean; 
+  @Input() isCommentCreatedSuccess!: boolean; 
+  @Input() isCommentCreatedError!: boolean; 
   
   feedback: Feedback = new Feedback("");
 
@@ -28,6 +30,7 @@ export class FeatFeedbackMessagesPopupComponent {
     this.onShowContactTextFeedback();
     this.onShowPictureAuthorCardFeedback();
     this.onShowPictureSpecialEventCardFeedback();
+    this.onShowCommentFeedback();
   }
 
   
@@ -76,6 +79,16 @@ export class FeatFeedbackMessagesPopupComponent {
     if (this.isPictureSpecialEventCardCreatedSuccess) {
       this.feedback = new Feedback("Votre photo a été envoyé avec succès et est en attente de validation.");
     } else if (this.isPictureSpecialEventCardCreatedError) {
+      this.feedback = new Feedback("Une erreur s'est produite, veuillez recommencer ulterieurement.");
+    } else {
+      this.feedback = new Feedback("");
+    };
+  }
+
+  onShowCommentFeedback() {
+    if (this.isCommentCreatedSuccess) {
+      this.feedback = new Feedback("Votre commentaire a été envoyé avec succès.");
+    } else if (this.isCommentCreatedError) {
       this.feedback = new Feedback("Une erreur s'est produite, veuillez recommencer ulterieurement.");
     } else {
       this.feedback = new Feedback("");

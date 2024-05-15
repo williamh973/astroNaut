@@ -1,0 +1,34 @@
+<main> 
+    <form (ngSubmit)="onSubmit()">
+        <label for="content">Poster un commentaire sur cette actualité</label>
+        <input 
+        type="text" 
+        name="content" 
+        id="content" 
+        maxlength="1000"
+        minlength="1"
+        placeholder="Ecrivez votre commentaire ici.*"
+        required
+        [(ngModel)]="comment.content"
+        #titleInput="ngModel"
+        >
+        <div *ngIf="titleInput.invalid && (titleInput.touched)" class="error">
+            <div *ngIf="titleInput.errors?.['required']">La description est requise.</div>
+            <div *ngIf="titleInput.errors?.['minlength']">La description doit comporter au moins 1 caractères.</div>
+            <div *ngIf="titleInput.errors?.['maxlength']">La description ne peut pas dépasser 1000 caractères.</div>
+        </div>   
+        <button type="submit">Envoyer</button> 
+    </form>    
+</main>    
+
+<app-feat-loader-popup
+class="loader" 
+*ngIf="isLoadingComposantActive"
+></app-feat-loader-popup>
+
+<app-feat-feedback-messages-popup
+*ngIf="isCommentCreatedSuccess || isCommentCreatedError"
+[isCommentCreatedSuccess]="isCommentCreatedSuccess"
+[isCommentCreatedError]="isCommentCreatedError"
+></app-feat-feedback-messages-popup>
+

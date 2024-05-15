@@ -12,10 +12,10 @@ export class FeatNewsCardComponent {
 
   @Input() newsCard!: NewsCard;
 
+  newsCardPictureSrc: string = '';
   isNewsCardDetailPageOpen: boolean = false;
   isNewsCardLiked: boolean = false;
   isNewsCardDisliked: boolean = false;
-  newsCardPictureSrc: string = '';
 
   constructor(
     private router: Router,
@@ -38,38 +38,17 @@ export class FeatNewsCardComponent {
     if (this.isNewsCardLiked && this.newsCard.dislikeCount === 0) {
       this.isNewsCardDisliked = false;
       this.newsCard.likeCount++;
-      this.newsCardService.updateCard(this.newsCard).subscribe(
-        () => {
-          console.log("modifié avec succès");  
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      this.newsCardService.updateCard(this.newsCard).subscribe();
     } else if (this.isNewsCardLiked && this.newsCard.dislikeCount > 0) { 
       this.isNewsCardDisliked = false;
       this.newsCard.likeCount++;
       this.newsCard.dislikeCount--;
-      this.newsCardService.updateCard(this.newsCard).subscribe(
-        () => {
-          console.log("modifié avec succès");  
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      this.newsCardService.updateCard(this.newsCard).subscribe();
     }
 
     if (!this.isNewsCardLiked && this.newsCard.likeCount > 0) {
       this.newsCard.likeCount--;
-      this.newsCardService.updateCard(this.newsCard).subscribe(
-        () => {
-          console.log("modifié avec succès");  
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      this.newsCardService.updateCard(this.newsCard).subscribe();
     } 
   }
  
@@ -79,38 +58,17 @@ export class FeatNewsCardComponent {
     if (this.isNewsCardDisliked && this.newsCard.likeCount === 0) {
       this.isNewsCardLiked = false;
       this.newsCard.dislikeCount++;
-      this.newsCardService.updateCard(this.newsCard).subscribe(
-        () => {
-          console.log("modifié avec succès");  
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      this.newsCardService.updateCard(this.newsCard).subscribe();
     } else if (this.isNewsCardDisliked && this.newsCard.likeCount > 0) { 
       this.isNewsCardLiked = false;
       this.newsCard.dislikeCount++;
       this.newsCard.likeCount--;
-      this.newsCardService.updateCard(this.newsCard).subscribe(
-        () => {
-          console.log("modifié avec succès");  
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      this.newsCardService.updateCard(this.newsCard).subscribe();
     } 
 
     if (!this.isNewsCardDisliked && this.newsCard.dislikeCount > 0) {
       this.newsCard.dislikeCount--;
-      this.newsCardService.updateCard(this.newsCard).subscribe(
-        () => {
-          console.log("modifié avec succès");  
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
+      this.newsCardService.updateCard(this.newsCard).subscribe();
     } 
   }
 

@@ -1,6 +1,5 @@
 package community.astronaut.cards.newsCard;
 
-import community.astronaut.cards.pictureOfWeekCard.PictureOfWeekCard;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
