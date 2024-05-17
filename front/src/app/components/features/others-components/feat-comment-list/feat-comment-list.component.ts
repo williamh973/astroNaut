@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NewsCard } from 'src/app/models/cards/news-card.model';
 import { Comments } from 'src/app/models/comment.model';
 import { CommentService } from 'src/app/shared/services/comment.service';
 
@@ -10,21 +11,24 @@ import { CommentService } from 'src/app/shared/services/comment.service';
 export class FeatCommentListComponent {
 
   @Input() newsCardId!: number;
+  @Input() newsCard!: NewsCard;
   commentList: Comments[] = [];
 
   constructor(private commentService: CommentService) {}
 
   ngOnInit() {
-    // console.log(this.newsCardId);
     this.onGetNewsCardComments();
   }
 
   onGetNewsCardComments() {
     this.commentService.getCommentList().subscribe(
       (commentFromDatabase) => {
-        this.commentList = commentFromDatabase;
+        this.filterCommentsByNewsCardId(commentFromDatabase);
       }
     )
   };
 
+  private filterCommentsByNewsCardId(commentFromDatabase: Comments[]) {
+    this.commentList = commentFromDatabase.filter((comments) => comments.newsCard.id === this.newsCardId);
+  }
 }

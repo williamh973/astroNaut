@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { catchError, of, throwError } from 'rxjs';
+import { catchError, of } from 'rxjs';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
 import { Comments } from 'src/app/models/comment.model';
 import { CommentService } from 'src/app/shared/services/comment.service';
@@ -17,41 +17,53 @@ export class FeatAddCommentFormComponent {
   isLoadingComposantActive: boolean = false;
   isCommentCreatedSuccess: boolean = false;
   isCommentCreatedError: boolean = false;
+  isContentInputNotEmpty: boolean = false;
 
 
   constructor(private commentService: CommentService) {}
 
+
+  ngOnInit() {
+
+  }
 
   onSubmit() {
     this.isLoadingComposantActive = true;
     this.onCreateComment();
   }
 
+  onCheckCommentInputReady() {
+    return (
+      this.comment.content.length >= 1 &&
+      this.comment.content.length <= 1000
+      );
+  }
+
   private onCreateComment() {
+    if (this.newsCard.id !== null) {
       this.commentService.createComment(this.comment, this.newsCard)
       .pipe(
         catchError(
-        () => {
-          this.isLoadingComposantActive = false;
-          this.isCommentCreatedError = true;
+          () => {
+            this.isLoadingComposantActive = false;
+            this.isCommentCreatedError = true;
           
           setTimeout(() => {
             this.isCommentCreatedError = false;
           }, 3000);
           return of(null);
         })
-      ).subscribe(
+        ).subscribe(
         (success) => {
           this.isLoadingComposantActive = false;
           this.isCommentCreatedSuccess = true;
-          console.log(success);
-          
           
           setTimeout(() => {
             this.isCommentCreatedSuccess = false;
           }, 3000);
         }, 
-      );
+        );
+      }
     }
 
-}
+  }

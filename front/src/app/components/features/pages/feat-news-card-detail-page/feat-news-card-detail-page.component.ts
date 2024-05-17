@@ -79,7 +79,4 @@ export class FeatNewsCardDetailPageComponent {
     this.router.navigate(['astronaut/news/']);
   }
 
-  onCommentFormOpen() {
-    this.isCommentFormOpen = !this.isCommentFormOpen
-  }
 }

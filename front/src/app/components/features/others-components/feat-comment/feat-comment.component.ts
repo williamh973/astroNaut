@@ -11,6 +11,7 @@ export class FeatCommentComponent {
 
 @Input() comment!: Comments;
 
+
   isCommentLiked: boolean = false;
   isCommentDisliked: boolean = false;
 
@@ -19,7 +20,6 @@ export class FeatCommentComponent {
     ) {}
 
     ngOnInit() {
-      
     }
 
 

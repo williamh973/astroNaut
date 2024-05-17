@@ -23,6 +23,7 @@ public class CommentService {
     public Comment addComment(Comment comment, Long id) {
         NewsCard newsCard = newsCardRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException(id + " not found"));
+        System.out.println("Adding comment for newsCard id: " + id);
                 comment.setNewsCard(newsCard);
                 comment.setTimestamp(new Date());
         return commentRepository.save(comment);
