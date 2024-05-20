@@ -7,13 +7,13 @@ import { PictureSpecialEventCard } from 'src/app/models/cards/picture-special-ev
 import { ImageForPictureAuthorCard } from 'src/app/models/images-for-cards/image-for-picture-author.model';
 import { ImageForPictureOfWeekCard } from 'src/app/models/images-for-cards/image-for-picture-of-week-card.model';
 import { ImageForPictureSpecialEventCard } from 'src/app/models/images-for-cards/image-for-picture-special-event.model';
-import { ImageForPictureAuthorCardService } from 'src/app/shared/services/image-for-picture-author-card.service';
-import { ImageForPictureOfWeekCardService } from 'src/app/shared/services/image-for-picture-of-week-card.service';
-import { ImageForPictureSpecialEventCardService } from 'src/app/shared/services/image-for-picture-special-event-card.service';
+import { ImageForPictureAuthorCardService } from 'src/app/shared/services/image-for-card/image-for-picture-author-card/image-for-picture-author-card.service';
+import { ImageForPictureOfWeekCardService } from 'src/app/shared/services/image-for-card/image-for-picture-week-card/image-for-picture-of-week-card.service';
+import { ImageForPictureSpecialEventCardService } from 'src/app/shared/services/image-for-card/image-for-special-event-card/image-for-picture-special-event-card.service';
 import { PhotoService } from 'src/app/shared/services/photo-service/photo.service';
-import { PictureAuthorCardService } from 'src/app/shared/services/picture-author-card.service';
-import { PictureOfWeekCardService } from 'src/app/shared/services/picture-of-week-card.service';
-import { PictureSpecialEventCardService } from 'src/app/shared/services/picture-special-event-card.service';
+import { PictureAuthorCardService } from 'src/app/shared/services/cards/picture-author-card/picture-author-card.service';
+import { PictureOfWeekCardService } from 'src/app/shared/services/cards/picture-of-week-card/picture-of-week-card.service';
+import { PictureSpecialEventCardService } from 'src/app/shared/services/cards/picture-special-event-card/picture-special-event-card.service';
 
 @Component({
   selector: 'app-feat-add-image-form',

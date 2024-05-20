@@ -1,5 +1,5 @@
 import { Picture } from "../images-for-cards/image-for-news-card.model";
-import { Comments } from "../comment.model";
+import { CommentCard } from "./comment-card.model";
 
 export class NewsCard {
     constructor(
@@ -13,7 +13,7 @@ export class NewsCard {
         public timestamp: Date,
         public likeCount: number,
         public dislikeCount: number,
-        public commentsList: Comments[],
+        public commentsList: CommentCard[],
         public id?: number
     ) { }
 }

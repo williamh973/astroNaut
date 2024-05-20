@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
-import { NewsCardService } from 'src/app/shared/services/news-card/news-card.service';
+import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
 
 @Component({
   selector: 'app-feat-news-card-detail-page',
@@ -21,6 +21,7 @@ export class FeatNewsCardDetailPageComponent {
   newsCardReadingTime!: number;
   newsCardId: number = 0;
   isCommentFormOpen: boolean = false;
+  isQuitSvgActived: boolean = false;
 
   constructor(
     private route: ActivatedRoute, 
@@ -77,6 +78,14 @@ export class FeatNewsCardDetailPageComponent {
 
   onCloseDetailPage() {
     this.router.navigate(['astronaut/news/']);
+  }
+
+  onQuitSvgActive() {
+    this.isQuitSvgActived = true;
+  }
+
+  onQuitSvgDasactived() {
+    this.isQuitSvgActived = false;
   }
 
 }

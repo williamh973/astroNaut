@@ -28,7 +28,7 @@ public class CommentController {
 
 
     @PostMapping("/add")
-    public Comment addComment(@RequestBody Comment comment, @RequestParam("newsCardId") Long id) {
+    public Comment addComment(@RequestBody Comment comment, @RequestParam("newsCardAssociatedId") Long id) {
         return commentService.addComment(comment, id);
     }
 

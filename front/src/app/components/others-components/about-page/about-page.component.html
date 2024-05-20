@@ -1,1 +1,50 @@
-<p>about-page works!</p>
+<img 
+id="headerTop-image" 
+src="../../../../assets/images/about-page/arriere-plan-photorealiste-galaxie_23-2151064385.jpg" 
+alt="header top image"
+>
+
+<header id="headerTop">
+    <app-ui-burger-menu-button
+    id="headerTop-burgerMenu"
+    (isLeftMenuOpen)="onOpenLeftMenu($event)"
+    (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
+    (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
+    ></app-ui-burger-menu-button>
+    
+    <div id="headerTop-titleContainer">
+      <h1 id="headerTop-title">AstroNaut, c’est quoi ?</h1>
+    </div>
+
+    <div id="socialMedia-iconContainer">
+      <ul>
+        <li>
+          <a
+          *ngFor="let item of sanitizedSharedLinkList; let i = index"  
+          [innerHTML]="item.safeSvgIcon" 
+          class="icon" 
+          (click)="onClickSharedLinkItem(item.sharedLink, i)"
+          ></a>
+         
+          <app-ui-social-medias
+          ></app-ui-social-medias>
+        </li>
+      </ul>
+      
+    </div>
+</header>
+
+  <main id="main-content">
+    <article>
+      <p>
+         
+      </p>
+    </article>
+  </main>
+  <app-ui-navbar
+  id="leftMenu"
+  *ngIf="isLeftMenuOpen"
+  [isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
+  [isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
+  (isLeftMenuOpen)="onCloseLeftMenu($event)"
+  ></app-ui-navbar>

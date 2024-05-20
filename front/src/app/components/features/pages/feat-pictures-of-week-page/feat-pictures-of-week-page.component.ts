@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PictureOfWeekCard } from 'src/app/models/cards/picture-of-week-card.model';
-import { PictureOfWeekCardService } from 'src/app/shared/services/picture-of-week-card.service';
+import { PictureOfWeekCardService } from 'src/app/shared/services/cards/picture-of-week-card/picture-of-week-card.service';
 
 @Component({
   selector: 'app-feat-pictures-of-week-page',

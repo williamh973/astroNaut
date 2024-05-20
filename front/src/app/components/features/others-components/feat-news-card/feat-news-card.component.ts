@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
-import { NewsCardService } from 'src/app/shared/services/news-card/news-card.service';
+import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
 
 @Component({
   selector: 'app-feat-news-card',

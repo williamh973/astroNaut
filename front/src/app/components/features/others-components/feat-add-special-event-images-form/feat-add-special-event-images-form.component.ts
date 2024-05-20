@@ -3,9 +3,9 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize, of } from 'rxjs';
 import { PictureSpecialEventCard } from 'src/app/models/cards/picture-special-event-card.model';
 import { ImageForPictureSpecialEventCard } from 'src/app/models/images-for-cards/image-for-picture-special-event.model';
-import { ImageForPictureSpecialEventCardService } from 'src/app/shared/services/image-for-picture-special-event-card.service';
+import { ImageForPictureSpecialEventCardService } from 'src/app/shared/services/image-for-card/image-for-special-event-card/image-for-picture-special-event-card.service';
 import { PhotoService } from 'src/app/shared/services/photo-service/photo.service';
-import { PictureSpecialEventCardService } from 'src/app/shared/services/picture-special-event-card.service';
+import { PictureSpecialEventCardService } from 'src/app/shared/services/cards/picture-special-event-card/picture-special-event-card.service';
 
 @Component({
   selector: 'app-feat-add-special-event-images-form',

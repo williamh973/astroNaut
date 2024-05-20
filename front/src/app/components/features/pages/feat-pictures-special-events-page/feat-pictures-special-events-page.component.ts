@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PictureSpecialEventCard } from 'src/app/models/cards/picture-special-event-card.model';
-import { PictureSpecialEventCardService } from 'src/app/shared/services/picture-special-event-card.service';
+import { PictureSpecialEventCardService } from 'src/app/shared/services/cards/picture-special-event-card/picture-special-event-card.service';
 
 @Component({
   selector: 'app-feat-pictures-special-events-page',

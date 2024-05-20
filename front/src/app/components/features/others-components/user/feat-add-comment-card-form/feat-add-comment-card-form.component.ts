@@ -1,26 +1,26 @@
 import { Component, Input } from '@angular/core';
 import { catchError, of } from 'rxjs';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
-import { Comments } from 'src/app/models/comment.model';
-import { CommentService } from 'src/app/shared/services/comment.service';
+import { CommentCard } from 'src/app/models/cards/comment-card.model';
+import { CommentCardService } from 'src/app/shared/services/cards/comment-card/comment-card.service';
 
 
 @Component({
-  selector: 'app-feat-add-comment-form',
-  templateUrl: './feat-add-comment-form.component.html',
-  styleUrls: ['./feat-add-comment-form.component.scss']
+  selector: 'app-feat-add-comment-card-form',
+  templateUrl: './feat-add-comment-card-form.component.html',
+  styleUrls: ['./feat-add-comment-card-form.component.scss']
 })
-export class FeatAddCommentFormComponent {
+export class FeatAddCommentCardFormComponent {
 
   @Input() newsCard!: NewsCard;
-  comment: Comments = new Comments("", new NewsCard([], "", "", "", "", "", 0, new Date, 0, 0, []), new Date, 0, 0);
+  commentCard: CommentCard = new CommentCard("", new NewsCard([], "", "", "", "", "", 0, new Date, 0, 0, []), new Date, 0, 0);
   isLoadingComposantActive: boolean = false;
   isCommentCreatedSuccess: boolean = false;
-  isCommentCreatedError: boolean = false;
+  isCommentCreatedError: boolean = false; 
   isContentInputNotEmpty: boolean = false;
 
 
-  constructor(private commentService: CommentService) {}
+  constructor(private commentCardService: CommentCardService) {}
 
 
   ngOnInit() {
@@ -34,14 +34,14 @@ export class FeatAddCommentFormComponent {
 
   onCheckCommentInputReady() {
     return (
-      this.comment.content.length >= 1 &&
-      this.comment.content.length <= 1000
+      this.commentCard.content.length >= 1 &&
+      this.commentCard.content.length <= 1000
       );
   }
 
   private onCreateComment() {
     if (this.newsCard.id !== null) {
-      this.commentService.createComment(this.comment, this.newsCard)
+      this.commentCardService.createComment(this.commentCard, this.newsCard)
       .pipe(
         catchError(
           () => {
@@ -57,11 +57,12 @@ export class FeatAddCommentFormComponent {
         (success) => {
           this.isLoadingComposantActive = false;
           this.isCommentCreatedSuccess = true;
-          
+          this.commentCard.content = '';
+          // this.commentService.postCommentsList(this.comment);
           setTimeout(() => {
             this.isCommentCreatedSuccess = false;
           }, 3000);
-        }, 
+        },  
         );
       }
     }

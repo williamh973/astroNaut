@@ -16,7 +16,7 @@
       minlength="1"
       placeholder="Ecrivez votre commentaire ici.*"
       required
-      [(ngModel)]="comment.content"
+      [(ngModel)]="commentCard.content"
       #contentInput="ngModel"
       >
     </textarea>
@@ -35,12 +35,15 @@
     </button> 
 </form>      
 
-<div id="loading-container">
-  <app-feat-loader-popup
-    class="loader" 
-    *ngIf="isLoadingComposantActive"
-    >
-  </app-feat-loader-popup>
+<div
+  id="loading-container"
+  *ngIf="isLoadingComposantActive"
+  >
+    <app-feat-loader-popup
+      class="loader" 
+      *ngIf="isLoadingComposantActive"
+      >
+    </app-feat-loader-popup>
 </div>
 
 <app-feat-feedback-messages-popup

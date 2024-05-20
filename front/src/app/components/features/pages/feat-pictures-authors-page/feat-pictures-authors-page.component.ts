@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PictureAuthorCard } from 'src/app/models/cards/picture-author-card.model';
-import { PictureAuthorCardService } from 'src/app/shared/services/picture-author-card.service';
+import { PictureAuthorCardService } from 'src/app/shared/services/cards/picture-author-card/picture-author-card.service';
 
 @Component({
   selector: 'app-feat-pictures-authors-page',

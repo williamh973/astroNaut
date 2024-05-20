@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { catchError, of } from 'rxjs';
 import { Contact } from 'src/app/models/contact-page-textarea.model';
-import { ContactService } from 'src/app/shared/services/contact.service';
+import { ContactService } from 'src/app/shared/services/contact/contact.service';
 
 @Component({
   selector: 'app-feat-contact-page',

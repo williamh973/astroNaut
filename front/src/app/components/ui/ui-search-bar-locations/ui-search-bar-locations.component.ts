@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MarkerData } from 'src/app/models/marker-data.model';
-import { MapService } from 'src/app/shared/services/map.service';
+import { MapService } from 'src/app/shared/services/map/map.service';
 import { MarkerService } from 'src/app/shared/services/marker/marker.service';
 
 @Component({

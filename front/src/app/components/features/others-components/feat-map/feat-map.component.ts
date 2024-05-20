@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MapService } from 'src/app/shared/services/map.service';
+import { MapService } from 'src/app/shared/services/map/map.service';
 
 @Component({
 

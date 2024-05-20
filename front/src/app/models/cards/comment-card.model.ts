@@ -1,6 +1,6 @@
-import { NewsCard } from "./cards/news-card.model";
+import { NewsCard } from "./news-card.model";
 
-export class Comments {
+export class CommentCard {
     constructor(
         public content: string,
         public newsCard: NewsCard,

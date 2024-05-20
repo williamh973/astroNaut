@@ -1,17 +1,17 @@
 import { Component } from '@angular/core';
 import { Observable, finalize, forkJoin } from 'rxjs';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
-import { NewsCardService } from 'src/app/shared/services/news-card/news-card.service';
+import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
 import { PhotoService } from 'src/app/shared/services/photo-service/photo.service';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Picture } from 'src/app/models/images-for-cards/image-for-news-card.model';
-import { PictureService } from 'src/app/shared/services/picture/picture.service';
+import { PictureService } from 'src/app/shared/services/image-for-card/picture/picture.service';
 
 @Component({
   selector: 'app-feat-add-news-card-form',
   templateUrl: './feat-add-news-card-form.component.html',
   styleUrls: ['./feat-add-news-card-form.component.scss']
-})
+}) 
 export class FeatAddNewsCardFormComponent {
 
   newsCard: NewsCard = new NewsCard([], '', '', '', '', '', 0, new Date(), 0, 0, []);
