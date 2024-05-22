@@ -12,14 +12,12 @@ export class FeatLoginOrRegisterPopupComponent {
 
   isLoginFormOpen: boolean = false;
   isRegisterFormOpen: boolean = false;
-  // private popupSubscription: Subscription;
 
   constructor(
     public loginOrRegisterPopupService: LoginOrRegisterPopupService
   ) {}
 
   ngOnInit(): void {
-    // Subscribe to the observable to track the popup state
     this.loginOrRegisterPopupService.isAccountPopupOpen$.subscribe(
       (isOpen: boolean) => {
         this.isLoginOrRegisterPopupOpen = isOpen;
@@ -37,5 +35,13 @@ export class FeatLoginOrRegisterPopupComponent {
 
   onClosePopup(): void {
     this.loginOrRegisterPopupService.closePopup();
+  }
+
+  onCloseLoginForm(isLoginFormOpen: boolean) {
+    this.isLoginFormOpen = isLoginFormOpen;
+  }
+
+  onCloseRegisterForm(isRegisterFormOpen: boolean) {
+    this.isRegisterFormOpen = isRegisterFormOpen;
   }
 }

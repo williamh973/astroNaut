@@ -1,4 +1,4 @@
-#full-page-container {
+#full-page {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,11 +7,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5); /* Optional: add a background overlay */
 }
 
 #main-content {
-  width: 600px;
-  height: 300px;
+  width: 300px;
+  padding: 20px;
   border-radius: 5px;
   background-color: grey;
   backdrop-filter: blur(5px);
@@ -19,23 +21,45 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px;
 }
 
-svg {
-  margin-left: auto;
-}
-
-p {
-  text-align: center;
-}
-
-button,
-form {
-  padding: 5px;
-}
-
-button:hover,
-svg:hover {
+#close-button {
+  align-self: flex-end;
   cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 5px;
+}
+
+input {
+  width: calc(100% - 10px);
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+button {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
 }

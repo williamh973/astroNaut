@@ -18,8 +18,12 @@
   </div>
 </section>
 
-<app-feat-login-form-popup *ngIf="isLoginFormOpen"></app-feat-login-form-popup>
+<app-feat-login-form-popup
+  *ngIf="isLoginFormOpen"
+  (isLoginFormOpen)="onCloseLoginForm($event)"
+></app-feat-login-form-popup>
 
 <app-feat-register-form-popup
   *ngIf="isRegisterFormOpen"
+  (isRegisterFormOpen)="onCloseRegisterForm($event)"
 ></app-feat-register-form-popup>
