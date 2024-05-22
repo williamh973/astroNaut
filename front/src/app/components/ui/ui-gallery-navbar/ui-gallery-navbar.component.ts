@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Menu } from 'src/app/models/menu-model';
+import { Menu } from 'src/app/models/menu.model';
 import { NavbarService } from 'src/app/shared/services/navbar/navbar.service';
 
 @Component({

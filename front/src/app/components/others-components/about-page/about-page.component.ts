@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { RouterLinkWithHref } from '@angular/router';
-import { SharedLink } from 'src/app/models/social-media-icon.model';
+import { NewsCard } from 'src/app/models/cards/news-card.model';
+import { SharedLink } from 'src/app/models/shared-link.model';
+import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
+
 
 @Component({
   selector: 'app-about-page',
@@ -9,12 +11,12 @@ import { SharedLink } from 'src/app/models/social-media-icon.model';
   styleUrls: ['./about-page.component.scss']
 })
 export class AboutPageComponent {
-
   isLeftMenuOpen: boolean = false;
   isLeftMenuAnimationWhenOpen: boolean = false;
-  isLeftMenuItemsClickEnable:  boolean = false;
+  isLeftMenuItemsClickEnable: boolean = false;
+  isAboutPageOpen: boolean = true;
 
-  
+  newsCardList: NewsCard[] = [];
   sharedLinkList: SharedLink[] = [
     new SharedLink(
       `
@@ -43,14 +45,10 @@ export class AboutPageComponent {
         <path d="M440-280H280q-83 0-141.5-58.5T80-480q0-83 58.5-141.5T280-680h160v80H280q-50 0-85 35t-35 85q0 50 35 85t85 35h160v80ZM320-440v-80h320v80H320Zm200 160v-80h160q50 0 85-35t35-85q0-50-35-85t-85-35H520v-80h160q83 0 141.5 58.5T880-480q0 83-58.5 141.5T680-280H520Z"/>
       </svg>
       `,
-      'http://localhost:4200/about',
+      'http://localhost:4200/astronaut/about',
       false
     )
   ];
-
-
-  constructor(private sanitizer: DomSanitizer) {}
-
 
   sanitizedSharedLinkList: { 
     sharedLink: SharedLink, 
@@ -58,32 +56,36 @@ export class AboutPageComponent {
   }[] = [];
 
 
+  constructor(private sanitizer: DomSanitizer, private newsCardService: NewsCardService) {}
+
+
   ngOnInit(): void {
     this.sanitizedSharedLinkList = this.sharedLinkList.map(sharedLink => ({
       sharedLink,
       safeSvgIcon: this.sanitizer.bypassSecurityTrustHtml(sharedLink.svg)
     }));
+    this.onGetNewsCardList();
   }
 
-  onClickSharedLinkItem(sharedLink: SharedLink, index: number) {
-
-   
-      sharedLink.isSelected
-    
+  onGetNewsCardList() {
+    this.newsCardService.getCardList().subscribe(
+      (cardListFromDatabase: NewsCard[]) => {
+        this.newsCardList = cardListFromDatabase;
+        }
+    );
+  }
   
-    
+
+  onClickSharedLinkItem(sharedLink: SharedLink, index: number) {
     switch (sharedLink.link) {
-       case 'https://example.com/share1':
-         console.log(this.sharedLinkList[0], this.sharedLinkList[1], index);
-         break;
-         case 'http://localhost:4200/about':
-           this.copyCurrentPageLink();
-           console.log(this.sharedLinkList[0], this.sharedLinkList[1], index);
-           break;
-        
-       default:
-         break;
-      }
+      case 'https://example.com/share1':
+        break;
+      case 'http://localhost:4200/astronaut/about':
+        this.copyCurrentPageLink();
+        break;
+      default:
+        break;
+    }
   }
 
   onOpenLeftMenu(isLeftMenuOpen: boolean) {

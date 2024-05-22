@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { VisitCounter } from 'src/app/models/visit-counter.model';
-import { VisitCounterService } from 'src/app/shared/services/visit-counter/visit-counter.service';
+import { VisitCounter } from 'src/app/models/counters/visit-counter.model';
+import { VisitCounterService } from 'src/app/shared/services/counters/visit-counter/visit-counter.service';
 
 @Component({
   selector: 'app-feat-visits-counter',

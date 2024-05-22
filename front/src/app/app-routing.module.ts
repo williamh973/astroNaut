@@ -13,74 +13,72 @@ import { FeatPicturesSpecialEventsPageComponent } from './components/features/pa
 import { FeatPicturesAuthorsPageComponent } from './components/features/pages/feat-pictures-authors-page/feat-pictures-authors-page.component';
 
 const routes: Routes = [
-  { 
-    path: '', 
-    redirectTo:'astronaut/news', 
-    pathMatch: 'full'
-    
+  {
+    path: '',
+    redirectTo: 'astronaut/news',
+    pathMatch: 'full',
   },
-  { 
-    path: 'astronaut/news', 
-    component: FeatHomePageComponent
+  {
+    path: 'astronaut/news',
+    component: FeatHomePageComponent,
   },
-  { 
-    path: 'locations', 
-    component: FeatLocationsPageComponent
+  {
+    path: 'astronaut/locations',
+    component: FeatLocationsPageComponent,
   },
-  { 
-    path: 'to-contribute', 
-    component: FeatToContributePageComponent
+  {
+    path: 'astronaut/to-contribute',
+    component: FeatToContributePageComponent,
   },
-  { 
-    path: 'about', 
-    component: AboutPageComponent 
+  {
+    path: 'astronaut/about',
+    component: AboutPageComponent,
   },
-  { 
-    path: 'news-card-details/:id', 
-    component: FeatNewsCardDetailPageComponent 
+  {
+    path: 'news-card-details/:id',
+    component: FeatNewsCardDetailPageComponent,
   },
-  { 
-    path: 'astronaut/gallery/pictures-of-the-week', 
-    component: FeatPicturesOfWeekPageComponent
+  {
+    path: 'astronaut/gallery/pictures-of-the-week',
+    component: FeatPicturesOfWeekPageComponent,
   },
-  { 
-    path: 'contact', 
-    component: FeatContactPageComponent 
+  {
+    path: 'astronaut/contact',
+    component: FeatContactPageComponent,
   },
-  { 
-    path: 'user-space', 
-    component: FeatUserLandingPageComponent, 
+  {
+    path: 'astronaut/user-space',
+    component: FeatUserLandingPageComponent,
     // canActivate: [AuthGuard]
   },
-  // { 
-  //   path: 'astronaut/gallery/thematic', 
-  //   component: FeatPicturesOfWeekPageComponent, 
+  // {
+  //   path: 'astronaut/gallery/thematic',
+  //   component: FeatPicturesOfWeekPageComponent,
   // },
-  { 
-    path: 'astronaut/gallery/pictures-of-special-events', 
-    component: FeatPicturesSpecialEventsPageComponent, 
+  {
+    path: 'astronaut/gallery/pictures-of-special-events',
+    component: FeatPicturesSpecialEventsPageComponent,
   },
-  { 
-    path: 'astronaut/gallery/pictures-of-authors', 
-    component: FeatPicturesAuthorsPageComponent, 
+  {
+    path: 'astronaut/gallery/pictures-of-authors',
+    component: FeatPicturesAuthorsPageComponent,
   },
-  // { 
-  //   path: 'astronaut/gallery/competition', 
-  //   component: FeatPicturesOfWeekPageComponent, 
+  // {
+  //   path: 'astronaut/gallery/competition',
+  //   component: FeatPicturesOfWeekPageComponent,
   // },
-  // { 
-  //   path: 'astronaut/gallery/spacecrafts', 
-  //   component: FeatPicturesOfWeekPageComponent, 
+  // {
+  //   path: 'astronaut/gallery/spacecrafts',
+  //   component: FeatPicturesOfWeekPageComponent,
   // },
-  { 
-    path: '**', 
-    component: FeatErrorPageComponent 
+  {
+    path: '**',
+    component: FeatErrorPageComponent,
   },
 ];
 
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

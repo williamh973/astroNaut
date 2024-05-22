@@ -114,7 +114,7 @@ import { FeatCommentCardListComponent } from './components/features/others-compo
     FeatPictureAuthorCardComponent,
     FeatCommentCardComponent,
     FeatAddCommentCardFormComponent,
-    FeatCommentCardListComponent,
+    FeatCommentCardListComponent
   ],
   imports: [
     BrowserModule,

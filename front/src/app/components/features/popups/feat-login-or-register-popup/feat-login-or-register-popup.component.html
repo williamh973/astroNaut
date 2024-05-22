@@ -1,19 +1,25 @@
-<div id="full-page-container">
-    <div id="child-container">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
-            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
-        </svg>
-        <p>Vous devez être connecter pour réaliser cette action</p>
-        <button (click)="onOpenLoginForm()">Connexion</button>
-        <p>Pas encore inscrit?</p>
-        <button (click)="onOpenRegisterForm()">Inscription</button>
-    </div>
-</div>
+<section id="full-page-container">
+  <div id="child-container">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="24"
+      viewBox="0 -960 960 960"
+      width="24"
+      (click)="onClosePopup()"
+    >
+      <path
+        d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+      />
+    </svg>
+    <p>Vous devez être connecté pour réaliser cette action</p>
+    <button (click)="onOpenLoginForm()">Connexion</button>
+    <p>Pas encore inscrit?</p>
+    <button (click)="onOpenRegisterForm()">Inscription</button>
+  </div>
+</section>
 
-<app-feat-login-form-popup
-*ngIf="isLoginFormOpen"
-></app-feat-login-form-popup>
+<app-feat-login-form-popup *ngIf="isLoginFormOpen"></app-feat-login-form-popup>
 
 <app-feat-register-form-popup
-*ngIf="isRegisterFormOpen"
+  *ngIf="isRegisterFormOpen"
 ></app-feat-register-form-popup>

@@ -1,28 +1,21 @@
-<app-ui-header 
-class="header"
->
-</app-ui-header>
+<app-ui-header class="header"> </app-ui-header>
 
 <div id="main-container">
-   <div id="title-search-container">
-         <h1 id="title">Actualités astro</h1>
-         <app-ui-search-bar-home 
-         (isSearchResultNotFoundChange)="onSearchResultChange($event)"
-         ></app-ui-search-bar-home>
-         
-         
-      </div>
-      <div>
-      <app-feat-search-result-not-found
+  <div id="title-search-container">
+    <h1 id="title">Actualités astro</h1>
+    <app-ui-search-bar-home
+      (isSearchResultNotFoundChange)="onSearchResultChange($event)"
+    ></app-ui-search-bar-home>
+  </div>
+  <div>
+    <app-feat-search-result-not-found
       *ngIf="isSearchResultNotFound"
-      ></app-feat-search-result-not-found>
+    ></app-feat-search-result-not-found>
 
-      <app-feat-news-card-list
-      ></app-feat-news-card-list>
-   </div>
-
+    <app-feat-news-card-list></app-feat-news-card-list>
+  </div>
 </div>
 
-<!-- <app-feat-login-or-register-form-popup
-*ngIf="isLoginOrRegisterPopupOpen"
-></app-feat-login-or-register-form-popup> -->
+<app-feat-login-or-register-popup
+  *ngIf="isLoginOrRegisterPopupOpen"
+></app-feat-login-or-register-popup>

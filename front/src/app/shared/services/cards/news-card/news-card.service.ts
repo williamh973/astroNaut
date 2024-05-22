@@ -43,7 +43,7 @@ export class NewsCardService {
 
  
 
-  postFilterCardList(filteredCardList: NewsCard[]) {
+  postFilterCardListForSearch(filteredCardList: NewsCard[]) {
     this.filteredCardListSubject$.next([...filteredCardList]);
   }
   

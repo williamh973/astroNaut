@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { CommentCard } from "../../../../models/cards/comment-card.model";
 import { NewsCard } from 'src/app/models/cards/news-card.model';
 
@@ -12,17 +12,23 @@ export class CommentCardService {
   constructor(private http: HttpClient) { }
 
   private readonly _BASE_URL_COMMENT_CARD: string = "http://localhost:8080/commentCards";
+  
+  private commentListSubject$: BehaviorSubject<CommentCard[]> = new BehaviorSubject<CommentCard[]>([]);
+ 
 
-  commentList$: BehaviorSubject<CommentCard[]> = new BehaviorSubject<CommentCard[]>([]);
-
-
-  getCommentList(): Observable<CommentCard[]> {
-    return this.http.get<CommentCard[]>(`${this._BASE_URL_COMMENT_CARD}/all`);
+  getCommentListFromDB(): Observable<CommentCard[]> {
+    return this.http.get<CommentCard[]>(`${this._BASE_URL_COMMENT_CARD}/all`).pipe(
+      tap(comments => this.commentListSubject$.next(comments))
+    );
   }
 
   createComment(commentCard: CommentCard, newsCardAssociated: NewsCard): Observable<CommentCard> {
     const cardId = newsCardAssociated.id;
-    return this.http.post<CommentCard>(`${this._BASE_URL_COMMENT_CARD}/add?newsCardAssociatedId=${cardId}`, commentCard);
+    return this.http.post<CommentCard>(`${this._BASE_URL_COMMENT_CARD}/add?newsCardAssociatedId=${cardId}`, commentCard).pipe(
+      tap((newCommentCard) => {
+        this.postCommentCardListSubject$(newCommentCard);
+      })
+    );
   }
 
   updateComment(commentCard: CommentCard): Observable<CommentCard> {
@@ -34,13 +40,13 @@ export class CommentCardService {
   }
 
 
-  postCommentsList(newFilteredCommentList: CommentCard[]) {
-    // const currentComments = this.commentList$.value;
-    this.commentList$.next([...newFilteredCommentList]);
+  postCommentCardListSubject$(newCommentCard: CommentCard) {
+    const currentCommentList = this.commentListSubject$.value;
+    this.commentListSubject$.next([...currentCommentList, newCommentCard]);
   }
 
-  getCommentsList$(): Observable<CommentCard[]> {
-    return this.commentList$.asObservable();
+  getCommentsListSubject$(): Observable<CommentCard[]> {
+    return this.commentListSubject$.asObservable();
   }
 
 }

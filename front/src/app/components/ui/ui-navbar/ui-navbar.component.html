@@ -1,34 +1,25 @@
 <div id="full-page">
-
-  <nav [ngClass]="{'leftMenuVisible': isLeftMenuAnimationWhenOpen}">
-    <div 
-    id="navbar-buttonClose"
-    (click)="onCloseLeftMenu()"
-    >
-      <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      height="24" 
-      viewBox="0 -960 960 960" 
-      width="24"
+  <nav [ngClass]="{ leftMenuVisible: isLeftMenuAnimationWhenOpen }">
+    <div id="navbar-buttonClose" (click)="onCloseLeftMenu()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="24"
+        viewBox="0 -960 960 960"
+        width="24"
       >
-        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-        fill="rgba(128, 128, 128, 0.796)"
-        /> 
+        <path
+          d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+          fill="rgba(128, 128, 128, 0.796)"
+        />
       </svg>
     </div>
 
     <app-ui-title></app-ui-title>
 
-    <ul  [ngClass]="{'leftMenuItemsClickEnable': isLeftMenuItemsClickEnable}">
-      <!-- <img src="../../../../assets/images/globe_FILL0_wght400_GRAD0_opsz24.png" alt="globe icon"> -->
+    <ul [ngClass]="{ leftMenuItemsClickEnable: isLeftMenuItemsClickEnable }">
       <li *ngFor="let menuItem of leftMenuItemList">
         <a (click)="onLeftMenuItemClick(menuItem)">{{ menuItem.label }}</a>
       </li>
     </ul>
   </nav>
-
 </div>
-
-<app-feat-login-or-register-popup
-*ngIf="isLoginOrRegisterPopupOpen"
-></app-feat-login-or-register-popup>

@@ -23,10 +23,6 @@ export class FeatAddCommentCardFormComponent {
   constructor(private commentCardService: CommentCardService) {}
 
 
-  ngOnInit() {
-
-  }
-
   onSubmit() {
     this.isLoadingComposantActive = true;
     this.onCreateComment();
@@ -57,10 +53,10 @@ export class FeatAddCommentCardFormComponent {
         (success) => {
           this.isLoadingComposantActive = false;
           this.isCommentCreatedSuccess = true;
-          this.commentCard.content = '';
-          // this.commentService.postCommentsList(this.comment);
+        
           setTimeout(() => {
             this.isCommentCreatedSuccess = false;
+            this.commentCard.content = '';
           }, 3000);
         },  
         );

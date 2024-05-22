@@ -15,6 +15,7 @@ import { PictureService } from 'src/app/shared/services/image-for-card/picture/p
 export class FeatAddNewsCardFormComponent {
 
   newsCard: NewsCard = new NewsCard([], '', '', '', '', '', 0, new Date(), 0, 0, []);
+
   photosList: File[] = [];
   isPhotoInTheBox: boolean = false;
   isLoadingComposantActive: boolean = false;
@@ -86,7 +87,6 @@ export class FeatAddNewsCardFormComponent {
                       (savedPicture) => {
                         this.isLoadingComposantActive = false;
                         this.isNewsCardCreatedSuccess = true; 
-                  
                         setTimeout(() => {
                           this.isNewsCardCreatedSuccess = false;
                         }, 3000);

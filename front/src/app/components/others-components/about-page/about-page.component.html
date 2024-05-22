@@ -1,46 +1,101 @@
-<img 
-id="headerTop-image" 
-src="../../../../assets/images/about-page/arriere-plan-photorealiste-galaxie_23-2151064385.jpg" 
-alt="header top image"
->
+<div 
+id="background-image"  
+alt="back image"
+></div>
 
-<header id="headerTop">
-    <app-ui-burger-menu-button
-    id="headerTop-burgerMenu"
-    (isLeftMenuOpen)="onOpenLeftMenu($event)"
-    (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
-    (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
-    ></app-ui-burger-menu-button>
-    
-    <div id="headerTop-titleContainer">
-      <h1 id="headerTop-title">AstroNaut, c’est quoi ?</h1>
-    </div>
-
-    <div id="socialMedia-iconContainer">
-      <ul>
-        <li>
-          <a
-          *ngFor="let item of sanitizedSharedLinkList; let i = index"  
-          [innerHTML]="item.safeSvgIcon" 
-          class="icon" 
-          (click)="onClickSharedLinkItem(item.sharedLink, i)"
-          ></a>
-         
-          <app-ui-social-medias
-          ></app-ui-social-medias>
-        </li>
-      </ul>
+  <header id="headerTop">
+      <app-ui-burger-menu-button
+      id="headerTop-burgerMenu"
+      (isLeftMenuOpen)="onOpenLeftMenu($event)"
+      (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
+      (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
+      ></app-ui-burger-menu-button>
       
-    </div>
-</header>
+      <div id="headerTop-titleContainer">
+        <h1 id="headerTop-title">AstroNaut, c’est quoi ?</h1>
+      </div>
+      
+      <div id="sharedIcons-container">
+        <ul>
+          <li>
+            <a
+            *ngFor="let item of sanitizedSharedLinkList; let i = index"  
+            [innerHTML]="item.safeSvgIcon" 
+            class="sharedLink-icons" 
+            (click)="onClickSharedLinkItem(item.sharedLink, i)"
+            ></a>
+           
+            <app-ui-social-medias
+            [isAboutPageOpen]="isAboutPageOpen"
+            class="socialMedia-icons"
+            ></app-ui-social-medias>
+          </li>
+        </ul>
+      </div>
+  </header>
 
   <main id="main-content">
-    <article>
-      <p>
-         
+        
+    <article class="article-content">
+      <h3 class="article-title">Notre Mission</h3>
+      <p class="article-text">
+        Chez AstroNaut, nous sommes passionnés par l'astronomie et souhaitons 
+        partager cette passion avec vous. Notre mission est de rendre l'astronomie 
+        accessible à tous, que vous soyez un amateur débutant ou un astronome chevronné. Nous croyons que l'observation des merveilles du ciel nocturne est une expérience enrichissante et captivante, et nous voulons vous aider à en profiter pleinement.      </p>
+    </article>
+
+    <article class="article-content">
+      <h3 class="article-title">Carte des Points d'Observation</h3>
+      <p class="article-text">
+        L'une des fonctionnalités phares d'AstroNaut est notre carte interactive
+        des points d'observation. Que vous soyez en France ou ailleurs, cette
+        carte vous permet de découvrir les meilleurs endroits pour observer les
+        étoiles, les planètes, et autres objets célestes. Grâce aux contributions 
+        de notre communauté, la carte est constamment mise à jour avec de nouveaux 
+        points d'observation, des commentaires et des évaluations.
+      </p>
+    </article>
+    
+    <article class="article-content">
+      <span id="newsCardList-length">
+        {{ newsCardList.length }}
+      </span>
+      <p class="article-text">
+        C'est le nombre d'actualités mises en ligne depuis la création du blog.<br>
+        Le blog propose de nouveaux articles à la une chaque jour, 
+        avec un fil d’actualité astronomique quotidien et des enquêtes
+        mensuelles sur les grands enjeux contemporains. Le blog, l’extra-média 
+        couvre l’actualité du monde de l'astronomie.
+      </p>
+    </article>
+
+    <article class="article-content">
+      <p class="article-text">
+        S’adressant à tous, mais prioritairement aux amateurs d’informations
+        scientifiques et aux amoureux de l'espace. Le coin Galerie vous propose 
+        un large panel de rubriques :
+      </p>
+      <ul id="gallery-categoryList">
+        <li>Photos de la semaine</li>
+        <li>Photos par thèmes (Galaxies, notre système solaire, nébuleuses etc..)</li>
+        <li>Photos des évênements spéciaux à travers le monde</li>
+        <li>Photos des auteurs</li>
+        <li>Photos de notre concours du moment</li>
+        <li>Photos des engins spéciaux</li>
+      </ul>
+    </article>
+
+    <article class="article-content">
+      <h3 class="article-title">Rejoignez la Communauté AstroNaut</h3>
+      <p class="article-text">
+        AstroNaut, c'est bien plus qu'une simple application. C'est une communauté 
+        de passionnés d'astronomie qui partagent leurs découvertes, leurs expériences
+        et leur savoir. Nous vous invitons à vous joindre à nous, à participer 
+        à nos discussions, à poser des questions et à partager vos observations.
       </p>
     </article>
   </main>
+
   <app-ui-navbar
   id="leftMenu"
   *ngIf="isLeftMenuOpen"

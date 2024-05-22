@@ -1,21 +1,30 @@
-<div id="socials-container">
-        <div id="img-container">  
-            <img 
-            src="https://www.svgrepo.com/show/3885/facebook.svg" 
-            class="sFlh5c pT0Scc iPVvYb"  
-            alt="Facebook Vector SVG Icon - SVG Repo"
-            >
-        
-            <img 
-            src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/twitter-icon.png"  
-            class="sFlh5c pT0Scc iPVvYb" 
-            alt="Twitter icon PNG and SVG Vector Free Download"
-            >
-        
-            <img 
-            src="https://www.svgrepo.com/show/333611/tiktok.svg"  
-            class="sFlh5c pT0Scc iPVvYb"  
-            alt="Tiktok Vector SVG Icon (3) - SVG Repo"
-            >
-        </div>
+<div 
+id="socials-container"
+[ngClass]="{'isSocialsContainerAboutMod': isAboutPageOpen}"
+>
+    <div 
+    id="img-container"
+    [ngClass]="{'isImgContainerAboutMod': isAboutPageOpen}"
+    >  
+        <img 
+        [ngClass]="{'isImgAboutMod': isAboutPageOpen}"
+        class="sFlh5c pT0Scc iPVvYb"  
+        src="https://www.svgrepo.com/show/3885/facebook.svg" 
+        alt="Facebook Vector SVG Icon - SVG Repo"
+        >
+    
+        <img 
+        [ngClass]="{'isImgAboutMod': isAboutPageOpen}"
+        class="sFlh5c pT0Scc iPVvYb" 
+        src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/twitter-icon.png"  
+        alt="Twitter icon PNG and SVG Vector Free Download"
+        >
+    
+        <img
+        [ngClass]="{'isImgAboutMod': isAboutPageOpen}" 
+        class="sFlh5c pT0Scc iPVvYb"  
+        src="https://www.svgrepo.com/show/333611/tiktok.svg"  
+        alt="Tiktok Vector SVG Icon (3) - SVG Repo"
+        >
+    </div>
 </div>

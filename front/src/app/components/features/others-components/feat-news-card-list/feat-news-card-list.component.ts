@@ -14,6 +14,8 @@ export class FeatNewsCardListComponent {
 
   constructor(private newsCardService: NewsCardService) {}
 
+  
+
   ngOnInit() {
     this.onGetNewsCardList();
     this.onGetNewsCardListFiltered();
@@ -23,7 +25,12 @@ export class FeatNewsCardListComponent {
   onGetNewsCardList() {
     this.newsCardService.getCardList().subscribe(
       (cardListFromDatabase: NewsCard[]) => {
-        this.newsCardList = cardListFromDatabase;
+        this.newsCardList = cardListFromDatabase.sort((newsCardA, newsCardB) => {
+          const timestampA = new Date(newsCardA.timestamp ?? new Date(0));
+          const timestampB = new Date(newsCardB.timestamp ?? new Date(0)); 
+    
+          return timestampB.getTime() - timestampA.getTime();
+        });
         }
     );
   }

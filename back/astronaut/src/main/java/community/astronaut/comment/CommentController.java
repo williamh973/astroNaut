@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/comments")
+@RequestMapping("/commentCards")
 @RequiredArgsConstructor
 public class CommentController {
 

@@ -35,7 +35,6 @@ export class UiSearchBarHomeComponent {
     );
   }
   
-  
   private onSearchTermByIncludes() {
     this.filteredCardList = this.newsCardList.filter(
       (newsCard: NewsCard) => (
@@ -69,11 +68,8 @@ export class UiSearchBarHomeComponent {
       this.filteredCardList = [...this.newsCardList];
     }
 
-    this.newsCardService.postFilterCardList(this.filteredCardList); 
+    this.newsCardService.postFilterCardListForSearch(this.filteredCardList); 
   };
-
-
-
 
   onDisplaySearchResultNotFound() {
       if (this.filteredCardList.length === 0) {

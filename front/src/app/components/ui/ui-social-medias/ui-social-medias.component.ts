@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-ui-social-medias',
@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class UiSocialMediasComponent {
 
+  @Input() isAboutPageOpen!: boolean;
+ 
+
+  ngOnInit() {
+  //   if (this.isAboutPageOpen) {
+      
+  //   }
+  }
 }

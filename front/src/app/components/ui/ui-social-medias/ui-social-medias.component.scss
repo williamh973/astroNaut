@@ -4,7 +4,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-bottom: 5px;
 }
 
 p {
@@ -16,16 +15,40 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
 }
 
 img {
-    max-width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
 }
 
 img:hover {
     cursor: pointer;
     transition: transform 0.3s ease;
-   transform: translateY(-10px);
+    transform: translateY(-10px);
+}
+
+.isSocialsContainerAboutMod {
+    width: 400px;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.isImgContainerAboutMod {
+    width: 400px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+.isImgAboutMod {
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+    border: 4px solid rgb(31, 31, 31);
+    border-radius: 15px;
 }

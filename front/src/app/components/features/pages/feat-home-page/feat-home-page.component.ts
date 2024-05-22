@@ -1,22 +1,29 @@
 import { Component } from '@angular/core';
+import { LoginOrRegisterPopupService } from 'src/app/shared/services/login-or-register-popup/login-or-register-popup.service';
 
 @Component({
   selector: 'app-feat-home-page',
   templateUrl: './feat-home-page.component.html',
-  styleUrls: ['./feat-home-page.component.scss']
+  styleUrls: ['./feat-home-page.component.scss'],
 })
 export class FeatHomePageComponent {
-  
   isSearchResultNotFound: boolean = false;
   displayNotFoundMessage!: string;
-  // isLoginOrRegisterPopupOpen: boolean = false;
+  isLoginOrRegisterPopupOpen: boolean = false;
 
-  constructor() {}
-
+  constructor(
+    private loginOrRegisterPopupService: LoginOrRegisterPopupService
+  ) {}
 
   ngOnInit() {
-   
-   }
+    this.loginOrRegisterPopupService.isAccountPopupOpen$.subscribe((result) => {
+      if (result) {
+        this.isLoginOrRegisterPopupOpen = true;
+      } else {
+        this.isLoginOrRegisterPopupOpen = false;
+      }
+    });
+  }
 
   onSearchResultChange(isSearchResultNotFound: boolean): void {
     this.isSearchResultNotFound = isSearchResultNotFound;
@@ -26,7 +33,4 @@ export class FeatHomePageComponent {
     this.displayNotFoundMessage = displayNotFoundMessage;
     console.log(this.displayNotFoundMessage);
   }
- 
-
-
 }

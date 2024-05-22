@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { VisitCounter } from 'src/app/models/visit-counter.model';
+import { VisitCounter } from 'src/app/models/counters/visit-counter.model';
 
 @Injectable({
   providedIn: 'root'
