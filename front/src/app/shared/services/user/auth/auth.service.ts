@@ -10,7 +10,7 @@ import { TokenResponse } from 'src/app/models/token.model';
 import { UserAuth } from 'src/app/models/user/user-auth.model';
 import { UserRegister } from 'src/app/models/user/user-register.model';
 import { LocalStorageService } from '../../local-storage/local-storage.service';
-import { TokenService } from '../../token.service';
+import { TokenService } from '../../token/token.service';
 
 @Injectable({
   providedIn: 'root',
@@ -43,10 +43,11 @@ export class AuthService {
       .subscribe((tokenFromDB: TokenResponse) => {
         this.tokenService.updateToken(tokenFromDB);
         this.localStorageService.setUserEmail(userAuth);
+
+        setTimeout(() => {
+          this.router.navigate(['/astronaut/user-space']);
+        }, 2500);
       });
-    setTimeout(() => {
-      this.router.navigateByUrl('/user-space');
-    }, 2500);
   }
 
   getHttpErrorSubject$(): Observable<HttpErrorResponse> {

@@ -11,10 +11,12 @@
         d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
       />
     </svg>
-    <p>Vous devez être connecté pour réaliser cette action</p>
-    <button (click)="onOpenLoginForm()">Connexion</button>
+    <p id="not-connected">
+      Vous devez être connecté pour réaliser cette action
+    </p>
+    <button (click)="onOpenLoginForm()">Je me connecte</button>
     <p>Pas encore inscrit?</p>
-    <button (click)="onOpenRegisterForm()">Inscription</button>
+    <button (click)="onOpenRegisterForm()">Je m'inscris</button>
   </div>
 </section>
 

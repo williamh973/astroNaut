@@ -19,7 +19,10 @@ export class FeatLoginFormPopupComponent {
     private LsService: LocalStorageService
   ) {}
 
-  onSubmit() {}
+  onSubmit() {
+    this.LsService.clearTokenAndUserEmail();
+    this.httpS.signIn(this.userAuth);
+  }
 
   onClosePopup() {
     this.isLoginFormOpen.emit(false);

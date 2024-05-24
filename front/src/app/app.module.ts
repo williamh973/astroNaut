@@ -6,6 +6,7 @@ import { firebaseEnvironment } from '../environments/firebase-environment';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { MatButtonModule } from '@angular/material/button';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenInterceptorInterceptor } from './core/token-interceptor.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -32,7 +33,7 @@ import { FeatGaleryPageComponent } from './components/features/pages/feat-galery
 import { FeatRegisterFormPopupComponent } from './components/features/popups/forms/feat-register-form-popup/feat-register-form-popup.component';
 import { FeatLoginFormPopupComponent } from './components/features/popups/forms/feat-login-form-popup/feat-login-form-popup.component';
 import { FeatAddLocationsFormComponent } from './components/features/others-components/user/feat-add-locations-form/feat-add-locations-form.component';
-import { FeatAddImageFormComponent } from "./components/features/others-components/user/feat-add-image-form/feat-add-image-form.component";
+import { FeatAddImageFormComponent } from './components/features/others-components/user/feat-add-image-form/feat-add-image-form.component';
 import { FeatMapComponent } from './components/features/others-components/feat-map/feat-map.component';
 import { FeatAdminLandingPageComponent } from './components/features/pages/feat-admin-landing-page/feat-admin-landing-page.component';
 import { FeatAddNewsCardFormComponent } from './components/features/others-components/admin/feat-add-news-card-form/feat-add-news-card-form.component';
@@ -61,7 +62,6 @@ import { FeatCommentCardComponent } from './components/features/others-component
 import { FeatAddCommentCardFormComponent } from './components/features/others-components/user/feat-add-comment-card-form/feat-add-comment-card-form.component';
 import { FeatCommentCardListComponent } from './components/features/others-components/feat-comment-card-list/feat-comment-card-list.component';
 import { FeatTrackHttpStatusPopupComponent } from './components/features/popups/toasters/feat-track-http-status-popup/feat-track-http-status-popup.component';
-
 
 @NgModule({
   declarations: [
@@ -116,7 +116,7 @@ import { FeatTrackHttpStatusPopupComponent } from './components/features/popups/
     FeatCommentCardComponent,
     FeatAddCommentCardFormComponent,
     FeatCommentCardListComponent,
-    FeatTrackHttpStatusPopupComponent
+    FeatTrackHttpStatusPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -127,15 +127,15 @@ import { FeatTrackHttpStatusPopupComponent } from './components/features/popups/
     NgxDropzoneModule,
     MatButtonModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
-    // {
-    //   // provide: HTTP_INTERCEPTORS,
-    //   // useClass: TokenInterceptorInterceptor,
-    //   // multi: true,
-    // },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

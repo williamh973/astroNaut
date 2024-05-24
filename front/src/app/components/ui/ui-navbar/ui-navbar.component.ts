@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Menu } from 'src/app/models/menu.model';
 import { LoginOrRegisterPopupService } from 'src/app/shared/services/login-or-register-popup/login-or-register-popup.service';
-import { TokenService } from 'src/app/shared/services/token.service';
+import { TokenService } from 'src/app/shared/services/token/token.service';
 
 @Component({
   selector: 'app-ui-navbar',
@@ -53,6 +53,14 @@ export class UiNavbarComponent {
     }
   }
 
+  onMySpacePageOpen() {
+    if (this.tokenService.isCheckTokenInLocalStorage()) {
+      this.router.navigate(['/astronaut/user-space']);
+    } else {
+      this.loginOrRegisterPopupService.openPopup();
+    }
+  }
+
   onLeftMenuItemClick(menuItem: Menu) {
     switch (menuItem.label) {
       case 'Actualités':
@@ -73,7 +81,6 @@ export class UiNavbarComponent {
         break;
       case 'Galerie':
         this.isLeftMenuOpen.emit(false);
-        // this.isPictureWeekPageOpen.emit(true);
         this.router.navigate(['/astronaut/gallery/pictures-of-the-week']);
         break;
       case 'Contact':
@@ -82,7 +89,7 @@ export class UiNavbarComponent {
         break;
       case 'Mon espace':
         this.isLeftMenuOpen.emit(false);
-        this.router.navigate(['/astronaut/user-space']);
+        this.onMySpacePageOpen();
         break;
     }
   }

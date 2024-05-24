@@ -1,7 +1,6 @@
 export class UserRegister {
   constructor(
-    public firstname: string,
-    public lastname: string,
+    public pseudo: string,
     public email: string,
     public password: string,
     public requiredRole: string

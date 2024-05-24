@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/shared/services/user/auth/auth.service';
 export class FeatRegisterFormPopupComponent {
   @Output() isRegisterFormOpen = new EventEmitter<boolean>();
 
-  userRegister: UserRegister = new UserRegister('', '', '', '', '');
+  userRegister: UserRegister = new UserRegister('', '', '', 'ROLE_ADMIN');
   isAnimationPopupSignInStatusActive: boolean = false;
   isTrackHttpStatusPopupOpen: boolean = false;
 
@@ -21,6 +21,7 @@ export class FeatRegisterFormPopupComponent {
     this.isTrackHttpStatusPopupOpen = true;
 
     setTimeout(() => {
+      this.isTrackHttpStatusPopupOpen = true;
       this.isRegisterFormOpen.emit(false);
     }, 2500);
   }

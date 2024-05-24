@@ -11,6 +11,7 @@ import { FeatContactPageComponent } from './components/features/pages/feat-conta
 import { FeatPicturesOfWeekPageComponent } from './components/features/pages/feat-pictures-of-week-page/feat-pictures-of-week-page.component';
 import { FeatPicturesSpecialEventsPageComponent } from './components/features/pages/feat-pictures-special-events-page/feat-pictures-special-events-page.component';
 import { FeatPicturesAuthorsPageComponent } from './components/features/pages/feat-pictures-authors-page/feat-pictures-authors-page.component';
+import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
   {
     path: 'astronaut/to-contribute',
     component: FeatToContributePageComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'astronaut/about',
@@ -45,11 +47,12 @@ const routes: Routes = [
   {
     path: 'astronaut/contact',
     component: FeatContactPageComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'astronaut/user-space',
     component: FeatUserLandingPageComponent,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
   },
   // {
   //   path: 'astronaut/gallery/thematic',
