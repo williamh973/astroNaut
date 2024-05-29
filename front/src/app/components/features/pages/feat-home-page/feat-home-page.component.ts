@@ -31,6 +31,5 @@ export class FeatHomePageComponent {
 
   onNotFoundMessageResultChange(displayNotFoundMessage: string): void {
     this.displayNotFoundMessage = displayNotFoundMessage;
-    console.log(this.displayNotFoundMessage);
   }
 }

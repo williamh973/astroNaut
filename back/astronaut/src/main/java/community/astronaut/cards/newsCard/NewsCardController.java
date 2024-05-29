@@ -1,5 +1,7 @@
 package community.astronaut.cards.newsCard;
 
+import community.astronaut.interactions.newsCardLiked.NewsCardLiked;
+import community.astronaut.interactions.newsCardLiked.NewsCardLikedRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,7 @@ public class NewsCardController {
 
 
     private final NewsCardService newsCardService;
+    private final NewsCardLikedRepository newsCardLikedRepository;
 
     @GetMapping("/all")
     public List<NewsCard> getAll() {
@@ -26,9 +29,9 @@ public class NewsCardController {
 
 
     @PostMapping("/add")
-    public NewsCard addNewsCard(@RequestBody NewsCard newsCard) {
+    public NewsCard addNewsCard(@RequestBody NewsCard newsCard, @RequestParam("userAssociatedMail") String mail) {
         newsCard.setTimestamp(new Date());
-        return newsCardService.addNewsCard(newsCard);
+        return newsCardService.addNewsCard(newsCard, mail);
     }
 
     @PutMapping("/update/{id}")
@@ -38,8 +41,10 @@ public class NewsCardController {
 
     @DeleteMapping("delete/{id}")
     public NewsCard deleteNewsCard(
-            @PathVariable("id") Long id
+            @PathVariable("id") Long cardId
     ) {
-        return newsCardService.deleteNewsCard(id);
+        NewsCardLiked newsCardLiked = newsCardLikedRepository.findById(cardId)
+                .orElseThrow(() -> new RuntimeException("Card not found"));
+        return newsCardService.deleteNewsCard(cardId);
     }
 }

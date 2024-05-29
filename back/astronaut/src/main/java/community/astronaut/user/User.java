@@ -2,7 +2,10 @@ package community.astronaut.user;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import community.astronaut.cards.newsCard.NewsCard;
+import community.astronaut.interactions.newsCardLiked.NewsCardLiked;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -63,5 +66,11 @@ public class User implements UserDetails {
         return !blocked;
     }
 
+   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+   @JsonIgnoreProperties("user")
+   private Set<NewsCard> newsCardList = new HashSet<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("user")
+    private Set<NewsCardLiked> newsCardLikedList = new HashSet<>();
 }

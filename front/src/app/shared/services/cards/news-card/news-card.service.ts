@@ -4,22 +4,18 @@ import { Observable } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
 
-
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NewsCardService {
+  filteredCardListSubject$: BehaviorSubject<NewsCard[]> = new BehaviorSubject<
+    NewsCard[]
+  >([]);
 
+  private readonly _BASE_URL_NEWSCARD: string =
+    'http://localhost:8080/newsCards';
 
-  filteredCardListSubject$: BehaviorSubject<NewsCard[]> = new BehaviorSubject<NewsCard[]>([]);
-
-  
-  private readonly _BASE_URL_NEWSCARD: string = "http://localhost:8080/newsCards";
- 
-
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient) {}
 
   getCardList(): Observable<NewsCard[]> {
     return this.http.get<NewsCard[]>(`${this._BASE_URL_NEWSCARD}/all`);
@@ -29,26 +25,30 @@ export class NewsCardService {
     return this.http.get<NewsCard>(`${this._BASE_URL_NEWSCARD}/${id}`);
   }
 
-  createCard(newsCard: NewsCard): Observable<NewsCard> {
-    return this.http.post<NewsCard>(`${this._BASE_URL_NEWSCARD}/add`, newsCard);
+  createCard(newsCard: NewsCard, userMail: string): Observable<NewsCard> {
+    const userData = userMail;
+    return this.http.post<NewsCard>(
+      `${this._BASE_URL_NEWSCARD}/add?userAssociatedMail=${userData}`,
+      newsCard
+    );
   }
 
   updateCard(newsCard: NewsCard): Observable<NewsCard> {
-    return this.http.put<NewsCard>(`${this._BASE_URL_NEWSCARD}/update/${newsCard.id}`, newsCard);
-  } 
+    return this.http.put<NewsCard>(
+      `${this._BASE_URL_NEWSCARD}/update/${newsCard.id}`,
+      newsCard
+    );
+  }
 
   deleteCard(id: number): Observable<void> {
     return this.http.delete<void>(`${this._BASE_URL_NEWSCARD}/delete/${id}`);
   }
 
- 
-
   postFilterCardListForSearch(filteredCardList: NewsCard[]) {
     this.filteredCardListSubject$.next([...filteredCardList]);
   }
-  
+
   getFilteredCardList$(): Observable<NewsCard[]> {
     return this.filteredCardListSubject$.asObservable();
   }
-
 }

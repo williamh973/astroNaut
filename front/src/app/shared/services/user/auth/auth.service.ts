@@ -30,10 +30,7 @@ export class AuthService {
   ) {}
 
   signUp(userRegister: UserRegister): void {
-    this.http
-      .post<any>(`${this._BASE_URL}/register`, userRegister)
-      .pipe(tap((res) => console.log(res)))
-      .subscribe();
+    this.http.post<any>(`${this._BASE_URL}/register`, userRegister).subscribe();
   }
 
   signIn(userAuth: UserAuth): void {

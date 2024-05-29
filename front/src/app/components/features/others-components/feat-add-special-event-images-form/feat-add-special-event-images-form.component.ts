@@ -10,11 +10,11 @@ import { PictureSpecialEventCardService } from 'src/app/shared/services/cards/pi
 @Component({
   selector: 'app-feat-add-special-event-images-form',
   templateUrl: './feat-add-special-event-images-form.component.html',
-  styleUrls: ['./feat-add-special-event-images-form.component.scss']
+  styleUrls: ['./feat-add-special-event-images-form.component.scss'],
 })
 export class FeatAddSpecialEventImagesFormComponent {
-
-  pictureSpecialEventCard: PictureSpecialEventCard = new PictureSpecialEventCard([], '', '', new Date());
+  pictureSpecialEventCard: PictureSpecialEventCard =
+    new PictureSpecialEventCard([], '', '', new Date());
   photosList: File[] = [];
   isPhotoInTheBox: boolean = false;
   isLoadingComposantActive: boolean = false;
@@ -26,20 +26,20 @@ export class FeatAddSpecialEventImagesFormComponent {
     private photoService: PhotoService,
     private storage: AngularFireStorage,
     private imageForPictureSpecialEventCardService: ImageForPictureSpecialEventCardService
-    ) {}
+  ) {}
 
   ngOnInit(): void {
-    this.photosList = this.photoService.photosList;   
+    this.photosList = this.photoService.photosList;
   }
-  
+
   onHandlePhotoUpload(event: any) {
     this.isPhotoInTheBox = true;
     this.photoService.photosList.push(...event.addedFiles);
     if (
       this.photoService.photosList.length < 1 &&
       this.photoService.photosList.length > 1
-      ) {
-        this.isPhotoInTheBox = false;
+    ) {
+      this.isPhotoInTheBox = false;
     }
   }
 
@@ -52,9 +52,9 @@ export class FeatAddSpecialEventImagesFormComponent {
 
   onInputTitleCompleted() {
     return (
-      this.pictureSpecialEventCard.title.length >= 5 && 
+      this.pictureSpecialEventCard.title.length >= 5 &&
       this.pictureSpecialEventCard.title.length <= 150
-      )
+    );
   }
 
   onSubmit() {
@@ -63,57 +63,54 @@ export class FeatAddSpecialEventImagesFormComponent {
   }
 
   private createCard() {
-    this.pictureSpecialEventCardService.createCard(this.pictureSpecialEventCard)
-    .subscribe((createdCard) => {
- 
-      for (let file of this.photoService.photosList) {
-        const filePath = `picture-special-event/${new Date().getTime()}_${file.name}.png`;
-        const fileRef = this.storage.ref(filePath);
-        const task = this.storage.upload(filePath, file);
+    this.pictureSpecialEventCardService
+      .createCard(this.pictureSpecialEventCard)
+      .subscribe((createdCard) => {
+        for (let file of this.photoService.photosList) {
+          const filePath = `picture-special-event/${new Date().getTime()}_${
+            file.name
+          }.png`;
+          const fileRef = this.storage.ref(filePath);
+          const task = this.storage.upload(filePath, file);
 
-        task.snapshotChanges().pipe(
-          finalize(() => {
-            fileRef.getDownloadURL().subscribe(
-              (url) => {
-                if (createdCard.id) {
-                  const newPicture: ImageForPictureSpecialEventCard = new ImageForPictureSpecialEventCard(url, createdCard);
-                  this.imageForPictureSpecialEventCardService.createImage(newPicture).subscribe(
-                   imageCreated => {
-                    if (imageCreated) {
-                      console.log('Résultats :', imageCreated);
-                      this.isLoadingComposantActive = false;
-                      this.isPictureSpecialEventCardCreatedSuccess = true; 
-                
-                      setTimeout(() => {
-                        this.isPictureSpecialEventCardCreatedSuccess = false;
-                      }, 3000);
+          task
+            .snapshotChanges()
+            .pipe(
+              finalize(() => {
+                fileRef.getDownloadURL().subscribe((url) => {
+                  if (createdCard.id) {
+                    const newPicture: ImageForPictureSpecialEventCard =
+                      new ImageForPictureSpecialEventCard(url, createdCard);
+                    this.imageForPictureSpecialEventCardService
+                      .createImage(newPicture)
+                      .subscribe((imageCreated) => {
+                        if (imageCreated) {
+                          this.isLoadingComposantActive = false;
+                          this.isPictureSpecialEventCardCreatedSuccess = true;
 
-                    } else {
-                      (error: any) => { 
-                        console.log(error);
-                                       
-                        this.isLoadingComposantActive = false;
-                        this.isPictureSpecialEventCardCreatedError = true;
-                        setTimeout(() => {
-                          this.isPictureSpecialEventCardCreatedError = false;
-                        }, 3000);
-                        return of(null);
-                      }
-                    }
-                   }
-                  );
-                } else {
-                  
-                }
-              }
-            );
-          })
-        ).subscribe();
-      }
-    }
-  );
-
+                          setTimeout(() => {
+                            this.isPictureSpecialEventCardCreatedSuccess =
+                              false;
+                          }, 3000);
+                        } else {
+                          () => {
+                            this.isLoadingComposantActive = false;
+                            this.isPictureSpecialEventCardCreatedError = true;
+                            setTimeout(() => {
+                              this.isPictureSpecialEventCardCreatedError =
+                                false;
+                            }, 3000);
+                            return of(null);
+                          };
+                        }
+                      });
+                  } else {
+                  }
+                });
+              })
+            )
+            .subscribe();
+        }
+      });
+  }
 }
-
-}
-

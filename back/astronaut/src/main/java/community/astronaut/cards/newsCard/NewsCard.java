@@ -3,6 +3,7 @@ package community.astronaut.cards.newsCard;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import community.astronaut.comment.Comment;
 import community.astronaut.imagesForCards.imageForNews.Picture;
+import community.astronaut.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -53,4 +54,18 @@ public class NewsCard {
     @OneToMany(mappedBy = "newsCard", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("newsCard")
     private Set<Comment> commentsList = new HashSet<>();
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIgnoreProperties(
+            {
+                    "newsCardList",
+                    "newsCardLikedList",
+                    "enabled",
+                    "credentialsNonExpired",
+                    "accountNonExpired",
+                    "authorities",
+                    "accountNonLocked"
+            })
+    private User user;
 }

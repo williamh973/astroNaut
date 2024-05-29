@@ -1,7 +1,12 @@
 <header>
   <button (click)="onLogout()">Deconnexion</button>
+  <button (click)="onAddNewsCardFormOpen()">Ajouter une actualitée</button>
 </header>
 
 <main>
-  <app-feat-add-news-card-form></app-feat-add-news-card-form>
+  <app-feat-add-news-card-form
+    *ngIf="isAddNewsCardFormOpen"
+    [role]="role"
+    [userMail]="userMail"
+  ></app-feat-add-news-card-form>
 </main>

@@ -1,110 +1,115 @@
 #main-container {
-    width: 300px;
-    height: 300px;
-    max-height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    border-radius: 25px;
-    margin: 2px; 
+  width: 400px;
+  height: 400px;
+  max-width: 400px;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  border-radius: 25px;
+  margin: 2px;
 }
 
 #imageTitle-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #imageTitle-container:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #image-container {
-    width: 100%;
-    border-top-right-radius: 25px;
-    border-top-left-radius: 25px;
-    overflow: hidden;
+  width: 100%;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
+  overflow: hidden;
 }
 
 #picture {
-    width: 100%;
-    aspect-ratio: 16 / 9;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 }
 
 .title {
-    width: 100%;
-    height: 40px;
-    text-align: start;
-    font-size: 16px;
-    padding-left: 10px;
+  width: 95%;
+  height: auto;
+  max-height: 50px;
+  text-align: start;
+  font-size: 18px;
+  color: rgb(215, 196, 159);
 }
 
 #thumbsTimestamp-container {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding-left: 10px;
+  width: 95%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
-#thumbUp-container, #thumbDown-container {
-    width: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+#thumbUp-container,
+#thumbDown-container {
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-#counter-like, #counter-dislike {
-    padding: 0;
-    margin: 0;
-    font-size: 12px;
+#counter-like,
+#counter-dislike {
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
 }
 
 svg {
-    min-width: 24px;
-    min-height: 24px;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 svg:hover {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-    transform: translateY(-5px);
-    filter: drop-shadow(0 0 2px whitesmoke) drop-shadow(0 0 4px #ff70ee) drop-shadow(0 0 6px #ff00e0);    
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  transform: translateY(-5px);
+  filter: drop-shadow(0 0 2px whitesmoke) drop-shadow(0 0 4px #ff70ee)
+    drop-shadow(0 0 6px #ff00e0);
 }
 
 svg:hover path {
-    fill: whitesmoke;
+  fill: whitesmoke;
 }
 
 svg:active path {
-    fill: red;  
+  fill: red;
 }
 
 #timestamp-container {
-    width: 100%;
-    height: 60px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    color: rgb(209, 209, 209);
-    padding-right: 15px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: rgb(209, 209, 209);
+  padding-right: 15px;
 }
 
 .timestamp {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .newsCardLiked path {
-    fill: red;
+  fill: red;
 }
 
 .newsCardDisliked path {
-    fill: red;
+  fill: red;
 }

@@ -1,11 +1,12 @@
 package community.astronaut.cards.newsCard;
 
-import community.astronaut.cards.pictureOfWeekCard.PictureOfWeekCard;
 import community.astronaut.imagesForCards.imageForNews.Picture;
 import community.astronaut.imagesForCards.imageForNews.PictureRepository;
-import community.astronaut.imagesForCards.imageForPictureOfWeek.ImageForPictureOfWeek;
+import community.astronaut.user.User;
+import community.astronaut.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -16,14 +17,23 @@ import java.util.List;
 public class NewsCardService {
     private final NewsCardRepository newsCardRepository;
     private final PictureRepository pictureRepository;
+    private final UserRepository userRepository;
 
     public List<NewsCard> getAll() {
         return newsCardRepository.findAll();
     }
 
 
-    public NewsCard addNewsCard(NewsCard newsCard) {
-        newsCard.setTimestamp(new Date());
+    public NewsCard addNewsCard(NewsCard newsCard, String mail) {
+        User user = userRepository.findByEmail(mail)
+                .orElseThrow(() -> new RuntimeException(mail + " not found"));
+
+        String role = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
+
+        if (role.equals("[ROLE_ADMIN]")) {
+            newsCard.setUser(user);
+            newsCard.setTimestamp(new Date());
+        }
         return newsCardRepository.save(newsCard);
     }
 

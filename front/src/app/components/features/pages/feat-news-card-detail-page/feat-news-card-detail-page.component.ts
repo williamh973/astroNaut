@@ -6,10 +6,9 @@ import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-ca
 @Component({
   selector: 'app-feat-news-card-detail-page',
   templateUrl: './feat-news-card-detail-page.component.html',
-  styleUrls: ['./feat-news-card-detail-page.component.scss']
+  styleUrls: ['./feat-news-card-detail-page.component.scss'],
 })
 export class FeatNewsCardDetailPageComponent {
-
   newsCard!: NewsCard;
   newsCardPictureSrc: string = '';
   newsCardTitle: string = '';
@@ -24,48 +23,47 @@ export class FeatNewsCardDetailPageComponent {
   isQuitSvgActived: boolean = false;
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private router: Router,
     private newsCardService: NewsCardService
-    ) {}
+  ) {}
 
   ngOnInit() {
     this.onGetNewsCardId();
   }
 
   onGetNewsCardId() {
-    this.route.paramMap.subscribe(
-      (params: Params) => {
+    this.route.paramMap.subscribe((params: Params) => {
       this.newsCardId = +params['get']('id');
 
-      this.newsCardService.getCardById(this.newsCardId).subscribe(
-        (newsCard: NewsCard) => {
+      this.newsCardService
+        .getCardById(this.newsCardId)
+        .subscribe((newsCard: NewsCard) => {
           this.newsCard = newsCard;
           this.onGetNewsCardPicture();
           this.onGetNewsCardTitle();
           this.onGetNewsCardArticles();
           this.onGetNewsCardReadingTime();
           this.onGetNewsCardTimestamp();
-      });
-
+        });
     });
   }
-  
+
   onGetNewsCardPicture() {
     if (this.newsCard.picturesList.length > 0) {
-        this.newsCardPictureSrc = this.newsCard.picturesList[0].src;
+      this.newsCardPictureSrc = this.newsCard.picturesList[0].src;
     }
   }
 
   onGetNewsCardTitle() {
-      this.newsCardTitle = this.newsCard.title;
+    this.newsCardTitle = this.newsCard.title;
   }
 
   onGetNewsCardArticles() {
-      this.newsCardMainArticle = this.newsCard.mainArticle;
-      this.newsCardOptionnalOneArticle = this.newsCard.optionalArticleOne;
-      this.newsCardOptionnalTwoArticle = this.newsCard.optionalArticleTwo;
-      this.newsCardOptionnalThreeArticle = this.newsCard.optionalArticleThree;
+    this.newsCardMainArticle = this.newsCard.mainArticle;
+    this.newsCardOptionnalOneArticle = this.newsCard.optionalArticleOne;
+    this.newsCardOptionnalTwoArticle = this.newsCard.optionalArticleTwo;
+    this.newsCardOptionnalThreeArticle = this.newsCard.optionalArticleThree;
   }
 
   onGetNewsCardReadingTime() {
@@ -73,7 +71,7 @@ export class FeatNewsCardDetailPageComponent {
   }
 
   onGetNewsCardTimestamp() {
-      this.newsCardTimestamp = this.newsCard.timestamp;
+    this.newsCardTimestamp = this.newsCard.timestamp;
   }
 
   onCloseDetailPage() {
@@ -87,5 +85,4 @@ export class FeatNewsCardDetailPageComponent {
   onQuitSvgDasactived() {
     this.isQuitSvgActived = false;
   }
-
 }

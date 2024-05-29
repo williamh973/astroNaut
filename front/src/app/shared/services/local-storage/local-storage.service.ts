@@ -18,6 +18,7 @@ export class LocalStorageService {
       return null;
     }
   }
+
   setToken(tokenFromDB: TokenResponse): void {
     localStorage.setItem('tokenId', tokenFromDB.token);
   }

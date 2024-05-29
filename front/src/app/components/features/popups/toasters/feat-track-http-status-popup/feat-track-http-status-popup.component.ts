@@ -27,7 +27,6 @@ export class FeatTrackHttpStatusPopupComponent {
 
     this.httpSuccess$.subscribe((response: HttpResponse<any>) => {
       this.showSuccessMessage = true;
-      console.log(response);
     });
   }
 }
