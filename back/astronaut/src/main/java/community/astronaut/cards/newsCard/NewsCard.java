@@ -61,6 +61,7 @@ public class NewsCard {
             {
                     "newsCardList",
                     "newsCardLikedList",
+                    "newsCardDislikedList",
                     "enabled",
                     "credentialsNonExpired",
                     "accountNonExpired",

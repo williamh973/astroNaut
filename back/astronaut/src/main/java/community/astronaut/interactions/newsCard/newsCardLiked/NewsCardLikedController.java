@@ -1,4 +1,4 @@
-package community.astronaut.interactions.newsCardLiked;
+package community.astronaut.interactions.newsCard.newsCardLiked;
 
 
 import community.astronaut.cards.newsCard.NewsCard;
@@ -12,7 +12,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/newsCardLikedList")
 public class NewsCardLikedController {
-    private final NewsCardLikedRepository newsCardLikedRepository;
     private final NewsCardLikedService newsCardLikedService;
     private final NewsCardRepository newsCardRepository;
 

@@ -1,4 +1,4 @@
-package community.astronaut.interactions.newsCardLiked;
+package community.astronaut.interactions.newsCard.newsCardLiked;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

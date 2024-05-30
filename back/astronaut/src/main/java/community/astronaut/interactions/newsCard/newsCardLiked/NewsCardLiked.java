@@ -1,4 +1,4 @@
-package community.astronaut.interactions.newsCardLiked;
+package community.astronaut.interactions.newsCard.newsCardLiked;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -27,7 +27,6 @@ public class NewsCardLiked {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-
     @JsonIgnore
     private User user;
 }

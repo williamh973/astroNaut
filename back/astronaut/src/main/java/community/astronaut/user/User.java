@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import community.astronaut.cards.newsCard.NewsCard;
-import community.astronaut.interactions.newsCardLiked.NewsCardLiked;
+import community.astronaut.interactions.newsCard.newsCardDisliked.NewsCardDisliked;
+import community.astronaut.interactions.newsCard.newsCardLiked.NewsCardLiked;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -73,4 +74,8 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("user")
     private Set<NewsCardLiked> newsCardLikedList = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("user")
+    private Set<NewsCardDisliked> newsCardDislikedList = new HashSet<>();
 }

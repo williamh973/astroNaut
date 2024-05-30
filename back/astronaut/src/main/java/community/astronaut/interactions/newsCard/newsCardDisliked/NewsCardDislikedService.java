@@ -1,5 +1,4 @@
-package community.astronaut.interactions.newsCardLiked;
-
+package community.astronaut.interactions.newsCard.newsCardDisliked;
 
 import community.astronaut.cards.newsCard.NewsCard;
 import community.astronaut.cards.newsCard.NewsCardRepository;
@@ -16,36 +15,36 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class NewsCardLikedService {
-private final UserRepository userRepository;
-private final NewsCardRepository newsCardRepository;
-private final NewsCardLikedRepository newsCardLikedRepository;
+public class NewsCardDislikedService {
+    private final UserRepository userRepository;
+    private final NewsCardRepository newsCardRepository;
+    private final NewsCardDislikedRepository newsCardDislikedRepository;
 
-   public List<NewsCardLiked> getCurrentUserNewsCardLikedList() {
-       User user = getCurrentUser();
-       return new ArrayList<>(user.getNewsCardLikedList());
-   }
+    public List<NewsCardDisliked> getCurrentUserNewsCardDislikedList() {
+        User user = getCurrentUser();
+        return new ArrayList<>(user.getNewsCardDislikedList());
+    }
 
-    public NewsCardLiked addNewsCardLiked(Long cardId) {
+    public NewsCardDisliked addNewsCardDisliked(Long cardId) {
         User user = getCurrentUser();
 
         NewsCard newsCard = newsCardRepository.findById(cardId)
                 .orElseThrow(() -> new RuntimeException("Card not found"));
 
-        NewsCardLiked newsCardLiked = new NewsCardLiked();
-        newsCardLiked.setUser(user);
-        newsCardLiked.setNewsCard(newsCard);
+        NewsCardDisliked newsCardDisliked = new NewsCardDisliked();
+        newsCardDisliked.setUser(user);
+        newsCardDisliked.setNewsCard(newsCard);
 
-        newsCardLikedRepository.save(newsCardLiked);
-        return newsCardLiked;
+        newsCardDislikedRepository.save(newsCardDisliked);
+        return newsCardDisliked;
     }
 
-    public NewsCardLiked deleteNewsCardLiked(Long cardId) {
+    public NewsCardDisliked deleteNewsCardDisliked(Long cardId) {
         User user = getCurrentUser();
-        NewsCardLiked newsCardLiked = newsCardLikedRepository.findById(cardId)
-                .orElseThrow(() -> new RuntimeException("NewsCardLiked not found"));
-        newsCardLikedRepository.delete(newsCardLiked);
-        return newsCardLiked;
+        NewsCardDisliked newsCardDisliked = newsCardDislikedRepository.findById(cardId)
+                .orElseThrow(() -> new RuntimeException("NewsCardDisliked not found"));
+        newsCardDislikedRepository.delete(newsCardDisliked);
+        return newsCardDisliked;
     }
 
     private User getCurrentUser() {
@@ -60,4 +59,5 @@ private final NewsCardLikedRepository newsCardLikedRepository;
         }
     }
 }
+
 

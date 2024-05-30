@@ -1,7 +1,7 @@
 package community.astronaut.cards.newsCard;
 
-import community.astronaut.interactions.newsCardLiked.NewsCardLiked;
-import community.astronaut.interactions.newsCardLiked.NewsCardLikedRepository;
+import community.astronaut.interactions.newsCard.newsCardLiked.NewsCardLiked;
+import community.astronaut.interactions.newsCard.newsCardLiked.NewsCardLikedRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

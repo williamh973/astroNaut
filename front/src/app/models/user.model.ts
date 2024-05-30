@@ -1,5 +1,5 @@
 import { NewsCard } from './cards/news-card.model';
-import { NewsCardLiked } from './user/interaction/news-card-like.model';
+import { NewsCardLiked } from './user/interaction/news-card/news-card-like.model';
 
 export class User {
   constructor(

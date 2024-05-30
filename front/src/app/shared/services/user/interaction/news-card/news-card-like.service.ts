@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
-import { NewsCardLiked } from 'src/app/models/user/interaction/news-card-like.model';
+import { NewsCardLiked } from 'src/app/models/user/interaction/news-card/news-card-like.model';
 
 @Injectable({
   providedIn: 'root',
