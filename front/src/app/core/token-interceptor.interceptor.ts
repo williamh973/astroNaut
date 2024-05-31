@@ -22,11 +22,8 @@ export class TokenInterceptorInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    // On récupère le token du localStorage
     const idToken = this.lsService.getToken();
-
     if (idToken) {
-      // Je crée le header ajouté à chaque requête HTTP envoyée vers le serveur
       const cloned = request.clone({
         headers: request.headers.set('Authorization', 'Bearer ' + idToken),
       });
@@ -44,12 +41,10 @@ export class TokenInterceptorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       tap((incomingRequest) => {
         console.log(incomingRequest);
-        // j'intercepte les requêtes que mon serveur me renvoie en statut 200 (Statut : succès)
         if (incomingRequest instanceof HttpResponse) {
           this.authS.setHttpSuccessSubject$(incomingRequest);
         }
       }),
-      // J'intercepte les requêtes que mon serveur me renvoit en statut 400 (Statut : erreur)
       catchError((err: HttpErrorResponse) => {
         console.log(err);
         this.authS.setHttpErrorSubject$(err);

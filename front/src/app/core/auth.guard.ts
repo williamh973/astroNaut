@@ -21,8 +21,6 @@ export class AuthGuard implements CanActivate {
     private tokenS: TokenService,
     public loginOrRegisterPopupService: LoginOrRegisterPopupService
   ) {
-    // Lorsque se construit ma classe (1 seule fois), je récupère mon JWT (opération asynchrone donc je dois la lancer le plus tôt possible)
-    // Ma méthode canActivate() se déclenchera plus tard
     this.tokenS
       ._getTokenDetailsSubject$()
       .pipe(map((decodedToken: any) => decodedToken.role))

@@ -4,6 +4,7 @@ import { NewsCard } from 'src/app/models/cards/news-card.model';
 import { NewsCardDisliked } from 'src/app/models/user/interaction/news-card/news-card-dislike.model';
 import { NewsCardLiked } from 'src/app/models/user/interaction/news-card/news-card-like.model';
 import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
+import { TokenService } from 'src/app/shared/services/token/token.service';
 import { NewsCardDislikedService } from 'src/app/shared/services/user/interaction/news-card/news-card-disliked.service';
 import { NewsCardLikeService } from 'src/app/shared/services/user/interaction/news-card/news-card-like.service';
 
@@ -19,6 +20,7 @@ export class FeatNewsCardComponent {
   isNewsCardDetailPageOpen: boolean = false;
   isNewsCardLiked: boolean = false;
   isNewsCardDisliked: boolean = false;
+  isUserNotConnectedError: boolean = false;
   currentUserNewsCardLikedList: NewsCardLiked[] = [];
   currentUserNewsCardDislikedList: NewsCardDisliked[] = [];
 
@@ -26,7 +28,8 @@ export class FeatNewsCardComponent {
     private router: Router,
     private newsCardService: NewsCardService,
     private newsCardLikeService: NewsCardLikeService,
-    private newsCardDislikeService: NewsCardDislikedService
+    private newsCardDislikeService: NewsCardDislikedService,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit() {
@@ -46,7 +49,7 @@ export class FeatNewsCardComponent {
       .getCurrentUserNewsCardLikedList()
       .subscribe((newsCardLiked: NewsCardLiked[]) => {
         this.currentUserNewsCardLikedList = newsCardLiked;
-        console.log(this.currentUserNewsCardLikedList);
+        // console.log(this.currentUserNewsCardLikedList);
 
         this.isNewsCardLiked = this.currentUserNewsCardLikedList.some(
           (liked) => liked.newsCard.id === this.newsCard.id
@@ -69,7 +72,7 @@ export class FeatNewsCardComponent {
       .getCurrentUserNewsCardDislikedList()
       .subscribe((newsCardDisliked: NewsCardDisliked[]) => {
         this.currentUserNewsCardDislikedList = newsCardDisliked;
-        console.log(this.currentUserNewsCardDislikedList);
+        // console.log(this.currentUserNewsCardDislikedList);
 
         this.isNewsCardDisliked = this.currentUserNewsCardDislikedList.some(
           (disliked) => disliked.newsCard.id === this.newsCard.id
@@ -91,7 +94,7 @@ export class FeatNewsCardComponent {
     const findNewsCardLiked = this.currentUserNewsCardLikedList.find(
       (newsCardLiked) => newsCardLiked.newsCard.id === this.newsCard.id
     );
-    console.log(findNewsCardLiked);
+    // console.log(findNewsCardLiked);
     if (findNewsCardLiked) {
       this.newsCardLikeService.deleteNewsCardLiked(findNewsCardLiked).subscribe(
         (success) => {
@@ -122,11 +125,7 @@ export class FeatNewsCardComponent {
     }
   }
 
-  onOpenCardDetails() {
-    this.router.navigate(['/news-card-details/', this.newsCard.id]);
-  }
-
-  onLikeThisCardToggle() {
+  private onLikeThisCardToggle() {
     this.isNewsCardLiked = !this.isNewsCardLiked;
     if (this.isNewsCardLiked) {
       this.isNewsCardDisliked = false;
@@ -144,7 +143,7 @@ export class FeatNewsCardComponent {
     }
   }
 
-  onDislikeThisCard() {
+  private onDislikeThisCardToggle() {
     this.isNewsCardDisliked = !this.isNewsCardDisliked;
     if (this.isNewsCardDisliked) {
       this.isNewsCardLiked = false;
@@ -160,5 +159,23 @@ export class FeatNewsCardComponent {
       this.newsCard.dislikeCount--;
       this.onDeleteNewsCardInCardDislikedList();
     }
+  }
+
+  isInteractionButtonPushed() {
+    const token = this.tokenService.isCheckTokenInLocalStorage();
+    if (token && this.isNewsCardLiked) {
+      this.onLikeThisCardToggle();
+    } else if (token && this.isNewsCardDisliked) {
+      this.onDislikeThisCardToggle();
+    } else if (!token) {
+      this.isUserNotConnectedError = true;
+      setTimeout(() => {
+        this.isUserNotConnectedError = false;
+      }, 2_000);
+    }
+  }
+
+  onOpenCardDetails() {
+    this.router.navigate(['/news-card-details/', this.newsCard.id]);
   }
 }

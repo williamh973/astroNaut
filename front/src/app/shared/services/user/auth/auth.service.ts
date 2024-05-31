@@ -39,11 +39,13 @@ export class AuthService {
       .post<any>(`${this._BASE_URL}/authenticate`, userAuth)
       .subscribe((tokenFromDB: TokenResponse) => {
         this.tokenService.updateToken(tokenFromDB);
-        this.localStorageService.setUserEmail(userAuth);
 
-        setTimeout(() => {
-          this.router.navigate(['/astronaut/user-space']);
-        }, 2500);
+        const token = this.tokenService.isCheckTokenInLocalStorage();
+        if (token) {
+          setTimeout(() => {
+            this.router.navigate(['/astronaut/landing-page']);
+          }, 2_000);
+        }
       });
   }
 

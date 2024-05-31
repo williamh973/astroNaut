@@ -17,7 +17,7 @@ export class UiNavbarComponent {
     new Menu('A propos', '/astronaut/about'),
     new Menu('Galerie', '/astronaut/gallery/pictures-of-the-week'),
     new Menu('Contact', ''),
-    new Menu('Mon espace', '/astronaut/user-space'),
+    new Menu('Mon espace', ''),
   ];
 
   @Input() isLeftMenuAnimationWhenOpen!: boolean;
@@ -37,8 +37,8 @@ export class UiNavbarComponent {
   }
 
   onOpenContributePage() {
-    const checkToken = this.tokenService.isCheckTokenInLocalStorage();
-    if (checkToken) {
+    const token = this.tokenService.isCheckTokenInLocalStorage();
+    if (token) {
       this.router.navigate(['/astronaut/to-contribute']);
     } else {
       this.loginOrRegisterPopupService.openPopup();
@@ -46,7 +46,8 @@ export class UiNavbarComponent {
   }
 
   onContactPopupFormOpen() {
-    if (this.tokenService.isCheckTokenInLocalStorage()) {
+    const token = this.tokenService.isCheckTokenInLocalStorage();
+    if (token) {
       this.router.navigate(['/astronaut/contact']);
     } else {
       this.loginOrRegisterPopupService.openPopup();
@@ -54,8 +55,9 @@ export class UiNavbarComponent {
   }
 
   onMySpacePageOpen() {
-    if (this.tokenService.isCheckTokenInLocalStorage()) {
-      this.router.navigate(['/astronaut/user-space']);
+    const token = this.tokenService.isCheckTokenInLocalStorage();
+    if (token) {
+      this.router.navigate(['/astronaut/landing-page']);
     } else {
       this.loginOrRegisterPopupService.openPopup();
     }

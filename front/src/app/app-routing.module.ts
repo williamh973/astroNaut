@@ -50,7 +50,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'astronaut/user-space',
+    path: 'astronaut/landing-page',
     component: FeatUserLandingPageComponent,
     canActivate: [AuthGuard],
   },

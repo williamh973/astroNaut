@@ -10,3 +10,11 @@
     [userMail]="userMail"
   ></app-feat-add-news-card-form>
 </main>
+
+<app-feat-user-landing-page
+  *ngIf="role === 'ROLE_USER'"
+></app-feat-user-landing-page>
+
+<app-feat-admin-landing-page
+  *ngIf="role === 'ROLE_ADMIN'"
+></app-feat-admin-landing-page>
