@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 import { FeatLocationsPageComponent } from './components/features/pages/feat-locations-page/feat-locations-page.component';
 import { UiHeaderComponent } from './components/ui/ui-header/ui-header.component';
 import { UiNavbarComponent } from './components/ui/ui-navbar/ui-navbar.component';
-import { UiSearchBarComponent } from './components/ui/ui-search-bar/ui-search-bar.component';
 import { UiFooterComponent } from './components/ui/ui-footer/ui-footer.component';
 import { UiSocialMediasComponent } from './components/ui/ui-social-medias/ui-social-medias.component';
 import { FeatNewsCardComponent } from './components/features/others-components/feat-news-card/feat-news-card.component';
@@ -70,7 +69,6 @@ import { FeatLandingPageComponent } from './components/features/pages/feat-landi
     FeatLocationsPageComponent,
     UiHeaderComponent,
     UiNavbarComponent,
-    UiSearchBarComponent,
     UiFooterComponent,
     UiSocialMediasComponent,
     FeatNewsCardComponent,

@@ -1,10 +1,12 @@
 .card-list {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    color: white;
-    padding: 15px 0;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 15px 0;
+  margin: auto;
+  //   border: 1px solid red;
 }

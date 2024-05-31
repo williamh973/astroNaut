@@ -1,28 +1,37 @@
-.header {
-    position: relative;
-    z-index: 1;
+#headerTop-homePage {
+  position: relative;
+  z-index: 1;
 }
 
 #main-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: linear-gradient(to bottom, rgba(227, 227, 227, 0.15) 0%, rgba(0, 0, 0, 0.763) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0, 0, 0, 0.522) 120%) #404040;
-    background-blend-mode: multiply,multiply;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ecf0f1;
+}
+
+#search-section {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  color: whitesmoke;
+  background: #04091e;
 }
 
 #title-search-container {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: auto;
-    color: whitesmoke;
-    padding: 20px 0;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  color: whitesmoke;
 }
 
 h1 {
-    font-style: italic;
+  font-style: italic;
 }

@@ -1,14 +1,15 @@
-<div 
-(click)="onOpenLeftMenu()" 
-id="headerTop-burgerMenu"
->
-    <svg 
-        xmlns="http://www.w3.org/2000/svg" 
-        height="24" 
-        viewBox="0 -960 960 960" 
-        width="24"
-        >
-            <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" [attr.fill]="isPictureWeekPageOpen ? 'wheat' : 'black'"/>
-    </svg>
-    <span>MENU</span>
-</div>
+<button (click)="onOpenLeftMenu()" id="headerTop-burgerMenu">
+  <svg
+    id="burger-icon"
+    xmlns="http://www.w3.org/2000/svg"
+    height="30"
+    viewBox="0 -960 960 960"
+    width="30"
+  >
+    <path
+      d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+      [attr.fill]="isPictureWeekPageOpen ? 'wheat' : '#9B9B9B'"
+    />
+  </svg>
+  <span id="menu-font">MENU</span>
+</button>

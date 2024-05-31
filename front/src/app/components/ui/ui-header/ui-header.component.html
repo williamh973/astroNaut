@@ -1,40 +1,24 @@
-<header id="headerTop">    
-    <div id="headerTop-mainContainer">
-        
-        <div id="left-container">
-            <app-ui-burger-menu-button
-            (isLeftMenuOpen)="onOpenLeftMenu($event)"
-            (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
-            (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
-            ></app-ui-burger-menu-button>
-        </div>
-        
-        <div id="middle-container">
-            <app-ui-title-subtitle
-            ></app-ui-title-subtitle>
-        </div>
-        
-        <div id="right-container">
-            <div id="visit-container">
-                <app-feat-visits-counter
-                ></app-feat-visits-counter>
-            </div>
-            
-            <div id="social-medias-container">
-                <app-ui-social-medias
-                ></app-ui-social-medias>
-            </div>
-        </div>
-        
-    </div>
+<header id="headerTop">
+  <div id="left-container">
+    <app-ui-burger-menu-button
+      (isLeftMenuOpen)="onOpenLeftMenu($event)"
+      (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
+      (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
+    ></app-ui-burger-menu-button>
+  </div>
 
-    <app-ui-navbar
-    *ngIf="isLeftMenuOpen"
-    [isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
-    [isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
-    (isLeftMenuOpen)="onCloseLeftMenu($event)"
-    ></app-ui-navbar>
-    
+  <div id="middle-container">
+    <app-ui-title-subtitle></app-ui-title-subtitle>
+  </div>
+
+  <div id="right-container">
+    <app-ui-social-medias></app-ui-social-medias>
+  </div>
 </header>
 
-
+<app-ui-navbar
+  *ngIf="isLeftMenuOpen"
+  [isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
+  [isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
+  (isLeftMenuOpen)="onCloseLeftMenu($event)"
+></app-ui-navbar>

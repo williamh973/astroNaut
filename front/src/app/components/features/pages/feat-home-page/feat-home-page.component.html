@@ -1,20 +1,25 @@
-<app-ui-header class="header"> </app-ui-header>
+<header>
+  <app-ui-header id="headerTop-homePage"></app-ui-header>
+</header>
 
-<div id="main-container">
-  <div id="title-search-container">
-    <h1 id="title">Actualités astro</h1>
-    <app-ui-search-bar-home
-      (isSearchResultNotFoundChange)="onSearchResultChange($event)"
-    ></app-ui-search-bar-home>
-  </div>
-  <div>
+<main id="main-container">
+  <section id="search-section">
+    <div id="title-search-container">
+      <h1 id="title">Actualités Astro</h1>
+      <app-ui-search-bar-home
+        (isSearchResultNotFoundChange)="onSearchResultChange($event)"
+      ></app-ui-search-bar-home>
+    </div>
+
     <app-feat-search-result-not-found
       *ngIf="isSearchResultNotFound"
     ></app-feat-search-result-not-found>
+  </section>
 
+  <section id="newsCard-list">
     <app-feat-news-card-list></app-feat-news-card-list>
-  </div>
-</div>
+  </section>
+</main>
 
 <app-feat-login-or-register-popup
   *ngIf="isLoginOrRegisterPopupOpen"
