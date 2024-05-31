@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FeatUserLandingPageComponent } from './components/features/pages/feat-user-landing-page/feat-user-landing-page.component';
 import { FeatHomePageComponent } from './components/features/pages/feat-home-page/feat-home-page.component';
 import { FeatLocationsPageComponent } from './components/features/pages/feat-locations-page/feat-locations-page.component';
 import { FeatNewsCardDetailPageComponent } from './components/features/pages/feat-news-card-detail-page/feat-news-card-detail-page.component';
@@ -12,6 +11,7 @@ import { FeatPicturesOfWeekPageComponent } from './components/features/pages/fea
 import { FeatPicturesSpecialEventsPageComponent } from './components/features/pages/feat-pictures-special-events-page/feat-pictures-special-events-page.component';
 import { FeatPicturesAuthorsPageComponent } from './components/features/pages/feat-pictures-authors-page/feat-pictures-authors-page.component';
 import { AuthGuard } from './core/auth.guard';
+import { FeatLandingPageComponent } from './components/features/pages/feat-landing-page/feat-landing-page.component';
 
 const routes: Routes = [
   {
@@ -51,7 +51,7 @@ const routes: Routes = [
   },
   {
     path: 'astronaut/landing-page',
-    component: FeatUserLandingPageComponent,
+    component: FeatLandingPageComponent,
     canActivate: [AuthGuard],
   },
   // {

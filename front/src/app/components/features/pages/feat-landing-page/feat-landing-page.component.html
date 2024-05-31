@@ -1,0 +1,34 @@
+<div id="full-page">
+  <header id="headerLanding">
+    <app-ui-burger-menu-button
+      id="headerTop-burgerMenu"
+      (isLeftMenuOpen)="onOpenLeftMenu($event)"
+      (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
+      (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
+    >
+    </app-ui-burger-menu-button>
+
+    <button (click)="onLogout()">Deconnexion</button>
+  </header>
+  <main>
+    <app-feat-user-landing-page
+      *ngIf="role === 'ROLE_USER'"
+    ></app-feat-user-landing-page>
+
+    <app-feat-admin-landing-page
+      *ngIf="role === 'ROLE_ADMIN'"
+    ></app-feat-admin-landing-page>
+  </main>
+
+  <footer>
+    <app-ui-footer></app-ui-footer>
+  </footer>
+</div>
+
+<app-ui-navbar
+  *ngIf="isLeftMenuOpen"
+  [isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
+  [isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
+  (isLeftMenuOpen)="onCloseLeftMenu($event)"
+>
+</app-ui-navbar>

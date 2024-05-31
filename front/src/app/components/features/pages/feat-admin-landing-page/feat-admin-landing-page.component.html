@@ -1,1 +1,9 @@
-<p>feat-admin-landing-page works!</p>
+<header>
+  <button (click)="onAddNewsCardFormOpen()">Ajouter une actualitée</button>
+</header>
+
+<main>
+  <app-feat-add-news-card-form
+    *ngIf="isAddNewsCardFormOpen"
+  ></app-feat-add-news-card-form>
+</main>

@@ -62,6 +62,7 @@ import { FeatCommentCardComponent } from './components/features/others-component
 import { FeatAddCommentCardFormComponent } from './components/features/others-components/user/feat-add-comment-card-form/feat-add-comment-card-form.component';
 import { FeatCommentCardListComponent } from './components/features/others-components/feat-comment-card-list/feat-comment-card-list.component';
 import { FeatTrackHttpStatusPopupComponent } from './components/features/popups/toasters/feat-track-http-status-popup/feat-track-http-status-popup.component';
+import { FeatLandingPageComponent } from './components/features/pages/feat-landing-page/feat-landing-page.component';
 
 @NgModule({
   declarations: [
@@ -117,6 +118,7 @@ import { FeatTrackHttpStatusPopupComponent } from './components/features/popups/
     FeatAddCommentCardFormComponent,
     FeatCommentCardListComponent,
     FeatTrackHttpStatusPopupComponent,
+    FeatLandingPageComponent,
   ],
   imports: [
     BrowserModule,
