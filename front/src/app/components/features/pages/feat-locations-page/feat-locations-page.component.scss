@@ -1,11 +1,53 @@
-#main-container {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+#headerTop-locationPage {
+  position: relative;
+  z-index: 1;
 }
 
-#title {
- font-size: 50px;
+#main-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+#search-section {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  color: whitesmoke;
+  background: #04091e;
+}
+
+#search-container {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  color: whitesmoke;
+}
+
+#search-title {
+  font-style: italic;
+}
+
+#subtitle {
+  background: #f5ba8d;
+  //   background: #ffffff;
+  width: 60%;
+  margin: auto;
+  text-align: justify;
+  padding: 10px;
+}
+
+#locationPage-map {
+  width: 60%;
+  margin: auto;
 }

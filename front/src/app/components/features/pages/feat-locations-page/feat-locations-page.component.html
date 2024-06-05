@@ -1,15 +1,24 @@
-<div id="main-container">
-    <h1 id="title">Lieux d'observations</h1>
-    
-    <app-ui-search-bar-locations
-    (isSearchResultNotFoundChange)="onSearchResultChange($event)"
-    ></app-ui-search-bar-locations>
-    <p id="subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere natus distinctio neque omnis voluptatibus recusandae enim accusantium dolores quas impedit!</p>
-    
-    <app-feat-search-result-not-found
-    *ngIf="isSearchResultNotFound"
-    ></app-feat-search-result-not-found>
+<app-ui-header id="headerTop-locationPage"></app-ui-header>
 
-    <app-feat-map
-    ></app-feat-map>
-</div>
+<main id="main-container">
+  <section id="search-section">
+    <div id="search-container">
+      <h1 id="search-title">Lieux d'observations</h1>
+      <app-ui-search-bar-locations
+        (isSearchResultNotFoundChange)="onSearchResultChange($event)"
+      ></app-ui-search-bar-locations>
+    </div>
+    <app-feat-search-result-not-found
+      *ngIf="isSearchResultNotFound"
+    ></app-feat-search-result-not-found>
+  </section>
+
+  <p id="subtitle" aria-describedby="subtitle-description">
+    Découvrez les meilleurs lieux d'observation astronomique à travers le monde.
+    Que vous soyez amateur ou professionnel, explorez notre carte interactive
+    pour trouver l'endroit idéal pour observer les étoiles, les planètes, et
+    bien plus encore.
+  </p>
+
+  <app-feat-map id="locationPage-map"></app-feat-map>
+</main>
