@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
-import { TokenResponse } from 'src/app/models/token.model';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { TokenService } from 'src/app/shared/services/token/token.service';
 
@@ -33,6 +31,7 @@ export class FeatLandingPageComponent {
       .subscribe((decodedToken: any) => {
         if (decodedToken) {
           this.role = decodedToken.role;
+          this.userMail = decodedToken.sub;
         } else {
           this.router.navigate(['/astronaut/news']);
         }

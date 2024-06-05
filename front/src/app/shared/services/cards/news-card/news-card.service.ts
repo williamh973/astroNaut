@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
 
@@ -17,8 +17,10 @@ export class NewsCardService {
 
   constructor(private http: HttpClient) {}
 
-  getCardList(): Observable<NewsCard[]> {
-    return this.http.get<NewsCard[]>(`${this._BASE_URL_NEWSCARD}/all`);
+  getCardListSubject$(): Observable<NewsCard[]> {
+    return this.http
+      .get<NewsCard[]>(`${this._BASE_URL_NEWSCARD}/all`)
+      .pipe(tap((newsCard) => this.filteredCardListSubject$.next(newsCard)));
   }
 
   getCardById(id: number): Observable<NewsCard> {
@@ -27,10 +29,16 @@ export class NewsCardService {
 
   createCard(newsCard: NewsCard, userMail: string): Observable<NewsCard> {
     const userData = userMail;
-    return this.http.post<NewsCard>(
-      `${this._BASE_URL_NEWSCARD}/add?userAssociatedMail=${userData}`,
-      newsCard
-    );
+    return this.http
+      .post<NewsCard>(
+        `${this._BASE_URL_NEWSCARD}/add?userAssociatedMail=${userData}`,
+        newsCard
+      )
+      .pipe(
+        tap((newNewsCard) => {
+          this.postNewsCardListSubject$(newNewsCard);
+        })
+      );
   }
 
   updateCard(newsCard: NewsCard): Observable<NewsCard> {
@@ -46,6 +54,11 @@ export class NewsCardService {
 
   postFilterCardListForSearch(filteredCardList: NewsCard[]) {
     this.filteredCardListSubject$.next([...filteredCardList]);
+  }
+
+  postNewsCardListSubject$(newCard: NewsCard) {
+    const currentNewsCardList = this.filteredCardListSubject$.value;
+    this.filteredCardListSubject$.next([...currentNewsCardList, newCard]);
   }
 
   getFilteredCardList$(): Observable<NewsCard[]> {

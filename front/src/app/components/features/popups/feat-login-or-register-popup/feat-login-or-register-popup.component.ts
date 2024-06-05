@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { LoginOrRegisterPopupService } from 'src/app/shared/services/login-or-register-popup/login-or-register-popup.service';
 
 @Component({
@@ -9,7 +8,6 @@ import { LoginOrRegisterPopupService } from 'src/app/shared/services/login-or-re
 })
 export class FeatLoginOrRegisterPopupComponent {
   isLoginOrRegisterPopupOpen: boolean = false;
-
   isLoginFormOpen: boolean = false;
   isRegisterFormOpen: boolean = false;
 
@@ -19,8 +17,8 @@ export class FeatLoginOrRegisterPopupComponent {
 
   ngOnInit(): void {
     this.loginOrRegisterPopupService.isAccountPopupOpen$.subscribe(
-      (isOpen: boolean) => {
-        this.isLoginOrRegisterPopupOpen = isOpen;
+      (isLoginOrRegisterPopupOpen: boolean) => {
+        this.isLoginOrRegisterPopupOpen = isLoginOrRegisterPopupOpen;
       }
     );
   }

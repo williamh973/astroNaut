@@ -1,0 +1,11 @@
+#close-icon:hover path {
+  fill: whitesmoke;
+}
+
+#close-icon:hover {
+  cursor: pointer;
+  transition: all 1s;
+  filter: drop-shadow(0 0 10px whitesmoke) drop-shadow(0 0 20px whitesmoke)
+    drop-shadow(0 0 30px whitesmoke) drop-shadow(0 0 40px #ff00e0)
+    drop-shadow(0 0 70px #ff00e0) drop-shadow(0 0 80px #ff00e0);
+}

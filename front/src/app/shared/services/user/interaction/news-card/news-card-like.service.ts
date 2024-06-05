@@ -17,10 +17,7 @@ export class NewsCardLikeService {
   }
 
   addNewsCardLiked(cardId: number): Observable<NewsCard> {
-    return this.http.post<NewsCard>(
-      `${this._BASE_URL}/newsCardLikedList/${cardId}`,
-      {}
-    );
+    return this.http.post<NewsCard>(`${this._BASE_URL}/add/${cardId}`, {});
   }
 
   deleteNewsCardLiked(deletedNewsCardLiked: NewsCardLiked): Observable<void> {

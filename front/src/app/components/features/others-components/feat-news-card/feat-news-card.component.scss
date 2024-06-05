@@ -1,33 +1,46 @@
+* {
+  color: #121212;
+}
+
 #main-container {
   width: 400px;
-  height: 400px;
-  max-width: 400px;
-  max-height: 400px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: black;
+  background-color: transparent;
+  font-family: "Poppins", sans-serif;
 }
 
-#imageTitle-container {
-  width: 100%;
-  aspect-ratio: 16 / 9;
+#admin-section {
+  width: inherit;
+  height: auto;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  background: black;
+  padding: 5px 0;
 }
 
-#imageTitle-container:hover {
-  cursor: pointer;
+#picture-container {
+  width: inherit;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
 }
 
 #image-container {
   width: 100%;
-  border-top-right-radius: 25px;
-  border-top-left-radius: 25px;
-  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  padding: 0;
+  filter: brightness(70%);
+}
+
+#image-container:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+  filter: brightness(100%);
 }
 
 #picture {
@@ -35,18 +48,21 @@
   aspect-ratio: 16 / 9;
 }
 
-.title {
+#title {
   width: 95%;
-  height: auto;
+  height: 50px;
+  min-height: 50px;
   max-height: 50px;
   text-align: start;
   font-size: 18px;
-  color: rgb(215, 196, 159);
+  cursor: default;
 }
 
 #thumbsTimestamp-container {
   width: 95%;
   height: 40px;
+  max-height: 40px;
+  min-height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,6 +83,7 @@
   padding: 0;
   margin: 0;
   font-size: 12px;
+  cursor: default;
 }
 
 svg {
@@ -83,7 +100,7 @@ svg:hover {
 }
 
 svg:hover path {
-  fill: whitesmoke;
+  fill: rgb(255, 27, 27);
 }
 
 svg:active path {
@@ -96,8 +113,8 @@ svg:active path {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
-  color: rgb(209, 209, 209);
   padding-right: 15px;
+  cursor: default;
 }
 
 .timestamp {

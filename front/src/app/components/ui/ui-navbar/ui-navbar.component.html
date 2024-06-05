@@ -1,19 +1,10 @@
 <div id="full-page">
   <nav [ngClass]="{ leftMenuVisible: isLeftMenuAnimationWhenOpen }">
-    <div id="navbar-buttonClose" (click)="onCloseLeftMenu()">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        height="24"
-        viewBox="0 -960 960 960"
-        width="24"
-      >
-        <path
-          d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-          fill="rgba(128, 128, 128, 0.796)"
-        />
-      </svg>
+    <div id="leftMenu-closeContainer">
+      <app-ui-close-icon
+        (isCloseButtonActivated)="onCloseComponent($event)"
+      ></app-ui-close-icon>
     </div>
-
     <app-ui-title></app-ui-title>
 
     <ul [ngClass]="{ leftMenuItemsClickEnable: isLeftMenuItemsClickEnable }">

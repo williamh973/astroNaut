@@ -1,10 +1,19 @@
 <header>
-  <button (click)="onAddNewsCardFormOpen()">Ajouter une actualitée</button>
+  <button (click)="onEditNewsCardFormOpen()">Ajouter une actualitée</button>
   <app-feat-visits-counter></app-feat-visits-counter>
 </header>
 
 <main>
-  <app-feat-add-news-card-form
-    *ngIf="isAddNewsCardFormOpen"
-  ></app-feat-add-news-card-form>
+  <app-feat-news-card-list [isAdminMod]="isAdminMod"></app-feat-news-card-list>
 </main>
+
+<div id="adminLanding-editContainer" *ngIf="isEditNewsCardFormOpen">
+  <app-feat-edit-news-card-form
+    id="adminLanding-editNewsCardForm"
+    [isAdminMod]="isAdminMod"
+    [userMail]="userMail"
+    [newsCard]="newsCard"
+    [isCreateMod]="isCreateMod"
+    (isEditNewsCardFormOpen)="onCloseEditNewsCardForm($event)"
+  ></app-feat-edit-news-card-form>
+</div>

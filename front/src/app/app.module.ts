@@ -35,7 +35,7 @@ import { FeatAddLocationsFormComponent } from './components/features/others-comp
 import { FeatAddImageFormComponent } from './components/features/others-components/user/feat-add-image-form/feat-add-image-form.component';
 import { FeatMapComponent } from './components/features/others-components/feat-map/feat-map.component';
 import { FeatAdminLandingPageComponent } from './components/features/pages/feat-admin-landing-page/feat-admin-landing-page.component';
-import { FeatAddNewsCardFormComponent } from './components/features/others-components/admin/feat-add-news-card-form/feat-add-news-card-form.component';
+import { FeatEditNewsCardFormComponent } from './components/features/others-components/admin/feat-add-news-card-form/feat-edit-news-card-form.component';
 import { FeatFeedbackMessagesPopupComponent } from './components/features/popups/toasters/feedbacks/feat-feedback-messages-popup/feat-feedback-messages-popup.component';
 import { FeatLoaderPopupComponent } from './components/features/popups/feat-loader-popup/feat-loader-popup.component';
 import { FeatSearchResultNotFoundComponent } from './components/features/others-components/feat-search-result-not-found/feat-search-result-not-found.component';
@@ -62,6 +62,7 @@ import { FeatAddCommentCardFormComponent } from './components/features/others-co
 import { FeatCommentCardListComponent } from './components/features/others-components/feat-comment-card-list/feat-comment-card-list.component';
 import { FeatTrackHttpStatusPopupComponent } from './components/features/popups/toasters/feat-track-http-status-popup/feat-track-http-status-popup.component';
 import { FeatLandingPageComponent } from './components/features/pages/feat-landing-page/feat-landing-page.component';
+import { UiCloseIconComponent } from './shared/icons/ui-close-icon/ui-close-icon.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,7 @@ import { FeatLandingPageComponent } from './components/features/pages/feat-landi
     FeatAddLocationsFormComponent,
     FeatMapComponent,
     FeatAdminLandingPageComponent,
-    FeatAddNewsCardFormComponent,
+    FeatEditNewsCardFormComponent,
     FeatFeedbackMessagesPopupComponent,
     FeatLoaderPopupComponent,
     FeatSearchResultNotFoundComponent,
@@ -117,6 +118,7 @@ import { FeatLandingPageComponent } from './components/features/pages/feat-landi
     FeatCommentCardListComponent,
     FeatTrackHttpStatusPopupComponent,
     FeatLandingPageComponent,
+    UiCloseIconComponent,
   ],
   imports: [
     BrowserModule,

@@ -43,8 +43,7 @@ public class NewsCardController {
     public NewsCard deleteNewsCard(
             @PathVariable("id") Long cardId
     ) {
-        NewsCardLiked newsCardLiked = newsCardLikedRepository.findById(cardId)
-                .orElseThrow(() -> new RuntimeException("Card not found"));
+
         return newsCardService.deleteNewsCard(cardId);
     }
 }

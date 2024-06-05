@@ -78,4 +78,12 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("user")
     private Set<NewsCardDisliked> newsCardDislikedList = new HashSet<>();
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", newsCardLikedList='" + (newsCardLikedList != null ? newsCardLikedList.getClass() : "null") +
+                '}';
+    }
 }

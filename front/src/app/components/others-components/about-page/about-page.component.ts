@@ -4,11 +4,10 @@ import { NewsCard } from 'src/app/models/cards/news-card.model';
 import { SharedLink } from 'src/app/models/shared-link.model';
 import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
 
-
 @Component({
   selector: 'app-about-page',
   templateUrl: './about-page.component.html',
-  styleUrls: ['./about-page.component.scss']
+  styleUrls: ['./about-page.component.scss'],
 })
 export class AboutPageComponent {
   isLeftMenuOpen: boolean = false;
@@ -47,34 +46,34 @@ export class AboutPageComponent {
       `,
       'http://localhost:4200/astronaut/about',
       false
-    )
+    ),
   ];
 
-  sanitizedSharedLinkList: { 
-    sharedLink: SharedLink, 
-    safeSvgIcon: SafeHtml 
+  sanitizedSharedLinkList: {
+    sharedLink: SharedLink;
+    safeSvgIcon: SafeHtml;
   }[] = [];
 
-
-  constructor(private sanitizer: DomSanitizer, private newsCardService: NewsCardService) {}
-
+  constructor(
+    private sanitizer: DomSanitizer,
+    private newsCardService: NewsCardService
+  ) {}
 
   ngOnInit(): void {
-    this.sanitizedSharedLinkList = this.sharedLinkList.map(sharedLink => ({
+    this.sanitizedSharedLinkList = this.sharedLinkList.map((sharedLink) => ({
       sharedLink,
-      safeSvgIcon: this.sanitizer.bypassSecurityTrustHtml(sharedLink.svg)
+      safeSvgIcon: this.sanitizer.bypassSecurityTrustHtml(sharedLink.svg),
     }));
     this.onGetNewsCardList();
   }
 
   onGetNewsCardList() {
-    this.newsCardService.getCardList().subscribe(
-      (cardListFromDatabase: NewsCard[]) => {
+    this.newsCardService
+      .getCardListSubject$()
+      .subscribe((cardListFromDatabase: NewsCard[]) => {
         this.newsCardList = cardListFromDatabase;
-        }
-    );
+      });
   }
-  
 
   onClickSharedLinkItem(sharedLink: SharedLink, index: number) {
     switch (sharedLink.link) {
@@ -95,7 +94,7 @@ export class AboutPageComponent {
   startMenuAnimation(isLeftMenuAnimationWhenOpen: boolean) {
     this.isLeftMenuAnimationWhenOpen = isLeftMenuAnimationWhenOpen;
   }
-  
+
   leftMenuItemsClickEnable(isLeftMenuItemsClickEnable: boolean) {
     this.isLeftMenuItemsClickEnable = isLeftMenuItemsClickEnable;
   }
@@ -106,11 +105,13 @@ export class AboutPageComponent {
 
   copyCurrentPageLink() {
     const currentPageLink = window.location.href;
-    navigator.clipboard.writeText(currentPageLink).then(() => {
-      alert("L'adresse de cette page a été copiée dans votre presse-papier.")
-    }).catch((error) => {
-      alert('une erreur s\'est produite');
-    });
+    navigator.clipboard
+      .writeText(currentPageLink)
+      .then(() => {
+        alert("L'adresse de cette page a été copiée dans votre presse-papier.");
+      })
+      .catch((error) => {
+        alert("une erreur s'est produite");
+      });
   }
-
 }

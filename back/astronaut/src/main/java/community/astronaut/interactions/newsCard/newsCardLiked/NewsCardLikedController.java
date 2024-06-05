@@ -1,8 +1,5 @@
 package community.astronaut.interactions.newsCard.newsCardLiked;
 
-
-import community.astronaut.cards.newsCard.NewsCard;
-import community.astronaut.cards.newsCard.NewsCardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,17 +10,14 @@ import java.util.List;
 @RequestMapping("/api/v1/newsCardLikedList")
 public class NewsCardLikedController {
     private final NewsCardLikedService newsCardLikedService;
-    private final NewsCardRepository newsCardRepository;
 
     @GetMapping("currentUser/all")
     public List<NewsCardLiked> getCurrentUserNewsCardLikedList() {
         return newsCardLikedService.getCurrentUserNewsCardLikedList();
     }
 
-    @PostMapping("/newsCardLikedList/{cardId}")
+    @PostMapping("/add/{cardId}")
     public NewsCardLiked addNewsCardLiked(@PathVariable Long cardId) {
-        NewsCard newsCard = newsCardRepository.findById(cardId)
-                .orElseThrow(() -> new RuntimeException("Card not found"));
         return newsCardLikedService.addNewsCardLiked(cardId);
     }
 

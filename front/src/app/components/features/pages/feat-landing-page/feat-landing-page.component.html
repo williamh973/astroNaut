@@ -17,12 +17,10 @@
 
     <app-feat-admin-landing-page
       *ngIf="role === 'ROLE_ADMIN'"
+      [role]="role"
+      [userMail]="userMail"
     ></app-feat-admin-landing-page>
   </main>
-
-  <footer>
-    <app-ui-footer></app-ui-footer>
-  </footer>
 </div>
 
 <app-ui-navbar

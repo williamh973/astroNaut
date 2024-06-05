@@ -24,7 +24,7 @@ public class NewsCard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "newsCard", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "newsCard", cascade = CascadeType.ALL, orphanRemoval = false)
     @JsonIgnoreProperties("newsCard")
     private Set<Picture> picturesList = new HashSet<>();
 
@@ -69,4 +69,23 @@ public class NewsCard {
                     "accountNonLocked"
             })
     private User user;
+
+
+    @Override
+    public String toString() {
+        return "NewsCard{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", mainArticle='" + mainArticle + '\'' +
+                ", optionalArticleOne='" + optionalArticleOne + '\'' +
+                ", optionalArticleTwo='" + optionalArticleTwo + '\'' +
+                ", optionalArticleThree='" + optionalArticleThree + '\'' +
+                ", likeCount=" + likeCount +
+                ", dislikeCount=" + dislikeCount +
+                ", readingTime=" + readingTime +
+                ", timestamp=" + timestamp +
+                ", user=" + (user != null ? user.getId() : "null") +
+                ", picturesList=" + picturesList +
+                '}';
+    }
 }

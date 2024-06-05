@@ -25,6 +25,7 @@ export class UiNavbarComponent {
   @Output() isLeftMenuOpen = new EventEmitter<boolean>();
 
   isGaleryDropdownMenuOpen: boolean = false;
+  isCloseButtonActivated: boolean = false;
 
   constructor(
     private tokenService: TokenService,
@@ -32,7 +33,8 @@ export class UiNavbarComponent {
     private loginOrRegisterPopupService: LoginOrRegisterPopupService
   ) {}
 
-  onCloseLeftMenu() {
+  onCloseComponent(isCloseButtonActivated: boolean) {
+    this.isCloseButtonActivated = isCloseButtonActivated;
     this.isLeftMenuOpen.emit(false);
   }
 

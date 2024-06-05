@@ -9,6 +9,8 @@ import { Feedback } from 'src/app/models/feedback-message.model';
 export class FeatFeedbackMessagesPopupComponent {
   @Input() isNewsCardCreatedSuccess!: boolean;
   @Input() isNewsCardCreatedError!: boolean;
+  @Input() isNewsCardUpdatedSuccess!: boolean;
+  @Input() isNewsCardUpdatedError!: boolean;
   @Input() isLocationCreatedSuccess!: boolean;
   @Input() isLocationCreatedError!: boolean;
   @Input() isContactTextCreatedSuccess!: boolean;
@@ -23,101 +25,47 @@ export class FeatFeedbackMessagesPopupComponent {
 
   feedback: Feedback = new Feedback('');
 
+  private feedbacksList = {
+    isNewsCardCreatedSuccess: 'Actualité mise en ligne avec succès !',
+    isNewsCardCreatedError:
+      "Une erreur s'est produite lors de la création de l'actualité.",
+    isNewsCardUpdatedSuccess: 'Actualité modifiée avec succès !',
+    isNewsCardUpdatedError:
+      "Une erreur s'est produite lors de la modification de l'actualité.",
+    isLocationCreatedSuccess: 'Localisation créée avec succès !',
+    isLocationCreatedError:
+      "Une erreur s'est produite lors de la création de la localisation.",
+    isContactTextCreatedSuccess: 'Texte de contact créé avec succès !',
+    isContactTextCreatedError:
+      "Une erreur s'est produite lors de la création du texte de contact.",
+    isPictureAuthorCardCreatedSuccess:
+      "Carte d'auteur de photo créée avec succès !",
+    isPictureAuthorCardCreatedError:
+      "Une erreur s'est produite lors de la création de la carte d'auteur de photo.",
+    isPictureSpecialEventCardCreatedSuccess:
+      "Carte d'événement spécial créée avec succès !",
+    isPictureSpecialEventCardCreatedError:
+      "Une erreur s'est produite lors de la création de la carte d'événement spécial.",
+    isCommentCreatedSuccess: 'Commentaire créé avec succès !',
+    isCommentCreatedError:
+      "Une erreur s'est produite lors de la création du commentaire.",
+    isUserNotConnectedError:
+      'Vous devez être connecté pour effectuer cette action.',
+  };
+
   ngOnInit() {
-    this.onShowNewsCardFeedback();
-    this.onShowLocationFeedback();
-    this.onShowContactTextFeedback();
-    this.onShowPictureAuthorCardFeedback();
-    this.onShowPictureSpecialEventCardFeedback();
-    this.onShowCommentFeedback();
-    this.onUserNotConnected();
+    this.showFeedback();
   }
 
-  onShowNewsCardFeedback() {
-    if (this.isNewsCardCreatedSuccess) {
-      this.feedback = new Feedback('Post créé avec succès !');
-    } else if (this.isNewsCardCreatedError) {
-      this.feedback = new Feedback(
-        "Une erreur s'est produite, veuillez recommencer ulterieurement."
-      );
-    } else {
-      this.feedback = new Feedback('');
+  private showFeedback() {
+    for (const key in this.feedbacksList) {
+      if ((this as any)[key]) {
+        this.feedback = new Feedback((this.feedbacksList as any)[key]);
+        console.log(this.feedback);
+        return;
+      }
     }
-  }
 
-  onShowLocationFeedback() {
-    if (this.isLocationCreatedSuccess) {
-      this.feedback = new Feedback(
-        "Votre point d'observation a été créé avec succès !"
-      );
-    } else if (this.isLocationCreatedError) {
-      this.feedback = new Feedback(
-        "Une erreur s'est produite, veuillez recommencer ulterieurement."
-      );
-    } else {
-      this.feedback = new Feedback('');
-    }
-  }
-
-  onShowContactTextFeedback() {
-    if (this.isContactTextCreatedSuccess) {
-      this.feedback = new Feedback('Votre message a été envoyé avec succès !');
-    } else if (this.isContactTextCreatedError) {
-      this.feedback = new Feedback(
-        "Une erreur s'est produite, veuillez recommencer ulterieurement."
-      );
-    } else {
-      this.feedback = new Feedback('');
-    }
-  }
-
-  onShowPictureAuthorCardFeedback() {
-    if (this.isPictureAuthorCardCreatedSuccess) {
-      this.feedback = new Feedback(
-        'Votre photo a été envoyé avec succès et est en attente de validation.'
-      );
-    } else if (this.isPictureAuthorCardCreatedError) {
-      this.feedback = new Feedback(
-        "Une erreur s'est produite, veuillez recommencer ulterieurement."
-      );
-    } else {
-      this.feedback = new Feedback('');
-    }
-  }
-
-  onShowPictureSpecialEventCardFeedback() {
-    if (this.isPictureSpecialEventCardCreatedSuccess) {
-      this.feedback = new Feedback(
-        'Votre photo a été envoyé avec succès et est en attente de validation.'
-      );
-    } else if (this.isPictureSpecialEventCardCreatedError) {
-      this.feedback = new Feedback(
-        "Une erreur s'est produite, veuillez recommencer ulterieurement."
-      );
-    } else {
-      this.feedback = new Feedback('');
-    }
-  }
-
-  onShowCommentFeedback() {
-    if (this.isCommentCreatedSuccess) {
-      this.feedback = new Feedback(
-        'Votre commentaire a été envoyé avec succès.'
-      );
-    } else if (this.isCommentCreatedError) {
-      this.feedback = new Feedback(
-        "Une erreur s'est produite, veuillez recommencer ulterieurement."
-      );
-    } else {
-      this.feedback = new Feedback('');
-    }
-  }
-
-  onUserNotConnected() {
-    if (this.isUserNotConnectedError) {
-      this.feedback = new Feedback(
-        'Vous devez être connecté pour réaliser cette action.'
-      );
-    }
+    this.feedback = new Feedback('');
   }
 }

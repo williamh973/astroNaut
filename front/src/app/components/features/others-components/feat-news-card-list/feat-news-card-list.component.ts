@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
 import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
 
@@ -8,8 +9,11 @@ import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-ca
   styleUrls: ['./feat-news-card-list.component.scss'],
 })
 export class FeatNewsCardListComponent {
+  @Input() isAdminMod!: boolean;
   newsCardList: NewsCard[] = [];
   filteredCardList: NewsCard[] = [];
+
+  private newsCardSubscription!: Subscription;
 
   constructor(private newsCardService: NewsCardService) {}
 
@@ -18,9 +22,15 @@ export class FeatNewsCardListComponent {
     this.onGetNewsCardListFiltered();
   }
 
+  ngOnDestroy() {
+    if (this.newsCardSubscription) {
+      this.newsCardSubscription.unsubscribe();
+    }
+  }
+
   onGetNewsCardList() {
-    this.newsCardService
-      .getCardList()
+    this.newsCardSubscription = this.newsCardService
+      .getCardListSubject$()
       .subscribe((cardListFromDatabase: NewsCard[]) => {
         this.newsCardList = cardListFromDatabase.sort(
           (newsCardA, newsCardB) => {

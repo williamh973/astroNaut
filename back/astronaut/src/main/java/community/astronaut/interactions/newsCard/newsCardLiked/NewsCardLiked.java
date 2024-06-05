@@ -29,4 +29,14 @@ public class NewsCardLiked {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @JsonIgnore
     private User user;
+
+    @Override
+    public String toString() {
+        return "NewsCardLiked{" +
+                "id=" + id +
+                ", newsCard='" + (newsCard != null ? newsCard.getId() : "null") +
+                ", newsCard='" + (newsCard != null ? newsCard.getPicturesList() : "null") +
+                ", user='" + (user != null ? user.getId() : "null") +
+                '}';
+    }
 }

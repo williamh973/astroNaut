@@ -42,16 +42,13 @@ public class NewsCardService {
                 .orElseThrow(() -> new RuntimeException(id + "not found"));
     }
 
-
-    //        foundNewsCard.setPicturesList(newsCard.getPicturesList());
-//        foundNewsCard.setTitle(newsCard.getTitle());
-//        foundNewsCard.setMainArticle(newsCard.getMainArticle());
-//        foundNewsCard.setOptionalArticleOne(newsCard.getOptionalArticleOne());
-//        foundNewsCard.setOptionalArticleTwo(newsCard.getOptionalArticleTwo());
-//        foundNewsCard.setOptionalArticleThree(newsCard.getOptionalArticleThree());
-//        foundNewsCard.setReadingTime(newsCard.getReadingTime());
     public NewsCard updateNewsCard(NewsCard newsCard, Long id) {
         NewsCard foundNewsCard = getNewsCardById(id);
+        foundNewsCard.setTitle(newsCard.getTitle());
+        foundNewsCard.setMainArticle(newsCard.getMainArticle());
+        foundNewsCard.setOptionalArticleOne(newsCard.getOptionalArticleOne());
+        foundNewsCard.setOptionalArticleTwo(newsCard.getOptionalArticleTwo());
+        foundNewsCard.setOptionalArticleThree(newsCard.getOptionalArticleThree());
         foundNewsCard.setLikeCount(newsCard.getLikeCount());
         foundNewsCard.setDislikeCount(newsCard.getDislikeCount());
         return newsCardRepository.save(foundNewsCard);
@@ -59,13 +56,10 @@ public class NewsCardService {
 
     @Transactional
     public NewsCard deleteNewsCard(Long id) {
-        Picture picture = pictureRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException(id + " not found"));
-        pictureRepository.delete(picture);
-
         NewsCard newsCard = newsCardRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException(id + " not found"));
         newsCardRepository.delete(newsCard);
+        
         return newsCard;
     }
 

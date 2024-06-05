@@ -17,10 +17,22 @@ public class Picture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(length = 2048)
     private String src;
 
     @ManyToOne
     @JoinColumn(name = "news_card_id", referencedColumnName = "id")
     @JsonIgnoreProperties("picturesList")
     private NewsCard newsCard;
+
+    @Override
+    public String toString() {
+        return "Picture{" +
+                "id=" + id +
+                ", src='" + src + '\'' +
+                ", newsCard='" + (newsCard != null ? newsCard.getId() : "null") +
+                '}';
+    }
 }
+
