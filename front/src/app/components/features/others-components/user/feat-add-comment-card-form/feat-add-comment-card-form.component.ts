@@ -4,6 +4,7 @@ import { NewsCard } from 'src/app/models/cards/news-card.model';
 import { CommentCard } from 'src/app/models/cards/comment-card.model';
 import { CommentCardService } from 'src/app/shared/services/cards/comment-card/comment-card.service';
 import { User } from 'src/app/models/user.model';
+import { TokenService } from 'src/app/shared/services/token/token.service';
 
 @Component({
   selector: 'app-feat-add-comment-card-form',
@@ -12,6 +13,9 @@ import { User } from 'src/app/models/user.model';
 })
 export class FeatAddCommentCardFormComponent {
   @Input() newsCard!: NewsCard;
+  @Input() currendUserMail!: string;
+  @Input() currentUserRole!: string;
+
   commentCard: CommentCard = new CommentCard(
     '',
     new NewsCard(
@@ -26,7 +30,16 @@ export class FeatAddCommentCardFormComponent {
       0,
       0,
       [],
-      new User('', '', 'ROLE_ADMIN', false, [], [])
+      new User('', '', 'ROLE_ADMIN', false, [], [], [])
+    ),
+    new User(
+      '',
+      '',
+      this.currentUserRole === 'ROLE_ADMIN' ? 'ROLE_ADMIN' : 'ROLE_USER',
+      false,
+      [],
+      [],
+      []
     ),
     new Date(),
     0,
@@ -36,25 +49,42 @@ export class FeatAddCommentCardFormComponent {
   isCommentCreatedSuccess: boolean = false;
   isCommentCreatedError: boolean = false;
   isContentInputNotEmpty: boolean = false;
+  isSubmitButtonEnabled: boolean = false;
+  isUserNotConnectedError: boolean = false;
 
-  constructor(private commentCardService: CommentCardService) {}
+  constructor(
+    private commentCardService: CommentCardService,
+    private tokenService: TokenService
+  ) {}
 
-  onSubmit() {
-    this.isLoadingComposantActive = true;
-    this.onCreateComment();
+  ngOnInit() {
+    console.log(this.commentCard);
   }
 
-  onCheckCommentInputReady() {
-    return (
+  onSubmit(isSubmitButtonEnabled: boolean) {
+    const token = this.tokenService.isCheckTokenInLocalStorage();
+    if (isSubmitButtonEnabled && token) {
+      this.isLoadingComposantActive = true;
+      this.onCreateComment();
+    }
+    // else {
+    //   this.isUserNotConnectedError = true;
+    //   setTimeout(() => {
+    //     this.isUserNotConnectedError = false;
+    //   }, 2_000);
+    // }
+  }
+
+  onCheckInputCompleted() {
+    this.isSubmitButtonEnabled =
       this.commentCard.content.length >= 1 &&
-      this.commentCard.content.length <= 1000
-    );
+      this.commentCard.content.length <= 1000;
   }
 
   private onCreateComment() {
     if (this.newsCard.id !== null) {
       this.commentCardService
-        .createComment(this.commentCard, this.newsCard)
+        .createComment(this.commentCard, this.currendUserMail, this.newsCard)
         .pipe(
           catchError(() => {
             this.isLoadingComposantActive = false;

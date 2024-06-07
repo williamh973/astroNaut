@@ -66,7 +66,8 @@ public class NewsCard {
                     "credentialsNonExpired",
                     "accountNonExpired",
                     "authorities",
-                    "accountNonLocked"
+                    "accountNonLocked",
+                    "commentsList"
             })
     private User user;
 

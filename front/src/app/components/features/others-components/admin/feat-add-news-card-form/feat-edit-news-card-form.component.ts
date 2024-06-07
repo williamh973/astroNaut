@@ -21,13 +21,14 @@ export class FeatEditNewsCardFormComponent {
   @Output() isEditNewsCardFormOpen = new EventEmitter<boolean>();
 
   photosList: File[] = [];
-  isPhotoInTheBox: boolean = false;
+  isPhotoInTheDropBox: boolean = false;
   isLoadingComposantActive: boolean = false;
   isNewsCardCreatedSuccess: boolean = false;
   isNewsCardCreatedError: boolean = false;
   isNewsCardUpdatedSuccess: boolean = false;
   isNewsCardUpdatedError: boolean = false;
   isCloseButtonActivated: boolean = false;
+  isSubmitButtonEnabled: boolean = false;
 
   constructor(
     private newsCardService: NewsCardService,
@@ -46,13 +47,13 @@ export class FeatEditNewsCardFormComponent {
   }
 
   onHandlePhotoUpload(event: any) {
-    this.isPhotoInTheBox = true;
+    this.isPhotoInTheDropBox = true;
     this.photoService.photosList.push(...event.addedFiles);
     if (
       this.photoService.photosList.length < 1 &&
       this.photoService.photosList.length > 1
     ) {
-      this.isPhotoInTheBox = false;
+      this.isPhotoInTheDropBox = false;
     }
   }
 
@@ -74,21 +75,34 @@ export class FeatEditNewsCardFormComponent {
     });
   }
 
-  onInputTitleCompleted() {
-    return (
-      this.newsCard.title.length >= 5 && this.newsCard.title.length <= 150,
-      this.newsCard.mainArticle.length >= 5 &&
-        this.newsCard.mainArticle.length <= 1000,
-      this.newsCard.readingTime
-    );
+  onCheckInputCompleted() {
+    if (this.isCreateMod) {
+      this.isSubmitButtonEnabled =
+        this.isPhotoInTheDropBox &&
+        this.newsCard.title.length > 5 &&
+        this.newsCard.title.length < 1500 &&
+        this.newsCard.mainArticle.length > 5 &&
+        this.newsCard.mainArticle.length < 1500 &&
+        this.newsCard.readingTime < 3;
+    } else {
+      this.isSubmitButtonEnabled =
+        this.newsCard.title.length > 5 &&
+        this.newsCard.title.length < 1500 &&
+        this.newsCard.mainArticle.length > 5 &&
+        this.newsCard.mainArticle.length < 1500 &&
+        this.newsCard.readingTime < 3;
+    }
+    console.log(this.isPhotoInTheDropBox);
   }
 
-  onSubmit() {
-    this.isLoadingComposantActive = true;
-    if (this.isUpdateMod) {
-      this.updateCard();
-    } else if (this.isCreateMod) {
-      this.createCard();
+  onSubmit(isButtonClicked: boolean) {
+    if (isButtonClicked) {
+      this.isLoadingComposantActive = true;
+      if (this.isUpdateMod) {
+        this.updateCard();
+      } else if (this.isCreateMod) {
+        this.createCard();
+      }
     }
   }
 

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
 import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
+import { TokenService } from 'src/app/shared/services/token/token.service';
 
 @Component({
   selector: 'app-feat-news-card-detail-page',
@@ -16,6 +17,8 @@ export class FeatNewsCardDetailPageComponent {
   newsCardOptionnalOneArticle: string = '';
   newsCardOptionnalTwoArticle: string = '';
   newsCardOptionnalThreeArticle: string = '';
+  currendUserMail: string = '';
+  currentUserRole: string = '';
   newsCardTimestamp: Date = new Date();
   newsCardReadingTime!: number;
   newsCardId: number = 0;
@@ -25,11 +28,13 @@ export class FeatNewsCardDetailPageComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private newsCardService: NewsCardService
+    private newsCardService: NewsCardService,
+    private tokenService: TokenService
   ) {}
 
   ngOnInit() {
     this.onGetNewsCardId();
+    this.onExtractRoleFromToken();
   }
 
   onGetNewsCardId() {
@@ -47,6 +52,17 @@ export class FeatNewsCardDetailPageComponent {
           this.onGetNewsCardTimestamp();
         });
     });
+  }
+
+  private onExtractRoleFromToken() {
+    this.tokenService
+      ._getTokenDetailsSubject$()
+      .subscribe((decodedToken: any) => {
+        if (decodedToken) {
+          this.currentUserRole = decodedToken.role;
+          this.currendUserMail = decodedToken.sub;
+        }
+      });
   }
 
   onGetNewsCardPicture() {

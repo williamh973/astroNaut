@@ -63,6 +63,8 @@ import { FeatCommentCardListComponent } from './components/features/others-compo
 import { FeatTrackHttpStatusPopupComponent } from './components/features/popups/toasters/feat-track-http-status-popup/feat-track-http-status-popup.component';
 import { FeatLandingPageComponent } from './components/features/pages/feat-landing-page/feat-landing-page.component';
 import { UiCloseIconComponent } from './shared/icons/ui-close-icon/ui-close-icon.component';
+import { UiOpenFormButtonComponent } from './shared/buttons/ui-open-form-button/ui-open-form-button.component';
+import { UiButtonComponent } from './shared/buttons/ui-button/ui-button.component';
 
 @NgModule({
   declarations: [
@@ -119,6 +121,8 @@ import { UiCloseIconComponent } from './shared/icons/ui-close-icon/ui-close-icon
     FeatTrackHttpStatusPopupComponent,
     FeatLandingPageComponent,
     UiCloseIconComponent,
+    UiOpenFormButtonComponent,
+    UiButtonComponent,
   ],
   imports: [
     BrowserModule,

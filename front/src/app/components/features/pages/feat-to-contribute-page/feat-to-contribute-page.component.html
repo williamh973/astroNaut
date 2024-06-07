@@ -1,45 +1,38 @@
-<header id="headerTop">
-    <div id="top-container">
-        <app-ui-burger-menu-button
-        (isLeftMenuOpen)="onOpenLeftMenu($event)"
-        (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
-        (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
-        ></app-ui-burger-menu-button>
-        <h1>Contribuer</h1>
-    </div>
-    <p id="introduction-text">
-     Lorem ipsum, dolor sit amet consectetur adipisicing 
-     elit. Distinctio similique velit reprehenderit quas perferendis
-     neque iure veritatis dicta totam autem!
-    </p>
-</header>
+<app-ui-header id="headerTop-contributePage"></app-ui-header>
 
 <main id="main-container">
-    
-    <div id="add-container">
-        <p id="">Que souhaitez-vous ajouter à la communautée?</p>
-        <div id="buttons-container">
-            <button (click)="onOpenAddImageForm()">Ajouter une image</button>
-            <button (click)="onOpenAddLocationForm()">Ajouter un point d'observation</button>    
-        </div>
+  <h1 id="page-title">Contributions</h1>
+  <p id="subtitle" aria-describedby="subtitle-description">
+    Les contributions permettent à la communauté de partager et d'enrichir notre
+    base de connaissances avec des images et des points d'observation.
+  </p>
+  <section id="section-choose">
+    <div id="add-image-or-location-container">
+      <p>Que souhaitez-vous ajouter à la communauté ?</p>
+      <div id="buttons-container">
+        <app-ui-button
+          buttonName="Ajouter une image"
+          (isButtonClicked)="onOpenAddImageForm($event)"
+          [isButtonEnabled]="isButtonEnabled"
+        ></app-ui-button>
+        <app-ui-button
+          buttonName="Ajouter un point d'observation"
+          (isButtonClicked)="onOpenAddLocationForm($event)"
+          [isButtonEnabled]="isButtonEnabled"
+        ></app-ui-button>
+      </div>
     </div>
+  </section>
 
-    <ng-container *ngIf="isAddImageFormOpen">
-        <app-feat-add-image-form
-        (isAddImageFormOpen)="onCloseAddImageFormAfterOperationCompleted($event)"
-        ></app-feat-add-image-form>
-    </ng-container>
+  <div *ngIf="isAddImageFormOpen" id="add-image-form-container">
+    <app-feat-add-image-form
+      id="add-image-form"
+      (isAddImageFormOpen)="onCloseAddImageFormAfterOperationCompleted($event)"
+      (isAddImageFormOpen)="onCloseAddImageForm($event)"
+    ></app-feat-add-image-form>
+  </div>
 
-
-    <ng-container *ngIf="isAddLocationFormOpen">
-        <app-feat-add-locations-form
-        ></app-feat-add-locations-form> 
-    </ng-container>
+  <div *ngIf="isAddLocationFormOpen" id="add-location-form-container">
+    <app-feat-add-locations-form></app-feat-add-locations-form>
+  </div>
 </main>
-
-<app-ui-navbar
-*ngIf="isLeftMenuOpen"
-[isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
-[isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
-(isLeftMenuOpen)="onCloseLeftMenu($event)"
-></app-ui-navbar>

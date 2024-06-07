@@ -2,6 +2,8 @@ package community.astronaut.comment;
 
 import community.astronaut.cards.newsCard.NewsCard;
 import community.astronaut.cards.newsCard.NewsCardRepository;
+import community.astronaut.user.User;
+import community.astronaut.user.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,17 +16,23 @@ import java.util.List;
 public class CommentService {
     private final CommentRepository commentRepository;
     private final NewsCardRepository newsCardRepository;
+    private final UserRepository userRepository;
 
     public List<Comment> getAll() {
         return commentRepository.findAll();
     }
 
     @Transactional
-    public Comment addComment(Comment comment, Long id) {
+    public Comment addComment(Comment comment, Long id, String senderUserMail) {
+
+        User user = userRepository.findByEmail(senderUserMail)
+                .orElseThrow(() -> new RuntimeException(senderUserMail + " senderUserMail not found"));
+
         NewsCard newsCard = newsCardRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException(id + " not found"));
-        System.out.println("Adding comment for newsCard id: " + id);
+
                 comment.setNewsCard(newsCard);
+                comment.setUser(user);
                 comment.setTimestamp(new Date());
         return commentRepository.save(comment);
     }

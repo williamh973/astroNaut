@@ -23,7 +23,7 @@ export class FeatAdminLandingPageComponent {
     0,
     0,
     [],
-    new User('', '', 'ROLE_ADMIN', false, [], [])
+    new User('', '', 'ROLE_ADMIN', false, [], [], [])
   );
 
   isEditNewsCardFormOpen: boolean = false;

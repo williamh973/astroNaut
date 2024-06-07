@@ -23,7 +23,21 @@ public class Picture {
 
     @ManyToOne
     @JoinColumn(name = "news_card_id", referencedColumnName = "id")
-    @JsonIgnoreProperties("picturesList")
+    @JsonIgnoreProperties(
+            {
+                    "picturesList",
+                    "title",
+                    "mainArticle",
+                    "optionalArticleOne",
+                    "optionalArticleTwo",
+                    "optionalArticleThree",
+                    "readingTime",
+                    "timestamp",
+                    "likeCount",
+                    "dislikeCount",
+                    "commentsList",
+                    "user"
+            })
     private NewsCard newsCard;
 
     @Override

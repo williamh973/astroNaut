@@ -2,7 +2,7 @@
   <app-ui-close-icon
     (isCloseButtonActivated)="onCloseComponent($event)"
   ></app-ui-close-icon>
-  <form id="edit-form" (ngSubmit)="onSubmit()">
+  <form id="edit-form">
     <h1 id="editForm-title">
       {{
         isUpdateMod
@@ -46,6 +46,7 @@
           class="ngx-dropzone"
           [accept]="'image/*'"
           (change)="onHandlePhotoUpload($event)"
+          (ngModelChange)="onCheckInputCompleted()"
         >
           <ngx-dropzone-label class="ngx-dropzone-label">
             <div title="Cliquer ici">
@@ -80,6 +81,7 @@
           minlength="5"
           placeholder="Description courte de l'actualité*"
           required
+          (ngModelChange)="onCheckInputCompleted()"
           [(ngModel)]="newsCard.title"
           #titleInput="ngModel"
         />
@@ -113,6 +115,7 @@
             minlength="5"
             placeholder="Ecrire les détails de l'article ici"
             required
+            (ngModelChange)="onCheckInputCompleted()"
             [(ngModel)]="newsCard.mainArticle"
             #mainArticleInput="ngModel"
           ></textarea>
@@ -229,6 +232,7 @@
             maxlength="2"
             minlength="1"
             required
+            (ngModelChange)="onCheckInputCompleted()"
             [(ngModel)]="newsCard.readingTime"
             #titleInput="ngModel"
           />
@@ -247,15 +251,22 @@
             </div>
           </ng-container>
         </article>
-
-        <button
+        <app-ui-button
           *ngIf="isCreateMod"
+          id="submit-button"
+          buttonName="Créer cette actualité"
           type="submit"
-          [disabled]="!isPhotoInTheBox || !onInputTitleCompleted()"
-        >
-          Publier ce post
-        </button>
-        <button *ngIf="isUpdateMod" type="submit">Modifier ce post</button>
+          (isButtonClicked)="onSubmit($event)"
+          [isButtonEnabled]="isSubmitButtonEnabled"
+        ></app-ui-button>
+        <app-ui-button
+          *ngIf="isUpdateMod"
+          id="submit-button"
+          buttonName="Modifier l'actualité"
+          type="submit"
+          (isButtonClicked)="onSubmit($event)"
+          [isButtonEnabled]="isSubmitButtonEnabled"
+        ></app-ui-button>
       </div>
     </section>
   </form>

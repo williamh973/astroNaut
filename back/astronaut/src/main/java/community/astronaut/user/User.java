@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import community.astronaut.cards.newsCard.NewsCard;
+import community.astronaut.comment.Comment;
 import community.astronaut.interactions.newsCard.newsCardDisliked.NewsCardDisliked;
 import community.astronaut.interactions.newsCard.newsCardLiked.NewsCardLiked;
 import jakarta.persistence.*;
@@ -68,8 +69,33 @@ public class User implements UserDetails {
     }
 
    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-   @JsonIgnoreProperties("user")
+   @JsonIgnoreProperties(
+           {
+                   "user",
+                   "commentsList",
+                   "picturesList",
+                   "mainArticle",
+                   "optionalArticleOne",
+                   "optionalArticleTwo",
+                   "optionalArticleThree",
+                   "readingTime",
+                   "timestamp",
+                   "likeCount",
+                   "dislikeCount"
+           })
    private Set<NewsCard> newsCardList = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties(
+            {
+                    "user",
+                    "commentsList",
+                    "newsCard",
+                    "timestamp",
+                    "likeCount",
+                    "dislikeCount"
+            })
+    private Set<Comment> commentsList = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties("user")

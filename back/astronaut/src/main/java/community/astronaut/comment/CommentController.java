@@ -28,8 +28,8 @@ public class CommentController {
 
 
     @PostMapping("/add")
-    public Comment addComment(@RequestBody Comment comment, @RequestParam("newsCardAssociatedId") Long id) {
-        return commentService.addComment(comment, id);
+    public Comment addComment(@RequestBody Comment comment, @RequestParam("newsCardAssociatedId") Long id, @RequestParam("senderUserMail") String senderUserMail) {
+        return commentService.addComment(comment, id, senderUserMail);
     }
 
     @PutMapping("/update/{id}")

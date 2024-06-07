@@ -2,6 +2,7 @@ package community.astronaut.comment;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import community.astronaut.cards.newsCard.NewsCard;
+import community.astronaut.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,8 +26,38 @@ public class Comment {
 
     @ManyToOne
     @JoinColumn(name = "news_card_id", referencedColumnName = "id")
-    @JsonIgnoreProperties("commentsList")
+    @JsonIgnoreProperties(
+            {
+                    "commentsList",
+                    "picturesList",
+                    "title",
+                    "mainArticle",
+                    "optionalArticleOne",
+                    "optionalArticleTwo",
+                    "optionalArticleThree",
+                    "readingTime",
+                    "timestamp",
+                    "likeCount",
+                    "dislikeCount",
+                    "user"
+            })
     private NewsCard newsCard;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIgnoreProperties(
+            {
+                    "commentsList",
+                    "newsCardList",
+                    "newsCardLikedList",
+                    "newsCardDislikedList",
+                    "enabled",
+                    "credentialsNonExpired",
+                    "accountNonExpired",
+                    "authorities",
+                    "accountNonLocked"
+            })
+    private User user;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;

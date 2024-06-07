@@ -1,55 +1,37 @@
-<form 
-  id="commentForm"
-  (ngSubmit)="onSubmit()"
+<form id="commentForm">
+  <h3 id="commentForm-title">Vous souhaitez réagir à cette actualité ?</h3>
+
+  <textarea
+    type="text"
+    name="content"
+    id="commentForm-contentInput"
+    maxlength="1000"
+    minlength="1"
+    placeholder="Ecrivez votre commentaire ici*"
+    required
+    (ngModelChange)="onCheckInputCompleted()"
+    [(ngModel)]="commentCard.content"
+    #contentInput="ngModel"
   >
-    <label 
-      id="commentForm-contentLabel"
-      for="commentForm-contentInput"
-      >Vous souhaitez commenter cette actualité ?
-    </label>
-    
-    <textarea 
-      type="text" 
-      name="content" 
-      id="commentForm-contentInput" 
-      maxlength="1000"
-      minlength="1"
-      placeholder="Ecrivez votre commentaire ici.*"
-      required
-      [(ngModel)]="commentCard.content"
-      #contentInput="ngModel"
-      >
-    </textarea>
+  </textarea>
 
-        <div *ngIf="contentInput.invalid && (contentInput.valid)" class="error">
-          <div *ngIf="contentInput.errors?.['required']">La description est requise.</div>
-          <div *ngIf="contentInput.errors?.['minlength']">La description doit comporter au moins 1 caractère.</div>
-          <div *ngIf="contentInput.errors?.['maxlength']">La description ne peut pas dépasser 1000 caractères.</div>
-        </div>  
+  <app-ui-button
+    id="commentForm-submitButton"
+    buttonName="Envoyer"
+    type="submit"
+    (isButtonClicked)="onSubmit($event)"
+    [isButtonEnabled]="isSubmitButtonEnabled"
+  ></app-ui-button>
+</form>
 
-    <button 
-      type="submit"
-      id="commentForm-submitButton"
-      [disabled]="!onCheckCommentInputReady()"
-      >Envoyer
-    </button> 
-</form>      
-
-<div
-  id="loading-container"
-  *ngIf="isLoadingComposantActive"
-  >
-    <app-feat-loader-popup
-      class="loader" 
-      *ngIf="isLoadingComposantActive"
-      >
-    </app-feat-loader-popup>
+<div id="loading-container" *ngIf="isLoadingComposantActive">
+  <app-feat-loader-popup class="loader" *ngIf="isLoadingComposantActive">
+  </app-feat-loader-popup>
 </div>
 
 <app-feat-feedback-messages-popup
   *ngIf="isCommentCreatedSuccess || isCommentCreatedError"
   [isCommentCreatedSuccess]="isCommentCreatedSuccess"
   [isCommentCreatedError]="isCommentCreatedError"
-  >
+>
 </app-feat-feedback-messages-popup>
-

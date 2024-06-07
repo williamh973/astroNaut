@@ -1,3 +1,4 @@
+import { CommentCard } from './cards/comment-card.model';
 import { NewsCard } from './cards/news-card.model';
 import { NewsCardLiked } from './user/interaction/news-card/news-card-like.model';
 
@@ -9,6 +10,7 @@ export class User {
     public blocked: boolean,
     public newsCard: NewsCard[],
     public newsCardLikedList: NewsCardLiked[],
+    public commentsList: CommentCard[],
     public id?: number
   ) {}
 }
