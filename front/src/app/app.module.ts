@@ -63,8 +63,10 @@ import { FeatCommentCardListComponent } from './components/features/others-compo
 import { FeatTrackHttpStatusPopupComponent } from './components/features/popups/toasters/feat-track-http-status-popup/feat-track-http-status-popup.component';
 import { FeatLandingPageComponent } from './components/features/pages/feat-landing-page/feat-landing-page.component';
 import { UiCloseIconComponent } from './shared/icons/ui-close-icon/ui-close-icon.component';
-import { UiOpenFormButtonComponent } from './shared/buttons/ui-open-form-button/ui-open-form-button.component';
 import { UiButtonComponent } from './shared/buttons/ui-button/ui-button.component';
+import { QuillModule } from 'ngx-quill';
+import { FeatEditNewsCardFormStep1Component } from './components/features/others-components/admin/feat-add-news-card-form/feat-edit-news-card-form-step1/feat-edit-news-card-form-step1.component';
+import { FeatEditNewsCardFormStep2Component } from './components/features/others-components/admin/feat-add-news-card-form/feat-edit-news-card-form-step2/feat-edit-news-card-form-step2.component';
 
 @NgModule({
   declarations: [
@@ -121,8 +123,9 @@ import { UiButtonComponent } from './shared/buttons/ui-button/ui-button.componen
     FeatTrackHttpStatusPopupComponent,
     FeatLandingPageComponent,
     UiCloseIconComponent,
-    UiOpenFormButtonComponent,
     UiButtonComponent,
+    FeatEditNewsCardFormStep1Component,
+    FeatEditNewsCardFormStep2Component,
   ],
   imports: [
     BrowserModule,
@@ -134,6 +137,7 @@ import { UiButtonComponent } from './shared/buttons/ui-button/ui-button.componen
     MatButtonModule,
     HttpClientModule,
     FormsModule,
+    QuillModule.forRoot(),
   ],
   providers: [
     {

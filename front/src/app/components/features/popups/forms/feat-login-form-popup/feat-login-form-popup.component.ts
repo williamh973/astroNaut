@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/shared/services/user/auth/auth.service';
 export class FeatLoginFormPopupComponent {
   @Output() isLoginFormOpen = new EventEmitter<boolean>();
   isTrackHttpStatusPopupOpen: boolean = false;
+  isSubmitButtonEnabled: boolean = false;
 
   userAuth: UserAuth = new UserAuth('', '');
 
@@ -19,17 +20,16 @@ export class FeatLoginFormPopupComponent {
     private LsService: LocalStorageService
   ) {}
 
-  onSubmit() {
-    this.LsService.clearTokenAndUserEmail();
-    this.httpS.signIn(this.userAuth);
+  onClosePopup(isCloseButtonActivated: boolean) {
+    if (isCloseButtonActivated) {
+      this.isLoginFormOpen.emit(false);
+    }
   }
 
-  onClosePopup() {
-    this.isLoginFormOpen.emit(false);
-  }
-
-  onSubmitAuth(): void {
-    this.LsService.clearTokenAndUserEmail();
-    this.httpS.signIn(this.userAuth);
+  onSubmitAuth(isButtonClicked: boolean): void {
+    if (isButtonClicked) {
+      this.LsService.clearTokenAndUserEmail();
+      this.httpS.signIn(this.userAuth);
+    }
   }
 }

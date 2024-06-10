@@ -90,7 +90,7 @@ export class FeatNewsCardComponent {
   }
 
   onUpdateNewsCard() {
-    this.isUpdateMod = !this.isUpdateMod;
+    this.isUpdateMod = true;
     this.isEditNewsCardFormOpen = !this.isEditNewsCardFormOpen;
   }
 

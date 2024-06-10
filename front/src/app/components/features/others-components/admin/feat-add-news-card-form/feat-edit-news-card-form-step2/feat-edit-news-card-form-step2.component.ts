@@ -1,35 +1,38 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { catchError, finalize, of } from 'rxjs';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
-import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
-import { PhotoService } from 'src/app/shared/services/photo-service/photo.service';
-import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Picture } from 'src/app/models/images-for-cards/image-for-news-card.model';
+import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
 import { PictureService } from 'src/app/shared/services/image-for-card/picture/picture.service';
+import { PhotoService } from 'src/app/shared/services/photo-service/photo.service';
 
 @Component({
-  selector: 'app-feat-edit-news-card-form',
-  templateUrl: './feat-edit-news-card-form.component.html',
-  styleUrls: ['./feat-edit-news-card-form.component.scss'],
+  selector: 'app-feat-edit-news-card-form-step2',
+  templateUrl: './feat-edit-news-card-form-step2.component.html',
+  styleUrls: ['./feat-edit-news-card-form-step2.component.scss'],
 })
-export class FeatEditNewsCardFormComponent {
+export class FeatEditNewsCardFormStep2Component {
+  @Input() currentStep!: number;
   @Input() newsCard!: NewsCard;
   @Input() userMail!: string;
+  @Input() isAdminMod!: boolean;
   @Input() isCreateMod!: boolean;
   @Input() isUpdateMod!: boolean;
-  @Input() isAdminMod!: boolean;
-  @Output() isEditNewsCardFormOpen = new EventEmitter<boolean>();
+  @Output() onGoToStep1: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onCloseAllStepsFormEmit: EventEmitter<boolean> =
+    new EventEmitter<boolean>();
 
   photosList: File[] = [];
+  isCloseButtonActivated: boolean = false;
   isPhotoInTheDropBox: boolean = false;
+  isPreviousStepButtonEnabled: boolean = true;
+  isSubmitButtonEnabled: boolean = false;
   isLoadingComposantActive: boolean = false;
   isNewsCardCreatedSuccess: boolean = false;
   isNewsCardCreatedError: boolean = false;
   isNewsCardUpdatedSuccess: boolean = false;
   isNewsCardUpdatedError: boolean = false;
-  isCloseButtonActivated: boolean = false;
-  isSubmitButtonEnabled: boolean = false;
-  currentStep: number = 1;
 
   constructor(
     private newsCardService: NewsCardService,
@@ -42,9 +45,27 @@ export class FeatEditNewsCardFormComponent {
     this.photosList = this.photoService.photosList;
   }
 
-  onCloseComponent(isCloseButtonActivated: boolean) {
-    this.isCloseButtonActivated = isCloseButtonActivated;
-    this.isEditNewsCardFormOpen.emit(false);
+  onCheckInputCompleted() {
+    console.log(this.newsCard.mainArticle.length, this.newsCard.readingTime);
+    if (this.isCreateMod) {
+      this.isSubmitButtonEnabled =
+        this.newsCard.mainArticle.length > 5 &&
+        this.newsCard.mainArticle.length < 1_000_000 &&
+        this.newsCard.readingTime > 0;
+    } else if (this.isUpdateMod) {
+      this.newsCard;
+      this.isSubmitButtonEnabled =
+        this.newsCard.mainArticle.length > 5 &&
+        this.newsCard.mainArticle.length < 1_000_000 &&
+        this.newsCard.readingTime > 0;
+    }
+  }
+
+  onGoStep1(isButtonClicked: boolean) {
+    if (isButtonClicked) {
+      this.currentStep = 1;
+      this.onGoToStep1.emit(1);
+    }
   }
 
   onSubmit(isButtonClicked: boolean) {
@@ -58,20 +79,25 @@ export class FeatEditNewsCardFormComponent {
     }
   }
 
-  private onNewsCardCreatedFeedback() {
-    this.isNewsCardCreatedSuccess = true;
-    setTimeout(() => {
-      this.isNewsCardCreatedSuccess = false;
-      this.onCloseComponent(this.isCloseButtonActivated);
-    }, 3000);
+  private createCard() {
+    this.newsCardService
+      .createCard(this.newsCard, this.userMail)
+      .subscribe((createdCard) => {
+        if (this.photosList.length > 0) {
+          this.uploadPhotosFromPhotoListAndCreateNewsCard(createdCard);
+        }
+      });
   }
 
-  private onNewsCardUpdatedFeedback() {
-    this.isNewsCardUpdatedSuccess = true;
-    setTimeout(() => {
-      this.isNewsCardUpdatedSuccess = false;
-      this.onCloseComponent(this.isCloseButtonActivated);
-    }, 3000);
+  private updateCard() {
+    this.newsCardService.updateCard(this.newsCard).subscribe(() => {
+      if (this.photosList.length === 0) {
+        this.isLoadingComposantActive = false;
+        this.onNewsCardUpdatedFeedback();
+      } else if (this.photosList.length > 0) {
+        this.uploadPhotosFromPhotoListAndCreateNewsCard(this.newsCard);
+      }
+    });
   }
 
   private uploadPhotosFromPhotoListAndCreateNewsCard(createdCard: NewsCard) {
@@ -124,37 +150,19 @@ export class FeatEditNewsCardFormComponent {
     }
   }
 
-  private createCard() {
-    this.newsCardService
-      .createCard(this.newsCard, this.userMail)
-      .subscribe((createdCard) => {
-        if (this.photosList.length > 0) {
-          this.uploadPhotosFromPhotoListAndCreateNewsCard(createdCard);
-        }
-      });
+  private onNewsCardCreatedFeedback() {
+    this.isNewsCardCreatedSuccess = true;
+    setTimeout(() => {
+      this.isNewsCardCreatedSuccess = false;
+      // this.onCloseComponent(this.isCloseButtonActivated);
+    }, 3000);
   }
 
-  private updateCard() {
-    this.newsCardService.updateCard(this.newsCard).subscribe(() => {
-      if (this.photosList.length === 0) {
-        this.isLoadingComposantActive = false;
-        this.onNewsCardUpdatedFeedback();
-      } else if (this.photosList.length > 0) {
-        this.uploadPhotosFromPhotoListAndCreateNewsCard(this.newsCard);
-      }
-    });
-  }
-
-  onRecevedMethodForGoToStep2(currentStep2: number) {
-    this.currentStep = currentStep2;
-    console.log(currentStep2);
-  }
-
-  onRecevedMethodForGoToStep1(currentStep1: number) {
-    this.currentStep = currentStep1;
-  }
-
-  onRecevedMethodForCloseAllSteps(isStepsFormsOpen: boolean) {
-    this.isEditNewsCardFormOpen.emit(false);
+  private onNewsCardUpdatedFeedback() {
+    this.isNewsCardUpdatedSuccess = true;
+    setTimeout(() => {
+      this.isNewsCardUpdatedSuccess = false;
+      // this.onCloseComponent(this.isCloseButtonActivated);
+    }, 3000);
   }
 }

@@ -1,29 +1,90 @@
-<div id="main-container">
-    <div id="title-container">
-        <h1>Ajouter un point de vu</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi non perspiciatis, neque voluptatum iure unde, vel placeat rem corporis esse sint quidem accusantium minima optio eveniet soluta dolores deleniti. Voluptates!</p>
+<main id="location-mainContainer">
+  <app-ui-close-icon
+    id="close-icon"
+    (isCloseButtonActivated)="onCloseComponent($event)"
+  ></app-ui-close-icon>
+  <h1 id="title">Ajouter un point de vu</h1>
+  <p id="">
+    Veuillez remplir le formulaire ci-dessous pour ajouter un nouveau point de
+    vue sur la carte. Assurez-vous de fournir toutes les informations requises,
+    y compris le nom du lieu, la latitude et la longitude.
+  </p>
+  <form>
+    <label for="name">Nom du lieu</label>
+    <input
+      class="input"
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Ecrivez le nom du lieu *"
+      [(ngModel)]="markerData.name"
+      (ngModelChange)="onCheckInputsCompleted()"
+      #titleInput="ngModel"
+      required
+    />
+    <div *ngIf="titleInput.invalid && titleInput.touched" class="error">
+      <div *ngIf="titleInput.errors?.['required']">
+        Le nom du lieu est requis.
+      </div>
+      <div *ngIf="titleInput.errors?.['minlength']">
+        Le nom du lieu doit comporter au moins 5 caractères.
+      </div>
+      <div *ngIf="titleInput.errors?.['maxlength']">
+        Le nom du lieu ne peut pas dépasser 150 caractères.
+      </div>
     </div>
-    <form (ngSubmit)="onSubmit()">
-        <label for="name">Nom du lieu *</label>
-        <input type="text" id="name" name="name" [(ngModel)]="markerData.name" required>
-  
-        <label for="latitude">Latitude *</label>
-        <input type="number" id="latitude" name="latitude" [(ngModel)]="markerData.latitude" required>
-        
-        <label for="longitude">Longitude *</label>
-        <input type="number" id="longitude" name="longitude" [(ngModel)]="markerData.longitude" required>
-  
-        <button mat-button type="submit">Créer le MarkerData</button>
-    </form>
-</div> 
+
+    <label for="latitude">Latitude</label>
+    <input
+      class="input"
+      type="number"
+      id="latitude"
+      name="latitude"
+      [(ngModel)]="markerData.latitude"
+      (ngModelChange)="onCheckInputsCompleted()"
+      #latitudeInput="ngModel"
+      required
+    />
+    <div *ngIf="latitudeInput.invalid && latitudeInput.touched" class="error">
+      <div *ngIf="latitudeInput.errors?.['required']">
+        La latitude est requise.
+      </div>
+    </div>
+
+    <label for="longitude">Longitude</label>
+    <input
+      class="input"
+      type="number"
+      id="longitude"
+      name="longitude"
+      [(ngModel)]="markerData.longitude"
+      (ngModelChange)="onCheckInputsCompleted()"
+      #longitudeInput="ngModel"
+      required
+    />
+    <div *ngIf="longitudeInput.invalid && longitudeInput.touched" class="error">
+      <div *ngIf="longitudeInput.errors?.['required']">
+        La longitude est requise.
+      </div>
+    </div>
+
+    <app-ui-button
+      id="submit-button"
+      type="submit"
+      buttonName="Créer le point"
+      (isButtonClicked)="onSubmit($event)"
+      [isButtonEnabled]="isSubmitButtonEnabled"
+    ></app-ui-button>
+  </form>
+</main>
 
 <app-feat-loader-popup
-class="loader" 
-*ngIf="isLoadingComposantActive"
+  class="loader"
+  *ngIf="isLoadingComposantActive"
 ></app-feat-loader-popup>
 
 <app-feat-feedback-messages-popup
-*ngIf="isLocationCreatedSuccess || isLocationCreatedError"
-[isLocationCreatedSuccess]="isLocationCreatedSuccess"
-[isLocationCreatedError]="isLocationCreatedError"
+  *ngIf="isLocationCreatedSuccess || isLocationCreatedError"
+  [isLocationCreatedSuccess]="isLocationCreatedSuccess"
+  [isLocationCreatedError]="isLocationCreatedError"
 ></app-feat-feedback-messages-popup>

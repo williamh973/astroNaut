@@ -30,7 +30,6 @@ public class Picture {
                     "mainArticle",
                     "optionalArticleOne",
                     "optionalArticleTwo",
-                    "optionalArticleThree",
                     "readingTime",
                     "timestamp",
                     "likeCount",

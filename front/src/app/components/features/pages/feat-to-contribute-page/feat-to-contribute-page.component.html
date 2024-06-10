@@ -33,6 +33,11 @@
   </div>
 
   <div *ngIf="isAddLocationFormOpen" id="add-location-form-container">
-    <app-feat-add-locations-form></app-feat-add-locations-form>
+    <app-feat-add-locations-form
+      id="add-location-form"
+      (isAddLocationFormOpen)="
+        onCloseAddLocationFormAfterOperationCompleted($event)
+      "
+    ></app-feat-add-locations-form>
   </div>
 </main>

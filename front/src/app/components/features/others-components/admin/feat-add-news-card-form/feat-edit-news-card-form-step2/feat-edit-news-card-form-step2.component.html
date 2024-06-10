@@ -1,0 +1,103 @@
+<form id="form">
+  <div class="ql-editor">
+    <label for="main-article">Détails de l'article</label>
+    <quill-editor
+      [(ngModel)]="newsCard.mainArticle"
+      id="quillEditor-newsCardArticle"
+      class="custom-quill-editor"
+      name="main-article"
+      maxlength="1_000_000"
+      minlength="5"
+      placeholder="Ecrire les détails de l'article ici"
+      (ngModelChange)="onCheckInputCompleted()"
+      #mainArticleInput="ngModel"
+      type="text"
+    ></quill-editor>
+    <ng-container
+      *ngIf="mainArticleInput.invalid && mainArticleInput.touched"
+      class="error"
+    >
+      <div *ngIf="mainArticleInput.errors?.['required']">
+        Le détail de l'article est requis.
+      </div>
+      <div *ngIf="mainArticleInput.errors?.['minlength']">
+        Le détail de l'article doit comporter au moins 5 caractères.
+      </div>
+      <div *ngIf="mainArticleInput.errors?.['maxlength']">
+        Le détail de l'article ne peut pas contenir plus de caractères.
+      </div>
+    </ng-container>
+  </div>
+  <div id="readingTime-container">
+    <label for="title">Temps de lecture (en minute(s).)</label>
+    <input
+      class="input"
+      type="number"
+      name="reading-time"
+      id="reading-time"
+      maxlength="2"
+      minlength="1"
+      required
+      (ngModelChange)="onCheckInputCompleted()"
+      [(ngModel)]="newsCard.readingTime"
+      #titleInput="ngModel"
+    />
+    <ng-container
+      *ngIf="titleInput.invalid && titleInput.touched"
+      class="error"
+    >
+      <div *ngIf="titleInput.errors?.['required']">
+        Le temps de lecture est requis.
+      </div>
+      <div *ngIf="titleInput.errors?.['minlength']">
+        Le temps doit comporter au moins 1 caractère.
+      </div>
+      <div *ngIf="titleInput.errors?.['maxlength']">
+        La temps ne peut pas dépasser 2 caractères.
+      </div>
+    </ng-container>
+  </div>
+  <section id="section-button">
+    <app-ui-button
+      id="previous-step-button"
+      buttonName="Etape précédente"
+      type="button"
+      (isButtonClicked)="onGoStep1($event)"
+      [isButtonEnabled]="isPreviousStepButtonEnabled"
+    ></app-ui-button>
+    <app-ui-button
+      *ngIf="isCreateMod"
+      id="submit-button"
+      buttonName="Créer cette actualité"
+      type="submit"
+      (isButtonClicked)="onSubmit($event)"
+      [isButtonEnabled]="isSubmitButtonEnabled"
+    ></app-ui-button>
+    <app-ui-button
+      *ngIf="isUpdateMod"
+      id="submit-button"
+      buttonName="Modifier l'actualité"
+      type="submit"
+      (isButtonClicked)="onSubmit($event)"
+      [isButtonEnabled]="isSubmitButtonEnabled"
+    ></app-ui-button>
+  </section>
+</form>
+
+<app-feat-loader-popup
+  class="loader"
+  *ngIf="isLoadingComposantActive"
+></app-feat-loader-popup>
+
+<app-feat-feedback-messages-popup
+  *ngIf="
+    isNewsCardCreatedSuccess ||
+    isNewsCardCreatedError ||
+    isNewsCardUpdatedSuccess ||
+    isNewsCardUpdatedError
+  "
+  [isNewsCardCreatedSuccess]="isNewsCardCreatedSuccess"
+  [isNewsCardUpdatedSuccess]="isNewsCardUpdatedSuccess"
+  [isNewsCardCreatedError]="isNewsCardCreatedError"
+  [isNewsCardUpdatedError]="isNewsCardUpdatedError"
+></app-feat-feedback-messages-popup>

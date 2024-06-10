@@ -54,16 +54,13 @@
   <main id="main-content">
     <section id="newsSection">
       <article class="newsSection-article">
-        <p>{{ newsCardMainArticle }}</p>
+        <div [innerHTML]="sanitizedMainArticle"></div>
       </article>
       <article class="newsSection-article">
         <p>{{ newsCardOptionnalOneArticle }}</p>
       </article>
       <article class="newsSection-article">
         <p>{{ newsCardOptionnalTwoArticle }}</p>
-      </article>
-      <article class="newsSection-article">
-        <p>{{ newsCardOptionnalThreeArticle }}</p>
       </article>
       <article class="publish">
         <p>AstroNaut</p>

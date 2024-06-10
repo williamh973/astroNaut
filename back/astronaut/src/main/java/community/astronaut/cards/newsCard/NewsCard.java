@@ -30,7 +30,8 @@ public class NewsCard {
 
     private String title;
 
-    @Column(length = 1000)
+    @Lob
+    @Column(columnDefinition = "LONGTEXT")
     private String mainArticle;
 
     @Column(length = 1000)
@@ -38,9 +39,6 @@ public class NewsCard {
 
     @Column(length = 1000)
     private String optionalArticleTwo;
-
-    @Column(length = 1000)
-    private String optionalArticleThree;
 
     private Integer readingTime;
 
@@ -80,7 +78,6 @@ public class NewsCard {
                 ", mainArticle='" + mainArticle + '\'' +
                 ", optionalArticleOne='" + optionalArticleOne + '\'' +
                 ", optionalArticleTwo='" + optionalArticleTwo + '\'' +
-                ", optionalArticleThree='" + optionalArticleThree + '\'' +
                 ", likeCount=" + likeCount +
                 ", dislikeCount=" + dislikeCount +
                 ", readingTime=" + readingTime +

@@ -1,58 +1,164 @@
 <div id="full-page-container">
-  <main id="child-container">
-    <svg
-      id="close-button"
-      xmlns="http://www.w3.org/2000/svg"
-      height="24"
-      viewBox="0 -960 960 960"
-      width="24"
-      (click)="onClosePopup()"
-    >
-      <path
-        d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
-      />
-    </svg>
-    <h1>Je m'inscris</h1>
+  <form id="register-form">
+    <app-ui-close-icon
+      class="close-icon"
+      (isCloseButtonActivated)="onClosePopup($event)"
+    ></app-ui-close-icon>
+
+    <h4 id="form-title">Création de compte</h4>
     <p>Les champs suivis d'un astérisque sont obligatoires.</p>
-    <form id="register-form" (ngSubmit)="onSubmit()">
-      <label for="input-pseudo">Pseudo *</label>
+
+    <div>
+      <svg
+        class="icon"
+        xmlns="http://www.w3.org/2000/svg"
+        height="42px"
+        viewBox="0 -960 960 960"
+        width="42px"
+        fill="#5f6368"
+      >
+        <path
+          d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"
+        />
+      </svg>
       <input
+        class="input"
         type="text"
         id="input-pseudo"
         name="input-pseudo"
+        placeholder="Nom d'utilisateur"
         [(ngModel)]="userRegister.pseudo"
         required
       />
+    </div>
 
-      <label for="input-email">Email *</label>
+    <div>
+      <svg
+        class="icon"
+        xmlns="http://www.w3.org/2000/svg"
+        height="42px"
+        viewBox="0 -960 960 960"
+        width="42px"
+        fill="#5f6368"
+      >
+        <path
+          d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"
+        />
+      </svg>
       <input
+        class="input"
+        type="text"
+        id="input-firstname"
+        name="input-firstname"
+        placeholder="Nom de famille"
+        [(ngModel)]="userRegister.firstname"
+      />
+    </div>
+    <label for="input-lastname">Prénom</label>
+    <div>
+      <svg
+        class="icon"
+        xmlns="http://www.w3.org/2000/svg"
+        height="42px"
+        viewBox="0 -960 960 960"
+        width="42px"
+        fill="#5f6368"
+      >
+        <path
+          d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z"
+        />
+      </svg>
+      <input
+        class="input"
+        type="text"
+        id="input-lastname"
+        name="input-lastname"
+        placeholder="Prénom"
+        [(ngModel)]="userRegister.lastname"
+      />
+    </div>
+    <label for="input-email">Email *</label>
+    <div>
+      <svg
+        id="email-icon"
+        class="icon"
+        xmlns="http://www.w3.org/2000/svg"
+        height="42px"
+        viewBox="0 -960 960 960"
+        width="42px"
+        fill="#5f6368"
+      >
+        <path
+          d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"
+        />
+      </svg>
+      <input
+        class="input"
         type="email"
         id="input-email"
         name="input-email"
+        placeholder="Email"
         [(ngModel)]="userRegister.email"
         required
       />
-
-      <label for="input-password">Mot de passe *</label>
+    </div>
+    <label for="input-password">Mot de passe *</label>
+    <div>
+      <svg
+        id="password-icon"
+        class="icon"
+        xmlns="http://www.w3.org/2000/svg"
+        height="42px"
+        viewBox="0 -960 960 960"
+        width="42px"
+        fill="#5f6368"
+      >
+        <path
+          d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z"
+        />
+      </svg>
       <input
+        class="input"
         type="password"
         id="input-password"
         name="input-password"
+        placeholder="Mot de passe"
         [(ngModel)]="userRegister.password"
         required
       />
-
-      <!-- <label for="input-confirm-password">Confirmer le mot de passe *</label>
+    </div>
+    <label for="input-confirm-password">Confirmer votre mot de passe *</label>
+    <div>
+      <svg
+        id="password-icon"
+        class="icon"
+        xmlns="http://www.w3.org/2000/svg"
+        height="42px"
+        viewBox="0 -960 960 960"
+        width="42px"
+        fill="#5f6368"
+      >
+        <path
+          d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z"
+        />
+      </svg>
       <input
+        class="input"
         type="password"
         id="input-confirm-password"
         name="input-confirm-password"
+        placeholder="Confirmer votre mot de passe"
         required
-      /> -->
-
-      <button type="submit">Je valide</button>
-    </form>
-  </main>
+      />
+    </div>
+    <app-ui-button
+      id="submit-button"
+      buttonName="Créer compte"
+      type="submit"
+      (isButtonClicked)="onSubmit($event)"
+      [isButtonEnabled]="isSubmitButtonEnabled"
+    ></app-ui-button>
+  </form>
 </div>
 
 <app-feat-track-http-status-popup

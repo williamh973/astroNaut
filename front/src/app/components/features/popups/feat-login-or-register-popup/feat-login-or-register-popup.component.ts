@@ -23,16 +23,22 @@ export class FeatLoginOrRegisterPopupComponent {
     );
   }
 
-  onOpenLoginForm() {
-    this.isLoginFormOpen = true;
+  onOpenLoginForm(isButtonClicked: boolean) {
+    if (isButtonClicked) {
+      this.isLoginFormOpen = true;
+    }
   }
 
-  onOpenRegisterForm() {
-    this.isRegisterFormOpen = true;
+  onOpenRegisterForm(isButtonClicked: boolean) {
+    if (isButtonClicked) {
+      this.isRegisterFormOpen = true;
+    }
   }
 
-  onClosePopup(): void {
-    this.loginOrRegisterPopupService.closePopup();
+  onClosePopup(isCloseButtonActivated: boolean): void {
+    if (isCloseButtonActivated) {
+      this.loginOrRegisterPopupService.closePopup();
+    }
   }
 
   onCloseLoginForm(isLoginFormOpen: boolean) {

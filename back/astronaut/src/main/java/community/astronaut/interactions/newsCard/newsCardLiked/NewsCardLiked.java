@@ -22,7 +22,21 @@ public class NewsCardLiked {
 
     @ManyToOne
     @JoinColumn(name = "news_card_id", referencedColumnName = "id")
-    @JsonIgnoreProperties("newsCardLikedList")
+    @JsonIgnoreProperties(
+            {
+                    "picturesList",
+                    "newsCardLikedList",
+                    "title",
+                    "mainArticle",
+                    "optionalArticleOne",
+                    "optionalArticleTwo",
+                    "readingTime",
+                    "timestamp",
+                    "likeCount",
+                    "dislikeCount",
+                    "commentsList",
+                    "user"
+            })
     private NewsCard newsCard;
 
     @ManyToOne

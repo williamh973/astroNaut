@@ -1,0 +1,123 @@
+#form {
+  position: relative;
+  width: 60vw;
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding: 25px;
+  background: #fff;
+  z-index: 1;
+}
+
+#form-title {
+  width: 90%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  font-size: large;
+  background: #04091e;
+  font-style: italic;
+  padding: 10px;
+}
+
+#sections-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.section {
+  width: 40%;
+  height: auto;
+}
+
+#section-uploaded {
+}
+
+#section-uploaded > h3 {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background: #0f1839;
+  font-style: italic;
+  padding: 10px;
+}
+
+#section-uploaded > #container-uploaded-picture {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+}
+
+#section-uploaded > figure {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: flex-start;
+}
+
+#section-creation > #ngx-dropzone-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  aspect-ratio: 16 / 9;
+}
+
+#section-creation > label {
+  width: 90%;
+  height: auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #fff;
+  background: #04091e;
+  font-style: italic;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  color: #495057;
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin-bottom: 10px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.input:focus {
+  border-color: #cc00ff;
+  box-shadow: 0 0 5px #cc00ff73;
+  outline: none;
+}
+
+.input:hover {
+  border-color: #cc00ff;
+  cursor: pointer;
+}
+
+#next-step-button {
+  margin-left: auto;
+}
+
+.error {
+  width: 100%;
+  color: red;
+  padding: 5px;
+  box-sizing: border-box;
+  margin-top: -10px;
+}

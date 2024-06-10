@@ -77,7 +77,6 @@ public class User implements UserDetails {
                    "mainArticle",
                    "optionalArticleOne",
                    "optionalArticleTwo",
-                   "optionalArticleThree",
                    "readingTime",
                    "timestamp",
                    "likeCount",

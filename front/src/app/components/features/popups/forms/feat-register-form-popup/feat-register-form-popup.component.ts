@@ -10,24 +10,36 @@ import { AuthService } from 'src/app/shared/services/user/auth/auth.service';
 export class FeatRegisterFormPopupComponent {
   @Output() isRegisterFormOpen = new EventEmitter<boolean>();
 
-  userRegister: UserRegister = new UserRegister('', '', '', 'ROLE_ADMIN');
+  userRegister: UserRegister = new UserRegister(
+    '',
+    '',
+    '',
+    '',
+    '',
+    'ROLE_USER'
+  );
   isAnimationPopupSignInStatusActive: boolean = false;
   isTrackHttpStatusPopupOpen: boolean = false;
+  isSubmitButtonEnabled: boolean = false;
 
   constructor(private httpS: AuthService) {}
 
-  onSubmit() {
-    this.httpS.signUp(this.userRegister);
-    this.isTrackHttpStatusPopupOpen = true;
-
-    setTimeout(() => {
+  onSubmit(isButtonClicked: boolean) {
+    if (isButtonClicked) {
+      this.httpS.signUp(this.userRegister);
       this.isTrackHttpStatusPopupOpen = true;
-      this.isRegisterFormOpen.emit(false);
-    }, 2500);
+
+      setTimeout(() => {
+        this.isTrackHttpStatusPopupOpen = true;
+        this.isRegisterFormOpen.emit(false);
+      }, 2500);
+    }
   }
 
-  onClosePopup() {
-    this.isRegisterFormOpen.emit(false);
-    this.isTrackHttpStatusPopupOpen = false;
+  onClosePopup(isCloseButtonActivated: boolean) {
+    if (isCloseButtonActivated) {
+      this.isRegisterFormOpen.emit(false);
+      this.isTrackHttpStatusPopupOpen = false;
+    }
   }
 }

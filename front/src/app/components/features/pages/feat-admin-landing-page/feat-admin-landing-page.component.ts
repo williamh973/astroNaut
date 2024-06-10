@@ -17,7 +17,6 @@ export class FeatAdminLandingPageComponent {
     '',
     '',
     '',
-    '',
     0,
     new Date(),
     0,

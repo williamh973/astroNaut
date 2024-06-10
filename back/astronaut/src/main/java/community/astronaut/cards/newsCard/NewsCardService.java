@@ -48,7 +48,6 @@ public class NewsCardService {
         foundNewsCard.setMainArticle(newsCard.getMainArticle());
         foundNewsCard.setOptionalArticleOne(newsCard.getOptionalArticleOne());
         foundNewsCard.setOptionalArticleTwo(newsCard.getOptionalArticleTwo());
-        foundNewsCard.setOptionalArticleThree(newsCard.getOptionalArticleThree());
         foundNewsCard.setLikeCount(newsCard.getLikeCount());
         foundNewsCard.setDislikeCount(newsCard.getDislikeCount());
         return newsCardRepository.save(foundNewsCard);

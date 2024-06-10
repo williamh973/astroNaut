@@ -1,281 +1,34 @@
-<main id="editForm-fullPage">
+<main id="full-page">
   <app-ui-close-icon
+    id="close-icon"
     (isCloseButtonActivated)="onCloseComponent($event)"
   ></app-ui-close-icon>
-  <form id="edit-form">
-    <h1 id="editForm-title">
-      {{
-        isUpdateMod
-          ? "Modifier une carte d'actualité"
-          : "Créer une carte d'actualité"
-      }}
-    </h1>
-    <section id="editForm-rectoSection">
-      <article
-        class="container-img-upload"
-        *ngIf="isUpdateMod && newsCard.picturesList.length > 0"
-      >
-        <figure
-          id="editForm-figureImg"
-          *ngFor="let picture of newsCard.picturesList; let i = index"
-        >
-          <img id="editForm-img" [src]="picture.src" alt="Image" />
-          <svg
-            class="svg-delete-picture"
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            (click)="onDeletePictureOfCardPicturesList(picture)"
-          >
-            <path fill="none" d="M0 0h24v24H0z" />
-            <path
-              d="M18 6L6 18M6 6l12 12"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </figure>
-      </article>
+  <div id="steps-container">
+    <ng-container *ngIf="currentStep === 1">
+      <app-feat-edit-news-card-form-step1
+        [currentStep]="currentStep"
+        [isCreateMod]="isCreateMod"
+        [isUpdateMod]="isUpdateMod"
+        [newsCard]="newsCard"
+        (onGoToStep2)="onRecevedMethodForGoToStep2(2)"
+        (onCloseAllStepsFormEmit)="onRecevedMethodForCloseAllSteps($event)"
+      ></app-feat-edit-news-card-form-step1>
+    </ng-container>
 
-      <div class="container-ngx-dropzone">
-        <label for="image">Image à téléverser</label>
-        <ngx-dropzone
-          class="ngx-dropzone"
-          [accept]="'image/*'"
-          (change)="onHandlePhotoUpload($event)"
-          (ngModelChange)="onCheckInputCompleted()"
-        >
-          <ngx-dropzone-label class="ngx-dropzone-label">
-            <div title="Cliquer ici">
-              <div
-                title="Téléverser la photo désirée en cliquant ici."
-                id="dropzone-title"
-              >
-                <p>Téléverser la photo désirée en cliquant ici.</p>
-              </div>
-            </div>
-          </ngx-dropzone-label>
-
-          <ngx-dropzone-image-preview
-            class="img-preview"
-            ngProjectAs="ngx-dropzone-preview"
-            *ngFor="let photo of photosList"
-            [file]="photo"
-            [removable]="true"
-            (removed)="onRemovePhotoOfPhotoList(photo)"
-          >
-          </ngx-dropzone-image-preview>
-        </ngx-dropzone>
-      </div>
-
-      <article class="label-input-container">
-        <label for="title">Titre de la carte d'actualité</label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          maxlength="150"
-          minlength="5"
-          placeholder="Description courte de l'actualité*"
-          required
-          (ngModelChange)="onCheckInputCompleted()"
-          [(ngModel)]="newsCard.title"
-          #titleInput="ngModel"
-        />
-        <ng-container
-          *ngIf="titleInput.invalid && titleInput.touched"
-          class="error"
-        >
-          <div *ngIf="titleInput.errors?.['required']">
-            La description est requise.
-          </div>
-          <div *ngIf="titleInput.errors?.['minlength']">
-            La description doit comporter au moins 5 caractères.
-          </div>
-          <div *ngIf="titleInput.errors?.['maxlength']">
-            La description ne peut pas dépasser 150 caractères.
-          </div>
-        </ng-container>
-      </article>
-    </section>
-
-    <section id="editForm-versoSection">
-      <p id="editForm-versoTitle">Au dos de la carte</p>
-      <div id="inputs-zone">
-        <article class="label-input-container">
-          <label for="main-article">Article principal (Obligatoire)</label>
-          <textarea
-            type="text"
-            name="main-article"
-            id="main-article"
-            maxlength="1000"
-            minlength="5"
-            placeholder="Ecrire les détails de l'article ici"
-            required
-            (ngModelChange)="onCheckInputCompleted()"
-            [(ngModel)]="newsCard.mainArticle"
-            #mainArticleInput="ngModel"
-          ></textarea>
-          <ng-container
-            *ngIf="mainArticleInput.invalid && mainArticleInput.touched"
-            class="error"
-          >
-            <div *ngIf="mainArticleInput.errors?.['required']">
-              Le détail de l'article est requis.
-            </div>
-            <div *ngIf="mainArticleInput.errors?.['minlength']">
-              Le détail de l'article doit comporter au moins 5 caractères.
-            </div>
-            <div *ngIf="mainArticleInput.errors?.['maxlength']">
-              Le détail de l'article ne peut pas dépasser 1000 caractères.
-            </div>
-          </ng-container>
-        </article>
-
-        <article class="label-input-container">
-          <label for="optionnal-article-one"
-            >Article secondaire 1 (Optionnel)</label
-          >
-          <textarea
-            type="text"
-            name="optionnal-article-one"
-            class="optionnal-article"
-            maxlength="1000"
-            minlength="5"
-            placeholder="Ecrire les détails de l'article ici"
-            [(ngModel)]="newsCard.optionalArticleOne"
-            #optionalArticleOneInput="ngModel"
-          ></textarea>
-          <ng-container
-            *ngIf="
-              optionalArticleOneInput.invalid && optionalArticleOneInput.touched
-            "
-            class="error"
-          >
-            <div *ngIf="optionalArticleOneInput.errors?.['minlength']">
-              Le détail de l'article doit comporter au moins 5 caractères.
-            </div>
-            <div *ngIf="optionalArticleOneInput.errors?.['maxlength']">
-              Le détail de l'article ne peut pas dépasser 1000 caractères.
-            </div>
-          </ng-container>
-        </article>
-
-        <article class="label-input-container">
-          <label for="optionnal-article-two"
-            >Article secondaire 2 (Optionnel)</label
-          >
-          <textarea
-            type="text"
-            name="optionnal-article-two"
-            class="optionnal-article"
-            maxlength="1000"
-            minlength="5"
-            placeholder="Ecrire les détails de l'article ici"
-            [(ngModel)]="newsCard.optionalArticleTwo"
-            #optionalArticleTwoInput="ngModel"
-          ></textarea>
-          <ng-container
-            *ngIf="
-              optionalArticleTwoInput.invalid && optionalArticleTwoInput.touched
-            "
-            class="error"
-          >
-            <div *ngIf="optionalArticleTwoInput.errors?.['minlength']">
-              Le détail de l'article doit comporter au moins 5 caractères.
-            </div>
-            <div *ngIf="optionalArticleTwoInput.errors?.['maxlength']">
-              Le détail de l'article ne peut pas dépasser 1000 caractères.
-            </div>
-          </ng-container>
-        </article>
-
-        <article class="label-input-container">
-          <label for="optionnal-article-three"
-            >Article secondaire 3 (Optionnel)</label
-          >
-          <textarea
-            type="text"
-            name="optionnal-article-three"
-            class="optionnal-article"
-            maxlength="1000"
-            minlength="5"
-            placeholder="Ecrire les détails de l'article ici"
-            [(ngModel)]="newsCard.optionalArticleThree"
-            #optionalArticleThreeInput="ngModel"
-          ></textarea>
-          <ng-container
-            *ngIf="
-              optionalArticleThreeInput.invalid &&
-              optionalArticleThreeInput.touched
-            "
-            class="error"
-          >
-            <div *ngIf="optionalArticleThreeInput.errors?.['minlength']">
-              Le détail de l'article doit comporter au moins 5 caractères.
-            </div>
-            <div *ngIf="optionalArticleThreeInput.errors?.['maxlength']">
-              Le détail de l'article ne peut pas dépasser 1000 caractères.
-            </div>
-          </ng-container>
-        </article>
-
-        <article class="label-input-container">
-          <label for="title">Temps de lecture (en minute(s).)</label>
-          <input
-            type="number"
-            name="reading-time"
-            id="reading-time"
-            maxlength="2"
-            minlength="1"
-            required
-            (ngModelChange)="onCheckInputCompleted()"
-            [(ngModel)]="newsCard.readingTime"
-            #titleInput="ngModel"
-          />
-          <ng-container
-            *ngIf="titleInput.invalid && titleInput.touched"
-            class="error"
-          >
-            <div *ngIf="titleInput.errors?.['required']">
-              Le temps de lecture est requis.
-            </div>
-            <div *ngIf="titleInput.errors?.['minlength']">
-              Le temps doit comporter au moins 1 caractère.
-            </div>
-            <div *ngIf="titleInput.errors?.['maxlength']">
-              La temps ne peut pas dépasser 2 caractères.
-            </div>
-          </ng-container>
-        </article>
-        <app-ui-button
-          *ngIf="isCreateMod"
-          id="submit-button"
-          buttonName="Créer cette actualité"
-          type="submit"
-          (isButtonClicked)="onSubmit($event)"
-          [isButtonEnabled]="isSubmitButtonEnabled"
-        ></app-ui-button>
-        <app-ui-button
-          *ngIf="isUpdateMod"
-          id="submit-button"
-          buttonName="Modifier l'actualité"
-          type="submit"
-          (isButtonClicked)="onSubmit($event)"
-          [isButtonEnabled]="isSubmitButtonEnabled"
-        ></app-ui-button>
-      </div>
-    </section>
-  </form>
+    <ng-container *ngIf="currentStep === 2">
+      <app-feat-edit-news-card-form-step2
+        [currentStep]="currentStep"
+        [isCreateMod]="isCreateMod"
+        [isUpdateMod]="isUpdateMod"
+        [newsCard]="newsCard"
+        [userMail]="userMail"
+        [isAdminMod]="isAdminMod"
+        (onGoToStep1)="onRecevedMethodForGoToStep1(1)"
+        (onCloseAllStepsFormEmit)="onRecevedMethodForCloseAllSteps($event)"
+      ></app-feat-edit-news-card-form-step2>
+    </ng-container>
+  </div>
 </main>
-
-<app-feat-loader-popup
-  class="loader"
-  *ngIf="isLoadingComposantActive"
-></app-feat-loader-popup>
 
 <app-feat-feedback-messages-popup
   *ngIf="

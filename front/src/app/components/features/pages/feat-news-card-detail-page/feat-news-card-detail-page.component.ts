@@ -3,6 +3,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
 import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
 import { TokenService } from 'src/app/shared/services/token/token.service';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-feat-news-card-detail-page',
@@ -13,10 +14,8 @@ export class FeatNewsCardDetailPageComponent {
   newsCard!: NewsCard;
   newsCardPictureSrc: string = '';
   newsCardTitle: string = '';
-  newsCardMainArticle: string = '';
   newsCardOptionnalOneArticle: string = '';
   newsCardOptionnalTwoArticle: string = '';
-  newsCardOptionnalThreeArticle: string = '';
   currendUserMail: string = '';
   currentUserRole: string = '';
   newsCardTimestamp: Date = new Date();
@@ -25,11 +24,14 @@ export class FeatNewsCardDetailPageComponent {
   isCommentFormOpen: boolean = false;
   isQuitSvgActived: boolean = false;
 
+  sanitizedMainArticle!: SafeHtml;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private newsCardService: NewsCardService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {
@@ -45,7 +47,10 @@ export class FeatNewsCardDetailPageComponent {
         .getCardById(this.newsCardId)
         .subscribe((newsCard: NewsCard) => {
           this.newsCard = newsCard;
-          this.onGetNewsCardPicture();
+          (this.sanitizedMainArticle = this.sanitizer.bypassSecurityTrustHtml(
+            this.newsCard.mainArticle
+          )),
+            this.onGetNewsCardPicture();
           this.onGetNewsCardTitle();
           this.onGetNewsCardArticles();
           this.onGetNewsCardReadingTime();
@@ -76,10 +81,9 @@ export class FeatNewsCardDetailPageComponent {
   }
 
   onGetNewsCardArticles() {
-    this.newsCardMainArticle = this.newsCard.mainArticle;
+    // this.newsCardMainArticle = this.newsCard.mainArticle;
     this.newsCardOptionnalOneArticle = this.newsCard.optionalArticleOne;
     this.newsCardOptionnalTwoArticle = this.newsCard.optionalArticleTwo;
-    this.newsCardOptionnalThreeArticle = this.newsCard.optionalArticleThree;
   }
 
   onGetNewsCardReadingTime() {

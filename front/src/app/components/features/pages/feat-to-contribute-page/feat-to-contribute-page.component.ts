@@ -47,6 +47,12 @@ export class FeatToContributePageComponent {
     this.isAddImageFormOpen = isAddImageFormOpen;
   }
 
+  onCloseAddLocationFormAfterOperationCompleted(
+    isAddLocationFormOpen: boolean
+  ) {
+    this.isAddLocationFormOpen = isAddLocationFormOpen;
+  }
+
   onCloseAddImageForm(isAddImageFormOpen: boolean) {
     this.isAddImageFormOpen = isAddImageFormOpen;
   }
