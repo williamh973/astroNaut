@@ -1,8 +1,7 @@
-<main id="full-page">
-  <div id="child-container">
+<div id="full-page">
+  <main id="main-popup">
     <app-ui-close-icon
       class="close-icon"
-      id="icon-delete-picture-uploaded"
       (isCloseButtonActivated)="onClosePopup($event)"
     ></app-ui-close-icon>
 
@@ -11,8 +10,9 @@
     </h4>
 
     <app-ui-button
+      class="button"
       id="login-button"
-      buttonName="Je me connecte"
+      buttonName="Connexion"
       type="button"
       (isButtonClicked)="onOpenLoginForm($event)"
       [isButtonEnabled]="true"
@@ -21,14 +21,15 @@
     <p id="not-registered">Pas encore inscrit?</p>
 
     <app-ui-button
+      class="button"
       id="register-button"
-      buttonName="Je m'inscris"
+      buttonName="Inscription"
       type="button"
       (isButtonClicked)="onOpenRegisterForm($event)"
       [isButtonEnabled]="true"
     ></app-ui-button>
-  </div>
-</main>
+  </main>
+</div>
 
 <app-feat-login-form-popup
   *ngIf="isLoginFormOpen"

@@ -67,6 +67,11 @@ import { UiButtonComponent } from './shared/buttons/ui-button/ui-button.componen
 import { QuillModule } from 'ngx-quill';
 import { FeatEditNewsCardFormStep1Component } from './components/features/others-components/admin/feat-add-news-card-form/feat-edit-news-card-form-step1/feat-edit-news-card-form-step1.component';
 import { FeatEditNewsCardFormStep2Component } from './components/features/others-components/admin/feat-add-news-card-form/feat-edit-news-card-form-step2/feat-edit-news-card-form-step2.component';
+import { UiPersonIconComponent } from './shared/icons/ui-person-icon/ui-person-icon.component';
+import { UiEmailIconComponent } from './shared/icons/ui-email-icon/ui-email-icon.component';
+import { UiPasswordIconComponent } from './shared/icons/ui-password-icon/ui-password-icon.component';
+import { UiUpdateIconComponent } from './shared/icons/ui-update-icon/ui-update-icon.component';
+import { UiDeleteIconComponent } from './shared/icons/ui-delete-icon/ui-delete-icon.component';
 
 @NgModule({
   declarations: [
@@ -126,6 +131,11 @@ import { FeatEditNewsCardFormStep2Component } from './components/features/others
     UiButtonComponent,
     FeatEditNewsCardFormStep1Component,
     FeatEditNewsCardFormStep2Component,
+    UiPersonIconComponent,
+    UiEmailIconComponent,
+    UiPasswordIconComponent,
+    UiUpdateIconComponent,
+    UiDeleteIconComponent,
   ],
   imports: [
     BrowserModule,

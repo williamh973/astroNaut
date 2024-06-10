@@ -13,17 +13,17 @@
 
 #login-form {
   position: relative;
-  width: 40vw;
+  width: 400px;
+  min-width: 400px;
   min-height: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
   border-radius: 5px;
-  padding: 25px;
-  background: #fff;
+  padding: 15px 25px;
+  background: #ecf0f1;
   z-index: 1;
-  gap: 20px;
 }
 
 .close-icon {
@@ -38,8 +38,7 @@
   justify-content: center;
   align-items: center;
   margin: auto;
-  color: #fff;
-  background: #04091e;
+  color: #04091e;
   font-style: italic;
 }
 
@@ -47,30 +46,31 @@
   margin-bottom: 5px;
 }
 
-div {
-  width: 80%;
+.input-container {
+  position: relative;
+  width: 100%;
   height: auto;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .icon {
-  position: relative;
-  top: 0;
-  left: 50px;
+  position: absolute;
+  left: 35px;
+  top: 5px;
+  pointer-events: none;
 }
 
 .input {
-  width: 100%;
+  width: 90%;
   padding: 12px;
-  padding-left: 55px;
+  padding-left: 60px;
   border: 1px solid #ced4da;
   color: #495057;
   box-sizing: border-box;
   font-size: 1rem;
   margin-bottom: 10px;
-  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .input:focus {
