@@ -25,7 +25,6 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private tokenService: TokenService,
-    private localStorageService: LocalStorageService,
     private router: Router
   ) {}
 
@@ -44,7 +43,7 @@ export class AuthService {
         if (token) {
           setTimeout(() => {
             this.router.navigate(['/astronaut/landing-page']);
-          }, 2_000);
+          }, 2_500);
         }
       });
   }

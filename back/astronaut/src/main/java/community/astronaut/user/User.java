@@ -29,6 +29,8 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String pseudo;
+    private String firstname;
+    private String lastname;
     private String email;
     @JsonIgnore
     private String password;
@@ -75,8 +77,6 @@ public class User implements UserDetails {
                    "commentsList",
                    "picturesList",
                    "mainArticle",
-                   "optionalArticleOne",
-                   "optionalArticleTwo",
                    "readingTime",
                    "timestamp",
                    "likeCount",

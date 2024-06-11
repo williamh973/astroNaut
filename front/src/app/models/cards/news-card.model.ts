@@ -7,8 +7,6 @@ export class NewsCard {
     public picturesList: Picture[],
     public title: string,
     public mainArticle: string,
-    public optionalArticleOne: string,
-    public optionalArticleTwo: string,
     public readingTime: number,
     public timestamp: Date,
     public likeCount: number,

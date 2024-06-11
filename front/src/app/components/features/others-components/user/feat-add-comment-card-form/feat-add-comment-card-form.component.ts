@@ -22,8 +22,6 @@ export class FeatAddCommentCardFormComponent {
       [],
       '',
       '',
-      '',
-      '',
       0,
       new Date(),
       0,

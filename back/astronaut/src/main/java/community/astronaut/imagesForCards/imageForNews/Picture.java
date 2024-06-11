@@ -28,8 +28,6 @@ public class Picture {
                     "picturesList",
                     "title",
                     "mainArticle",
-                    "optionalArticleOne",
-                    "optionalArticleTwo",
                     "readingTime",
                     "timestamp",
                     "likeCount",

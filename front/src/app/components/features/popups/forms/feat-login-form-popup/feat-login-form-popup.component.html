@@ -16,6 +16,7 @@
         placeholder="* Email"
         name="input-email"
         [(ngModel)]="userAuth.email"
+        (ngModelChange)="onCheckInputCompleted()"
         required
       />
     </div>
@@ -29,6 +30,7 @@
         placeholder="* Mot de passe"
         name="input-password"
         [(ngModel)]="userAuth.password"
+        (ngModelChange)="onCheckInputCompleted()"
         required
       />
     </div>

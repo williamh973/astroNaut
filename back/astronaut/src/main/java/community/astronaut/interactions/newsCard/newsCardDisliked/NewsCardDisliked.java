@@ -29,8 +29,6 @@ public class NewsCardDisliked {
                     "picturesList",
                     "title",
                     "mainArticle",
-                    "optionalArticleOne",
-                    "optionalArticleTwo",
                     "readingTime",
                     "timestamp",
                     "likeCount",

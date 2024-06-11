@@ -30,6 +30,19 @@ export class FeatLoginFormPopupComponent {
     if (isButtonClicked) {
       this.LsService.clearTokenAndUserEmail();
       this.httpS.signIn(this.userAuth);
+
+      setTimeout(() => {
+        this.isTrackHttpStatusPopupOpen = true;
+
+        setTimeout(() => {
+          this.isTrackHttpStatusPopupOpen = false;
+        }, 2_500);
+      }, 500);
     }
+  }
+
+  onCheckInputCompleted() {
+    this.isSubmitButtonEnabled =
+      this.userAuth.email.length > 0 && this.userAuth.password.length > 0;
   }
 }

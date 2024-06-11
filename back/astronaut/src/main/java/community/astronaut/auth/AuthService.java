@@ -30,6 +30,9 @@ public class AuthService {
         if (!repository.findByEmail(request.getEmail()).isPresent()) {
             var user = User.builder()
                     .pseudo(request.getPseudo())
+                    .firstname(request.getFirstname())
+                    .lastname(request.getLastname())
+                    .pseudo(request.getPseudo())
                     .email(request.getEmail())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .role(request.getRequiredRole())

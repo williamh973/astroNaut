@@ -72,6 +72,8 @@ import { UiEmailIconComponent } from './shared/icons/ui-email-icon/ui-email-icon
 import { UiPasswordIconComponent } from './shared/icons/ui-password-icon/ui-password-icon.component';
 import { UiUpdateIconComponent } from './shared/icons/ui-update-icon/ui-update-icon.component';
 import { UiDeleteIconComponent } from './shared/icons/ui-delete-icon/ui-delete-icon.component';
+import { UiAuthFailIconComponent } from './shared/icons/ui-auth-fail-icon/ui-auth-fail-icon.component';
+import { UiAuthSuccessIconComponent } from './shared/icons/ui-auth-success-icon/ui-auth-success-icon.component';
 
 @NgModule({
   declarations: [
@@ -136,6 +138,8 @@ import { UiDeleteIconComponent } from './shared/icons/ui-delete-icon/ui-delete-i
     UiPasswordIconComponent,
     UiUpdateIconComponent,
     UiDeleteIconComponent,
+    UiAuthFailIconComponent,
+    UiAuthSuccessIconComponent,
   ],
   imports: [
     BrowserModule,

@@ -34,12 +34,6 @@ public class NewsCard {
     @Column(columnDefinition = "LONGTEXT")
     private String mainArticle;
 
-    @Column(length = 1000)
-    private String optionalArticleOne;
-
-    @Column(length = 1000)
-    private String optionalArticleTwo;
-
     private Integer readingTime;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -76,8 +70,6 @@ public class NewsCard {
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", mainArticle='" + mainArticle + '\'' +
-                ", optionalArticleOne='" + optionalArticleOne + '\'' +
-                ", optionalArticleTwo='" + optionalArticleTwo + '\'' +
                 ", likeCount=" + likeCount +
                 ", dislikeCount=" + dislikeCount +
                 ", readingTime=" + readingTime +

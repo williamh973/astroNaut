@@ -32,8 +32,6 @@ public class Comment {
                     "picturesList",
                     "title",
                     "mainArticle",
-                    "optionalArticleOne",
-                    "optionalArticleTwo",
                     "readingTime",
                     "timestamp",
                     "likeCount",

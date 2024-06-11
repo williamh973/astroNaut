@@ -21,16 +21,17 @@ export class FeatRegisterFormPopupComponent {
   isAnimationPopupSignInStatusActive: boolean = false;
   isTrackHttpStatusPopupOpen: boolean = false;
   isSubmitButtonEnabled: boolean = false;
+  confirmPassword: string = '';
 
   constructor(private httpS: AuthService) {}
 
-  onSubmit(isButtonClicked: boolean) {
-    if (isButtonClicked) {
+  onSubmit(isSubmitButtonClicked: boolean) {
+    if (isSubmitButtonClicked) {
       this.httpS.signUp(this.userRegister);
       this.isTrackHttpStatusPopupOpen = true;
 
       setTimeout(() => {
-        this.isTrackHttpStatusPopupOpen = true;
+        this.isTrackHttpStatusPopupOpen = false;
         this.isRegisterFormOpen.emit(false);
       }, 2500);
     }
@@ -39,7 +40,14 @@ export class FeatRegisterFormPopupComponent {
   onClosePopup(isCloseButtonActivated: boolean) {
     if (isCloseButtonActivated) {
       this.isRegisterFormOpen.emit(false);
-      this.isTrackHttpStatusPopupOpen = false;
     }
+  }
+
+  onCheckInputCompleted() {
+    this.isSubmitButtonEnabled =
+      this.userRegister.pseudo.length > 0 &&
+      this.userRegister.email.length > 0 &&
+      this.userRegister.password.length > 0 &&
+      this.confirmPassword.length > 0;
   }
 }

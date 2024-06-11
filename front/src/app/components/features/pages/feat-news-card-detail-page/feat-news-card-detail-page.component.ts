@@ -52,7 +52,6 @@ export class FeatNewsCardDetailPageComponent {
           )),
             this.onGetNewsCardPicture();
           this.onGetNewsCardTitle();
-          this.onGetNewsCardArticles();
           this.onGetNewsCardReadingTime();
           this.onGetNewsCardTimestamp();
         });
@@ -78,12 +77,6 @@ export class FeatNewsCardDetailPageComponent {
 
   onGetNewsCardTitle() {
     this.newsCardTitle = this.newsCard.title;
-  }
-
-  onGetNewsCardArticles() {
-    // this.newsCardMainArticle = this.newsCard.mainArticle;
-    this.newsCardOptionnalOneArticle = this.newsCard.optionalArticleOne;
-    this.newsCardOptionnalTwoArticle = this.newsCard.optionalArticleTwo;
   }
 
   onGetNewsCardReadingTime() {

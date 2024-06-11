@@ -22,11 +22,15 @@ export class FeatTrackHttpStatusPopupComponent {
     this.httpSuccess$ = this.httpS.getHttpSuccessSubject$();
 
     this.httpError$.subscribe((error: HttpErrorResponse) => {
-      this.showErrorMessage = true;
+      if (error) {
+        this.showErrorMessage = true;
+      }
     });
 
     this.httpSuccess$.subscribe((response: HttpResponse<any>) => {
-      this.showSuccessMessage = true;
+      if (response) {
+        this.showSuccessMessage = true;
+      }
     });
   }
 }

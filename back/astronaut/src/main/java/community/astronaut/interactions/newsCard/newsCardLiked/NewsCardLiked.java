@@ -28,8 +28,6 @@ public class NewsCardLiked {
                     "newsCardLikedList",
                     "title",
                     "mainArticle",
-                    "optionalArticleOne",
-                    "optionalArticleTwo",
                     "readingTime",
                     "timestamp",
                     "likeCount",

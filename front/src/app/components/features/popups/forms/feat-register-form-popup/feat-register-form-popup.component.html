@@ -17,6 +17,7 @@
         name="input-pseudo"
         placeholder="Nom d'utilisateur"
         [(ngModel)]="userRegister.pseudo"
+        (ngModelChange)="onCheckInputCompleted()"
         required
       />
     </div>
@@ -54,6 +55,7 @@
         name="input-email"
         placeholder="Email"
         [(ngModel)]="userRegister.email"
+        (ngModelChange)="onCheckInputCompleted()"
         required
       />
     </div>
@@ -67,6 +69,7 @@
         name="input-password"
         placeholder="Mot de passe"
         [(ngModel)]="userRegister.password"
+        (ngModelChange)="onCheckInputCompleted()"
         required
       />
     </div>
@@ -79,8 +82,16 @@
         id="input-confirm-password"
         name="input-confirm-password"
         placeholder="Confirmer votre mot de passe"
+        [(ngModel)]="confirmPassword"
+        (ngModelChange)="onCheckInputCompleted()"
         required
       />
+    </div>
+    <div
+      *ngIf="isSubmitButtonEnabled && confirmPassword !== userRegister.password"
+      class="error"
+    >
+      Les mots de passe ne correspondent pas.
     </div>
 
     <app-ui-button
