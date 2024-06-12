@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-import { firebaseEnvironment } from '../environments/firebase-environment';
+import { environment } from '../environments/firebase-environment';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { MatButtonModule } from '@angular/material/button';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -157,7 +157,7 @@ import { UiPhoneIconComponent } from './shared/icons/ui-phone-icon/ui-phone-icon
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(firebaseEnvironment.firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
     NgxDropzoneModule,
     MatButtonModule,
