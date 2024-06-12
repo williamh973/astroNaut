@@ -26,8 +26,8 @@ public class ContactController {
 
 
     @PostMapping("/add")
-    public Contact addContact(@RequestBody Contact contact) {
+    public Contact addContactMessage(@RequestBody Contact contact, @RequestParam("senderUserMail") String senderUserMail) {
         contact.setTimestamp(new Date());
-        return contactService.addContact(contact);
+        return contactService.addContactMessage(contact, senderUserMail);
     }
 }

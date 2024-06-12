@@ -44,7 +44,11 @@ public class NewsCard {
     private Integer dislikeCount;
 
     @OneToMany(mappedBy = "newsCard", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties("newsCard")
+    @JsonIgnoreProperties(
+            {
+                    "newsCard",
+                    "user"
+            })
     private Set<Comment> commentsList = new HashSet<>();
 
     @ManyToOne

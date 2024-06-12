@@ -1,21 +1,21 @@
 <div id="specialEvent-fullCard">
-    <ng-container 
+  <ng-container
     id="specialEvent-imageContainer"
     *ngIf="pictureSpecialEventCard.imageListForPictureSpecialEvent.length > 0"
-    >
-        <img 
-        id="specialEvent-image" 
-        [src]="pictureSpecialEventCard.imageListForPictureSpecialEvent[0].src" 
-        alt="image"
-        >
-        
-        <div id="specialEvent-fontContainer">    
-            <p id="title">{{ pictureSpecialEventCard.title }}</p>
-            <p id="resume">{{ pictureSpecialEventCard.resume }}</p>
-            <p id="timestamp">Publié le {{ pictureSpecialEventCard.timestamp | date:'dd/MM/yyyy'  }} par 
-                <!-- {{ user.pseudo }} -->
-            </p>
-        </div>   
-    </ng-container> 
+  >
+    <img
+      id="specialEvent-image"
+      [src]="pictureSpecialEventCard.imageListForPictureSpecialEvent[0].src"
+      alt="image"
+    />
+
+    <div id="specialEvent-fontContainer">
+      <p id="title">{{ pictureSpecialEventCard.title }}</p>
+      <p id="resume">{{ pictureSpecialEventCard.resume }}</p>
+      <p id="timestamp">
+        Publié le {{ pictureSpecialEventCard.timestamp | date : "dd/MM/yyyy" }}
+        <!-- {{ user.pseudo }} -->
+      </p>
+    </div>
+  </ng-container>
 </div>
-    

@@ -1,35 +1,17 @@
 <section *ngIf="isAdminMod" id="admin-section">
-  <svg
-    id="update-icon"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24px"
-    viewBox="0 -960 960 960"
-    width="24px"
-    fill="#5f6368"
+  <app-ui-update-icon
     (click)="onUpdateNewsCard()"
-  >
-    <title>Mettre à jour cette actualité ?</title>
-    <path
-      d="M480-120q-75 0-140.5-28.5t-114-77q-48.5-48.5-77-114T120-480q0-75 28.5-140.5t77-114q48.5-48.5 114-77T480-840q82 0 155.5 35T760-706v-94h80v240H600v-80h110q-41-56-101-88t-129-32q-117 0-198.5 81.5T200-480q0 117 81.5 198.5T480-200q105 0 183.5-68T756-440h82q-15 137-117.5 228.5T480-120Zm112-192L440-464v-216h80v184l128 128-56 56Z"
-    />
-  </svg>
-  <svg
-    id="delete-icon"
-    xmlns="http://www.w3.org/2000/svg"
-    height="24px"
-    viewBox="0 -960 960 960"
-    width="24px"
-    fill="#5f6368"
+    class="icon"
+    title="Mettre à jour cette actualité ?"
+  ></app-ui-update-icon>
+  <app-ui-delete-icon
     (click)="onDeleteNewsCard()"
-  >
-    <title>Supprimer cette actualité ?</title>
-    <path
-      d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"
-    />
-  </svg>
+    class="icon"
+    title="Supprimer cette actualité ?"
+  ></app-ui-delete-icon>
 </section>
 
-<main id="main-container" title="Voir l'article en détails?">
+<main id="newsCard-container" title="Voir l'article en détails?">
   <div id="picture-container" (click)="onOpenCardDetails()">
     <figure id="image-container" *ngIf="newsCard.picturesList.length > 0">
       <img id="picture" [src]="newsCardPictureSrc" alt="image" />
@@ -38,47 +20,33 @@
 
   <h2 id="title">{{ newsCard.title }}</h2>
 
-  <div id="thumbsTimestamp-container">
-    <section id="thumbUp-container">
-      <svg
-        [ngClass]="{ newsCardLiked: isNewsCardLiked }"
-        xmlns="http://www.w3.org/2000/svg"
-        height="24"
-        viewBox="0 -960 960 960"
-        width="24"
-        fill="#454545"
+  <section id="interactions-container">
+    <div id="thumbUp-container">
+      <app-ui-like-icon
+        class="icon"
+        [isNewsCardLiked]="isNewsCardLiked"
         (click)="onLikeThisCardToggle()"
-      >
-        <path
-          d="M720-120H280v-520l280-280 50 50q7 7 11.5 19t4.5 23v14l-44 174h258q32 0 56 24t24 56v80q0 7-2 15t-4 15L794-168q-9 20-30 34t-44 14Zm-360-80h360l120-280v-80H480l54-220-174 174v406Zm0-406v406-406Zm-80-34v80H160v360h120v80H80v-520h200Z"
-        />
-      </svg>
+        title="J'aime cette actualité"
+      ></app-ui-like-icon>
       <p id="counter-like">{{ newsCard.likeCount }}</p>
-    </section>
+    </div>
 
-    <section id="thumbDown-container">
-      <svg
-        [ngClass]="{ newsCardDisliked: isNewsCardDisliked }"
-        xmlns="http://www.w3.org/2000/svg"
-        height="24"
-        viewBox="0 -960 960 960"
-        width="24"
-        fill="#454545"
+    <div id="thumbDown-container">
+      <app-ui-dislike-icon
+        class="icon"
+        [isNewsCardDisliked]="isNewsCardDisliked"
         (click)="onDislikeThisCardToggle()"
-      >
-        <path
-          d="M240-840h440v520L400-40l-50-50q-7-7-11.5-19t-4.5-23v-14l44-174H120q-32 0-56-24t-24-56v-80q0-7 2-15t4-15l120-282q9-20 30-34t44-14Zm360 80H240L120-480v80h360l-54 220 174-174v-406Zm0 406v-406 406Zm80 34v-80h120v-360H680v-80h200v520H680Z"
-        />
-      </svg>
+        title="Je n'aime pas cette actualité"
+      ></app-ui-dislike-icon>
       <p id="counter-dislike">{{ newsCard.dislikeCount }}</p>
-    </section>
+    </div>
 
-    <section id="timestamp-container">
+    <div id="timestamp-container">
       <p class="timestamp">
         Publié le {{ newsCard.timestamp | date : "dd/MM/yyyy" }}
       </p>
-    </section>
-  </div>
+    </div>
+  </section>
 </main>
 
 <app-feat-feedback-messages-popup

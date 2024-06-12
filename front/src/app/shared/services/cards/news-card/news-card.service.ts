@@ -48,6 +48,28 @@ export class NewsCardService {
     );
   }
 
+  updateCardLikeCount(
+    newsCard: NewsCard,
+    likeCount: number
+  ): Observable<NewsCard> {
+    newsCard.likeCount = likeCount;
+    return this.http.put<NewsCard>(
+      `${this._BASE_URL_NEWSCARD}/update/${newsCard.id}/likeCount`,
+      newsCard
+    );
+  }
+
+  updateCardDislikeCount(
+    newsCard: NewsCard,
+    dislikeCount: number
+  ): Observable<NewsCard> {
+    newsCard.dislikeCount = dislikeCount;
+    return this.http.put<NewsCard>(
+      `${this._BASE_URL_NEWSCARD}/update/${newsCard.id}/disLikeCount`,
+      newsCard
+    );
+  }
+
   deleteCard(id: number): Observable<void> {
     return this.http.delete<void>(`${this._BASE_URL_NEWSCARD}/delete/${id}`);
   }

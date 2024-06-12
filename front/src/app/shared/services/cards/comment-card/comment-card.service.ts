@@ -29,7 +29,6 @@ export class CommentCardService {
   ): Observable<CommentCard> {
     const cardId = newsCardAssociated.id;
     const senderUserMail = currendUserMail;
-    console.log(cardId, senderUserMail);
 
     return this.http
       .post<CommentCard>(

@@ -69,23 +69,27 @@ export class FeatNewsCardComponent {
       });
   }
 
-  private onAddNewsCardInNewsCardLikedList() {
+  private onAddNewsCardInNewsCardLikedList(likeCount: number) {
     this.newsCardLikeService
       .addNewsCardLiked(this.newsCard.id!)
       .subscribe((success) => {
-        this.newsCardService.updateCard(this.newsCard).subscribe(() => {
-          this.onGetCurrentUserNewsCardLikedList();
-        });
+        this.newsCardService
+          .updateCardLikeCount(this.newsCard, likeCount)
+          .subscribe(() => {
+            this.onGetCurrentUserNewsCardLikedList();
+          });
       });
   }
 
-  private onAddNewsCardInNewsCardDislikedList() {
+  private onAddNewsCardInNewsCardDislikedList(dislikeCount: number) {
     this.newsCardDislikeService
       .addNewsCardDisliked(this.newsCard.id!)
       .subscribe((success) => {
-        this.newsCardService.updateCard(this.newsCard).subscribe(() => {
-          this.onGetCurrentUserNewsCardDislikedList();
-        });
+        this.newsCardService
+          .updateCardDislikeCount(this.newsCard, dislikeCount)
+          .subscribe(() => {
+            this.onGetCurrentUserNewsCardDislikedList();
+          });
       });
   }
 
@@ -108,14 +112,16 @@ export class FeatNewsCardComponent {
     }
   }
 
-  private onDeleteNewsCardInCardLikedList() {
+  private onDeleteNewsCardInCardLikedList(likeCount: number) {
     const findNewsCardLiked = this.currentUserNewsCardLikedList.find(
       (newsCardLiked) => newsCardLiked.newsCard.id === this.newsCard.id
     );
     if (findNewsCardLiked) {
       this.newsCardLikeService.deleteNewsCardLiked(findNewsCardLiked).subscribe(
         (success) => {
-          this.newsCardService.updateCard(this.newsCard).subscribe();
+          this.newsCardService
+            .updateCardLikeCount(this.newsCard, likeCount)
+            .subscribe();
         },
         (error) => {
           console.error(error);
@@ -124,7 +130,7 @@ export class FeatNewsCardComponent {
     }
   }
 
-  private onDeleteNewsCardInCardDislikedList() {
+  private onDeleteNewsCardInCardDislikedList(dislikeCount: number) {
     const findNewsCardDisliked = this.currentUserNewsCardDislikedList.find(
       (newsCardDisliked) => newsCardDisliked.newsCard.id === this.newsCard.id
     );
@@ -133,7 +139,9 @@ export class FeatNewsCardComponent {
         .deleteNewsCardDisliked(findNewsCardDisliked)
         .subscribe(
           (success) => {
-            this.newsCardService.updateCard(this.newsCard).subscribe();
+            this.newsCardService
+              .updateCardDislikeCount(this.newsCard, dislikeCount)
+              .subscribe();
           },
           (error) => {
             console.error(error);
@@ -149,16 +157,16 @@ export class FeatNewsCardComponent {
       if (this.isNewsCardLiked) {
         this.isNewsCardDisliked = false;
         this.newsCard.likeCount++;
-        this.onAddNewsCardInNewsCardLikedList();
+        this.onAddNewsCardInNewsCardLikedList(this.newsCard.likeCount);
 
         if (this.newsCard.dislikeCount > 0) {
           this.newsCard.dislikeCount--;
-          this.onDeleteNewsCardInCardDislikedList();
+          this.onDeleteNewsCardInCardDislikedList(this.newsCard.dislikeCount);
         }
       }
       if (!this.isNewsCardLiked) {
         this.newsCard.likeCount--;
-        this.onDeleteNewsCardInCardLikedList();
+        this.onDeleteNewsCardInCardLikedList(this.newsCard.likeCount);
       }
     } else {
       this.isUserNotConnectedError = true;
@@ -175,16 +183,16 @@ export class FeatNewsCardComponent {
       if (this.isNewsCardDisliked) {
         this.isNewsCardLiked = false;
         this.newsCard.dislikeCount++;
-        this.onAddNewsCardInNewsCardDislikedList();
+        this.onAddNewsCardInNewsCardDislikedList(this.newsCard.dislikeCount);
 
         if (this.newsCard.likeCount > 0) {
           this.newsCard.likeCount--;
-          this.onDeleteNewsCardInCardLikedList();
+          this.onDeleteNewsCardInCardLikedList(this.newsCard.likeCount);
         }
       }
       if (!this.isNewsCardDisliked) {
         this.newsCard.dislikeCount--;
-        this.onDeleteNewsCardInCardDislikedList();
+        this.onDeleteNewsCardInCardDislikedList(this.newsCard.dislikeCount);
       }
     } else {
       this.isUserNotConnectedError = true;

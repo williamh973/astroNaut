@@ -39,6 +39,15 @@ public class NewsCardController {
         return newsCardService.updateNewsCard(newsCard, id);
     }
 
+    @PutMapping("/update/{id}/likeCount")
+    public NewsCard updateNewsCardLikeCount(@RequestBody NewsCard newsCard, @PathVariable("id") Long id) {
+        return newsCardService.updateNewsCardLikeCount(newsCard, id);
+    }
+    @PutMapping("/update/{id}/disLikeCount")
+    public NewsCard updateNewsCardDislikeCount(@RequestBody NewsCard newsCard, @PathVariable("id") Long id) {
+        return newsCardService.updateNewsCardDislikeCount(newsCard, id);
+    }
+
     @DeleteMapping("delete/{id}")
     public NewsCard deleteNewsCard(
             @PathVariable("id") Long cardId

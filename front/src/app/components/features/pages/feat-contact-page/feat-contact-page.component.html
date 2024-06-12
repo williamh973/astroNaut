@@ -1,33 +1,135 @@
-<h1>Contact</h1>
-
-<form (ngSubmit)="createContactText()">
-  <textarea
-    name="text-area"
-    id="text-area"
-    placeholder="Ecrivez votre message ici."
-    minlength="5"
-    maxlength="1000"
-    [(ngModel)]="contactText.textarea"
-    #textareaInput="ngModel"
+<header id="headerTop">
+  <app-ui-burger-menu-button
+    id="headerTop-burgerMenu"
+    (isLeftMenuOpen)="onOpenLeftMenu($event)"
+    (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
+    (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
   >
-  </textarea>
-  <div *ngIf="textareaInput.invalid && textareaInput.touched" class="error">
-    <div *ngIf="textareaInput.errors?.['required']">
-      Votre message est requis.
-    </div>
-    <div *ngIf="textareaInput.errors?.['minlength']">
-      Votre message doit comporter au moins 5 caractère.
-    </div>
-    <div *ngIf="textareaInput.errors?.['maxlength']">
-      Votre message ne peut pas dépasser 1000 caractères.
-    </div>
-  </div>
+  </app-ui-burger-menu-button>
+</header>
+<main id="main-content">
+  <h1 id="form-title">Vous souhaitez nous écrire?</h1>
+  <form id="contact-form">
+    <section class="section" id="section-siteInfos">
+      <div class="container-icons">
+        <app-ui-home-icon class="icon"></app-ui-home-icon>
+        <div class="contact-details">
+          <h5>Bordeaux, FRANCE</h5>
+          <p>20 avenue thiers benauge</p>
+        </div>
+      </div>
+      <div class="container-icons">
+        <app-ui-phone-icon class="icon"></app-ui-phone-icon>
+        <div class="contact-details">
+          <h5>+33 667 75 14 20</h5>
+          <p>Lundi au samedi, 09h-18h</p>
+        </div>
+      </div>
+      <div class="container-icons">
+        <app-ui-email-icon
+          class="icon"
+          [isContactPageOpen]="true"
+        ></app-ui-email-icon>
+        <div class="contact-details">
+          <h5>support@astronaut.com</h5>
+          <p>Envoyez nous votre retour</p>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="section-personInfos">
+      <input
+        class="input"
+        type="text"
+        name="name-input"
+        placeholder="Entrer Nom"
+        minlength="1"
+        maxlength="255"
+        [(ngModel)]="contactMessage.name"
+        #nameInput="ngModel"
+        (ngModelChange)="onCheckTextareaCompleted()"
+      />
+      <div *ngIf="nameInput.invalid && nameInput.touched" class="error">
+        <div *ngIf="nameInput.errors?.['minlength']">
+          Votre nom doit comporter au moins 1 caractère.
+        </div>
+        <div *ngIf="nameInput.errors?.['maxlength']">
+          Votre nom ne peut pas dépasser 255 caractères.
+        </div>
+      </div>
 
-  <button type="submit" [disabled]="!onSubmitActived()">
-    Envoyer le message
-  </button>
-</form>
+      <input
+        class="input"
+        type="email"
+        name="email-input"
+        placeholder="Entrer votre email *"
+        minlength="1"
+        maxlength="255"
+        [(ngModel)]="contactMessage.email"
+        #emailInput="ngModel"
+        (ngModelChange)="onCheckTextareaCompleted()"
+        required
+      />
+      <div *ngIf="emailInput.invalid && emailInput.touched" class="error">
+        <div *ngIf="textareaInput.errors?.['required']">
+          Votre email est requis.
+        </div>
+        <div *ngIf="emailInput.errors?.['minlength']">
+          Votre email doit comporter au moins 1 caractère.
+        </div>
+        <div *ngIf="emailInput.errors?.['maxlength']">
+          Votre email ne peut pas dépasser 255 caractères.
+        </div>
+      </div>
 
+      <input
+        class="input"
+        type="text"
+        name="subject-input"
+        placeholder="Entrer le sujet de votre message *"
+        minlength="1"
+        maxlength="255"
+        [(ngModel)]="contactMessage.subject"
+        #subjectInput="ngModel"
+        (ngModelChange)="onCheckTextareaCompleted()"
+        required
+      />
+    </section>
+    <section class="section" id="section-textarea">
+      <textarea
+        name="text-area"
+        id="text-area"
+        placeholder="Ecrivez votre message ici"
+        minlength="5"
+        maxlength="65_000"
+        [(ngModel)]="contactMessage.content"
+        #textareaInput="ngModel"
+        (ngModelChange)="onCheckTextareaCompleted()"
+      >
+      </textarea>
+      <div *ngIf="textareaInput.invalid && textareaInput.touched" class="error">
+        <div *ngIf="textareaInput.errors?.['required']">
+          Votre message est requis.
+        </div>
+        <div *ngIf="textareaInput.errors?.['minlength']">
+          Votre message doit comporter au moins 5 caractère.
+        </div>
+        <div *ngIf="textareaInput.errors?.['maxlength']">
+          Votre message ne peut pas dépasser 65 000 caractères.
+        </div>
+      </div>
+    </section>
+    <div id="container-submit">
+      <app-ui-button
+        id="submit-button"
+        type="submit"
+        buttonName="Envoyer"
+        (isButtonClicked)="onSubmit($event)"
+        [isButtonEnabled]="isSubmitButtonEnabled"
+      >
+      </app-ui-button>
+    </div>
+  </form>
+</main>
 <app-feat-loader-popup
   class="loader"
   *ngIf="isLoadingComposantActive"
@@ -38,6 +140,14 @@
   [isContactTextCreatedSuccess]="isContactTextCreatedSuccess"
   [isContactTextCreatedError]="isContactTextCreatedError"
 ></app-feat-feedback-messages-popup>
+
+<app-ui-navbar
+  *ngIf="isLeftMenuOpen"
+  [isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
+  [isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
+  (isLeftMenuOpen)="onCloseLeftMenu($event)"
+>
+</app-ui-navbar>
 
 <app-feat-login-or-register-popup
   *ngIf="isLoginOrRegisterPopupOpen"

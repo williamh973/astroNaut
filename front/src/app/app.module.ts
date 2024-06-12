@@ -74,6 +74,12 @@ import { UiUpdateIconComponent } from './shared/icons/ui-update-icon/ui-update-i
 import { UiDeleteIconComponent } from './shared/icons/ui-delete-icon/ui-delete-icon.component';
 import { UiAuthFailIconComponent } from './shared/icons/ui-auth-fail-icon/ui-auth-fail-icon.component';
 import { UiAuthSuccessIconComponent } from './shared/icons/ui-auth-success-icon/ui-auth-success-icon.component';
+import { UiLikeIconComponent } from './shared/icons/ui-like-icon/ui-like-icon.component';
+import { UiDislikeIconComponent } from './shared/icons/ui-dislike-icon/ui-dislike-icon.component';
+import { UiFeedSuccessIconComponent } from './shared/icons/ui-feed-success-icon/ui-feed-success-icon.component';
+import { UiFeedErrorIconComponent } from './shared/icons/ui-feed-error-icon/ui-feed-error-icon.component';
+import { UiHomeIconComponent } from './shared/icons/ui-home-icon/ui-home-icon.component';
+import { UiPhoneIconComponent } from './shared/icons/ui-phone-icon/ui-phone-icon.component';
 
 @NgModule({
   declarations: [
@@ -140,6 +146,12 @@ import { UiAuthSuccessIconComponent } from './shared/icons/ui-auth-success-icon/
     UiDeleteIconComponent,
     UiAuthFailIconComponent,
     UiAuthSuccessIconComponent,
+    UiLikeIconComponent,
+    UiDislikeIconComponent,
+    UiFeedSuccessIconComponent,
+    UiFeedErrorIconComponent,
+    UiHomeIconComponent,
+    UiPhoneIconComponent,
   ],
   imports: [
     BrowserModule,

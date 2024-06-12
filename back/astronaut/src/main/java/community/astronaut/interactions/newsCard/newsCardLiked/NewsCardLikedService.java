@@ -23,20 +23,7 @@ private final NewsCardLikedRepository newsCardLikedRepository;
 
    public List<NewsCardLiked> getCurrentUserNewsCardLikedList() {
        User user = getCurrentUser();
-       Set<NewsCardLiked> newsCardLikedSet = user.getNewsCardLikedList();
-       List<NewsCardLiked> newsCardLikedList = new ArrayList<>(newsCardLikedSet);
-
-       // Vérifiez le contenu des picturesList
-       for (NewsCardLiked newsCardLiked : newsCardLikedList) {
-           NewsCard newsCard = newsCardLiked.getNewsCard();
-           if (newsCard.getPicturesList() == null || newsCard.getPicturesList().isEmpty()) {
-               System.out.println("Pictures list is empty for NewsCard ID: " + newsCard.getId());
-           } else {
-               System.out.println("Pictures list is populated for NewsCard ID: " + newsCard.getId());
-           }
-       }
-
-       return newsCardLikedList;
+       return new ArrayList<>(user.getNewsCardLikedList());
    }
 
     public NewsCardLiked addNewsCardLiked(Long cardId) {

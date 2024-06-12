@@ -1,7 +1,5 @@
 package community.astronaut.cards.newsCard;
 
-import community.astronaut.imagesForCards.imageForNews.Picture;
-import community.astronaut.imagesForCards.imageForNews.PictureRepository;
 import community.astronaut.user.User;
 import community.astronaut.user.UserRepository;
 import jakarta.transaction.Transactional;
@@ -16,7 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NewsCardService {
     private final NewsCardRepository newsCardRepository;
-    private final PictureRepository pictureRepository;
     private final UserRepository userRepository;
 
     public List<NewsCard> getAll() {
@@ -46,10 +43,21 @@ public class NewsCardService {
         NewsCard foundNewsCard = getNewsCardById(id);
         foundNewsCard.setTitle(newsCard.getTitle());
         foundNewsCard.setMainArticle(newsCard.getMainArticle());
+        return newsCardRepository.save(foundNewsCard);
+    }
+
+    public NewsCard updateNewsCardLikeCount(NewsCard newsCard, Long id) {
+        NewsCard foundNewsCard = getNewsCardById(id);
         foundNewsCard.setLikeCount(newsCard.getLikeCount());
+        return newsCardRepository.save(foundNewsCard);
+    }
+
+    public NewsCard updateNewsCardDislikeCount(NewsCard newsCard, Long id) {
+        NewsCard foundNewsCard = getNewsCardById(id);
         foundNewsCard.setDislikeCount(newsCard.getDislikeCount());
         return newsCardRepository.save(foundNewsCard);
     }
+
 
     @Transactional
     public NewsCard deleteNewsCard(Long id) {
