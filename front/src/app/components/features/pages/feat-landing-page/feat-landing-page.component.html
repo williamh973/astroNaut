@@ -8,7 +8,13 @@
     >
     </app-ui-burger-menu-button>
 
-    <button (click)="onLogout()">Deconnexion</button>
+    <app-ui-button
+      (click)="onLogout()"
+      type="button"
+      buttonName="Déconnexion"
+      [isButtonEnabled]="true"
+      >Deconnexion</app-ui-button
+    >
   </header>
   <main>
     <app-feat-user-landing-page

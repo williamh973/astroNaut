@@ -3,6 +3,7 @@ package community.astronaut.contact;
 import community.astronaut.user.User;
 import community.astronaut.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -15,11 +16,15 @@ public class ContactService {
     private final UserRepository userRepository;
 
     public List<Contact> getAll() {
-        return contactRepository.findAll();
+        String role  = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
+        if(role.equals("[ROLE_ADMIN]")) {
+            return contactRepository.findAll();
+        }
+        return null;
     }
 
 
-    public Contact addContactMessage(Contact contact, String senderUserMail) {
+    public Contact addContact(Contact contact, String senderUserMail) {
 
         User senderUser = userRepository.findByEmail(senderUserMail)
                 .orElseThrow(() -> new RuntimeException(senderUserMail + " senderUser not found"));
@@ -31,5 +36,12 @@ public class ContactService {
     public Contact getContactById(Long id) {
         return contactRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException(id + "not found"));
+    }
+
+    public Contact deleteContactById(Long id) {
+        Contact contact = contactRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("contact not found"));
+        contactRepository.delete(contact);
+        return contact;
     }
 }

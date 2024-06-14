@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { catchError, of } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 import { User } from 'src/app/models/user.model';
+import { ContactFormPopupService } from 'src/app/shared/services/contact-form-popup/contact-form-popup.service';
 import { ContactService } from 'src/app/shared/services/contact/contact.service';
 import { LoginOrRegisterPopupService } from 'src/app/shared/services/login-or-register-popup/login-or-register-popup.service';
 import { TokenService } from 'src/app/shared/services/token/token.service';
 
 @Component({
-  selector: 'app-feat-contact-page',
-  templateUrl: './feat-contact-page.component.html',
-  styleUrls: ['./feat-contact-page.component.scss'],
+  selector: 'app-feat-contact-form-popup',
+  templateUrl: './feat-contact-form-popup.component.html',
+  styleUrls: ['./feat-contact-form-popup.component.scss'],
 })
-export class FeatContactPageComponent {
+export class FeatContactFormPopupComponent {
+  @Input() isAdminMod!: boolean;
   contactMessage: Contact = new Contact(
     '',
     '',
@@ -20,26 +22,29 @@ export class FeatContactPageComponent {
     new Date(),
     new User('', '', 'ROLE_USER', false, [], [], [])
   );
+  isLoginOrRegisterPopupOpen: boolean = false;
   isSubmitButtonEnabled: boolean = false;
   isLoadingComposantActive: boolean = false;
   isContactTextCreatedSuccess: boolean = false;
   isContactTextCreatedError: boolean = false;
-  isLoginOrRegisterPopupOpen: boolean = false;
   isLeftMenuOpen: boolean = false;
   isLeftMenuAnimationWhenOpen: boolean = false;
   isLeftMenuItemsClickEnable: boolean = false;
+  isContactFormOpen: boolean = true;
   role: string = '';
   userMail: string = '';
 
   constructor(
     private contactService: ContactService,
     private loginOrRegisterPopupService: LoginOrRegisterPopupService,
+    private contactFormService: ContactFormPopupService,
     private tokenService: TokenService
   ) {}
 
   ngOnInit() {
-    this.onLoginOrRegisterFormSouscription();
     this.onExtractRoleFromToken();
+    this.onLoginOrRegisterFormSouscription();
+    console.log(this.isAdminMod);
   }
 
   private onExtractRoleFromToken() {
@@ -73,16 +78,16 @@ export class FeatContactPageComponent {
       this.contactMessage.subject.length < 255;
   }
 
-  onSubmit(isButtonClicked: boolean) {
-    if (isButtonClicked) {
-      this.isLoadingComposantActive = true;
-      this.createMessageFromUserToAdmin();
+  onSubmit() {
+    this.isLoadingComposantActive = true;
+    if (this.isAdminMod) {
     }
+    this.createMessageFromUserToAdmin();
   }
 
   createMessageFromUserToAdmin() {
     this.contactService
-      .createMessage(this.contactMessage, this.userMail)
+      .createContact(this.contactMessage, this.userMail)
       .pipe(
         catchError(() => {
           this.isLoadingComposantActive = false;
@@ -111,6 +116,7 @@ export class FeatContactPageComponent {
     this.contactMessage.email = '';
     this.contactMessage.subject = '';
     this.contactMessage.content = '';
+    this.contactFormService.closePopup();
   }
 
   onOpenLeftMenu(isLeftMenuOpen: boolean) {

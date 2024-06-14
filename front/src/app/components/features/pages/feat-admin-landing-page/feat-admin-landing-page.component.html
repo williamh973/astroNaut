@@ -1,11 +1,29 @@
-<header>
-  <button (click)="onEditNewsCardFormOpen()">Ajouter une actualitée</button>
-  <app-feat-visits-counter></app-feat-visits-counter>
-</header>
+<div id="full-page">
+  <header id="headerLeft">
+    <app-ui-admin-landing-navbar
+      id="headerLeft-adminNavbar"
+      (isEditNewsCardFormOpen)="onOpenEditNewsCardForm($event)"
+      (isNewsCardListOpen)="onOpenNewsCardList($event)"
+      (isContactListOpen)="onOpenContactList($event)"
+    ></app-ui-admin-landing-navbar>
+  </header>
 
-<main>
-  <app-feat-news-card-list [isAdminMod]="isAdminMod"></app-feat-news-card-list>
-</main>
+  <main id="main-content">
+    <section class="section" id="section-newsCard" *ngIf="isNewsCardListOpen">
+      <app-feat-news-card-list
+        [isAdminMod]="isAdminMod"
+      ></app-feat-news-card-list>
+    </section>
+
+    <section class="section" id="section-contact" *ngIf="isContactListOpen">
+      <app-feat-contact-list></app-feat-contact-list>
+    </section>
+
+    <section class="section" id="section-analytic" *ngIf="false">
+      <app-feat-visits-counter></app-feat-visits-counter>
+    </section>
+  </main>
+</div>
 
 <div id="adminLanding-editContainer" *ngIf="isEditNewsCardFormOpen">
   <app-feat-edit-news-card-form
@@ -17,3 +35,8 @@
     (isEditNewsCardFormOpen)="onCloseEditNewsCardForm($event)"
   ></app-feat-edit-news-card-form>
 </div>
+
+<app-feat-contact-form-popup
+  *ngIf="isContactFormOpen"
+  [isAdminMod]="isAdminMod"
+></app-feat-contact-form-popup>

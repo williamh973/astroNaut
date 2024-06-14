@@ -54,22 +54,19 @@ export class FeatAddCommentCardFormComponent {
     private tokenService: TokenService
   ) {}
 
-  ngOnInit() {
-    console.log(this.commentCard);
-  }
+  ngOnInit() {}
 
   onSubmit(isSubmitButtonEnabled: boolean) {
     const token = this.tokenService.isCheckTokenInLocalStorage();
     if (isSubmitButtonEnabled && token) {
       this.isLoadingComposantActive = true;
       this.onCreateComment();
+    } else {
+      this.isUserNotConnectedError = true;
+      setTimeout(() => {
+        this.isUserNotConnectedError = false;
+      }, 2_000);
     }
-    // else {
-    //   this.isUserNotConnectedError = true;
-    //   setTimeout(() => {
-    //     this.isUserNotConnectedError = false;
-    //   }, 2_000);
-    // }
   }
 
   onCheckInputCompleted() {

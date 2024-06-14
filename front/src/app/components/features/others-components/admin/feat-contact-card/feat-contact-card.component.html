@@ -1,0 +1,40 @@
+<main id="main-content">
+  <article id="contact-card">
+    <header>
+      <app-ui-close-icon
+        id="close-icon"
+        (click)="onDeleteContactCard()"
+      ></app-ui-close-icon>
+      <span id="contact-name">{{ contact.name }}</span>
+      <span id="contact-email">{{ contact.email }}</span>
+      <h3 id="contact-subject">{{ contact.subject }}</h3>
+    </header>
+    <section>
+      <p id="contact-content">{{ contact.content }}</p>
+    </section>
+    <div id="contact-metadata">
+      <p id="timestamp-font">
+        Le {{ contact.timestamp | date : "dd/MM/yyyy à HH:mm" }}
+      </p>
+      <app-ui-button
+        class="button"
+        id="reply-button"
+        buttonName="Répondre"
+        title="répondre a ce message ?"
+        [isButtonEnabled]="true"
+        (click)="onOpenContactFormForReply()"
+      ></app-ui-button>
+    </div>
+  </article>
+</main>
+
+<app-feat-loader-popup
+  class="loader"
+  *ngIf="isLoadingComposantActive"
+></app-feat-loader-popup>
+
+<app-feat-feedback-messages-popup
+  *ngIf="isContactCardDeleteSuccess || isContactCardDeleteError"
+  [isContactCardDeleteSuccess]="isContactCardDeleteSuccess"
+  [isContactCardDeleteError]="isContactCardDeleteError"
+></app-feat-feedback-messages-popup>

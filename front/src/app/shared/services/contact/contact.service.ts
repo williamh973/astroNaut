@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { Contact } from 'src/app/models/contact.model';
 
 @Injectable({
@@ -9,34 +9,42 @@ import { Contact } from 'src/app/models/contact.model';
 export class ContactService {
   constructor(private http: HttpClient) {}
 
-  private readonly _BASE_URL_CONTACT_TEXTAREA: string =
+  private readonly _BASE_URL_CONTACT: string =
     'http://localhost:8080/contactTexts';
 
-  getContactTextAreaList(): Observable<Contact[]> {
-    return this.http.get<Contact[]>(`${this._BASE_URL_CONTACT_TEXTAREA}/all`);
+  private contactListSubject$: BehaviorSubject<Contact[]> = new BehaviorSubject<
+    Contact[]
+  >([]);
+
+  getContactList(): Observable<Contact[]> {
+    return this.http
+      .get<Contact[]>(`${this._BASE_URL_CONTACT}/all`)
+      .pipe(tap((contactList) => this.contactListSubject$.next(contactList)));
   }
 
-  createMessage(
+  createContact(
     contactMessage: Contact,
     userMail: string
   ): Observable<Contact> {
     const senderUserMail = userMail;
-    return this.http.post<Contact>(
-      `${this._BASE_URL_CONTACT_TEXTAREA}/add?senderUserMail=${senderUserMail}`,
-      contactMessage
-    );
+    return this.http
+      .post<Contact>(
+        `${this._BASE_URL_CONTACT}/add?senderUserMail=${senderUserMail}`,
+        contactMessage
+      )
+      .pipe(tap((newContact) => this.postContactListSubject$(newContact)));
   }
 
-  updateContactTextArea(contactTextarea: Contact): Observable<Contact> {
-    return this.http.put<Contact>(
-      `${this._BASE_URL_CONTACT_TEXTAREA}/update/${contactTextarea.id}`,
-      contactTextarea
-    );
+  deleteContact(id: number): Observable<void> {
+    return this.http.delete<void>(`${this._BASE_URL_CONTACT}/delete/${id}`);
   }
 
-  deleteContactTextArea(id: number): Observable<void> {
-    return this.http.delete<void>(
-      `${this._BASE_URL_CONTACT_TEXTAREA}/delete/${id}`
-    );
+  postContactListSubject$(newContact: Contact) {
+    const currentContactList = this.contactListSubject$.value;
+    this.contactListSubject$.next([...currentContactList, newContact]);
+  }
+
+  getContactListSubject$(): Observable<Contact[]> {
+    return this.contactListSubject$.asObservable();
   }
 }

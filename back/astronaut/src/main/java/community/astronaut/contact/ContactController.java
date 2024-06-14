@@ -26,8 +26,13 @@ public class ContactController {
 
 
     @PostMapping("/add")
-    public Contact addContactMessage(@RequestBody Contact contact, @RequestParam("senderUserMail") String senderUserMail) {
+    public Contact addContact(@RequestBody Contact contact, @RequestParam("senderUserMail") String senderUserMail) {
         contact.setTimestamp(new Date());
-        return contactService.addContactMessage(contact, senderUserMail);
+        return contactService.addContact(contact, senderUserMail);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public Contact deleteContactById(@PathVariable("id") Long id) {
+        return contactService.deleteContactById(id);
     }
 }

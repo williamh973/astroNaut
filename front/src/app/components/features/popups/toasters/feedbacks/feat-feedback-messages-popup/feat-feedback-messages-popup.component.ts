@@ -22,6 +22,8 @@ export class FeatFeedbackMessagesPopupComponent {
   @Input() isCommentCreatedSuccess!: boolean;
   @Input() isCommentCreatedError!: boolean;
   @Input() isUserNotConnectedError!: boolean;
+  @Input() isContactCardDeleteSuccess!: boolean;
+  @Input() isContactCardDeleteError!: boolean;
 
   feedback: Feedback = new Feedback('');
 
@@ -51,6 +53,9 @@ export class FeatFeedbackMessagesPopupComponent {
       "Une erreur s'est produite lors de la création du commentaire.",
     isUserNotConnectedError:
       'Vous devez être connecté pour effectuer cette action.',
+    isContactCardDeleteSuccess: 'Contact supprimé avec succès !',
+    isContactCardDeleteError:
+      "Une erreur s'est produite lors de la suppression du contact.",
   };
 
   ngOnInit() {

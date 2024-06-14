@@ -20,7 +20,6 @@ import { FeatUserLandingPageComponent } from './components/features/pages/feat-u
 import { FeatHomePageComponent } from './components/features/pages/feat-home-page/feat-home-page.component';
 import { FeatNewsCardDetailPageComponent } from './components/features/pages/feat-news-card-detail-page/feat-news-card-detail-page.component';
 import { FeatErrorPageComponent } from './components/features/pages/feat-error-page/feat-error-page.component';
-import { FeatContactPageComponent } from './components/features/pages/feat-contact-page/feat-contact-page.component';
 import { AboutPageComponent } from './components/others-components/about-page/about-page.component';
 import { FeatToContributePageComponent } from './components/features/pages/feat-to-contribute-page/feat-to-contribute-page.component';
 import { FeatNewsCardListComponent } from './components/features/others-components/feat-news-card-list/feat-news-card-list.component';
@@ -80,6 +79,10 @@ import { UiFeedSuccessIconComponent } from './shared/icons/ui-feed-success-icon/
 import { UiFeedErrorIconComponent } from './shared/icons/ui-feed-error-icon/ui-feed-error-icon.component';
 import { UiHomeIconComponent } from './shared/icons/ui-home-icon/ui-home-icon.component';
 import { UiPhoneIconComponent } from './shared/icons/ui-phone-icon/ui-phone-icon.component';
+import { UiAdminLandingNavbarComponent } from './components/ui/ui-admin-landing-navbar/ui-admin-landing-navbar.component';
+import { FeatContactListComponent } from './components/features/others-components/admin/feat-contact-list/feat-contact-list.component';
+import { FeatContactCardComponent } from './components/features/others-components/admin/feat-contact-card/feat-contact-card.component';
+import { FeatContactFormPopupComponent } from './components/features/popups/forms/feat-contact-form-popup/feat-contact-form-popup.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +97,6 @@ import { UiPhoneIconComponent } from './shared/icons/ui-phone-icon/ui-phone-icon
     FeatHomePageComponent,
     FeatNewsCardDetailPageComponent,
     FeatErrorPageComponent,
-    FeatContactPageComponent,
     AboutPageComponent,
     FeatToContributePageComponent,
     FeatNewsCardListComponent,
@@ -152,6 +154,10 @@ import { UiPhoneIconComponent } from './shared/icons/ui-phone-icon/ui-phone-icon
     UiFeedErrorIconComponent,
     UiHomeIconComponent,
     UiPhoneIconComponent,
+    UiAdminLandingNavbarComponent,
+    FeatContactListComponent,
+    FeatContactCardComponent,
+    FeatContactFormPopupComponent,
   ],
   imports: [
     BrowserModule,

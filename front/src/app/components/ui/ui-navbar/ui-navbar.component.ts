@@ -50,7 +50,7 @@ export class UiNavbarComponent {
   onContactPopupFormOpen() {
     const token = this.tokenService.isCheckTokenInLocalStorage();
     if (token) {
-      this.router.navigate(['/astronaut/contact']);
+      this.router.navigate(['/astronaut/contact/form']);
     } else {
       this.loginOrRegisterPopupService.openPopup();
     }

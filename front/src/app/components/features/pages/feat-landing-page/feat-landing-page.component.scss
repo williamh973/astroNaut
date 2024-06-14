@@ -5,3 +5,12 @@
   display: flex;
   flex-direction: column;
 }
+
+#headerLanding {
+  width: inherit;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+}

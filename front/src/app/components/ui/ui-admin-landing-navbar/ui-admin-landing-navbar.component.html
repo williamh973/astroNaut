@@ -1,0 +1,13 @@
+<nav>
+  <ul>
+    <li *ngFor="let menuItem of adminMenuItemList">
+      <app-ui-button
+        (click)="onAdminMenuItemClick(menuItem)"
+        class="button"
+        type="button"
+        [buttonName]="menuItem.label"
+        [isButtonEnabled]="true"
+      ></app-ui-button>
+    </li>
+  </ul>
+</nav>
