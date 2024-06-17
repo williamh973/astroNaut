@@ -8,10 +8,4 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class UiButtonComponent {
   @Input() buttonName: string = '';
   @Input() isButtonEnabled!: boolean;
-
-  @Output() isButtonClicked = new EventEmitter<boolean>();
-
-  onButtonClicked() {
-    this.isButtonClicked.emit(true);
-  }
 }

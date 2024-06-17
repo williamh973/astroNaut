@@ -14,7 +14,7 @@
       id="login-button"
       buttonName="Connexion"
       type="button"
-      (isButtonClicked)="onOpenLoginForm($event)"
+      (click)="onOpenLoginForm()"
       [isButtonEnabled]="true"
     ></app-ui-button>
 
@@ -25,7 +25,7 @@
       id="register-button"
       buttonName="Inscription"
       type="button"
-      (isButtonClicked)="onOpenRegisterForm($event)"
+      (click)="onOpenRegisterForm()"
       [isButtonEnabled]="true"
     ></app-ui-button>
   </main>

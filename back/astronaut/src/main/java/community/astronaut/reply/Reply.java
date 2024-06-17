@@ -1,4 +1,4 @@
-package community.astronaut.contact;
+package community.astronaut.reply;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import community.astronaut.user.User;
@@ -15,14 +15,10 @@ import java.util.Date;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Contact {
+public class Reply {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private String name;
-    private String email;
-    private String subject;
 
     @Lob
     @Column(columnDefinition = "TEXT")
@@ -31,11 +27,11 @@ public class Contact {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @JsonIgnoreProperties(
             {
-                    "contactList",
+                    "replyList",
                     "newsCardList",
                     "newsCardLikedList",
                     "newsCardDislikedList",
@@ -44,8 +40,28 @@ public class Contact {
                     "accountNonExpired",
                     "authorities",
                     "accountNonLocked",
+                    "contactList",
                     "commentsList"
             })
     private User user;
+
+
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(name = "receiver_id", referencedColumnName = "id")
+    @JsonIgnoreProperties(
+            {
+                    "replyList",
+                    "newsCardList",
+                    "newsCardLikedList",
+                    "newsCardDislikedList",
+                    "enabled",
+                    "credentialsNonExpired",
+                    "accountNonExpired",
+                    "authorities",
+                    "accountNonLocked",
+                    "contactList",
+                    "commentsList"
+            })
+    private User receiver;
 
 }

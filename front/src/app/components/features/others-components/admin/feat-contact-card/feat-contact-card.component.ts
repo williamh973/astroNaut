@@ -13,14 +13,13 @@ export class FeatContactCardComponent {
   isLoadingComposantActive: boolean = false;
   isContactCardDeleteSuccess: boolean = false;
   isContactCardDeleteError: boolean = false;
+  isContactReplyFormOpen: boolean = false;
+  adminRole: string = 'ROLE_ADMIN';
 
-  constructor(
-    private contactFormService: ContactFormPopupService,
-    private contactService: ContactService
-  ) {}
+  constructor(private contactService: ContactService) {}
 
   onOpenContactFormForReply() {
-    this.contactFormService.openPopup();
+    this.isContactReplyFormOpen = true;
   }
 
   onDeleteContactCard() {

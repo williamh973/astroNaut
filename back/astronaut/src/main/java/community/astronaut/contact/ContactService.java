@@ -16,11 +16,7 @@ public class ContactService {
     private final UserRepository userRepository;
 
     public List<Contact> getAll() {
-        String role  = SecurityContextHolder.getContext().getAuthentication().getAuthorities().toString();
-        if(role.equals("[ROLE_ADMIN]")) {
             return contactRepository.findAll();
-        }
-        return null;
     }
 
 

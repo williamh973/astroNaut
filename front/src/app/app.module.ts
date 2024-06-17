@@ -83,6 +83,8 @@ import { UiAdminLandingNavbarComponent } from './components/ui/ui-admin-landing-
 import { FeatContactListComponent } from './components/features/others-components/admin/feat-contact-list/feat-contact-list.component';
 import { FeatContactCardComponent } from './components/features/others-components/admin/feat-contact-card/feat-contact-card.component';
 import { FeatContactFormPopupComponent } from './components/features/popups/forms/feat-contact-form-popup/feat-contact-form-popup.component';
+import { FeatAdminContactReplyFormPopupComponent } from './components/features/popups/forms/feat-admin-contact-reply-form-popup/feat-admin-contact-reply-form-popup.component';
+import { FeatReplyListComponent } from './components/features/others-components/feat-reply-list/feat-reply-list.component';
 
 @NgModule({
   declarations: [
@@ -158,6 +160,8 @@ import { FeatContactFormPopupComponent } from './components/features/popups/form
     FeatContactListComponent,
     FeatContactCardComponent,
     FeatContactFormPopupComponent,
+    FeatAdminContactReplyFormPopupComponent,
+    FeatReplyListComponent,
   ],
   imports: [
     BrowserModule,

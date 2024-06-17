@@ -16,7 +16,13 @@
     </section>
 
     <section class="section" id="section-contact" *ngIf="isContactListOpen">
-      <app-feat-contact-list></app-feat-contact-list>
+      <app-feat-contact-list
+        [isAdminMod]="isAdminMod"
+        [userMail]="adminMail"
+      ></app-feat-contact-list>
+      <section class="section" id="section-reply" *ngIf="isContactListOpen">
+        <app-feat-reply-list [userMail]="adminMail"></app-feat-reply-list>
+      </section>
     </section>
 
     <section class="section" id="section-analytic" *ngIf="false">
@@ -29,14 +35,9 @@
   <app-feat-edit-news-card-form
     id="adminLanding-editNewsCardForm"
     [isAdminMod]="isAdminMod"
-    [userMail]="userMail"
+    [adminMail]="adminMail"
     [newsCard]="newsCard"
     [isCreateMod]="isCreateMod"
     (isEditNewsCardFormOpen)="onCloseEditNewsCardForm($event)"
   ></app-feat-edit-news-card-form>
 </div>
-
-<app-feat-contact-form-popup
-  *ngIf="isContactFormOpen"
-  [isAdminMod]="isAdminMod"
-></app-feat-contact-form-popup>

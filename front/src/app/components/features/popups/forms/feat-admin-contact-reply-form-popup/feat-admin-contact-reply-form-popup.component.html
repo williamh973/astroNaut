@@ -1,0 +1,33 @@
+<div class="reply-form-container">
+  <form>
+    <h2>Répondre au message</h2>
+    <textarea
+      [(ngModel)]="reply.content"
+      name="replyContent"
+      placeholder="Écrire votre réponse ici"
+      maxlength="1000"
+      minlength="1"
+      (ngModelChange)="onCheckInputCompleted()"
+      #replyInput="ngModel"
+      required
+    ></textarea>
+    <app-ui-button
+      id="submit-button"
+      type="submit"
+      buttonName="Envoyer message"
+      (click)="onSendReply()"
+      [isButtonEnabled]="isSubmitButtonEnabled"
+    ></app-ui-button>
+  </form>
+</div>
+
+<app-feat-loader-popup
+  class="loader"
+  *ngIf="isLoadingComposantActive"
+></app-feat-loader-popup>
+
+<app-feat-feedback-messages-popup
+  *ngIf="isReplyCreatedSuccess || isReplyCreatedError"
+  [isReplyCreatedSuccess]="isReplyCreatedSuccess"
+  [isReplyCreatedError]="isReplyCreatedError"
+></app-feat-feedback-messages-popup>

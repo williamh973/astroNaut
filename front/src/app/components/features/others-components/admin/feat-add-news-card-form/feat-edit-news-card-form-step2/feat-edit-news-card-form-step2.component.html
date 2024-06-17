@@ -62,7 +62,7 @@
       id="previous-step-button"
       buttonName="Etape précédente"
       type="button"
-      (isButtonClicked)="onGoStep1($event)"
+      (click)="onGoStep1()"
       [isButtonEnabled]="isPreviousStepButtonEnabled"
     ></app-ui-button>
     <app-ui-button
@@ -70,7 +70,7 @@
       id="submit-button"
       buttonName="Créer cette actualité"
       type="submit"
-      (isButtonClicked)="onSubmit($event)"
+      (click)="onSubmit()"
       [isButtonEnabled]="isSubmitButtonEnabled"
     ></app-ui-button>
     <app-ui-button
@@ -78,7 +78,7 @@
       id="submit-button"
       buttonName="Modifier l'actualité"
       type="submit"
-      (isButtonClicked)="onSubmit($event)"
+      (click)="onSubmit()"
       [isButtonEnabled]="isSubmitButtonEnabled"
     ></app-ui-button>
   </section>

@@ -208,36 +208,34 @@ export class FeatAddImageFormComponent {
     }, 3000);
   }
 
-  onSubmit(isButtonClicked: boolean) {
-    if (isButtonClicked) {
-      this.isLoadingComposantActive = true;
+  onSubmit() {
+    this.isLoadingComposantActive = true;
 
-      switch (this.categoryOfPictureCard) {
-        case 'special-events':
-          this.createCardAndImages(
-            this.pictureSpecialEventCard,
-            this.pictureSpecialEventCardService,
-            this.imageForPictureSpecialEventCardService,
-            this.pictureOfWeekCard,
-            this.pictureOfWeekCardService,
-            this.imageForPictureOfWeekCardService,
-            'picture-special-events',
-            'special-events'
-          );
-          break;
-        case 'author':
-          this.createCardAndImages(
-            this.pictureAuthorCard,
-            this.pictureAuthorCardService,
-            this.imageForPictureAuthorCardService,
-            this.pictureOfWeekCard,
-            this.pictureOfWeekCardService,
-            this.imageForPictureOfWeekCardService,
-            'picture-authors',
-            'author'
-          );
-          break;
-      }
+    switch (this.categoryOfPictureCard) {
+      case 'special-events':
+        this.createCardAndImages(
+          this.pictureSpecialEventCard,
+          this.pictureSpecialEventCardService,
+          this.imageForPictureSpecialEventCardService,
+          this.pictureOfWeekCard,
+          this.pictureOfWeekCardService,
+          this.imageForPictureOfWeekCardService,
+          'picture-special-events',
+          'special-events'
+        );
+        break;
+      case 'author':
+        this.createCardAndImages(
+          this.pictureAuthorCard,
+          this.pictureAuthorCardService,
+          this.imageForPictureAuthorCardService,
+          this.pictureOfWeekCard,
+          this.pictureOfWeekCardService,
+          this.imageForPictureOfWeekCardService,
+          'picture-authors',
+          'author'
+        );
+        break;
     }
   }
 

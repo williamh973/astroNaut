@@ -14,7 +14,7 @@ import { PictureService } from 'src/app/shared/services/image-for-card/picture/p
 })
 export class FeatEditNewsCardFormComponent {
   @Input() newsCard!: NewsCard;
-  @Input() userMail!: string;
+  @Input() adminMail!: string;
   @Input() isCreateMod!: boolean;
   @Input() isUpdateMod!: boolean;
   @Input() isAdminMod!: boolean;
@@ -126,7 +126,7 @@ export class FeatEditNewsCardFormComponent {
 
   private createCard() {
     this.newsCardService
-      .createCard(this.newsCard, this.userMail)
+      .createCard(this.newsCard, this.adminMail)
       .subscribe((createdCard) => {
         if (this.photosList.length > 0) {
           this.uploadPhotosFromPhotoListAndCreateNewsCard(createdCard);

@@ -15,7 +15,7 @@ import { PhotoService } from 'src/app/shared/services/photo-service/photo.servic
 export class FeatEditNewsCardFormStep2Component {
   @Input() currentStep!: number;
   @Input() newsCard!: NewsCard;
-  @Input() userMail!: string;
+  @Input() adminMail!: string;
   @Input() isAdminMod!: boolean;
   @Input() isCreateMod!: boolean;
   @Input() isUpdateMod!: boolean;
@@ -61,27 +61,23 @@ export class FeatEditNewsCardFormStep2Component {
     }
   }
 
-  onGoStep1(isButtonClicked: boolean) {
-    if (isButtonClicked) {
-      this.currentStep = 1;
-      this.onGoToStep1.emit(1);
-    }
+  onGoStep1() {
+    this.currentStep = 1;
+    this.onGoToStep1.emit(1);
   }
 
-  onSubmit(isButtonClicked: boolean) {
-    if (isButtonClicked) {
-      this.isLoadingComposantActive = true;
-      if (this.isUpdateMod) {
-        this.updateCard();
-      } else if (this.isCreateMod) {
-        this.createCard();
-      }
+  onSubmit() {
+    this.isLoadingComposantActive = true;
+    if (this.isUpdateMod) {
+      this.updateCard();
+    } else if (this.isCreateMod) {
+      this.createCard();
     }
   }
 
   private createCard() {
     this.newsCardService
-      .createCard(this.newsCard, this.userMail)
+      .createCard(this.newsCard, this.adminMail)
       .subscribe((createdCard) => {
         if (this.photosList.length > 0) {
           this.uploadPhotosFromPhotoListAndCreateNewsCard(createdCard);

@@ -36,7 +36,9 @@ export class ContactService {
   }
 
   deleteContact(id: number): Observable<void> {
-    return this.http.delete<void>(`${this._BASE_URL_CONTACT}/delete/${id}`);
+    return this.http
+      .delete<void>(`${this._BASE_URL_CONTACT}/delete/${id}`)
+      .pipe(tap(() => this.removeContactFromList(id)));
   }
 
   postContactListSubject$(newContact: Contact) {
@@ -46,5 +48,14 @@ export class ContactService {
 
   getContactListSubject$(): Observable<Contact[]> {
     return this.contactListSubject$.asObservable();
+  }
+
+  private removeContactFromList(id: number) {
+    const currentContactList = this.contactListSubject$.value;
+    if (currentContactList) {
+      this.contactListSubject$.next(
+        currentContactList.filter((contact) => contact.id !== id)
+      );
+    }
   }
 }

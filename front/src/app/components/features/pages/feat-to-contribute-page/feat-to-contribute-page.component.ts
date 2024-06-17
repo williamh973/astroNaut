@@ -13,7 +13,6 @@ export class FeatToContributePageComponent {
   isLeftMenuAnimationWhenOpen: boolean = false;
   isLeftMenuItemsClickEnable: boolean = false;
   buttonName: string = '';
-  isButtonEnabled: boolean = true;
 
   onOpenLeftMenu(isLeftMenuOpen: boolean) {
     this.isLeftMenuOpen = isLeftMenuOpen;
@@ -31,14 +30,14 @@ export class FeatToContributePageComponent {
     this.isLeftMenuOpen = isLeftMenuOpen;
   }
 
-  onOpenAddImageForm(isButtonClicked: boolean) {
-    this.isAddImageFormOpen = isButtonClicked;
+  onOpenAddImageForm() {
+    this.isAddImageFormOpen = true;
     this.isAddImageSpecialEventFormOpen = !this.isAddImageSpecialEventFormOpen;
     this.isAddLocationFormOpen = false;
   }
 
-  onOpenAddLocationForm(isButtonClicked: boolean) {
-    this.isAddLocationFormOpen = isButtonClicked;
+  onOpenAddLocationForm() {
+    this.isAddLocationFormOpen = true;
     this.isAddImageFormOpen = false;
     this.isAddImageSpecialEventFormOpen = false;
   }

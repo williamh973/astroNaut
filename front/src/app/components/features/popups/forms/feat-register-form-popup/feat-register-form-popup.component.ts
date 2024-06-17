@@ -25,16 +25,14 @@ export class FeatRegisterFormPopupComponent {
 
   constructor(private httpS: AuthService) {}
 
-  onSubmit(isSubmitButtonClicked: boolean) {
-    if (isSubmitButtonClicked) {
-      this.httpS.signUp(this.userRegister);
-      this.isTrackHttpStatusPopupOpen = true;
+  onSubmit() {
+    this.httpS.signUp(this.userRegister);
+    this.isTrackHttpStatusPopupOpen = true;
 
-      setTimeout(() => {
-        this.isTrackHttpStatusPopupOpen = false;
-        this.isRegisterFormOpen.emit(false);
-      }, 2500);
-    }
+    setTimeout(() => {
+      this.isTrackHttpStatusPopupOpen = false;
+      this.isRegisterFormOpen.emit(false);
+    }, 2500);
   }
 
   onClosePopup(isCloseButtonActivated: boolean) {

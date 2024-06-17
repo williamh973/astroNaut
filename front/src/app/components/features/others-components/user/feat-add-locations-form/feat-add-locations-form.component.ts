@@ -30,33 +30,31 @@ export class FeatAddLocationsFormComponent {
       this.markerData.longitude !== null;
   }
 
-  onSubmit(isButtonClicked: boolean) {
-    if (isButtonClicked) {
-      this.isLoadingComposantActive = true;
-      this.markerService
-        .createMarkerData(this.markerData)
-        .pipe(
-          catchError(() => {
-            this.isLoadingComposantActive = false;
-            this.isLocationCreatedError = true;
+  onSubmit() {
+    this.isLoadingComposantActive = true;
+    this.markerService
+      .createMarkerData(this.markerData)
+      .pipe(
+        catchError(() => {
+          this.isLoadingComposantActive = false;
+          this.isLocationCreatedError = true;
 
-            setTimeout(() => {
-              this.isLocationCreatedError = false;
-            }, 3000);
-            return of(null);
-          })
-        )
-        .subscribe((createdLocation) => {
-          if (createdLocation !== null) {
-            this.isLoadingComposantActive = false;
-            this.isLocationCreatedSuccess = true;
+          setTimeout(() => {
+            this.isLocationCreatedError = false;
+          }, 3000);
+          return of(null);
+        })
+      )
+      .subscribe((createdLocation) => {
+        if (createdLocation !== null) {
+          this.isLoadingComposantActive = false;
+          this.isLocationCreatedSuccess = true;
 
-            setTimeout(() => {
-              this.isLocationCreatedSuccess = false;
-            }, 3000);
-          }
-        });
-    }
+          setTimeout(() => {
+            this.isLocationCreatedSuccess = false;
+          }, 3000);
+        }
+      });
   }
 
   onCloseComponent(isCloseButtonActivated: boolean) {

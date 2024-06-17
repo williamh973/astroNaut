@@ -58,8 +58,6 @@ public class NewsCardService {
         return newsCardRepository.save(foundNewsCard);
     }
 
-
-    @Transactional
     public NewsCard deleteNewsCard(Long id) {
         NewsCard newsCard = newsCardRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException(id + " not found"));

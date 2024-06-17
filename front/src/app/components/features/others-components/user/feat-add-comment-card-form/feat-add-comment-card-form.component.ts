@@ -56,9 +56,9 @@ export class FeatAddCommentCardFormComponent {
 
   ngOnInit() {}
 
-  onSubmit(isSubmitButtonEnabled: boolean) {
+  onSubmit() {
     const token = this.tokenService.isCheckTokenInLocalStorage();
-    if (isSubmitButtonEnabled && token) {
+    if (this.isSubmitButtonEnabled && token) {
       this.isLoadingComposantActive = true;
       this.onCreateComment();
     } else {

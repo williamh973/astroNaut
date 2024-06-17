@@ -90,21 +90,19 @@ export class FeatEditNewsCardFormStep1Component {
     }
   }
 
-  onNextStep(isButtonClicked: boolean) {
-    if (isButtonClicked) {
-      if (this.isCreateMod) {
-        this.onGoToStep2.emit(2);
-      } else if (this.isUpdateMod) {
-        this.isLoadingComposantActive = true;
-        this.newsCardService
-          .updateCard(this.newsCard)
-          .subscribe((updatedCard: NewsCard) => {
-            if (updatedCard) {
-              this.isLoadingComposantActive = false;
-              this.onGoToStep2.emit(2);
-            }
-          });
-      }
+  onNextStep() {
+    if (this.isCreateMod) {
+      this.onGoToStep2.emit(2);
+    } else if (this.isUpdateMod) {
+      this.isLoadingComposantActive = true;
+      this.newsCardService
+        .updateCard(this.newsCard)
+        .subscribe((updatedCard: NewsCard) => {
+          if (updatedCard) {
+            this.isLoadingComposantActive = false;
+            this.onGoToStep2.emit(2);
+          }
+        });
     }
   }
 }

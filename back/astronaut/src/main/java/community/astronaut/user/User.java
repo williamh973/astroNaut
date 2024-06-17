@@ -9,6 +9,7 @@ import community.astronaut.comment.Comment;
 import community.astronaut.contact.Contact;
 import community.astronaut.interactions.newsCard.newsCardDisliked.NewsCardDisliked;
 import community.astronaut.interactions.newsCard.newsCardLiked.NewsCardLiked;
+import community.astronaut.reply.Reply;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -123,8 +124,28 @@ public class User implements UserDetails {
     private Set<NewsCardDisliked> newsCardDislikedList = new HashSet<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties("user")
+    @JsonIgnoreProperties(
+            {
+            "user",
+            "contactList",
+            "newsCard",
+            "timestamp",
+            "likeCount",
+            "dislikeCount"
+            })
     private Set<Contact> contactList = new HashSet<>();
+
+    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties(
+            {
+                    "receiver",
+                    "replyList",
+                    "newsCard",
+                    "timestamp",
+                    "likeCount",
+                    "dislikeCount"
+            })
+    private Set<Reply> replyList = new HashSet<>();
 
     @Override
     public String toString() {

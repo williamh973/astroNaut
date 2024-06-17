@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Contact } from 'src/app/models/contact.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +10,14 @@ export class ContactFormPopupService {
     new BehaviorSubject<boolean>(false);
 
   isContactFormPopupOpen$ = this.isContactFormPopupOpenSubject$.asObservable();
+  userName$: string = '';
+  userEmail$: string = '';
+  adminRole$: string = '';
 
-  openPopup() {
+  openPopup(contact: Contact, adminRole: string) {
+    this.userName$ = contact.name;
+    this.userEmail$ = contact.user.email;
+    this.adminRole$ = adminRole;
     this.isContactFormPopupOpenSubject$.next(true);
   }
 

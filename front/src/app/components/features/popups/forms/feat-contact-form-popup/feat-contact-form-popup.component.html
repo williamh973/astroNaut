@@ -8,7 +8,7 @@
         (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
       >
       </app-ui-burger-menu-button>
-      <h1 id="form-title">Vous souhaitez nous écrire?</h1>
+      <h1 id="form-title">Vous souhaitez nous contacter</h1>
     </header>
     <main id="mainForm-content">
       <section class="section" id="section-siteInfos">
@@ -45,7 +45,7 @@
           placeholder="Entrer Nom"
           minlength="1"
           maxlength="255"
-          [(ngModel)]="contactMessage.name"
+          [(ngModel)]="contact.name"
           #nameInput="ngModel"
           (ngModelChange)="onCheckTextareaCompleted()"
         />
@@ -65,7 +65,7 @@
           placeholder="Entrer votre email *"
           minlength="1"
           maxlength="255"
-          [(ngModel)]="contactMessage.email"
+          [(ngModel)]="contact.email"
           #emailInput="ngModel"
           (ngModelChange)="onCheckTextareaCompleted()"
           required
@@ -89,7 +89,7 @@
           placeholder="Entrer le sujet de votre message *"
           minlength="1"
           maxlength="255"
-          [(ngModel)]="contactMessage.subject"
+          [(ngModel)]="contact.subject"
           #subjectInput="ngModel"
           (ngModelChange)="onCheckTextareaCompleted()"
           required
@@ -102,7 +102,7 @@
           placeholder="Ecrivez votre message ici"
           minlength="5"
           maxlength="65_000"
-          [(ngModel)]="contactMessage.content"
+          [(ngModel)]="contact.content"
           #textareaInput="ngModel"
           (ngModelChange)="onCheckTextareaCompleted()"
         >
@@ -156,5 +156,4 @@
   [isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
   [isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
   (isLeftMenuOpen)="onCloseLeftMenu($event)"
->
-</app-ui-navbar>
+></app-ui-navbar>

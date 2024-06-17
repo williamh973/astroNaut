@@ -10,7 +10,7 @@ import { ContactFormPopupService } from 'src/app/shared/services/contact-form-po
 })
 export class FeatAdminLandingPageComponent {
   @Input() role!: string;
-  @Input() userMail!: string;
+  @Input() adminMail!: string;
 
   newsCard: NewsCard = new NewsCard(
     [],
@@ -27,21 +27,17 @@ export class FeatAdminLandingPageComponent {
   isEditNewsCardFormOpen: boolean = false;
   isNewsCardListOpen: boolean = false;
   isContactListOpen: boolean = true;
-  isContactFormOpen: boolean = false;
   isCreateMod: boolean = false;
   isAdminMod = true;
 
   constructor(private contactFormService: ContactFormPopupService) {}
 
   ngOnInit() {
-    this.newsCard.user.email = this.userMail;
-    this.contactFormService.isContactFormPopupOpen$.subscribe((popupOpen) => {
-      if (popupOpen) {
-        this.isContactFormOpen = true;
-      } else {
-        this.isContactFormOpen = false;
-      }
-    });
+    this.newsCard.user.email = this.adminMail;
+    this.contactFormService.isContactFormPopupOpen$.subscribe(
+      (popupOpen) => {}
+    );
+    console.log(this.adminMail);
   }
 
   onOpenEditNewsCardForm(isEditNewsCardFormOpen: boolean) {
@@ -59,9 +55,5 @@ export class FeatAdminLandingPageComponent {
 
   onOpenContactList(isContactListOpen: boolean) {
     this.isContactListOpen = isContactListOpen;
-  }
-
-  onOpenContactForm() {
-    this.isContactFormOpen = true;
   }
 }

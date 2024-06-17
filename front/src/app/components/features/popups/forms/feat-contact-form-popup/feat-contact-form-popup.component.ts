@@ -13,8 +13,7 @@ import { TokenService } from 'src/app/shared/services/token/token.service';
   styleUrls: ['./feat-contact-form-popup.component.scss'],
 })
 export class FeatContactFormPopupComponent {
-  @Input() isAdminMod!: boolean;
-  contactMessage: Contact = new Contact(
+  contact: Contact = new Contact(
     '',
     '',
     '',
@@ -37,14 +36,12 @@ export class FeatContactFormPopupComponent {
   constructor(
     private contactService: ContactService,
     private loginOrRegisterPopupService: LoginOrRegisterPopupService,
-    private contactFormService: ContactFormPopupService,
     private tokenService: TokenService
   ) {}
 
   ngOnInit() {
     this.onExtractRoleFromToken();
     this.onLoginOrRegisterFormSouscription();
-    console.log(this.isAdminMod);
   }
 
   private onExtractRoleFromToken() {
@@ -70,24 +67,22 @@ export class FeatContactFormPopupComponent {
 
   onCheckTextareaCompleted() {
     this.isSubmitButtonEnabled =
-      this.contactMessage.content.length > 5 &&
-      this.contactMessage.content.length <= 65_000 &&
-      this.contactMessage.email.length > 5 &&
-      this.contactMessage.email.length < 255 &&
-      this.contactMessage.subject.length > 1 &&
-      this.contactMessage.subject.length < 255;
+      this.contact.content.length > 5 &&
+      this.contact.content.length <= 65_000 &&
+      this.contact.email.length > 5 &&
+      this.contact.email.length < 255 &&
+      this.contact.subject.length > 1 &&
+      this.contact.subject.length < 255;
   }
 
   onSubmit() {
     this.isLoadingComposantActive = true;
-    if (this.isAdminMod) {
-    }
-    this.createMessageFromUserToAdmin();
+    this.createContact();
   }
 
-  createMessageFromUserToAdmin() {
+  createContact() {
     this.contactService
-      .createContact(this.contactMessage, this.userMail)
+      .createContact(this.contact, this.userMail)
       .pipe(
         catchError(() => {
           this.isLoadingComposantActive = false;
@@ -112,11 +107,10 @@ export class FeatContactFormPopupComponent {
   }
 
   private resetFormFields() {
-    this.contactMessage.name = '';
-    this.contactMessage.email = '';
-    this.contactMessage.subject = '';
-    this.contactMessage.content = '';
-    this.contactFormService.closePopup();
+    this.contact.name = '';
+    this.contact.email = '';
+    this.contact.subject = '';
+    this.contact.content = '';
   }
 
   onOpenLeftMenu(isLeftMenuOpen: boolean) {

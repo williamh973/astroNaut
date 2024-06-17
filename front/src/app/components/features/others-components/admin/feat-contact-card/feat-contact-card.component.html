@@ -38,3 +38,8 @@
   [isContactCardDeleteSuccess]="isContactCardDeleteSuccess"
   [isContactCardDeleteError]="isContactCardDeleteError"
 ></app-feat-feedback-messages-popup>
+
+<app-feat-admin-contact-reply-form-popup
+  *ngIf="isContactReplyFormOpen"
+  [contact]="contact"
+></app-feat-admin-contact-reply-form-popup>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Contact } from 'src/app/models/contact.model';
 import { ContactService } from 'src/app/shared/services/contact/contact.service';
 
@@ -8,18 +8,34 @@ import { ContactService } from 'src/app/shared/services/contact/contact.service'
   styleUrls: ['./feat-contact-list.component.scss'],
 })
 export class FeatContactListComponent {
+  @Input() userMail!: string;
+  @Input() isAdminMod!: boolean;
   contactList: Contact[] = [];
 
   constructor(private contactService: ContactService) {}
 
   ngOnInit() {
-    this.contactService.getContactList().subscribe((contactListFromDB) => {
-      this.contactList = contactListFromDB.sort((contactA, contactB) => {
-        const timestampA = new Date(contactA.timestamp ?? new Date(0));
-        const timestampB = new Date(contactB.timestamp ?? new Date(0));
-        return timestampB.getTime() - timestampA.getTime();
+    if (this.isAdminMod) {
+      this.contactService.getContactList().subscribe((contactListFromDB) => {
+        this.contactList = contactListFromDB;
+        this.sortContactListByTimestamp();
       });
-      console.log(contactListFromDB);
-    });
+    } else {
+      this.contactService.getContactList().subscribe((contactListFromDB) => {
+        this.contactList = contactListFromDB.filter((contact) =>
+          console.log(contact.user.email)
+        );
+        this.sortContactListByTimestamp();
+      });
+    }
+    console.log(this.userMail);
+  }
+
+  private sortContactListByTimestamp() {
+    this.contactList.sort(
+      (contactA, contactB) =>
+        new Date(contactB.timestamp).getTime() -
+        new Date(contactA.timestamp).getTime()
+    );
   }
 }

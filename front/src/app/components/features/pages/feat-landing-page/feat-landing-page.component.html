@@ -19,12 +19,14 @@
   <main>
     <app-feat-user-landing-page
       *ngIf="role === 'ROLE_USER'"
+      [role]="role"
+      [userMail]="userMail"
     ></app-feat-user-landing-page>
 
     <app-feat-admin-landing-page
       *ngIf="role === 'ROLE_ADMIN'"
       [role]="role"
-      [userMail]="userMail"
+      [adminMail]="userMail"
     ></app-feat-admin-landing-page>
   </main>
 </div>

@@ -12,13 +12,13 @@
       <div id="buttons-container">
         <app-ui-button
           buttonName="Ajouter une image"
-          (isButtonClicked)="onOpenAddImageForm($event)"
-          [isButtonEnabled]="isButtonEnabled"
+          (click)="onOpenAddImageForm()"
+          [isButtonEnabled]="true"
         ></app-ui-button>
         <app-ui-button
           buttonName="Ajouter un point d'observation"
-          (isButtonClicked)="onOpenAddLocationForm($event)"
-          [isButtonEnabled]="isButtonEnabled"
+          (click)="onOpenAddLocationForm()"
+          [isButtonEnabled]="true"
         ></app-ui-button>
       </div>
     </div>
