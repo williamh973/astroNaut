@@ -19,7 +19,7 @@ export class FeatContactFormPopupComponent {
     '',
     '',
     new Date(),
-    new User('', '', 'ROLE_USER', false, [], [], [])
+    new User('', '', '', '', 'ROLE_USER', false, [], [], [])
   );
   isLoginOrRegisterPopupOpen: boolean = false;
   isSubmitButtonEnabled: boolean = false;
@@ -41,7 +41,10 @@ export class FeatContactFormPopupComponent {
 
   ngOnInit() {
     this.onExtractRoleFromToken();
-    this.onLoginOrRegisterFormSouscription();
+    const token = this.tokenService.isCheckTokenInLocalStorage();
+    if (!token) {
+      this.onLoginOrRegisterFormSouscription();
+    }
   }
 
   private onExtractRoleFromToken() {

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-feat-user-landing-page',
@@ -6,6 +7,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./feat-user-landing-page.component.scss'],
 })
 export class FeatUserLandingPageComponent {
+  @Input() user!: User;
   @Input() role!: string;
   @Input() userMail!: string;
   isContactListOpen: boolean = true;

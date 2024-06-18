@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Contact } from 'src/app/models/contact.model';
-import { ContactFormPopupService } from 'src/app/shared/services/contact-form-popup/contact-form-popup.service';
 import { ContactService } from 'src/app/shared/services/contact/contact.service';
 
 @Component({
@@ -10,16 +9,21 @@ import { ContactService } from 'src/app/shared/services/contact/contact.service'
 })
 export class FeatContactCardComponent {
   @Input() contact!: Contact;
+  @Input() isAdminMod!: boolean;
   isLoadingComposantActive: boolean = false;
   isContactCardDeleteSuccess: boolean = false;
   isContactCardDeleteError: boolean = false;
-  isContactReplyFormOpen: boolean = false;
+  isReplyFormOpen: boolean = false;
   adminRole: string = 'ROLE_ADMIN';
 
   constructor(private contactService: ContactService) {}
 
+  ngOnInit() {
+    // console.log(this.contact);
+  }
+
   onOpenContactFormForReply() {
-    this.isContactReplyFormOpen = true;
+    this.isReplyFormOpen = true;
   }
 
   onDeleteContactCard() {

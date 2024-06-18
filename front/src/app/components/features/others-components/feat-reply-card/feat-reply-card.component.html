@@ -1,0 +1,47 @@
+<main id="main-content">
+  <article id="reply-card">
+    <header>
+      <app-ui-close-icon
+        id="close-icon"
+        (click)="onDeleteReplyCard()"
+      ></app-ui-close-icon>
+      <span id="reply-name">{{ reply.user.firstname }}</span>
+      <span id="reply-email">{{ reply.user.email }}</span>
+      <!-- <h3 id="reply-subject">{{ reply.subject }}</h3> -->
+    </header>
+    <section>
+      <p id="reply-content">{{ reply.content }}</p>
+    </section>
+    <div id="reply-metadata">
+      <p id="timestamp-font">
+        Le {{ reply.timestamp | date : "dd/MM/yyyy à HH:mm" }}
+      </p>
+      <app-ui-button
+        class="button"
+        id="reply-button"
+        buttonName="Répondre"
+        title="répondre à ce message"
+        [isButtonEnabled]="true"
+        (click)="onOpenreplyForm()"
+      ></app-ui-button>
+    </div>
+  </article>
+</main>
+
+<app-feat-loader-popup
+  class="loader"
+  *ngIf="isLoadingComposantActive"
+></app-feat-loader-popup>
+
+<app-feat-feedback-messages-popup
+  *ngIf="isReplyCardDeleteSuccess || isReplyCardDeleteError"
+  [isReplyCardDeleteSuccess]="isReplyCardDeleteSuccess"
+  [isReplyCardDeleteError]="isReplyCardDeleteError"
+></app-feat-feedback-messages-popup>
+
+<app-feat-reply-form-popup
+  *ngIf="isReplyFormOpen"
+  [isAdminMod]="isAdminMod"
+  [user]="reply.receiver"
+  [admin]="reply.user"
+></app-feat-reply-form-popup>

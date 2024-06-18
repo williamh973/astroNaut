@@ -5,6 +5,8 @@ import { NewsCardLiked } from './user/interaction/news-card/news-card-like.model
 export class User {
   constructor(
     public pseudo: string,
+    public firstname: string,
+    public lastname: string,
     public email: string,
     public role: 'ROLE_USER' | 'ROLE_ADMIN',
     public blocked: boolean,

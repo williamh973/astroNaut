@@ -8,7 +8,6 @@ import { ContactService } from 'src/app/shared/services/contact/contact.service'
   styleUrls: ['./feat-contact-list.component.scss'],
 })
 export class FeatContactListComponent {
-  @Input() userMail!: string;
   @Input() isAdminMod!: boolean;
   contactList: Contact[] = [];
 
@@ -22,13 +21,10 @@ export class FeatContactListComponent {
       });
     } else {
       this.contactService.getContactList().subscribe((contactListFromDB) => {
-        this.contactList = contactListFromDB.filter((contact) =>
-          console.log(contact.user.email)
-        );
+        this.contactList = contactListFromDB;
         this.sortContactListByTimestamp();
       });
     }
-    console.log(this.userMail);
   }
 
   private sortContactListByTimestamp() {

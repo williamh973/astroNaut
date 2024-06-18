@@ -16,12 +16,13 @@
     </section>
 
     <section class="section" id="section-contact" *ngIf="isContactListOpen">
-      <app-feat-contact-list
-        [isAdminMod]="isAdminMod"
-        [userMail]="adminMail"
-      ></app-feat-contact-list>
+      <app-feat-contact-list [isAdminMod]="isAdminMod"></app-feat-contact-list>
+
       <section class="section" id="section-reply" *ngIf="isContactListOpen">
-        <app-feat-reply-list [userMail]="adminMail"></app-feat-reply-list>
+        <app-feat-reply-list
+          [admin]="admin"
+          [isAdminMod]="isAdminMod"
+        ></app-feat-reply-list>
       </section>
     </section>
 

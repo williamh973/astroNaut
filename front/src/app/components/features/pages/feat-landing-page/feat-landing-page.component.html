@@ -13,18 +13,19 @@
       type="button"
       buttonName="Déconnexion"
       [isButtonEnabled]="true"
-      >Deconnexion</app-ui-button
-    >
+    ></app-ui-button>
   </header>
   <main>
     <app-feat-user-landing-page
-      *ngIf="role === 'ROLE_USER'"
+      *ngIf="user.role === 'ROLE_USER'"
+      [user]="user"
       [role]="role"
       [userMail]="userMail"
     ></app-feat-user-landing-page>
 
     <app-feat-admin-landing-page
-      *ngIf="role === 'ROLE_ADMIN'"
+      *ngIf="user.role === 'ROLE_ADMIN'"
+      [admin]="user"
       [role]="role"
       [adminMail]="userMail"
     ></app-feat-admin-landing-page>

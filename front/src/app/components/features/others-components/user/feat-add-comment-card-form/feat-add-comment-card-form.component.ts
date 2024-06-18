@@ -27,9 +27,11 @@ export class FeatAddCommentCardFormComponent {
       0,
       0,
       [],
-      new User('', '', 'ROLE_ADMIN', false, [], [], [])
+      new User('', '', '', '', 'ROLE_ADMIN', false, [], [], [])
     ),
     new User(
+      '',
+      '',
       '',
       '',
       this.currentUserRole === 'ROLE_ADMIN' ? 'ROLE_ADMIN' : 'ROLE_USER',

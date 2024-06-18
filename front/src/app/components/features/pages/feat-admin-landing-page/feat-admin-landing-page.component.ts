@@ -9,6 +9,7 @@ import { ContactFormPopupService } from 'src/app/shared/services/contact-form-po
   styleUrls: ['./feat-admin-landing-page.component.scss'],
 })
 export class FeatAdminLandingPageComponent {
+  @Input() admin!: User;
   @Input() role!: string;
   @Input() adminMail!: string;
 
@@ -21,7 +22,7 @@ export class FeatAdminLandingPageComponent {
     0,
     0,
     [],
-    new User('', '', 'ROLE_ADMIN', false, [], [], [])
+    new User('', '', '', '', 'ROLE_ADMIN', false, [], [], [])
   );
 
   isEditNewsCardFormOpen: boolean = false;
@@ -37,7 +38,6 @@ export class FeatAdminLandingPageComponent {
     this.contactFormService.isContactFormPopupOpen$.subscribe(
       (popupOpen) => {}
     );
-    console.log(this.adminMail);
   }
 
   onOpenEditNewsCardForm(isEditNewsCardFormOpen: boolean) {

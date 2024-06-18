@@ -1,1 +1,6 @@
-<p>feat-reply-list works!</p>
+<div *ngFor="let reply of replyList">
+  <app-feat-reply-card
+    [reply]="reply"
+    [isAdminMod]="isAdminMod"
+  ></app-feat-reply-card>
+</div>

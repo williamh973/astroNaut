@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { TokenService } from 'src/app/shared/services/token/token.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-feat-landing-page',
@@ -9,6 +11,17 @@ import { TokenService } from 'src/app/shared/services/token/token.service';
   styleUrls: ['./feat-landing-page.component.scss'],
 })
 export class FeatLandingPageComponent {
+  user: User = new User(
+    '',
+    '',
+    '',
+    '',
+    'ROLE_USER' || 'ROLE_ADMIN',
+    false,
+    [],
+    [],
+    []
+  );
   role: string = '';
   userMail: string = '';
   isLeftMenuOpen: boolean = false;
@@ -18,11 +31,13 @@ export class FeatLandingPageComponent {
   constructor(
     private lsService: LocalStorageService,
     private tokenService: TokenService,
-    private router: Router
+    private router: Router,
+    private userService: UserService
   ) {}
 
   ngOnInit() {
     this.onExtractRoleFromToken();
+    this.onGetUserCurrentData();
   }
 
   private onExtractRoleFromToken() {
@@ -36,6 +51,20 @@ export class FeatLandingPageComponent {
           this.router.navigate(['/astronaut/news']);
         }
       });
+  }
+
+  private onGetUserCurrentData() {
+    this.userService.getCurrentUserData().subscribe(
+      (user: User) => {
+        this.user = user;
+      },
+      (error: any) => {
+        console.error(
+          "Erreur lors de la récupération des données de l'utilisateur :",
+          error
+        );
+      }
+    );
   }
 
   onLogout(): void {

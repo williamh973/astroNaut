@@ -26,6 +26,8 @@ export class FeatFeedbackMessagesPopupComponent {
   @Input() isContactCardDeleteError!: boolean;
   @Input() isReplyCreatedSuccess!: boolean;
   @Input() isReplyCreatedError!: boolean;
+  @Input() isReplyCardDeleteSuccess!: boolean;
+  @Input() isReplyCardDeleteError!: boolean;
 
   feedback: Feedback = new Feedback('');
 
