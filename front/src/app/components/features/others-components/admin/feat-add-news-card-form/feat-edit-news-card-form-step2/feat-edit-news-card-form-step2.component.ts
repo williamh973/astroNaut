@@ -3,6 +3,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { catchError, finalize, of } from 'rxjs';
 import { NewsCard } from 'src/app/models/cards/news-card.model';
 import { Picture } from 'src/app/models/images-for-cards/image-for-news-card.model';
+import { User } from 'src/app/models/user.model';
 import { NewsCardService } from 'src/app/shared/services/cards/news-card/news-card.service';
 import { PictureService } from 'src/app/shared/services/image-for-card/picture/picture.service';
 import { PhotoService } from 'src/app/shared/services/photo-service/photo.service';
@@ -15,7 +16,7 @@ import { PhotoService } from 'src/app/shared/services/photo-service/photo.servic
 export class FeatEditNewsCardFormStep2Component {
   @Input() currentStep!: number;
   @Input() newsCard!: NewsCard;
-  @Input() adminMail!: string;
+  @Input() admin!: User;
   @Input() isAdminMod!: boolean;
   @Input() isCreateMod!: boolean;
   @Input() isUpdateMod!: boolean;
@@ -46,7 +47,6 @@ export class FeatEditNewsCardFormStep2Component {
   }
 
   onCheckInputCompleted() {
-    console.log(this.newsCard.mainArticle.length, this.newsCard.readingTime);
     if (this.isCreateMod) {
       this.isSubmitButtonEnabled =
         this.newsCard.mainArticle.length > 5 &&
@@ -77,7 +77,7 @@ export class FeatEditNewsCardFormStep2Component {
 
   private createCard() {
     this.newsCardService
-      .createCard(this.newsCard, this.adminMail)
+      .createCard(this.newsCard, this.admin.email)
       .subscribe((createdCard) => {
         if (this.photosList.length > 0) {
           this.uploadPhotosFromPhotoListAndCreateNewsCard(createdCard);

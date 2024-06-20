@@ -1,3 +1,10 @@
+main {
+  width: 99%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
 h3 {
   width: 100%;
   height: 50px;
@@ -9,6 +16,7 @@ h3 {
   background: #04091e;
   font-style: italic;
   padding-left: 50px;
+  overflow: hidden;
 }
 
 #contact-list {

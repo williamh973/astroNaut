@@ -36,21 +36,8 @@ export class FeatLandingPageComponent {
   ) {}
 
   ngOnInit() {
-    this.onExtractRoleFromToken();
     this.onGetUserCurrentData();
-  }
-
-  private onExtractRoleFromToken() {
-    this.tokenService
-      ._getTokenDetailsSubject$()
-      .subscribe((decodedToken: any) => {
-        if (decodedToken) {
-          this.role = decodedToken.role;
-          this.userMail = decodedToken.sub;
-        } else {
-          this.router.navigate(['/astronaut/news']);
-        }
-      });
+    this.onExtractRoleFromToken();
   }
 
   private onGetUserCurrentData() {
@@ -65,6 +52,19 @@ export class FeatLandingPageComponent {
         );
       }
     );
+  }
+
+  private onExtractRoleFromToken() {
+    this.tokenService
+      ._getTokenDetailsSubject$()
+      .subscribe((decodedToken: any) => {
+        if (decodedToken) {
+          this.role = decodedToken.role;
+          this.userMail = decodedToken.sub;
+        } else {
+          this.router.navigate(['/astronaut/news']);
+        }
+      });
   }
 
   onLogout(): void {

@@ -86,6 +86,7 @@ import { FeatContactFormPopupComponent } from './components/features/popups/form
 import { FeatReplyListComponent } from './components/features/others-components/feat-reply-list/feat-reply-list.component';
 import { FeatReplyCardComponent } from './components/features/others-components/feat-reply-card/feat-reply-card.component';
 import { FeatReplyFormPopupComponent } from './components/features/popups/forms/feat-reply-form-popup/feat-reply-form-popup.component';
+import { UiLandingTitleComponent } from './components/ui/landing-page/ui-landing-title/ui-landing-title.component';
 
 @NgModule({
   declarations: [
@@ -164,6 +165,7 @@ import { FeatReplyFormPopupComponent } from './components/features/popups/forms/
     FeatReplyListComponent,
     FeatReplyCardComponent,
     FeatReplyFormPopupComponent,
+    UiLandingTitleComponent,
   ],
   imports: [
     BrowserModule,

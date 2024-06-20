@@ -6,6 +6,7 @@ import { PhotoService } from 'src/app/shared/services/photo-service/photo.servic
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Picture } from 'src/app/models/images-for-cards/image-for-news-card.model';
 import { PictureService } from 'src/app/shared/services/image-for-card/picture/picture.service';
+import { User } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-feat-edit-news-card-form',
@@ -14,7 +15,7 @@ import { PictureService } from 'src/app/shared/services/image-for-card/picture/p
 })
 export class FeatEditNewsCardFormComponent {
   @Input() newsCard!: NewsCard;
-  @Input() adminMail!: string;
+  @Input() admin!: User;
   @Input() isCreateMod!: boolean;
   @Input() isUpdateMod!: boolean;
   @Input() isAdminMod!: boolean;
@@ -126,7 +127,7 @@ export class FeatEditNewsCardFormComponent {
 
   private createCard() {
     this.newsCardService
-      .createCard(this.newsCard, this.adminMail)
+      .createCard(this.newsCard, this.admin.email)
       .subscribe((createdCard) => {
         if (this.photosList.length > 0) {
           this.uploadPhotosFromPhotoListAndCreateNewsCard(createdCard);

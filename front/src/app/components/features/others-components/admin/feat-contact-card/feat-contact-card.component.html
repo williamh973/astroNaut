@@ -22,10 +22,16 @@
         buttonName="Répondre"
         title="répondre a ce message ?"
         [isButtonEnabled]="true"
-        (click)="onOpenContactFormForReply()"
+        (click)="onOpenFormForReply()"
       ></app-ui-button>
     </div>
   </article>
+  <section id="section-reply">
+    <app-feat-reply-list
+      [admin]="admin"
+      [isAdminMod]="isAdminMod"
+    ></app-feat-reply-list>
+  </section>
 </main>
 
 <app-feat-loader-popup
@@ -43,4 +49,5 @@
   *ngIf="isReplyFormOpen"
   [contact]="contact"
   [isAdminMod]="isAdminMod"
+  (isReplyFormOpen)="onCloseReplyForm($event)"
 ></app-feat-reply-form-popup>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 
 @Component({
@@ -8,9 +8,10 @@ import { User } from 'src/app/models/user.model';
 })
 export class FeatUserLandingPageComponent {
   @Input() user!: User;
-  @Input() role!: string;
-  @Input() userMail!: string;
   isContactListOpen: boolean = true;
 
-  ngOnInit() {}
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['user'] && this.user) {
+    }
+  }
 }

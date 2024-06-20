@@ -15,11 +15,10 @@ export class ReplyService {
     return this.http.get<Reply[]>(`${this._BASE_URL_REPLY}/${userMail}/all`);
   }
 
-  createReply(replyMessage: Reply, receiverUserId: number): Observable<Reply> {
-    replyMessage.receiver.id = receiverUserId;
+  createReply(newReply: Reply, receiverUserId: number): Observable<Reply> {
     return this.http.post<Reply>(
       `${this._BASE_URL_REPLY}/add?receiverUserId=${receiverUserId}`,
-      replyMessage
+      newReply
     );
   }
 }

@@ -1,11 +1,13 @@
 <div id="full-page">
-  <header id="headerLeft">
-    <app-ui-admin-landing-navbar
-      id="headerLeft-adminNavbar"
-      (isEditNewsCardFormOpen)="onOpenEditNewsCardForm($event)"
-      (isNewsCardListOpen)="onOpenNewsCardList($event)"
-      (isContactListOpen)="onOpenContactList($event)"
-    ></app-ui-admin-landing-navbar>
+  <header id="header">
+    <section id="section-headerLeft">
+      <app-ui-admin-landing-navbar
+        id="headerLeft-adminNavbar"
+        (isEditNewsCardFormOpen)="onOpenEditNewsCardForm($event)"
+        (isNewsCardListOpen)="onOpenNewsCardList($event)"
+        (isContactListOpen)="onOpenContactList($event)"
+      ></app-ui-admin-landing-navbar>
+    </section>
   </header>
 
   <main id="main-content">
@@ -15,30 +17,26 @@
       ></app-feat-news-card-list>
     </section>
 
-    <section class="section" id="section-contact" *ngIf="isContactListOpen">
-      <app-feat-contact-list [isAdminMod]="isAdminMod"></app-feat-contact-list>
-
-      <section class="section" id="section-reply" *ngIf="isContactListOpen">
-        <app-feat-reply-list
-          [admin]="admin"
-          [isAdminMod]="isAdminMod"
-        ></app-feat-reply-list>
-      </section>
+    <section id="section-contact" *ngIf="isContactListOpen">
+      <app-feat-contact-list
+        [isAdminMod]="isAdminMod"
+        [admin]="admin"
+      ></app-feat-contact-list>
     </section>
 
-    <section class="section" id="section-analytic" *ngIf="false">
+    <section id="section-analytic" *ngIf="false">
       <app-feat-visits-counter></app-feat-visits-counter>
     </section>
   </main>
 </div>
 
-<div id="adminLanding-editContainer" *ngIf="isEditNewsCardFormOpen">
+<ng-container id="adminLanding-editContainer" *ngIf="isEditNewsCardFormOpen">
   <app-feat-edit-news-card-form
     id="adminLanding-editNewsCardForm"
     [isAdminMod]="isAdminMod"
-    [adminMail]="adminMail"
+    [admin]="admin"
     [newsCard]="newsCard"
     [isCreateMod]="isCreateMod"
     (isEditNewsCardFormOpen)="onCloseEditNewsCardForm($event)"
   ></app-feat-edit-news-card-form>
-</div>
+</ng-container>

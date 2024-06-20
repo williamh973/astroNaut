@@ -1,4 +1,10 @@
-<h3>Boite de réception</h3>
-<ng-container id="contact-list" *ngFor="let contact of contactList">
-  <app-feat-contact-card [contact]="contact"></app-feat-contact-card>
-</ng-container>
+<main>
+  <h3>Boite de réception</h3>
+  <ng-container id="contact-list" *ngFor="let contact of contactList">
+    <app-feat-contact-card
+      [contact]="contact"
+      [isAdminMod]="isAdminMod"
+      [admin]="admin"
+    ></app-feat-contact-card>
+  </ng-container>
+</main>

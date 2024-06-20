@@ -3,13 +3,19 @@
 }
 
 #main-content {
-  width: 95%;
+  width: 99%;
   min-height: 200px;
   height: auto;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
   padding: 0 10px;
   margin: auto;
+}
+
+#close-icon {
+  margin-left: auto;
 }
 
 #contact-card {
@@ -32,10 +38,6 @@ header {
   flex-direction: column;
 }
 
-#close-icon {
-  margin-left: auto;
-}
-
 #contact-name {
   color: rgb(0, 118, 215);
   font-weight: bold;
@@ -51,6 +53,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+#section-reply {
+  margin-left: 50px;
+  width: inherit;
+  height: auto;
+  max-height: 100%;
 }
 
 #timestamp-font {

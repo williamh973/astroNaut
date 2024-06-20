@@ -1,11 +1,16 @@
-<div class="reply-form-container">
-  <form>
-    <h2>Répondre au message</h2>
+<div id="full-page">
+  <form id="reply-form">
+    <app-ui-close-icon
+      id="close-icon"
+      (click)="onCloseReplyForm()"
+    ></app-ui-close-icon>
+    <h2 id="replyForm-title">Répondre au message</h2>
     <textarea
-      [(ngModel)]="reply.content"
+      class="input"
+      [(ngModel)]="newReply.content"
       name="replyContent"
       placeholder="Écrire votre réponse ici"
-      maxlength="1000"
+      maxlength="5000"
       minlength="1"
       (ngModelChange)="onCheckInputCompleted()"
       #replyInput="ngModel"
@@ -20,7 +25,6 @@
     ></app-ui-button>
   </form>
 </div>
-
 <app-feat-loader-popup
   class="loader"
   *ngIf="isLoadingComposantActive"

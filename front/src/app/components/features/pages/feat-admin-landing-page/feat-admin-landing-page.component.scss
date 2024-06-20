@@ -1,23 +1,29 @@
 #full-page {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: auto;
+  min-height: 100vh;
   display: flex;
   justify-content: space-between;
 }
 
-#headerLeft {
-  width: 25%;
+#header {
+  width: 30%;
+  min-width: 180px;
   height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 #main-content {
-  width: 75%;
+  width: 100%;
   height: auto;
   border: 1px solid rgb(192, 192, 192);
 }
 
-.section {
-  width: 100%;
+#main-content > section {
+  width: inherit;
   height: auto;
   max-height: 100%;
 }

@@ -10,8 +10,6 @@ import { ContactFormPopupService } from 'src/app/shared/services/contact-form-po
 })
 export class FeatAdminLandingPageComponent {
   @Input() admin!: User;
-  @Input() role!: string;
-  @Input() adminMail!: string;
 
   newsCard: NewsCard = new NewsCard(
     [],
@@ -34,7 +32,7 @@ export class FeatAdminLandingPageComponent {
   constructor(private contactFormService: ContactFormPopupService) {}
 
   ngOnInit() {
-    this.newsCard.user.email = this.adminMail;
+    this.newsCard.user.email = this.admin.email;
     this.contactFormService.isContactFormPopupOpen$.subscribe(
       (popupOpen) => {}
     );

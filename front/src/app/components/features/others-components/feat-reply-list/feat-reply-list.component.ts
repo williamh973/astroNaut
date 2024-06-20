@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Reply } from 'src/app/models/admin/reply.model';
 import { User } from 'src/app/models/user.model';
 import { ReplyService } from 'src/app/shared/services/admin/reply/reply.service';
@@ -16,10 +16,10 @@ export class FeatReplyListComponent {
 
   constructor(private replyService: ReplyService) {}
 
-  ngOnInit() {
-    if (this.admin) {
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['admin'] && this.admin) {
       this.onGetReplyList(this.admin.email);
-    } else if (this.user) {
+    } else if (changes['user'] && this.user) {
       this.onGetReplyList(this.user.email);
     }
   }
@@ -28,7 +28,11 @@ export class FeatReplyListComponent {
     this.replyService
       .getReplyList(email)
       .subscribe((replyListFromDB: Reply[]) => {
-        this.replyList = replyListFromDB;
+        this.replyList = replyListFromDB.sort(
+          (replyA, replyB) =>
+            new Date(replyB.timestamp).getTime() -
+            new Date(replyA.timestamp).getTime()
+        );
       });
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Contact } from 'src/app/models/contact.model';
+import { User } from 'src/app/models/user.model';
 import { ContactService } from 'src/app/shared/services/contact/contact.service';
 
 @Component({
@@ -10,10 +11,12 @@ import { ContactService } from 'src/app/shared/services/contact/contact.service'
 export class FeatContactCardComponent {
   @Input() contact!: Contact;
   @Input() isAdminMod!: boolean;
+  @Input() admin!: User;
   isLoadingComposantActive: boolean = false;
   isContactCardDeleteSuccess: boolean = false;
   isContactCardDeleteError: boolean = false;
   isReplyFormOpen: boolean = false;
+  isContactListOpen: boolean = true;
   adminRole: string = 'ROLE_ADMIN';
 
   constructor(private contactService: ContactService) {}
@@ -22,7 +25,7 @@ export class FeatContactCardComponent {
     // console.log(this.contact);
   }
 
-  onOpenContactFormForReply() {
+  onOpenFormForReply() {
     this.isReplyFormOpen = true;
   }
 
@@ -46,5 +49,9 @@ export class FeatContactCardComponent {
         }, 2_500);
       }
     );
+  }
+
+  onCloseReplyForm(isReplyFormOpen: boolean) {
+    this.isReplyFormOpen = isReplyFormOpen;
   }
 }

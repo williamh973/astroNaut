@@ -6,8 +6,7 @@
         (click)="onDeleteReplyCard()"
       ></app-ui-close-icon>
       <span id="reply-name">{{ reply.user.firstname }}</span>
-      <span id="reply-email">{{ reply.user.email }}</span>
-      <!-- <h3 id="reply-subject">{{ reply.subject }}</h3> -->
+      <h3 id="reply-subject">{{ reply.subject }}</h3>
     </header>
     <section>
       <p id="reply-content">{{ reply.content }}</p>
@@ -28,11 +27,6 @@
   </article>
 </main>
 
-<app-feat-loader-popup
-  class="loader"
-  *ngIf="isLoadingComposantActive"
-></app-feat-loader-popup>
-
 <app-feat-feedback-messages-popup
   *ngIf="isReplyCardDeleteSuccess || isReplyCardDeleteError"
   [isReplyCardDeleteSuccess]="isReplyCardDeleteSuccess"
@@ -42,6 +36,5 @@
 <app-feat-reply-form-popup
   *ngIf="isReplyFormOpen"
   [isAdminMod]="isAdminMod"
-  [user]="reply.receiver"
-  [admin]="reply.user"
+  [receivedReply]="reply"
 ></app-feat-reply-form-popup>

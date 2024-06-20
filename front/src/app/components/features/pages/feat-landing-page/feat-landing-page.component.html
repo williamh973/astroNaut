@@ -1,33 +1,36 @@
 <div id="full-page">
-  <header id="headerLanding">
-    <app-ui-burger-menu-button
-      id="headerTop-burgerMenu"
-      (isLeftMenuOpen)="onOpenLeftMenu($event)"
-      (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
-      (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
-    >
-    </app-ui-burger-menu-button>
-
-    <app-ui-button
-      (click)="onLogout()"
-      type="button"
-      buttonName="Déconnexion"
-      [isButtonEnabled]="true"
-    ></app-ui-button>
+  <header id="headerTop">
+    <section id="headerTop-leftMenu">
+      <app-ui-burger-menu-button
+        id="leftMenu-burgerButton"
+        (isLeftMenuOpen)="onOpenLeftMenu($event)"
+        (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
+        (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
+      >
+      </app-ui-burger-menu-button>
+    </section>
+    <section id="headerTop-title">
+      <app-ui-landing-title id="title" [user]="user"></app-ui-landing-title>
+    </section>
+    <section id="headerTop-logout">
+      <app-ui-button
+        (click)="onLogout()"
+        type="button"
+        buttonName="Déconnexion"
+        [isButtonEnabled]="true"
+      ></app-ui-button>
+    </section>
   </header>
+
   <main>
     <app-feat-user-landing-page
       *ngIf="user.role === 'ROLE_USER'"
       [user]="user"
-      [role]="role"
-      [userMail]="userMail"
     ></app-feat-user-landing-page>
 
     <app-feat-admin-landing-page
       *ngIf="user.role === 'ROLE_ADMIN'"
       [admin]="user"
-      [role]="role"
-      [adminMail]="userMail"
     ></app-feat-admin-landing-page>
   </main>
 </div>

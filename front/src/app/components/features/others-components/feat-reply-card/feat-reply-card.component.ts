@@ -15,9 +15,9 @@ export class FeatReplyCardComponent {
   isReplyCardDeleteSuccess: boolean = false;
   isReplyCardDeleteError: boolean = false;
 
-  ngOnInit() {
-    // console.log(this.reply);
-  }
+  // ngOnInit() {
+  //   console.log(this.reply);
+  // }
 
   onOpenreplyForm() {
     this.isReplyFormOpen = true;

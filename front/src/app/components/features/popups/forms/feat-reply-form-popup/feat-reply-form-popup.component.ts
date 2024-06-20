@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { catchError, of } from 'rxjs';
 import { Reply } from 'src/app/models/admin/reply.model';
 import { Contact } from 'src/app/models/contact.model';
 import { User } from 'src/app/models/user.model';
 import { ReplyService } from 'src/app/shared/services/admin/reply/reply.service';
+import { UserService } from 'src/app/shared/services/user/user.service';
 
 @Component({
   selector: 'app-feat-reply-form-popup',
@@ -13,93 +14,91 @@ import { ReplyService } from 'src/app/shared/services/admin/reply/reply.service'
 export class FeatReplyFormPopupComponent {
   @Input() contact!: Contact;
   @Input() isAdminMod!: boolean;
-  @Input() admin!: User;
-  @Input() user!: User;
+  @Input() receivedReply!: Reply;
+  @Output() isReplyFormOpen = new EventEmitter<boolean>();
+  role: string = '';
 
-  reply: Reply = new Reply(
+  newReply: Reply = new Reply(
+    '',
     '',
     new Date(),
-    new User('', '', '', '', 'ROLE_ADMIN', false, [], [], []),
-    new User('', '', '', '', 'ROLE_USER', false, [], [], [])
+    new User(
+      '',
+      '',
+      '',
+      '',
+      (this.role = 'ROLE_ADMIN' || 'ROLE_USER'),
+      false,
+      [],
+      [],
+      []
+    ),
+    new User(
+      '',
+      '',
+      '',
+      '',
+      (this.role = 'ROLE_ADMIN' || 'ROLE_USER'),
+      false,
+      [],
+      [],
+      []
+    )
   );
 
   isLoadingComposantActive: boolean = false;
   isSubmitButtonEnabled: boolean = false;
   isReplyCreatedError: boolean = false;
   isReplyCreatedSuccess: boolean = false;
+  userSenderId: number = 0;
 
-  constructor(private replyService: ReplyService) {}
+  constructor(
+    private replyService: ReplyService,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {
-    // console.log('NORMAL USER', this.user);
-    // console.log('ADMIN USER', this.admin);
-    // console.log(this.contact);
+    this.onGetUserCurrentData();
+  }
+
+  private onGetUserCurrentData() {
+    this.userService.getCurrentUserData().subscribe(
+      (user: User) => {
+        if (user.id) {
+          this.userSenderId = user.id;
+        }
+      },
+      (error: any) => {
+        console.error(
+          "Erreur lors de la récupération des données de l'utilisateur :",
+          error
+        );
+      }
+    );
   }
 
   onCheckInputCompleted() {
     this.isSubmitButtonEnabled =
-      this.reply.content.length > 1 && this.reply.content.length < 1000;
+      this.newReply.content.length > 1 && this.newReply.content.length < 1000;
   }
 
   onSubmit() {
-    this.isLoadingComposantActive = true;
-    if (this.isAdminMod) {
-      this.onAdminSendReply();
-    } else {
-      this.onUserSendReply();
+    if (this.isSubmitButtonEnabled) {
+      this.isLoadingComposantActive = true;
+
+      if (this.isAdminMod && this.contact !== undefined) {
+        this.sendReply(this.newReply, this.contact.user.id!);
+      } else if (this.isAdminMod && this.contact === undefined) {
+        this.sendReply(this.newReply, this.receivedReply.user.id!);
+      } else if (!this.isAdminMod) {
+        this.sendReply(this.newReply, this.receivedReply.user.id!);
+      }
     }
   }
 
-  private onAdminSendReply() {
-    if (this.contact === undefined) {
-      this.replyService
-        .createReply(this.reply, this.admin.id!)
-        .pipe(
-          catchError(() => {
-            this.isLoadingComposantActive = false;
-            this.isReplyCreatedError = true;
-            setTimeout(() => {
-              this.isReplyCreatedError = false;
-            }, 3000);
-            return of(null);
-          })
-        )
-        .subscribe((newResponse) => {
-          this.isLoadingComposantActive = false;
-          this.isReplyCreatedSuccess = true;
-          setTimeout(() => {
-            this.isReplyCreatedSuccess = false;
-          }, 3000);
-          this.resetFormFields();
-        });
-    } else {
-      this.replyService
-        .createReply(this.reply, this.contact.user.id!)
-        .pipe(
-          catchError(() => {
-            this.isLoadingComposantActive = false;
-            this.isReplyCreatedError = true;
-            setTimeout(() => {
-              this.isReplyCreatedError = false;
-            }, 3000);
-            return of(null);
-          })
-        )
-        .subscribe((newResponse) => {
-          this.isLoadingComposantActive = false;
-          this.isReplyCreatedSuccess = true;
-          setTimeout(() => {
-            this.isReplyCreatedSuccess = false;
-          }, 3000);
-          this.resetFormFields();
-        });
-    }
-  }
-
-  private onUserSendReply() {
-    let adminReceiverId = this.admin.id;
+  private sendReply(newReply: Reply, receivedUserId: number) {
     this.replyService
-      .createReply(this.reply, adminReceiverId!)
+      .createReply(newReply, receivedUserId)
       .pipe(
         catchError(() => {
           this.isLoadingComposantActive = false;
@@ -110,7 +109,7 @@ export class FeatReplyFormPopupComponent {
           return of(null);
         })
       )
-      .subscribe((newResponse) => {
+      .subscribe((newReply) => {
         this.isLoadingComposantActive = false;
         this.isReplyCreatedSuccess = true;
         setTimeout(() => {
@@ -121,6 +120,10 @@ export class FeatReplyFormPopupComponent {
   }
 
   private resetFormFields() {
-    this.reply.content = '';
+    this.newReply.content = '';
+  }
+
+  onCloseReplyForm() {
+    this.isReplyFormOpen.emit(false);
   }
 }

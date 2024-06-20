@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+}
+
+#main-content {
+  width: 95%;
+  min-height: 200px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0 10px;
+  margin: auto;
+}
+
+#reply-card {
+  width: 100%;
+  min-height: 200px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: rgb(18, 18, 18);
+  border-bottom: 1px solid grey;
+}
+
+#close-icon {
+  margin-left: auto;
+}
+
+header {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#reply-name {
+  color: rgb(0, 118, 215);
+  font-weight: bold;
+}
+
+#reply-subject,
+#reply-content {
+  padding: 10px 0;
+}
+
+#reply-metadata {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#timestamp-font {
+  font-size: 13px;
+  color: grey;
+}

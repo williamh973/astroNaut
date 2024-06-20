@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Contact } from 'src/app/models/contact.model';
+import { User } from 'src/app/models/user.model';
 import { ContactService } from 'src/app/shared/services/contact/contact.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { ContactService } from 'src/app/shared/services/contact/contact.service'
 })
 export class FeatContactListComponent {
   @Input() isAdminMod!: boolean;
+  @Input() admin!: User;
   contactList: Contact[] = [];
 
   constructor(private contactService: ContactService) {}

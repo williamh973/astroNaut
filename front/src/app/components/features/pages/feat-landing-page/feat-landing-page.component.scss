@@ -1,16 +1,25 @@
 #full-page {
-  width: 100vw;
+  width: 100%;
   height: auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-#headerLanding {
-  width: inherit;
-  height: 100px;
+#headerTop {
+  width: 100%;
+  height: auto;
+  min-height: 100px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: #fff;
+}
+
+main {
+  width: inherit;
+  min-height: 100vh;
+  height: auto;
 }

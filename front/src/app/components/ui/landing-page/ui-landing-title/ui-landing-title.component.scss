@@ -1,0 +1,30 @@
+main {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  //   border: 1px solid red;
+}
+
+h1 {
+  width: 100%;
+  margin: 0;
+}
+
+ul {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+}
+
+ul > li {
+  list-style-type: none;
+  font-size: 20px;
+  padding: 1px;
+}

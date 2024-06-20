@@ -20,6 +20,8 @@ public class Reply {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String subject;
+
     @Lob
     @Column(columnDefinition = "TEXT")
     private String content;
