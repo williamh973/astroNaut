@@ -11,9 +11,6 @@ import { LoginOrRegisterPopupService } from 'src/app/shared/services/login-or-re
 export class FeatPicturesSpecialEventsPageComponent {
   pictureSpecialEventCardList: PictureSpecialEventCard[] = [];
   transferredPictureCardList: PictureSpecialEventCard[] = [];
-  isLeftMenuOpen: boolean = false;
-  isLeftMenuAnimationWhenOpen: boolean = false;
-  isLeftMenuItemsClickEnable: boolean = false;
   isPictureSpecialEventPageOpen: boolean = true;
   isLoginOrRegisterPopupOpen: boolean = false;
 
@@ -43,25 +40,5 @@ export class FeatPicturesSpecialEventsPageComponent {
       .subscribe((cardListFromDatabase: PictureSpecialEventCard[]) => {
         this.pictureSpecialEventCardList = cardListFromDatabase;
       });
-  }
-
-  onOpenLeftMenu(isLeftMenuOpen: boolean) {
-    this.isLeftMenuOpen = isLeftMenuOpen;
-  }
-
-  startMenuAnimation(isLeftMenuAnimationWhenOpen: boolean) {
-    this.isLeftMenuAnimationWhenOpen = isLeftMenuAnimationWhenOpen;
-  }
-
-  leftMenuItemsClickEnable(isLeftMenuItemsClickEnable: boolean) {
-    this.isLeftMenuItemsClickEnable = isLeftMenuItemsClickEnable;
-  }
-
-  onCloseLeftMenu(isLeftMenuOpen: boolean) {
-    this.isLeftMenuOpen = isLeftMenuOpen;
-  }
-
-  onToggleColorSvgBurgerButton(isPictureWeekPageOpen: boolean) {
-    // this.isPictureWeekPageOpen = isPictureWeekPageOpen;
   }
 }

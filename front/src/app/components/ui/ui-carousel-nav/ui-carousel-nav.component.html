@@ -1,62 +1,47 @@
-<div id="full-component"> 
+<main id="main-content">
   <div class="container-svg-arrows">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="50"
-        height="80"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="whitesmoke"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        id="arrow-left"
-        class="arrow"
-        [ngClass]="{'leftArrowVisible': isLeftArrowVisible}"
-        (click)="prevCard()"
-        (mouseenter)="showLeftArrow()"
-        (mouseleave)="hiddeLeftArrow()"
-      >
-        <polyline points="15 18 9 12 15 6"></polyline>
-      </svg>
-      
-      <ng-container *ngIf="isPictureOfWeekPageOpen && pictureOfWeekCardList.length > 0">
-        <app-feat-picture-of-week-card
-          [pictureOfWeekCard]="pictureOfWeekCardList[currentIndex]"
-        ></app-feat-picture-of-week-card>
-      </ng-container>
-        
-      <ng-container *ngIf="isPictureSpecialEventPageOpen && pictureSpecialEventCardList.length > 0">
-        <app-feat-picture-special-event-card
-          [pictureSpecialEventCard]="pictureSpecialEventCardList[currentIndex]"
-        ></app-feat-picture-special-event-card>
-      </ng-container>
+    <app-ui-left-arrow-icon
+      id="arrow-left"
+      class="arrow"
+      [ngClass]="{ leftArrowVisible: isLeftArrowVisible }"
+      (click)="prevCard()"
+      (mouseenter)="showLeftArrow()"
+      (mouseleave)="hiddeLeftArrow()"
+    ></app-ui-left-arrow-icon>
 
-      <ng-container *ngIf="isPictureAuthorPageOpen && pictureAuthorCardList.length > 0">
-        <app-feat-picture-author-card
-          [pictureAuthorCard]="pictureAuthorCardList[currentIndex]"
-        ></app-feat-picture-author-card>
-      </ng-container>
+    <ng-container
+      *ngIf="isPictureOfWeekPageOpen && pictureOfWeekCardList.length > 0"
+    >
+      <app-feat-picture-of-week-card
+        [pictureOfWeekCard]="pictureOfWeekCardList[currentIndex]"
+      ></app-feat-picture-of-week-card>
+    </ng-container>
 
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="50"
-        height="80"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="whitesmoke"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        id="arrow-right"
-        class="arrow"
-        [ngClass]="{'rightArrowVisible': isRightArrowVisible}"
-        (click)="nextCard()"
-        (mouseenter)="showRightArrow()"
-        (mouseleave)="hiddeRightArrow()"
-      >
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
+    <ng-container
+      *ngIf="
+        isPictureSpecialEventPageOpen && pictureSpecialEventCardList.length > 0
+      "
+    >
+      <app-feat-picture-special-event-card
+        [pictureSpecialEventCard]="pictureSpecialEventCardList[currentIndex]"
+      ></app-feat-picture-special-event-card>
+    </ng-container>
+
+    <ng-container
+      *ngIf="isPictureAuthorPageOpen && pictureAuthorCardList.length > 0"
+    >
+      <app-feat-picture-author-card
+        [pictureAuthorCard]="pictureAuthorCardList[currentIndex]"
+      ></app-feat-picture-author-card>
+    </ng-container>
+
+    <app-ui-right-arrow-icon
+      id="arrow-right"
+      class="arrow"
+      [ngClass]="{ rightArrowVisible: isRightArrowVisible }"
+      (click)="nextCard()"
+      (mouseenter)="showRightArrow()"
+      (mouseleave)="hiddeRightArrow()"
+    ></app-ui-right-arrow-icon>
   </div>
-
-</div>
+</main>

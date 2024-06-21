@@ -87,6 +87,8 @@ import { FeatReplyListComponent } from './components/features/others-components/
 import { FeatReplyCardComponent } from './components/features/others-components/feat-reply-card/feat-reply-card.component';
 import { FeatReplyFormPopupComponent } from './components/features/popups/forms/feat-reply-form-popup/feat-reply-form-popup.component';
 import { UiLandingTitleComponent } from './components/ui/landing-page/ui-landing-title/ui-landing-title.component';
+import { UiLeftArrowIconComponent } from './shared/icons/ui-left-arrow-icon/ui-left-arrow-icon.component';
+import { UiRightArrowIconComponent } from './shared/icons/ui-right-arrow-icon/ui-right-arrow-icon.component';
 
 @NgModule({
   declarations: [
@@ -166,6 +168,8 @@ import { UiLandingTitleComponent } from './components/ui/landing-page/ui-landing
     FeatReplyCardComponent,
     FeatReplyFormPopupComponent,
     UiLandingTitleComponent,
+    UiLeftArrowIconComponent,
+    UiRightArrowIconComponent,
   ],
   imports: [
     BrowserModule,

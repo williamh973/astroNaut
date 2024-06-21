@@ -1,28 +1,40 @@
-<div>
-      <nav
-        [ngClass]="{'galleryMenuVisible': isGalleryMenuAnimationWhenOpen}"
-        class="menu" 
-        id="galerie-menu"
-        >
-            <ul>
-              <li 
-              *ngFor="let menuItem of galleryMenuItemList; let i = index"
-              >
-                  <a 
-                  [ngClass]="{'selected': i === selectedIndex}" 
-                  (click)="onGalleryMenuItemClick(menuItem, i)"
-                  (mouseenter)="onShowThematicDropdownMenu(menuItem)"
-                  >
-                    {{ menuItem.label }}
+<main>
+  <app-ui-burger-menu-button
+    id="headerTop-burgerMenu"
+    (isLeftMenuOpen)="onOpenLeftMenu($event)"
+    (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
+    (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
+  >
+  </app-ui-burger-menu-button>
 
-                  </a>
-                </li>
-                <app-ui-thematic-dropdown-menu
-                  *ngIf="isThematicDropdownMenuOpen"
-                  id="thematic-DropdownMenu"
-                  >
-                </app-ui-thematic-dropdown-menu>
-              </ul>
-            </nav>
-            
-          </div>
+  <nav
+    [ngClass]="{ galleryMenuVisible: isGalleryMenuAnimationWhenOpen }"
+    class="menu"
+    id="gallery-menu"
+  >
+    <ul>
+      <li *ngFor="let menuItem of galleryMenuItemList; let i = index">
+        <a
+          [ngClass]="{ selected: i === selectedIndex }"
+          (click)="onGalleryMenuItemClick(menuItem, i)"
+          (mouseenter)="onShowThematicDropdownMenu(menuItem)"
+        >
+          {{ menuItem.label }}
+        </a>
+      </li>
+      <app-ui-thematic-dropdown-menu
+        *ngIf="isThematicDropdownMenuOpen"
+        id="thematic-DropdownMenu"
+      >
+      </app-ui-thematic-dropdown-menu>
+    </ul>
+  </nav>
+</main>
+
+<app-ui-navbar
+  *ngIf="isLeftMenuOpen"
+  [isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
+  [isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
+  (isLeftMenuOpen)="onCloseLeftMenu($event)"
+>
+</app-ui-navbar>

@@ -1,29 +1,12 @@
-<div id="full-page">
-    <header id="headerTop">            
-        <app-ui-burger-menu-button
-        id="headerTop-burgerMenu"
-        (isLeftMenuOpen)="onOpenLeftMenu($event)"
-        (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
-        (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
-        ></app-ui-burger-menu-button>
+<main id="full-page">
+  <header id="headerTop">
+    <app-ui-gallery-navbar id="headerTop-galleryNavbar"></app-ui-gallery-navbar>
+  </header>
 
-        <app-ui-gallery-navbar
-        id="headerTop-galleryNavbar"
-        ></app-ui-gallery-navbar>
-    </header>
-    
-    <div id="carousel-container">
-        <app-ui-carousel-nav
-        [isPictureAuthorPageOpen]="isPictureAuthorPageOpen"
-        [pictureAuthorCardList]="pictureAuthorCardList"
-        ></app-ui-carousel-nav>
-    </div>
-
-</div>
-    
-<app-ui-navbar
-*ngIf="isLeftMenuOpen"
-[isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
-[isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
-(isLeftMenuOpen)="onCloseLeftMenu($event)"
-></app-ui-navbar>
+  <section id="carousel-container">
+    <app-ui-carousel-nav
+      [isPictureAuthorPageOpen]="isPictureAuthorPageOpen"
+      [pictureAuthorCardList]="pictureAuthorCardList"
+    ></app-ui-carousel-nav>
+  </section>
+</main>

@@ -10,9 +10,6 @@ import { LoginOrRegisterPopupService } from 'src/app/shared/services/login-or-re
 })
 export class FeatPicturesOfWeekPageComponent {
   pictureOfWeekCardList: PictureOfWeekCard[] = [];
-  isLeftMenuOpen: boolean = false;
-  isLeftMenuAnimationWhenOpen: boolean = false;
-  isLeftMenuItemsClickEnable: boolean = false;
   isPictureOfWeekPageOpen: boolean = true;
   elapsedTime: string = '';
   isLoginOrRegisterPopupOpen: boolean = false;
@@ -97,26 +94,6 @@ export class FeatPicturesOfWeekPageComponent {
     } else {
       this.elapsedTime = seconds + ' secondes';
     }
-  }
-
-  onOpenLeftMenu(isLeftMenuOpen: boolean) {
-    this.isLeftMenuOpen = isLeftMenuOpen;
-  }
-
-  startMenuAnimation(isLeftMenuAnimationWhenOpen: boolean) {
-    this.isLeftMenuAnimationWhenOpen = isLeftMenuAnimationWhenOpen;
-  }
-
-  leftMenuItemsClickEnable(isLeftMenuItemsClickEnable: boolean) {
-    this.isLeftMenuItemsClickEnable = isLeftMenuItemsClickEnable;
-  }
-
-  onCloseLeftMenu(isLeftMenuOpen: boolean) {
-    this.isLeftMenuOpen = isLeftMenuOpen;
-  }
-
-  onToggleColorSvgBurgerButton(isPictureWeekPageOpen: boolean) {
-    // this.isPictureWeekPageOpen = isPictureWeekPageOpen;
   }
 
   private cardListDeletedAfterSevenDays(

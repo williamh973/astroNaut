@@ -1,29 +1,15 @@
-<div id="full-page">
+<main id="full-page">
   <header id="headerTop">
-    <app-ui-burger-menu-button
-      id="headerTop-burgerMenu"
-      (isLeftMenuOpen)="onOpenLeftMenu($event)"
-      (isLeftMenuAnimationWhenOpen)="startMenuAnimation($event)"
-      (isLeftMenuItemsClickEnable)="leftMenuItemsClickEnable($event)"
-    ></app-ui-burger-menu-button>
-
     <app-ui-gallery-navbar id="headerTop-galleryNavbar"></app-ui-gallery-navbar>
   </header>
 
-  <div id="carousel-container">
+  <section id="carousel-container">
     <app-ui-carousel-nav
       [isPictureSpecialEventPageOpen]="isPictureSpecialEventPageOpen"
       [pictureSpecialEventCardList]="pictureSpecialEventCardList"
     ></app-ui-carousel-nav>
-  </div>
-</div>
-
-<app-ui-navbar
-  *ngIf="isLeftMenuOpen"
-  [isLeftMenuAnimationWhenOpen]="isLeftMenuAnimationWhenOpen"
-  [isLeftMenuItemsClickEnable]="isLeftMenuItemsClickEnable"
-  (isLeftMenuOpen)="onCloseLeftMenu($event)"
-></app-ui-navbar>
+  </section>
+</main>
 
 <app-feat-login-or-register-popup
   *ngIf="isLoginOrRegisterPopupOpen"

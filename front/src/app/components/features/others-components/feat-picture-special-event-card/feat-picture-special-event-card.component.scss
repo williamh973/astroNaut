@@ -1,6 +1,7 @@
 #specialEvent-fullCard {
+  width: auto;
   aspect-ratio: 16 / 9;
-  height: 350px;
+  height: 360px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,43 +22,45 @@
 }
 
 #specialEvent-image {
-  // aspect-ratio: 16 / 9;
   width: 100%;
 }
 
-#specialEvent-fontContainer {
+#specialEvent-metaData {
   width: 100%;
-  height: 60px;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.927);
-  color: rgb(217, 198, 162);
+  color: whitesmoke;
 }
 
-#specialEvent-fontContainer > p {
-  width: 100%;
-  margin: 0;
+#specialEvent-metaData > #title,
+#specialEvent-metaData > #resume {
+  font-size: 15px;
+  margin: 2px;
   padding: 0;
-  font-size: 16px;
-  // border: 1px solid red;
 }
 
 #title {
   width: 100%;
+  height: auto;
   text-align: center;
 }
 
 #resume {
   width: 100%;
+  height: auto;
   text-align: start;
 }
 
 #timestamp {
   width: 100%;
+  height: auto;
   text-align: end;
-  font-size: 13px;
+  font-size: 12px;
+  color: grey;
 }
 
 .loader {
