@@ -10,6 +10,7 @@ export class FeatHomePageComponent {
   isSearchResultNotFound: boolean = false;
   displayNotFoundMessage!: string;
   isLoginOrRegisterPopupOpen: boolean = false;
+  isHomePageOpen: boolean = true;
 
   constructor(
     private loginOrRegisterPopupService: LoginOrRegisterPopupService

@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-ui-header',
   templateUrl: './ui-header.component.html',
-  styleUrls: ['./ui-header.component.scss']
+  styleUrls: ['./ui-header.component.scss'],
 })
 export class UiHeaderComponent {
-
+  @Input() isHomePageOpen!: boolean;
   isLeftMenuOpen: boolean = false;
   isLeftMenuAnimationWhenOpen: boolean = false;
-  isLeftMenuItemsClickEnable:  boolean = false;
+  isLeftMenuItemsClickEnable: boolean = false;
 
+  ngOnInit() {}
 
   onOpenLeftMenu(isLeftMenuOpen: boolean) {
     this.isLeftMenuOpen = isLeftMenuOpen;
@@ -19,7 +20,7 @@ export class UiHeaderComponent {
   startMenuAnimation(isLeftMenuAnimationWhenOpen: boolean) {
     this.isLeftMenuAnimationWhenOpen = isLeftMenuAnimationWhenOpen;
   }
-  
+
   leftMenuItemsClickEnable(isLeftMenuItemsClickEnable: boolean) {
     this.isLeftMenuItemsClickEnable = isLeftMenuItemsClickEnable;
   }
